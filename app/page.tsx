@@ -10,10 +10,11 @@ import HabitacionesSection from "@/components/sections/HabitacionesSection";
 import HuespedesSection from "@/components/sections/HuespedesSection";
 import GaleriaSection from "@/components/sections/GaleriaSection";
 import ResenasSection from "@/components/sections/ResenasSection";
+import UbicacionSection from "@/components/sections/UbicacionSection";
 import CTAReservaSection from "@/components/sections/CTAReservaSection";
 
 // Home narrativa: Hero -> Rapa Nui -> Kuhane -> Experiencia -> Cultura ->
-// Habitaciones -> Huéspedes -> Galería -> Reseñas -> Reserva.
+// Habitaciones -> Huéspedes -> Galería -> Reseñas -> Mapa -> Reserva.
 export default function Home() {
   return (
     <>
@@ -29,6 +30,7 @@ export default function Home() {
         <HuespedesSection />
         <GaleriaSection />
         <ResenasSection />
+        <UbicacionSection />
         <CTAReservaSection />
       </main>
       <Footer />

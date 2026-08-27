@@ -251,6 +251,71 @@ export const colaboradoresList: Colaborador[] = [
   },
 ];
 
+// Mapa de ubicación: Kuhane (aproximado, sin dirección exacta confirmada
+// todavía) + puntos de interés reales y públicos de Rapa Nui, para dar
+// contexto de dónde queda todo. Ninguna coordenada acá es inventada: los
+// hitos usan sus ubicaciones públicas conocidas; Kuhane usa el centro de
+// Hanga Roa como aproximación hasta tener la dirección exacta.
+export type MapaPin = {
+  id: string;
+  nombre: string;
+  tipo: "kuhane" | "experiencia";
+  lat: number;
+  lng: number;
+  descripcion: string;
+  aproximado?: boolean;
+};
+
+export const ubicacion = {
+  eyebrow: "Cómo llegar",
+  title: "Kuhane y la isla, en el mapa.",
+  body: "Hanga Roa es un pueblo pequeño — todo lo importante queda cerca. Así se ve la distancia entre Kuhane y algunos de los lugares imperdibles de Rapa Nui.",
+  center: { lat: -27.1527, lng: -109.4265 },
+  pins: [
+    {
+      id: "kuhane",
+      nombre: "Kuhane Etno-Hostal",
+      tipo: "kuhane",
+      lat: -27.1500,
+      lng: -109.4260,
+      descripcion: "Ubicación aproximada — dirección exacta " + TODO_PLACEHOLDER,
+      aproximado: true,
+    },
+    {
+      id: "ahu-tahai",
+      nombre: "Ahu Tahai",
+      tipo: "experiencia",
+      lat: -27.1505,
+      lng: -109.4356,
+      descripcion: "El mejor lugar del pueblo para ver el atardecer junto a los Moái.",
+    },
+    {
+      id: "ahu-tongariki",
+      nombre: "Ahu Tongariki",
+      tipo: "experiencia",
+      lat: -27.1256,
+      lng: -109.2767,
+      descripcion: "Los 15 Moái más famosos de la isla, frente al mar.",
+    },
+    {
+      id: "rano-kau",
+      nombre: "Rano Kau y Orongo",
+      tipo: "experiencia",
+      lat: -27.1867,
+      lng: -109.4442,
+      descripcion: "Volcán con una laguna interior y el sitio ceremonial de Orongo.",
+    },
+    {
+      id: "aeropuerto",
+      nombre: "Aeropuerto Mataveri",
+      tipo: "experiencia",
+      lat: -27.1648,
+      lng: -109.4219,
+      descripcion: "Punto de llegada — te recibimos acá apenas aterrizas.",
+    },
+  ] as MapaPin[],
+};
+
 export const footer = {
   tagline: "Kuhane Etno-Hostal — Hanga Roa, Rapa Nui",
 };

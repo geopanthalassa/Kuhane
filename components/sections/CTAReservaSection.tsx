@@ -5,7 +5,7 @@ import { cta } from "@/lib/site-content";
 
 export default function CTAReservaSection() {
   return (
-    <section id="reserva" className="relative overflow-hidden py-28 sm:py-36">
+    <section id="reserva" className="relative overflow-x-clip py-28 sm:py-36">
       <Image
         src="/images/cta-sunset.jpg"
         alt="Atardecer en Rapa Nui"
