@@ -20,9 +20,15 @@ export const site = {
   // confirmar la cifra real con Kuhane antes de publicarla como dato exacto.
   tahaiDistance: TODO_PLACEHOLDER,
   googleRating: {
-    value: TODO_PLACEHOLDER as number | string,
+    // Confirmado por Kuhane: 4.7 en Google. La cantidad exacta de reseñas y
+    // el link directo al perfil de Google Maps todavía no están confirmados
+    // (no se pudieron verificar de forma independiente — Google Maps no es
+    // accesible para este asistente), así que quedan en placeholder hasta
+    // que Kuhane los pase.
+    value: 4.7 as number | string,
     count: TODO_PLACEHOLDER as number | string,
-    source: TODO_PLACEHOLDER, // confirmar si es Google, TripAdvisor o Booking
+    source: "Google",
+    url: TODO_PLACEHOLDER, // link directo al perfil de Google Maps de Kuhane
   },
   whatsapp: TODO_PLACEHOLDER,
   email: TODO_PLACEHOLDER,
