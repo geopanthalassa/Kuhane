@@ -76,17 +76,14 @@ export const experiencias = {
     {
       title: "Bienvenida en Kuhane",
       body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
-      image: "/images/experiencias/bienvenida.jpg",
     },
     {
       title: "Cultura viva",
       body: TODO_PLACEHOLDER + " — descripción de experiencias culturales reales (historias, artesanía, etc.) a confirmar con Kuhane.",
-      image: "/images/experiencias/cultura.jpg",
     },
     {
       title: "El atardecer",
       body: TODO_PLACEHOLDER + " — confirmar distancia y forma de llegar a Ahu Tahai antes de publicar el dato.",
-      image: "/images/experiencias/atardecer.jpg",
     },
   ],
 };
@@ -174,17 +171,8 @@ export const huespedes = {
 export const galeria = {
   eyebrow: "Galería",
   title: "La isla, en imágenes.",
-  // Fotos reales de Rapa Nui compartidas por Kuhane.
-  photos: [
-    "/images/gallery/01.jpg",
-    "/images/gallery/02.jpg",
-    "/images/gallery/03.jpg",
-    "/images/gallery/04.jpg",
-    "/images/gallery/05.jpg",
-    "/images/gallery/06.jpg",
-    "/images/gallery/07.jpg",
-    "/images/gallery/08.jpg",
-  ],
+  // Placeholders tipados: se completan con fotos reales apenas lleguen.
+  count: 8,
 };
 
 export const resenas = {
@@ -201,55 +189,7 @@ export const cta = {
 export const aeropuerto = {
   title: "Tu llegada, acompañada.",
   body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
-  image: "/images/aeropuerto-banner.jpg",
 };
-
-// Panel de reserva: por ahora conecta con Nuku OS (fase de pruebas, sin
-// pagos reales todavía) en vez de un backend propio de Kuhane.
-export const reserva = {
-  nukuOsUrl: "https://nuku-os-app.vercel.app/reservar",
-  eyebrow: "Disponibilidad",
-  helper:
-    "Elige tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane — hoy en fase de pruebas, así que confirmamos contigo por WhatsApp o email antes de cobrar.",
-};
-
-export const colaboradores = {
-  eyebrow: "Con la comunidad",
-  title: "Vive la isla junto a quienes la conocen de cerca.",
-  body: "Amigos y colaboradores de Kuhane ofrecen experiencias directamente en Rapa Nui. Súmalas a tu estadía cuando reserves.",
-};
-
-export type Colaborador = {
-  nombre: string;
-  actividad: string;
-  descripcion: string;
-  precio: string;
-  contacto: string;
-};
-
-export const colaboradoresList: Colaborador[] = [
-  {
-    nombre: TODO_PLACEHOLDER,
-    actividad: TODO_PLACEHOLDER,
-    descripcion: TODO_PLACEHOLDER,
-    precio: TODO_PLACEHOLDER,
-    contacto: TODO_PLACEHOLDER,
-  },
-  {
-    nombre: TODO_PLACEHOLDER,
-    actividad: TODO_PLACEHOLDER,
-    descripcion: TODO_PLACEHOLDER,
-    precio: TODO_PLACEHOLDER,
-    contacto: TODO_PLACEHOLDER,
-  },
-  {
-    nombre: TODO_PLACEHOLDER,
-    actividad: TODO_PLACEHOLDER,
-    descripcion: TODO_PLACEHOLDER,
-    precio: TODO_PLACEHOLDER,
-    contacto: TODO_PLACEHOLDER,
-  },
-];
 
 export const footer = {
   tagline: "Kuhane Etno-Hostal — Hanga Roa, Rapa Nui",

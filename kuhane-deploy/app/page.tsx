@@ -4,7 +4,6 @@ import Hero from "@/components/sections/Hero";
 import RapaNuiSection from "@/components/sections/RapaNuiSection";
 import KuhaneSection from "@/components/sections/KuhaneSection";
 import ExperienciasSection from "@/components/sections/ExperienciasSection";
-import ColaboradoresSection from "@/components/sections/ColaboradoresSection";
 import CulturaSection from "@/components/sections/CulturaSection";
 import HabitacionesSection from "@/components/sections/HabitacionesSection";
 import HuespedesSection from "@/components/sections/HuespedesSection";
@@ -23,7 +22,6 @@ export default function Home() {
         <RapaNuiSection />
         <KuhaneSection />
         <ExperienciasSection />
-        <ColaboradoresSection />
         <CulturaSection />
         <HabitacionesSection />
         <HuespedesSection />
