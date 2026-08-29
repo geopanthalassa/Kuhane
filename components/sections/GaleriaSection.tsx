@@ -4,9 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { galeria } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function GaleriaSection() {
+  const { galeria, ui } = useContent();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -27,7 +28,7 @@ export default function GaleriaSection() {
             >
               <Image
                 src={src}
-                alt="Rapa Nui"
+                alt={ui.galeria.photoAlt}
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                 sizes="(min-width: 640px) 25vw, 50vw"
@@ -43,7 +44,7 @@ export default function GaleriaSection() {
           onClick={() => setOpenIndex(null)}
         >
           <button
-            aria-label="Cerrar"
+            aria-label={ui.galeria.closeAria}
             className="absolute right-6 top-6 text-3xl font-light text-warm-white/80 hover:text-warm-white"
             onClick={() => setOpenIndex(null)}
           >
@@ -55,7 +56,7 @@ export default function GaleriaSection() {
           >
             <Image
               src={galeria.photos[openIndex]}
-              alt="Rapa Nui"
+              alt={ui.galeria.photoAlt}
               fill
               className="object-contain"
               sizes="100vw"

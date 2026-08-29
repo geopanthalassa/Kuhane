@@ -1,9 +1,39 @@
-import { redirect } from "next/navigation";
+import Nav from "@/components/layout/Nav";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/sections/Hero";
+import RapaNuiSection from "@/components/sections/RapaNuiSection";
+import KuhaneSection from "@/components/sections/KuhaneSection";
+import ExperienciasSection from "@/components/sections/ExperienciasSection";
+import ColaboradoresSection from "@/components/sections/ColaboradoresSection";
+import CulturaSection from "@/components/sections/CulturaSection";
+import HabitacionesSection from "@/components/sections/HabitacionesSection";
+import HuespedesSection from "@/components/sections/HuespedesSection";
+import GaleriaSection from "@/components/sections/GaleriaSection";
+import ResenasSection from "@/components/sections/ResenasSection";
+import UbicacionSection from "@/components/sections/UbicacionSection";
+import CTAReservaSection from "@/components/sections/CTAReservaSection";
 
-// Esta pantalla vieja (placeholder "Entrar como Kuhane Etno-Hostal") quedó
-// reemplazada por /login (ver app/login/page.tsx), que ahora sí pide
-// usuario y clave de verdad — ver lib/admin-auth.ts. La raíz del sitio
-// manda directo ahí para que no queden dos pantallas de entrada distintas.
-export default function RootPage() {
-  redirect("/login");
+// Home narrativa: Hero -> Rapa Nui -> Kuhane -> Experiencia -> Cultura ->
+// Habitaciones -> Huéspedes -> Galería -> Reseñas -> Mapa -> Reserva.
+export default function Home() {
+  return (
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <RapaNuiSection />
+        <KuhaneSection />
+        <ExperienciasSection />
+        <ColaboradoresSection />
+        <CulturaSection />
+        <HabitacionesSection />
+        <HuespedesSection />
+        <GaleriaSection />
+        <ResenasSection />
+        <UbicacionSection />
+        <CTAReservaSection />
+      </main>
+      <Footer />
+    </>
+  );
 }

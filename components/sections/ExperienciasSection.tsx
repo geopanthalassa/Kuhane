@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { aeropuerto, experiencias } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function ExperienciasSection() {
+  const { aeropuerto, experiencias, ui } = useContent();
   return (
     <section id="experiencias" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -42,7 +45,7 @@ export default function ExperienciasSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-teal-deep/80 via-teal-deep/30 to-transparent" />
             <div className="absolute inset-0 flex items-center">
               <div className="max-w-lg px-8 sm:px-14">
-                <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Llegada</p>
+                <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.experiencias.arrivalLabel}</p>
                 <h3 className="font-display mt-3 text-2xl text-warm-white sm:text-3xl">
                   {aeropuerto.title}
                 </h3>

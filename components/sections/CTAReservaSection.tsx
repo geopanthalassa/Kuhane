@@ -1,14 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ReservaPanel from "@/components/sections/ReservaPanel";
-import { cta } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function CTAReservaSection() {
+  const { cta, ui } = useContent();
   return (
     <section id="reserva" className="relative overflow-x-clip py-28 sm:py-36">
       <Image
         src="/images/cta-sunset.jpg"
-        alt="Atardecer en Rapa Nui"
+        alt={ui.cta.imageAlt}
         fill
         className="object-cover"
         sizes="100vw"

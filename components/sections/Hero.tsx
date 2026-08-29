@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { hero } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function Hero() {
+  const { hero } = useContent();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoAvailable, setVideoAvailable] = useState(false);
 

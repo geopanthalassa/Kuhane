@@ -1,9 +1,12 @@
+"use client";
+
 import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { huespedes } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function HuespedesSection() {
+  const { huespedes, ui } = useContent();
   return (
     <section id="huespedes" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -14,7 +17,7 @@ export default function HuespedesSection() {
             type="button"
             disabled
             className="mt-6 cursor-not-allowed rounded-full border border-teal/40 px-6 py-3 text-[12px] tracking-[0.2em] uppercase text-teal/50"
-            title="Disponible próximamente"
+            title={ui.huespedes.availableSoonTitle}
           >
             {huespedes.cta}
           </button>

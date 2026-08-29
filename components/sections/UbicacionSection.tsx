@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { ubicacion } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 // Leaflet toca `window`, así que el mapa se carga solo en el cliente.
 const UbicacionMap = dynamic(() => import("@/components/ui/UbicacionMap"), {
@@ -12,6 +12,7 @@ const UbicacionMap = dynamic(() => import("@/components/ui/UbicacionMap"), {
 });
 
 export default function UbicacionSection() {
+  const { ubicacion, ui } = useContent();
   return (
     <section id="mapa" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -33,11 +34,11 @@ export default function UbicacionSection() {
         <Reveal delayMs={200} className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-stone-soft">
           <span className="flex items-center gap-2">
             <span className="inline-block h-3 w-3 rounded-full border-2 border-gold-soft bg-teal-deep" />
-            Kuhane (ubicación aproximada)
+            {ui.ubicacion.legendKuhane}
           </span>
           <span className="flex items-center gap-2">
             <span className="inline-block h-2.5 w-2.5 rounded-full border-2 border-warm-white bg-turquoise" />
-            Lugares imperdibles
+            {ui.ubicacion.legendExperiencias}
           </span>
         </Reveal>
       </div>

@@ -1,17 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 // Calendario de rango minimalista, sin dependencias externas: un mes a la
 // vez, clic para llegada, segundo clic (fecha posterior) para salida.
 // Fechas se manejan como strings "YYYY-MM-DD" en horario local, evitando
 // líos de zona horaria con Date/UTC.
-
-const MESES = [
-  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
-];
-const DIAS = ["L", "M", "M", "J", "V", "S", "D"];
 
 function toKey(y: number, m: number, d: number) {
   return `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
@@ -31,6 +26,9 @@ export default function DateRangeCalendar({
   checkout: string;
   onChange: (next: { checkin: string; checkout: string }) => void;
 }) {
+  const { ui } = useContent();
+  const MESES = ui.calendar.months;
+  const DIAS = ui.calendar.daysShort;
   const start = checkin ? new Date(checkin + "T00:00:00") : new Date();
   const [viewYear, setViewYear] = useState(start.getFullYear());
   const [viewMonth, setViewMonth] = useState(start.getMonth());
@@ -129,7 +127,7 @@ export default function DateRangeCalendar({
       <div className="mb-1 flex items-center justify-between">
         <button
           type="button"
-          aria-label="Mes anterior"
+          aria-label={ui.calendar.prevMonthAria}
           onClick={prevMonth}
           className="flex h-7 w-7 items-center justify-center rounded-full text-stone-soft hover:bg-sand"
         >
@@ -137,7 +135,7 @@ export default function DateRangeCalendar({
         </button>
         <button
           type="button"
-          aria-label="Mes siguiente"
+          aria-label={ui.calendar.nextMonthAria}
           onClick={nextMonth}
           className="flex h-7 w-7 items-center justify-center rounded-full text-stone-soft hover:bg-sand"
         >
@@ -147,9 +145,9 @@ export default function DateRangeCalendar({
       {renderMonth(viewYear, viewMonth)}
       <p className="mt-3 text-center text-[11px] leading-relaxed text-stone-soft/70">
         {!checkin
-          ? "Elige la fecha de llegada"
+          ? ui.calendar.pickCheckin
           : !checkout
-          ? "Ahora elige la fecha de salida"
+          ? ui.calendar.pickCheckout
           : `${checkin} → ${checkout}`}
       </p>
     </div>

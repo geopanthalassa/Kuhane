@@ -4,7 +4,8 @@ import { useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ubicacion, type MapaPin } from "@/lib/site-content";
+import type { MapaPin } from "@/lib/content/types";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 // Pines propios (no el ícono azul por defecto de Leaflet) para que combinen
 // con la paleta de Kuhane: teal-deep con anillo dorado para Kuhane,
@@ -28,6 +29,7 @@ function pinIcon(pin: MapaPin) {
 }
 
 export default function UbicacionMap() {
+  const { ubicacion } = useContent();
   const pins = ubicacion.pins;
   const icons = useMemo(() => new Map(pins.map((p) => [p.id, pinIcon(p)])), [pins]);
 

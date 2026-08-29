@@ -1,9 +1,12 @@
+"use client";
+
 import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { cultura, libros, voces } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function CulturaSection() {
+  const { cultura, libros, voces, ui } = useContent();
   return (
     <section id="cultura" className="bg-teal-deep py-24 text-warm-white sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -15,13 +18,13 @@ export default function CulturaSection() {
         {/* Libros */}
         <Reveal delayMs={100}>
           <div className="motif-divider my-16 h-4 opacity-70" />
-          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Libros</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.cultura.librosLabel}</p>
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {libros.map((libro, i) => (
               <div key={i} className="flex gap-5">
                 <PlaceholderMedia
                   tone="teal"
-                  label="Portada"
+                  label={ui.placeholder.bookCover}
                   className="h-40 w-28 shrink-0"
                 />
                 <div>
@@ -39,11 +42,11 @@ export default function CulturaSection() {
         {/* Voces de Rapa Nui */}
         <Reveal delayMs={150}>
           <div className="motif-divider my-16 h-4 opacity-70" />
-          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Voces de Rapa Nui</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.cultura.vocesLabel}</p>
           <div className="mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2">
             {voces.map((voz, i) => (
               <div key={i} className="flex gap-5">
-                <PlaceholderMedia tone="teal" label="Foto" className="h-16 w-16 shrink-0 rounded-full" />
+                <PlaceholderMedia tone="teal" label={ui.placeholder.personPhoto} className="h-16 w-16 shrink-0 rounded-full" />
                 <div>
                   <p className="font-display text-base text-warm-white">{voz.nombre}</p>
                   <p className="text-xs text-gold-soft">{voz.rol}</p>

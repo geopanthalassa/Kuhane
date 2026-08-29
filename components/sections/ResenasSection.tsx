@@ -1,12 +1,16 @@
+"use client";
+
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { resenas, site, TODO_PLACEHOLDER } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 const placeholderReviews = [1, 2, 3];
-const hasReviewCount = site.googleRating.count !== TODO_PLACEHOLDER;
-const hasReviewsUrl = site.googleRating.url !== TODO_PLACEHOLDER;
 
 export default function ResenasSection() {
+  const { resenas, site, TODO_PLACEHOLDER, ui } = useContent();
+  const hasReviewCount = site.googleRating.count !== TODO_PLACEHOLDER;
+  const hasReviewsUrl = site.googleRating.url !== TODO_PLACEHOLDER;
+
   return (
     <section id="resenas" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -18,7 +22,7 @@ export default function ResenasSection() {
             {hasReviewCount && (
               <>
                 <span>·</span>
-                <span>{site.googleRating.count} reseñas</span>
+                <span>{site.googleRating.count} {ui.resenas.reviewsSuffix}</span>
               </>
             )}
             <span>·</span>
@@ -29,7 +33,7 @@ export default function ResenasSection() {
                 rel="noopener noreferrer"
                 className="underline underline-offset-4 hover:text-stone"
               >
-                Ver en {site.googleRating.source}
+                {ui.resenas.viewOn.replace("{source}", site.googleRating.source)}
               </a>
             ) : (
               <span>{site.googleRating.source}</span>
@@ -43,10 +47,10 @@ export default function ResenasSection() {
               <div className="h-full rounded-sm border border-stone/10 p-7">
                 <p className="text-gold">★★★★★</p>
                 <p className="mt-4 text-[15px] italic leading-relaxed text-stone-soft">
-                  “[POR CONFIRMAR] — acá va una reseña real de un huésped de Kuhane.”
+                  “{ui.resenas.placeholderQuote}”
                 </p>
                 <p className="mt-5 text-xs tracking-[0.15em] uppercase text-stone-soft/70">
-                  [Nombre del huésped]
+                  {ui.resenas.placeholderName}
                 </p>
               </div>
             </Reveal>
