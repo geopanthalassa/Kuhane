@@ -183,8 +183,8 @@ export const es = {
   },
 
   cta: {
-    title: "Vení a vivir tu Rapa Nui.",
-    body: "Escribinos y te ayudamos a planear tu estadía en Kuhane.",
+    title: "Ven a vivir tu Rapa Nui.",
+    body: "Escríbenos y te ayudamos a planear tu estadía en Kuhane.",
     ctaPrimary: "RESERVAR",
   },
 
@@ -357,7 +357,7 @@ export const es = {
       checkAvailabilityAria: "Ver disponibilidad",
       fewerGuestsAria: "Menos huéspedes",
       moreGuestsAria: "Más huéspedes",
-      promoQuestion: "¿Tenés un código promocional?",
+      promoQuestion: "¿Tienes un código promocional?",
       promoPlaceholder: "Código promocional",
     },
     ubicacion: {
@@ -381,7 +381,7 @@ export const es = {
     },
     whatsapp: {
       heading: "Escríbenos por WhatsApp",
-      subtext: "Dejanos tu número y te contactamos si no alcanzas a terminar la conversación (opcional).",
+      subtext: "Déjanos tu número y te contactamos si no alcanzas a terminar la conversación (opcional).",
       phonePlaceholder: "+56 9 ...",
       sending: "Un momento…",
       continueBtn: "Continuar a WhatsApp",
