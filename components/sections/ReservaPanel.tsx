@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import DateRangeCalendar from "@/components/ui/DateRangeCalendar";
 import { useContent } from "@/lib/content/LocaleProvider";
+import { buildFlightSearchLink } from "@/lib/travel-flights";
 
 // Panel de disponibilidad minimalista, estilo barra ("Check Availability")
 // en vez de una tarjeta grande. Al confirmar abre el sistema de reservas de
@@ -52,6 +53,20 @@ export default function ReservaPanel() {
       : checkin
       ? `${formatShort(checkin)} — ${ui.reserva.departure}`
       : ui.reserva.arrivalDeparture;
+
+  // Mismo checkin/checkout/guests que ya carga esta barra — así el link de
+  // vuelos siempre refleja lo último que la persona eligió acá, sin pedirle
+  // los datos de nuevo. Si todavía no eligió fechas, usa una ventana de
+  // referencia (ver lib/travel-flights.ts).
+  const flightSearchUrl = useMemo(
+    () =>
+      buildFlightSearchLink({
+        departDate: checkin || undefined,
+        returnDate: checkout || undefined,
+        adults: guests,
+      }),
+    [checkin, checkout, guests]
+  );
 
   return (
     <div ref={wrapRef} className="w-full max-w-xl">
@@ -141,6 +156,23 @@ export default function ReservaPanel() {
       <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-warm-white/70">
         {reserva.helper}
       </p>
+
+      <div className="mt-3 flex flex-col items-center">
+        <a
+          href={flightSearchUrl}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className="inline-flex items-center gap-1.5 text-[12px] font-medium text-warm-white underline decoration-warm-white/40 underline-offset-4 transition-colors hover:decoration-warm-white"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+            <path d="M2 16l20-7-7 20-3-8-8-3z" strokeLinejoin="round" />
+          </svg>
+          {ui.reserva.flightsCta}
+        </a>
+        <p className="mt-1 max-w-xs text-center text-[11px] leading-relaxed text-warm-white/55">
+          {ui.reserva.flightsHelper}
+        </p>
+      </div>
 
       <div className="mt-2 flex flex-col items-center">
         {!showPromo ? (

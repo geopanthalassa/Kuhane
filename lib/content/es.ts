@@ -359,10 +359,15 @@ export const es = {
       moreGuestsAria: "Más huéspedes",
       promoQuestion: "¿Tienes un código promocional?",
       promoPlaceholder: "Código promocional",
+      flightsCta: "Buscar vuelos a Isla de Pascua",
+      flightsHelper: "Salida sugerida desde Santiago — cambia el origen en el buscador si vuelas desde otra ciudad.",
     },
     ubicacion: {
       legendKuhane: "Kuhane (ubicación aproximada)",
       legendExperiencias: "Lugares imperdibles",
+      flightsTitle: "¿Aún no tienes vuelo?",
+      flightsCta: "Buscar vuelos a Isla de Pascua",
+      flightsHelper: "Se abre en Aviasales con la ruta ya cargada — cambia origen y fechas ahí mismo si lo necesitas.",
     },
     placeholder: {
       rapaNuiPhoto: "Rapa Nui — fotografía próximamente",

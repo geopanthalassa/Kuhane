@@ -355,10 +355,15 @@ export const en: Content = {
       moreGuestsAria: "More guests",
       promoQuestion: "Have a promo code?",
       promoPlaceholder: "Promo code",
+      flightsCta: "Search flights to Easter Island",
+      flightsHelper: "Departure defaults to Santiago — change the origin in the search page if you're flying from elsewhere.",
     },
     ubicacion: {
       legendKuhane: "Kuhane (approximate location)",
       legendExperiencias: "Must-see spots",
+      flightsTitle: "Don't have a flight yet?",
+      flightsCta: "Search flights to Easter Island",
+      flightsHelper: "Opens in Aviasales with the route already set — change the origin and dates there if you need to.",
     },
     placeholder: {
       rapaNuiPhoto: "Rapa Nui — photo coming soon",

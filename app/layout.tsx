@@ -46,6 +46,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        {/* Travelpayouts Drive — script de monetización pedido por Andre.
+            Next.js ya mete acá los tags de `metadata` de arriba; este
+            <head> manual solo agrega el script de Travelpayouts, tal cual
+            lo entrega su dashboard (instalación manual, ver captura). */}
+        <script
+          {...({ nowprocket: "" } as Record<string, string>)}
+          data-noptimize="1"
+          data-cfasync="false"
+          data-wpfc-render="false"
+          seraph-accel-crit="1"
+          data-no-defer="1"
+          data-cmp-ab="2"
+          dangerouslySetInnerHTML={{
+            __html: `
+  (function () {
+    var script = document.createElement("script");
+    script.async = 1;
+    script.setAttribute("data-cmp-ab","2");
+    script.src = 'https://emrldtp.com/NTY4ODA2.js?t=568806';
+    document.head.appendChild(script);
+  })();
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased">
         <LocaleProvider>
           {children}
