@@ -1,6 +1,6 @@
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { resenas, site } from "@/lib/site-content";
+import { resenas, site, TODO_PLACEHOLDER } from "@/lib/site-content";
 
 export default function ResenasSection() {
   return (
@@ -14,6 +14,9 @@ export default function ResenasSection() {
                 <span className="font-display text-2xl text-stone">{r.value}</span>
                 <span className="text-xs text-stone-soft/70">{r.scale}</span>
                 <span className="ml-1">{r.source}</span>
+                {r.count !== TODO_PLACEHOLDER && (
+                  <span className="text-stone-soft/70">· {r.count} reseñas</span>
+                )}
               </div>
             ))}
           </div>

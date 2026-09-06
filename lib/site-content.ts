@@ -18,11 +18,12 @@ export const site = {
   // Confirmado: 1,2 km según el propio listado de Kuhane en Booking.com
   // (sección "Alrededores del alojamiento", septiembre 2026).
   tahaiDistance: "1,2 km",
-  // Confirmado directamente por Kuhane (septiembre 2026). El número de
-  // reseñas de cada plataforma queda pendiente de confirmar.
+  // Confirmado directamente por Kuhane (septiembre 2026, capturas de
+  // Google/Tripadvisor). El número de reseñas de Booking queda pendiente.
   ratings: [
     { value: "9,4", scale: "/10", source: "Booking.com", count: TODO_PLACEHOLDER as number | string },
-    { value: "4,7", scale: "/5", source: "Google", count: TODO_PLACEHOLDER as number | string },
+    { value: "4,7", scale: "/5", source: "Google", count: 15 as number | string },
+    { value: "4,7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
   whatsapp: TODO_PLACEHOLDER,
   email: TODO_PLACEHOLDER,
@@ -52,11 +53,10 @@ export const hero = {
 
 export const rapaNui = {
   eyebrow: "El territorio",
-  title: "El lugar más remoto habitado del mundo.",
-  body: [
-    "Rapa Nui está a miles de kilómetros de cualquier otra costa — una isla volcánica en medio del Pacífico, donde el paisaje, la historia y la cultura Rapanui siguen vivos en cada rincón.",
-    TODO_PLACEHOLDER + " — agregar aquí 1–2 líneas adicionales sobre el territorio una vez confirmadas con Kuhane.",
-  ],
+  title: "El lugar habitado más lejano del mundo.",
+  body: [] as string[],
+  // Foto aérea del cráter Rano Kau, enviada por Andre — sept. 2026.
+  foto: "/images/rapa-nui/territorio.jpg",
 };
 
 export const kuhane = {
@@ -79,19 +79,44 @@ export const experiencias = {
     {
       title: "Bienvenida en Kuhane",
       body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
+      // Foto real enviada por Andre (caballos al atardecer, Tahai) — sept. 2026.
+      foto: "/images/experiencias/bienvenida.jpg",
     },
     {
       title: "Cultura viva",
       // Fuente: descripción propia de Kuhane en Booking.com ("Información
       // del alojamiento", septiembre 2026).
       body: "Café al atardecer, degustaciones culinarias, música suave y conversación frente al mar — un ritual diario en la terraza de Kuhane.",
+      foto: "/images/experiencias/cultura-viva.jpg",
     },
     {
       title: "El atardecer",
       // Distancia confirmada: listado de Kuhane en Booking.com (ver
       // site.tahaiDistance).
       body: "A solo 1,2 km caminando está Ahu Tahai, uno de los sitios más fotografiados de Rapa Nui — el lugar ideal para ver caer el sol sobre el Pacífico.",
+      foto: "/images/experiencias/atardecer.jpg",
     },
+  ],
+  // Pedido de Andre (6/9/2026): dejar claro que además del tour que arma
+  // Kuhane, conectan al huésped con otras experiencias de la isla.
+  extra:
+    "Además, realizamos un tour completo por la isla y te contactamos con otras experiencias — buceo, cabalgatas y mucho más — para que armes tu viaje a medida.",
+};
+
+// Experiencias extra: no son parte del tour de Kuhane, sino contactos con
+// otros prestadores de la isla. Fotos de buceo enviadas por Andre — son de
+// Cristian Rapu, el contacto de buceo de Kuhane; Sofía tiene su permiso
+// para usarlas (confirmado 6/9/2026).
+export const otrasExperiencias = {
+  eyebrow: "Experiencias extra",
+  title: "Buceo en Rapa Nui",
+  body: "Te contactamos con Cristian Rapu, nuestro contacto de buceo en la isla, para explorar sus fondos marinos.",
+  credito: "Fotos: Cristian Rapu",
+  fotos: [
+    "/images/experiencias/buceo-01.jpg",
+    "/images/experiencias/buceo-02.jpg",
+    "/images/experiencias/buceo-03.jpg",
+    "/images/experiencias/buceo-04.jpg",
   ],
 };
 
@@ -488,7 +513,9 @@ export const huespedes = {
 export const galeria = {
   eyebrow: "Galería",
   title: "La isla, en imágenes.",
-  fotos: Array.from({ length: 17 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+  // 1–17: fotos del hostal. 18–21: paisajes reales de Rapa Nui enviados por
+  // Andre (sept. 2026) — arcoíris, cielo estrellado y atardeceres de la isla.
+  fotos: Array.from({ length: 22 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
 };
 
 export type Resena = { texto: string; nombre: string; fuente: string };
@@ -496,21 +523,59 @@ export type Resena = { texto: string; nombre: string; fuente: string };
 export const resenas = {
   eyebrow: "Lo que dicen",
   title: "Voces de quienes ya estuvieron acá.",
-  // Vacío hasta que Kuhane pegue reseñas reales de Google/Booking (texto,
-  // nombre del huésped y de qué plataforma viene). ResenasSection no
-  // muestra tarjetas de reseña mientras este array esté vacío.
-  testimonios: [] as Resena[],
+  // Selección de reseñas reales (Google y Tripadvisor), pegadas por Andre
+  // el 6/9/2026. Se dejaron fuera reseñas mixtas/negativas y la del anillo
+  // perdido (no es representativa como testimonio). Pequeños errores de
+  // tipeo del original se corrigieron (tildes, "suoer" -> "súper"); el
+  // contenido no se alteró.
+  testimonios: [
+    {
+      texto: "Fuimos afortunadas en llegar a un hostal tan acogedor. Sofía hizo de nuestra estadía algo muy especial. Pudimos arrendar auto y recorrer gran parte de la isla.",
+      nombre: "Z51LEcarolinap",
+      fuente: "Tripadvisor",
+    },
+    {
+      texto: "La anfitriona, Sofía, es súper amable, simpática, artista y escritora experta en cultura Rapa Nui. Su pareja, José, también es muy atento: nos recibieron con un city tour al llegar.",
+      nombre: "auriissr",
+      fuente: "Tripadvisor",
+    },
+    {
+      texto: "Estuvimos 2 semanas hospedándonos en Kuhane y quedamos maravillados con la tranquilidad y belleza del lugar. Lo mejor de nuestra experiencia fue la hospitalidad de su anfitriona Sofía.",
+      nombre: "Cristian G.",
+      fuente: "Tripadvisor",
+    },
+    {
+      texto: "KUHANE... lugar mágico, lo pasé increíble, una atención personalizada de Sofía, José y Thomas. Un lugar agradable, muy limpio, cómodo y sobretodo muy tranquilo.",
+      nombre: "Susana Fuentes",
+      fuente: "Google",
+    },
+    {
+      texto: "Un lugar acogedor, pulcro y confortable en Rapa Nui. La atención de Sofía Abarca te hace sentir en casa y como en familia.",
+      nombre: "Daniel Rivas",
+      fuente: "Google",
+    },
+    {
+      texto: "Súper bueno el recibimiento, nos esperaron con collar de flores y cuando llegamos al hostal nos dieron jugo de guayaba. Las habitaciones están súper cómodas.",
+      nombre: "Alisson González",
+      fuente: "Google",
+    },
+  ] as Resena[],
 };
 
 export const cta = {
   title: "Vení a vivir tu Rapa Nui.",
-  body: "Escribinos y te ayudamos a planear tu estadía en Kuhane.",
+  body: "Escribinos y te ayudamos a planear tu estadía en Kuhane — con traslado al aeropuerto y de vuelta incluido en tu reserva.",
   ctaPrimary: "RESERVAR",
 };
 
+// Confirmado por Kuhane (septiembre 2026): la reserva incluye el traslado
+// de ida (aeropuerto -> Kuhane) y de vuelta (Kuhane -> aeropuerto tras el
+// check-out), sin costo adicional.
 export const aeropuerto = {
-  title: "Tu llegada, acompañada.",
-  body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
+  title: "Tu llegada y tu vuelta, acompañadas.",
+  body: "El traslado desde el aeropuerto hasta Kuhane, y de regreso al aeropuerto después del check-out, está incluido en tu reserva — sin costo adicional.",
+  // Foto real de Kuhane enviada por Andre — sept. 2026.
+  foto: "/images/experiencias/aeropuerto.jpg",
 };
 
 export const footer = {

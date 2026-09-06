@@ -40,7 +40,8 @@ export default function SofiaAbarcaPage() {
                     alt="Sofía Abarca, fundadora de Kuhane"
                     fill
                     sizes="(min-width: 1024px) 35vw, 90vw"
-                    className="object-cover"
+                    quality={95}
+                    className="object-cover object-top"
                   />
                 </div>
               </div>
