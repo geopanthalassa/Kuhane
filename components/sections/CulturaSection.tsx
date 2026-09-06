@@ -1,12 +1,9 @@
-"use client";
-
 import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { useContent } from "@/lib/content/LocaleProvider";
+import { cultura, libros, voces, sofia } from "@/lib/site-content";
 
 export default function CulturaSection() {
-  const { cultura, libros, voces, ui } = useContent();
   return (
     <section id="cultura" className="bg-teal-deep py-24 text-warm-white sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -15,16 +12,51 @@ export default function CulturaSection() {
           <p className="mt-6 text-[15px] leading-relaxed text-warm-white/75">{cultura.body}</p>
         </Reveal>
 
+        {/* Sofía Abarca */}
+        <Reveal delayMs={60}>
+          <div className="mt-16 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-5">
+              <PlaceholderMedia
+                tone="teal"
+                label="Sofía Abarca — fotografía próximamente"
+                className="aspect-[4/5] w-full"
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{sofia.eyebrow}</p>
+              <h3 className="mt-3 font-display text-2xl text-warm-white sm:text-3xl">{sofia.title}</h3>
+              <p className="mt-1 text-sm italic text-warm-white/70">{sofia.subtitle}</p>
+              <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-warm-white/80">
+                {sofia.summary}
+              </p>
+              <dl className="mt-8 grid max-w-md grid-cols-3 gap-4">
+                {sofia.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <dt className="font-display text-2xl text-warm-white">{stat.value}</dt>
+                    <dd className="mt-1 text-xs leading-snug text-warm-white/65">{stat.label}</dd>
+                  </div>
+                ))}
+              </dl>
+              <a
+                href={sofia.ctaHref}
+                className="mt-8 inline-block text-[12px] tracking-[0.18em] uppercase text-gold-soft underline underline-offset-4 hover:text-warm-white"
+              >
+                {sofia.ctaLabel} →
+              </a>
+            </div>
+          </div>
+        </Reveal>
+
         {/* Libros */}
         <Reveal delayMs={100}>
           <div className="motif-divider my-16 h-4 opacity-70" />
-          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.cultura.librosLabel}</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Libros</p>
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {libros.map((libro, i) => (
               <div key={i} className="flex gap-5">
                 <PlaceholderMedia
                   tone="teal"
-                  label={ui.placeholder.bookCover}
+                  label="Portada"
                   className="h-40 w-28 shrink-0"
                 />
                 <div>
@@ -42,11 +74,11 @@ export default function CulturaSection() {
         {/* Voces de Rapa Nui */}
         <Reveal delayMs={150}>
           <div className="motif-divider my-16 h-4 opacity-70" />
-          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.cultura.vocesLabel}</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Voces de Rapa Nui</p>
           <div className="mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2">
             {voces.map((voz, i) => (
               <div key={i} className="flex gap-5">
-                <PlaceholderMedia tone="teal" label={ui.placeholder.personPhoto} className="h-16 w-16 shrink-0 rounded-full" />
+                <PlaceholderMedia tone="teal" label="Foto" className="h-16 w-16 shrink-0 rounded-full" />
                 <div>
                   <p className="font-display text-base text-warm-white">{voz.nombre}</p>
                   <p className="text-xs text-gold-soft">{voz.rol}</p>

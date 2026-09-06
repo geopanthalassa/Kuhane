@@ -1,42 +1,503 @@
 // ---------------------------------------------------------------------------
 // Kuhane Etno-Hostal — contenido central del sitio.
 //
-// Este archivo ahora es un re-export de compatibilidad: el contenido real
-// (bilingüe ES/EN) vive en lib/content/es.ts y lib/content/en.ts, servido en
-// runtime a través de lib/content/LocaleProvider.tsx (useContent()). Los
-// componentes de app/ y components/ deben usar useContent() para poder
-// cambiar de idioma; este archivo queda solo para código que necesita el
-// contenido en español de forma estática (p. ej. metadata del servidor en
-// app/layout.tsx, app/sitemap.ts, app/robots.ts).
-//
-// Regla del proyecto: NO INVENTAR DATOS — ver lib/content/es.ts.
+// Regla del proyecto: NO INVENTAR DATOS. Todo lo que no está verificado
+// directamente por Kuhane usa el valor TODO_PLACEHOLDER (o un texto entre
+// corchetes "[POR CONFIRMAR]") en vez de un dato inventado. Editar este
+// archivo es la forma más rápida de ir reemplazando placeholders por
+// contenido real a medida que Kuhane lo confirma.
 // ---------------------------------------------------------------------------
 
-import { es, TODO_PLACEHOLDER } from "./content/es";
+export const TODO_PLACEHOLDER = "[POR CONFIRMAR]";
 
-export { TODO_PLACEHOLDER };
-export { es };
-export default es;
+export const site = {
+  name: "Kuhane Etno-Hostal",
+  shortName: "Kuhane",
+  location: "Hanga Roa, Rapa Nui",
+  url: "https://kuhanehostal.com",
+  // Confirmado: 1,2 km según el propio listado de Kuhane en Booking.com
+  // (sección "Alrededores del alojamiento", septiembre 2026).
+  tahaiDistance: "1,2 km",
+  googleRating: {
+    value: TODO_PLACEHOLDER as number | string,
+    count: TODO_PLACEHOLDER as number | string,
+    source: TODO_PLACEHOLDER, // confirmar si es Google, TripAdvisor o Booking
+  },
+  whatsapp: TODO_PLACEHOLDER,
+  email: TODO_PLACEHOLDER,
+  address: TODO_PLACEHOLDER,
+};
 
-export const site = es.site;
-export const nav = es.nav;
-export const hero = es.hero;
-export const rapaNui = es.rapaNui;
-export const kuhane = es.kuhane;
-export const experiencias = es.experiencias;
-export const cultura = es.cultura;
-export const libros = es.libros;
-export const voces = es.voces;
-export const habitaciones = es.habitaciones;
-export const huespedes = es.huespedes;
-export const galeria = es.galeria;
-export const resenas = es.resenas;
-export const cta = es.cta;
-export const aeropuerto = es.aeropuerto;
-export const reserva = es.reserva;
-export const colaboradores = es.colaboradores;
-export const colaboradoresList = es.colaboradoresList;
-export const ubicacion = es.ubicacion;
-export const footer = es.footer;
+export const nav = [
+  { label: "Rapa Nui", href: "#rapa-nui" },
+  { label: "Kuhane", href: "#kuhane" },
+  { label: "Experiencias", href: "#experiencias" },
+  { label: "Habitaciones", href: "#habitaciones" },
+  { label: "Cultura", href: "#cultura" },
+  { label: "Galería", href: "#galeria" },
+  { label: "Reseñas", href: "#resenas" },
+];
 
-export type { Libro, Voz, Habitacion, Colaborador, MapaPin, NavItem } from "./content/types";
+export const hero = {
+  eyebrow: "KUHANE",
+  place: "Rapa Nui",
+  line1: "Llega como viajero.",
+  line2: "Siéntete parte de la isla.",
+  ctaPrimary: "RESERVAR",
+  ctaSecondary: "DESCUBRIR KUHANE",
+  videoSrc: "/media/hero-kuhane.mp4", // TODO: reemplazar cuando llegue el video real
+  posterSrc: "/images/hero-fallback.jpg", // TODO: imagen de respaldo real
+};
+
+export const rapaNui = {
+  eyebrow: "El territorio",
+  title: "El lugar más remoto habitado del mundo.",
+  body: [
+    "Rapa Nui está a miles de kilómetros de cualquier otra costa — una isla volcánica en medio del Pacífico, donde el paisaje, la historia y la cultura Rapanui siguen vivos en cada rincón.",
+    TODO_PLACEHOLDER + " — agregar aquí 1–2 líneas adicionales sobre el territorio una vez confirmadas con Kuhane.",
+  ],
+};
+
+export const kuhane = {
+  eyebrow: "Kuhane",
+  title: "Un lugar para sentirte en casa.",
+  body: [
+    "Kuhane significa alma, en lengua rapanui. Es también la forma en que recibimos a cada persona que llega: no como un huésped más, sino como alguien que se suma, por unos días, a la vida de la isla.",
+    "Desde la llegada al aeropuerto hasta la última noche mirando el atardecer, acompañamos el viaje con la cercanía y el conocimiento de quienes viven aquí.",
+  ],
+  // Fuente: descripción propia de Kuhane en Booking.com ("Información de la
+  // empresa", septiembre 2026). No se usa todavía en ningún componente.
+  hosts:
+    "Sofía Abarca, fundadora y anfitriona de Kuhane, es artista multidisciplinaria, escritora e investigadora de la historia y el arte del pueblo rapanui — siempre dispuesta a compartir la cultura y los misterios de Rapa Nui con quienes se hospedan.",
+};
+
+export const experiencias = {
+  eyebrow: "La experiencia",
+  title: "Más que una habitación: una forma de estar en la isla.",
+  items: [
+    {
+      title: "Bienvenida en Kuhane",
+      body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
+    },
+    {
+      title: "Cultura viva",
+      // Fuente: descripción propia de Kuhane en Booking.com ("Información
+      // del alojamiento", septiembre 2026).
+      body: "Café al atardecer, degustaciones culinarias, música suave y conversación frente al mar — un ritual diario en la terraza de Kuhane.",
+    },
+    {
+      title: "El atardecer",
+      // Distancia confirmada: listado de Kuhane en Booking.com (ver
+      // site.tahaiDistance).
+      body: "A solo 1,2 km caminando está Ahu Tahai, uno de los sitios más fotografiados de Rapa Nui — el lugar ideal para ver caer el sol sobre el Pacífico.",
+    },
+  ],
+};
+
+export const cultura = {
+  eyebrow: "Cultura",
+  title: "Rapa Nui, contada desde dentro.",
+  body: "Historias, libros y música rapanui, a través del trabajo de más de 30 años de Sofía Abarca, fundadora de Kuhane.",
+};
+
+// Resumen para el home; el texto completo (trayectoria, maestros, discografía,
+// libros, premios) vive en /sofia-abarca. Fuente: texto entregado por Kuhane,
+// tomado casi textual de su propio material de prensa.
+export const sofia = {
+  eyebrow: "Fundadora de Kuhane",
+  title: "Sofía Abarca",
+  subtitle: "Polímata de la memoria y el patrimonio Rapa Nui",
+  summary:
+    "Música, recopiladora e investigadora etnomusicológica, gestora cultural y escritora de Isla de Pascua, especialista en las expresiones culturales del pueblo rapanui — su música y cantos ancestrales, su artesanía y arte escultórico, y su patrimonio alimentario. Es reconocida como la única recopiladora contemporánea del patrimonio musical de Rapa Nui: más de 450 registros de oralidad y canto antiguo entregados a la Biblioteca Nacional de Chile, y 64 producciones discográficas editadas por su sello Nuku te Mango Rec., el primero de la isla.",
+  stats: [
+    { value: "30+", label: "años de trayectoria" },
+    { value: "450+", label: "registros patrimoniales resguardados" },
+    { value: "64", label: "producciones discográficas" },
+  ],
+  ctaLabel: "Conocé su historia",
+  ctaHref: "/sofia-abarca",
+};
+
+export type Libro = {
+  titulo: string;
+  anio: string;
+  descripcion: string;
+  fragmento: string;
+  enlace: string;
+};
+
+// Selección de la obra publicada de Sofía Abarca (fundadora de Kuhane).
+// fragmento/enlace quedan sin confirmar — CulturaSection no los muestra hoy.
+export const libros: Libro[] = [
+  {
+    titulo: "Ríu: El Canto Primal de Rapa Nui",
+    // Fuente: catálogo fonográfico de Nuku te Mango Rec. (referencia
+    // entregada por Kuhane, septiembre 2026) — confirma 2026 para la
+    // edición de Rapa Nui Press.
+    anio: "2015 (LOM Ediciones) · 2026 (Rapa Nui Press)",
+    descripcion:
+      "Álbum etnomusicológico y libro de recopilación de los cantos ancestrales Ríu, fruto de años de trabajo junto a los maestros Papá Kiko Paté y María Elena Hotus.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Kai-kai Rapanui: Ideograma de Hilos",
+    anio: "2006",
+    descripcion:
+      "Libro-objeto con CD que recopila los tejidos manuales ideogramáticos Kai-kai y sus recitaciones ancestrales Pata'u-ta'u, junto a la maestra Isabel Pakarati Tepano.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Manos del Alma: Arte Escultórico Rapanui",
+    anio: "2015",
+    descripcion:
+      "Investigación sobre el tallado tradicional en madera rapanui, a través de la obra del maestro escultor Tomás Tuki Tepano.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Sofía Abarca — contenido extendido para /sofia-abarca únicamente.
+// Fuente: documento "Referencia Sofía Abarca Fariña" entregado por Kuhane
+// (septiembre 2026), texto casi textual de su material de prensa. La home
+// usa solo `sofia` (resumen) y `libros` (selección de 3); estos arrays
+// completos son exclusivos de la página de detalle.
+// ---------------------------------------------------------------------------
+
+// Selección completa de libros de autoría individual (la home solo usa una
+// selección de 3, ver `libros` arriba).
+export const sofiaLibros: Libro[] = [
+  {
+    titulo: "Ríu: El Canto Primal de Rapa Nui",
+    anio: "2015 (LOM Ediciones) · 2026 (Rapa Nui Press)",
+    descripcion:
+      "Álbum etnomusicológico y libro de recopilación de los cantos ancestrales Ríu, fruto de años de trabajo junto a los maestros Papá Kiko Paté y María Elena Hotus.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Kai-kai Rapanui: Ideograma de Hilos, Juego Ancestral",
+    anio: "2006 (Fondart)",
+    descripcion:
+      "Libro-objeto con CD que recopila los tejidos manuales ideogramáticos Kai-kai y sus recitaciones ancestrales Pata'u-ta'u, junto a la maestra Isabel Pakarati Tepano.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Moana",
+    anio: "2012 (Fondart)",
+    descripcion:
+      "Libro-objeto audible y exploratorio para niños, con 6 radioteatros y 12 canciones en dos CDs. Narra la amistad entre una niña rapanui y un niño continental, como un llamado a la integración y no discriminación infantil.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Apuntes de Rapa Nui",
+    anio: "2010",
+    descripcion:
+      "Escrito en español y ruso como material promocional de Rapa Nui en la gira presidencial de Michelle Bachelet: una mirada general a la historia y las formas de arte de la isla. Editado por ProChile.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Manos del Alma: Arte Escultórico Rapanui",
+    anio: "2013–2015 (Fondart · presentado en CEPAL)",
+    descripcion:
+      "Investigación sobre el tallado tradicional en madera rapanui, a través de la obra del maestro escultor Tomás Tuki Tepano.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Ka Kai Mo Haka Hangu: Patrimonio Alimentario y del Arte Culinario de Rapa Nui",
+    anio: "2021 (Fondart)",
+    descripcion:
+      "Investigación sobre la historia de los alimentos rapanui, hilo conductor esencial de sus tradiciones culinarias, nutricionales y rituales.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+  {
+    titulo: "Tarai, Iconografía Escultórica de la Tradición Oral de Rapa Nui",
+    anio: "2021–2022 (Fondart · Rapa Nui Press)",
+    descripcion:
+      "Junto al arqueólogo Sergio Rapu Haoa, propone 30 ejercicios comparativos entre las oralidades ancestrales rapanui y sus piezas iconográficas escultóricas.",
+    fragmento: TODO_PLACEHOLDER,
+    enlace: TODO_PLACEHOLDER,
+  },
+];
+
+// Mención breve de libros donde participó como co-autora (no llevan
+// descripción larga en la página de detalle, solo título · año).
+export const sofiaCoautorias = [
+  { titulo: "El Diablo, Dios y la Profetiza", autor: "Nelson Castro", anio: "2006" },
+  { titulo: "La Compañía Explotadora de Isla de Pascua", autor: "Claudio Cristino y Miguel Fuentes", anio: "2011" },
+  { titulo: "Cultura y Patrimonio Inmaterial de Rapa Nui", autor: "Valentina Fajreldin (U. de Chile)", anio: "2016" },
+  { titulo: "Historias de Nuestra Tierra", autor: "FUCOA — Ministerio de Agricultura", anio: "2019" },
+  { titulo: "Versos del Sur", autor: "Ángela Parga y Pedro Favaron", anio: "2021" },
+  { titulo: "Mujeres Indígenas y Agencias Cotidianas en Contextos de Colonialidad", autor: "Xochitl Inostroza y Ángela Parga", anio: "2021" },
+];
+
+export type SofiaArea = { titulo: string; descripcion: string };
+
+// Áreas de inmersión e investigación cultural (2000–hoy).
+export const sofiaAreas: SofiaArea[] = [
+  {
+    titulo: "Kai-kai",
+    descripcion:
+      "Inventario de 32 tejidos ideo-gramáticos manuales originales y sus arcaicas oratorias Pata'u-tau asociadas — narraciones que sólo existen en Rapa Nui.",
+  },
+  {
+    titulo: "Ríu",
+    descripcion:
+      "Recopilación de más de 150 cantos ancestrales, identificando y clasificando 30 tipos según sus usos sociales y rituales (antes sólo se reconocían 9 variantes).",
+  },
+  {
+    titulo: "Tarai",
+    descripcion:
+      "Tipificación de 33 arquetipos escultóricos del tallado tradicional en madera y su relación con las oralidades ancestrales que los justifican.",
+  },
+  {
+    titulo: "Patrimonio alimentario",
+    descripcion:
+      "Identificación de los alimentos autóctonos isleños y sus usos culinarios, nutricionales, medicinales y rituales, junto a yerbateras, ancianos y cocineros contemporáneos.",
+  },
+  {
+    titulo: "Himene",
+    descripcion:
+      "Puesta en valor de la música local a través de un estudio de grabación instalado en Rapa Nui desde el año 2000, y un sello discográfico con 64 discos editados.",
+  },
+  {
+    titulo: "Literatura y difusión",
+    descripcion:
+      "Difusión permanente de la cultura rapanui a través de sus libros, frente a la transculturación de sus expresiones y la fragilización de la lengua.",
+  },
+  {
+    titulo: "Hauha'a Tupuna",
+    descripcion:
+      "Circulación internacional de las expresiones identitarias de Rapa Nui a través de exposiciones, congresos y espectáculos en Chile continental, América, Europa y Asia.",
+  },
+];
+
+export type SofiaMaestro = { nombre: string; descripcion: string };
+
+export const sofiaMaestros: SofiaMaestro[] = [
+  {
+    nombre: "Luis Avaka Paoa (Papá Kiko)",
+    descripcion:
+      "Patriarca cultural de Rapa Nui (†2008). Acogió a Sofía como discípula desde el 2000 hasta su partida, realizando juntos múltiples registros de oralidades y cantos ancestrales.",
+  },
+  {
+    nombre: "Isabel Pakarati Tepano",
+    descripcion:
+      "Maestra de Kai-kai, Tesoro Humano Vivo (2018) y Premio Nacional de Cultura Tradicional (2025). Revisó la recopilación de tejidos manuales realizada por Sofía en 2004.",
+  },
+  {
+    nombre: "Tomás Tuki Tepano",
+    descripcion:
+      "Maestro escultor, distinguido con el Sello de Excelencia UNESCO (2012). Transmisor del Tarai en el que se basó el libro Manos del Alma.",
+  },
+  {
+    nombre: "María Elena Hotus",
+    descripcion:
+      "Gran maestra del canto antiguo. De su trabajo conjunto con Sofía nacen los dos libros Ríu, el Canto Primal de Rapa Nui (LOM 2015 y Rapa Nui Press 2026).",
+  },
+  {
+    nombre: "Sergio Rapu Haoa",
+    descripcion:
+      "Arqueólogo PhD. Discípula suya desde 2005; juntos montaron las exposiciones \"Mata ki te Mata\" (2018) y \"Tarai\" (2025).",
+  },
+  {
+    nombre: "Sonia Haoa Cardinali",
+    descripcion:
+      "Arqueóloga PhD (Universidad de Uppsala), ha marcado más de 23.000 puntos de valor arqueológico en la isla — base del entendimiento toponímico de las recopilaciones de Sofía.",
+  },
+];
+
+export type SofiaReconocimiento = { anio: string; descripcion: string };
+
+export const sofiaReconocimientos: SofiaReconocimiento[] = [
+  { anio: "1999", descripcion: "Beca DIRAC del Ministerio de Relaciones Exteriores de Chile; graba en Francia el disco \"Sacre Coeur\"." },
+  { anio: "2008", descripcion: "Gana el concurso de composición étnica \"Música de Este Lado del Sur\" con el sencillo \"Moai\" (Sello Azul, SCD)." },
+  { anio: "2012", descripcion: "Mujer del Año, Gobernación de Isla de Pascua." },
+  { anio: "2016", descripcion: "Nominada a los Premios Pulsar por \"Ríu, el Canto Primal de Rapa Nui\" (LOM)." },
+  { anio: "2018", descripcion: "Mujer del Año, Fundación Mujer Activa de Isla de Pascua." },
+  { anio: "2020 · 2022 · 2024", descripcion: "Gana reiteradamente el concurso literario \"Historia de Nuestra Tierra\" (FUCOA, Ministerio de Agricultura)." },
+  { anio: "2000–2024", descripcion: "Adjudicación reiterada de fondos FONDART (Ministerio de las Culturas, las Artes y el Patrimonio)." },
+];
+
+// Resumen del sello y estudio (el catálogo completo de discos, ~64 títulos,
+// no se lista entero en la web — se destacan los hitos).
+export const sofiaCatalogo = {
+  eyebrow: "Sello Nuku te Mango Rec.",
+  body: "En 2001 instaló el primer estudio de grabación profesional de Rapa Nui, terminando con la necesidad de que los artistas locales viajaran al continente a grabar. En 2016 fundó Nuku te Mango Rec., el primer sello discográfico de la isla. Entre 2001 y 2024 editó 64 producciones discográficas — desde la restauración de cintas de 1952 hasta los últimos maestros de la tradición oral — con más de 60.000 unidades físicas editadas.",
+};
+
+export const sofiaAsociatividades: string[] = [
+  "Ministerio de las Culturas, las Artes y el Patrimonio (FONDART)",
+  "Ministerio de Agricultura (FUCOA)",
+  "Ministerio de Relaciones Exteriores (ProChile / Imagen País)",
+  "Ministerio de Educación",
+  "Fundación Mata ki te Rangi",
+  "Rapa Nui Heritage Foundation",
+  "Biblioteca Nacional de Chile",
+  "Sociedad Chilena del Derecho de Autor (SCD)",
+  "IMI — Gremio de Sellos Discográficos Independientes de Chile",
+  "ARCHI — Asociación de Radiodifusores de Chile",
+  "CEPAL",
+  "UNESCO",
+];
+
+export type Voz = {
+  nombre: string;
+  rol: string;
+  pregunta: string;
+  respuesta: string;
+};
+
+export const voces: Voz[] = [
+  {
+    nombre: TODO_PLACEHOLDER,
+    rol: TODO_PLACEHOLDER,
+    pregunta: TODO_PLACEHOLDER,
+    respuesta: TODO_PLACEHOLDER,
+  },
+];
+
+export type Habitacion = {
+  tipo: "Habitación" | "Bungalow";
+  nombre: string;
+  capacidad: string;
+  camas: string;
+  bano: string;
+  servicios: string[];
+  caracteristicas: string;
+  precio: string;
+  fotos: string[];
+};
+
+// Confirmado directamente con Kuhane (septiembre 2026). Precios todavía sin
+// confirmar en las 7 unidades -> "A consultar". Toallas y sábanas van
+// incluidas sin cargo en las 7. Son unidades frente al mar (Calipso, Uta,
+// Moana) — no se afirma "vista al mar" porque no está confirmada desde adentro.
+export const habitaciones: Habitacion[] = [
+  {
+    tipo: "Habitación",
+    nombre: "Mahatu",
+    capacidad: "2 personas",
+    camas: "1 cama de 2 plazas",
+    bano: "Privado, con bañera",
+    servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "Ventanal hacia terraza y jardín",
+    precio: "A consultar",
+    fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
+  },
+  {
+    tipo: "Habitación",
+    nombre: "Vaiana",
+    capacidad: "2 personas",
+    camas: "1 cama de 2 plazas",
+    bano: "Privado, con ducha",
+    servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "Ventanal hacia terraza y jardín",
+    precio: "A consultar",
+    fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
+  },
+  {
+    tipo: "Habitación",
+    nombre: "Ohana",
+    capacidad: "6 personas",
+    camas: "1 cama de 2 plazas + 2 literas (4 colchones de 1.5 plazas)",
+    bano: "Privado, con ducha nueva, cómoda y grande",
+    servicios: ["Agua caliente", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "2 ambientes conectados · ventanal hacia terraza y jardín",
+    precio: "A consultar",
+    fotos: [
+      "/images/habitaciones/ohana/ohana_01.jpg",
+      "/images/habitaciones/ohana/ohana_02.jpg",
+      "/images/habitaciones/ohana/ohana_03.jpg",
+      "/images/habitaciones/ohana/ohana_04.jpg",
+    ],
+  },
+  {
+    tipo: "Habitación",
+    nombre: "Haré",
+    capacidad: "3 personas",
+    camas: "1 cama individual + 1 cama doble",
+    bano: "Privado, con bañera",
+    servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "Vista a jardín y patio interior",
+    precio: "A consultar",
+    fotos: ["/images/habitaciones/hare/hare_01.jpg"],
+  },
+  {
+    tipo: "Bungalow",
+    nombre: "Calipso",
+    capacidad: "3 personas",
+    camas: "1 cama King + 1 cama de 1.5 plazas",
+    bano: "Privado, con bañera",
+    servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "Bungalow frente al mar, con terraza",
+    precio: "A consultar",
+    fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
+  },
+  {
+    tipo: "Bungalow",
+    nombre: "Uta",
+    capacidad: "3 personas",
+    camas: "1 cama King + 1 cama de 1.5 plazas",
+    bano: "Privado, con bañera",
+    servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "Bungalow frente al mar, con terraza",
+    precio: "A consultar",
+    fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
+  },
+  {
+    tipo: "Bungalow",
+    nombre: "Moana",
+    capacidad: "4 personas",
+    camas: "1 cama de 2 plazas + cama nido (2 colchones de 1.5 plazas)",
+    bano: "Privado, con bañera",
+    servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
+    caracteristicas: "Bungalow frente al mar, con terraza",
+    precio: "A consultar",
+    fotos: ["/images/habitaciones/moana/moana_01.jpg", "/images/habitaciones/moana/moana_02.jpg"],
+  },
+];
+
+export const habitacionesIntro = {
+  capacidadTotal: 23,
+};
+
+export const huespedes = {
+  eyebrow: "Comunidad",
+  title: "Rapa Nui a través de nuestros huéspedes",
+  cta: "Comparte tu Rapa Nui",
+  body: "Próximamente vas a poder compartir tus fotos, videos e historias directamente acá.",
+};
+
+export const galeria = {
+  eyebrow: "Galería",
+  title: "La isla, en imágenes.",
+  fotos: Array.from({ length: 17 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+};
+
+export const resenas = {
+  eyebrow: "Lo que dicen",
+  title: "Voces de quienes ya estuvieron acá.",
+};
+
+export const cta = {
+  title: "Vení a vivir tu Rapa Nui.",
+  body: "Escribinos y te ayudamos a planear tu estadía en Kuhane.",
+  ctaPrimary: "RESERVAR",
+};
+
+export const aeropuerto = {
+  title: "Tu llegada, acompañada.",
+  body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
+};
+
+export const footer = {
+  tagline: "Kuhane Etno-Hostal — Hanga Roa, Rapa Nui",
+};

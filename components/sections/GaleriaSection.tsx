@@ -4,10 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { useContent } from "@/lib/content/LocaleProvider";
+import { galeria } from "@/lib/site-content";
 
 export default function GaleriaSection() {
-  const { galeria, ui } = useContent();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -18,7 +17,7 @@ export default function GaleriaSection() {
         </Reveal>
 
         <Reveal delayMs={100} className="mt-14 grid auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[240px] sm:grid-cols-4">
-          {galeria.photos.map((src, i) => (
+          {galeria.fotos.map((src, i) => (
             <button
               key={src}
               onClick={() => setOpenIndex(i)}
@@ -28,10 +27,10 @@ export default function GaleriaSection() {
             >
               <Image
                 src={src}
-                alt={ui.galeria.photoAlt}
+                alt="Kuhane Etno-Hostal — Rapa Nui"
                 fill
-                className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                 sizes="(min-width: 640px) 25vw, 50vw"
+                className="object-cover transition-transform duration-500 hover:scale-[1.03]"
               />
             </button>
           ))}
@@ -44,22 +43,19 @@ export default function GaleriaSection() {
           onClick={() => setOpenIndex(null)}
         >
           <button
-            aria-label={ui.galeria.closeAria}
+            aria-label="Cerrar"
             className="absolute right-6 top-6 text-3xl font-light text-warm-white/80 hover:text-warm-white"
             onClick={() => setOpenIndex(null)}
           >
             ×
           </button>
-          <div
-            className="relative aspect-[4/3] w-full max-w-3xl max-h-[80vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="relative aspect-[4/3] w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
             <Image
-              src={galeria.photos[openIndex]}
-              alt={ui.galeria.photoAlt}
+              src={galeria.fotos[openIndex]}
+              alt="Kuhane Etno-Hostal — Rapa Nui"
               fill
+              sizes="90vw"
               className="object-contain"
-              sizes="100vw"
             />
           </div>
         </div>
