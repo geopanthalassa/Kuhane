@@ -18,11 +18,12 @@ export const site = {
   // Confirmado: 1,2 km según el propio listado de Kuhane en Booking.com
   // (sección "Alrededores del alojamiento", septiembre 2026).
   tahaiDistance: "1,2 km",
-  googleRating: {
-    value: TODO_PLACEHOLDER as number | string,
-    count: TODO_PLACEHOLDER as number | string,
-    source: TODO_PLACEHOLDER, // confirmar si es Google, TripAdvisor o Booking
-  },
+  // Confirmado directamente por Kuhane (septiembre 2026). El número de
+  // reseñas de cada plataforma queda pendiente de confirmar.
+  ratings: [
+    { value: "9,4", scale: "/10", source: "Booking.com", count: TODO_PLACEHOLDER as number | string },
+    { value: "4,7", scale: "/5", source: "Google", count: TODO_PLACEHOLDER as number | string },
+  ],
   whatsapp: TODO_PLACEHOLDER,
   email: TODO_PLACEHOLDER,
   address: TODO_PLACEHOLDER,
@@ -105,6 +106,7 @@ export const cultura = {
 // tomado casi textual de su propio material de prensa.
 export const sofia = {
   eyebrow: "Fundadora de Kuhane",
+  foto: "/images/sofia/sofia-abarca.jpg",
   title: "Sofía Abarca",
   subtitle: "Polímata de la memoria y el patrimonio Rapa Nui",
   summary:
@@ -124,6 +126,7 @@ export type Libro = {
   descripcion: string;
   fragmento: string;
   enlace: string;
+  portada?: string; // foto real de la tapa, cuando la tenemos
 };
 
 // Selección de la obra publicada de Sofía Abarca (fundadora de Kuhane).
@@ -139,6 +142,7 @@ export const libros: Libro[] = [
       "Álbum etnomusicológico y libro de recopilación de los cantos ancestrales Ríu, fruto de años de trabajo junto a los maestros Papá Kiko Paté y María Elena Hotus.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/riu.jpg",
   },
   {
     titulo: "Kai-kai Rapanui: Ideograma de Hilos",
@@ -147,6 +151,7 @@ export const libros: Libro[] = [
       "Libro-objeto con CD que recopila los tejidos manuales ideogramáticos Kai-kai y sus recitaciones ancestrales Pata'u-ta'u, junto a la maestra Isabel Pakarati Tepano.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/kai-kai.jpg",
   },
   {
     titulo: "Manos del Alma: Arte Escultórico Rapanui",
@@ -155,6 +160,7 @@ export const libros: Libro[] = [
       "Investigación sobre el tallado tradicional en madera rapanui, a través de la obra del maestro escultor Tomás Tuki Tepano.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/manos-del-alma.jpg",
   },
 ];
 
@@ -176,6 +182,7 @@ export const sofiaLibros: Libro[] = [
       "Álbum etnomusicológico y libro de recopilación de los cantos ancestrales Ríu, fruto de años de trabajo junto a los maestros Papá Kiko Paté y María Elena Hotus.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/riu.jpg",
   },
   {
     titulo: "Kai-kai Rapanui: Ideograma de Hilos, Juego Ancestral",
@@ -184,6 +191,7 @@ export const sofiaLibros: Libro[] = [
       "Libro-objeto con CD que recopila los tejidos manuales ideogramáticos Kai-kai y sus recitaciones ancestrales Pata'u-ta'u, junto a la maestra Isabel Pakarati Tepano.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/kai-kai.jpg",
   },
   {
     titulo: "Moana",
@@ -208,6 +216,7 @@ export const sofiaLibros: Libro[] = [
       "Investigación sobre el tallado tradicional en madera rapanui, a través de la obra del maestro escultor Tomás Tuki Tepano.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/manos-del-alma.jpg",
   },
   {
     titulo: "Ka Kai Mo Haka Hangu: Patrimonio Alimentario y del Arte Culinario de Rapa Nui",
@@ -482,9 +491,15 @@ export const galeria = {
   fotos: Array.from({ length: 17 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
 };
 
+export type Resena = { texto: string; nombre: string; fuente: string };
+
 export const resenas = {
   eyebrow: "Lo que dicen",
   title: "Voces de quienes ya estuvieron acá.",
+  // Vacío hasta que Kuhane pegue reseñas reales de Google/Booking (texto,
+  // nombre del huésped y de qué plataforma viene). ResenasSection no
+  // muestra tarjetas de reseña mientras este array esté vacío.
+  testimonios: [] as Resena[],
 };
 
 export const cta = {

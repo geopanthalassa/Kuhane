@@ -1,7 +1,8 @@
+import Image from "next/image";
 import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { cultura, libros, voces, sofia } from "@/lib/site-content";
+import { cultura, libros, sofia } from "@/lib/site-content";
 
 export default function CulturaSection() {
   return (
@@ -16,11 +17,15 @@ export default function CulturaSection() {
         <Reveal delayMs={60}>
           <div className="mt-16 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
-              <PlaceholderMedia
-                tone="teal"
-                label="Sofía Abarca — fotografía próximamente"
-                className="aspect-[4/5] w-full"
-              />
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src={sofia.foto}
+                  alt="Sofía Abarca, fundadora de Kuhane"
+                  fill
+                  sizes="(min-width: 1024px) 35vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
             <div className="lg:col-span-7">
               <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{sofia.eyebrow}</p>
@@ -54,36 +59,25 @@ export default function CulturaSection() {
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {libros.map((libro, i) => (
               <div key={i} className="flex gap-5">
-                <PlaceholderMedia
-                  tone="teal"
-                  label="Portada"
-                  className="h-40 w-28 shrink-0"
-                />
+                {libro.portada ? (
+                  <div className="relative h-40 w-28 shrink-0 overflow-hidden">
+                    <Image
+                      src={libro.portada}
+                      alt={`Portada de ${libro.titulo}`}
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <PlaceholderMedia tone="teal" label="Portada" className="h-40 w-28 shrink-0" />
+                )}
                 <div>
                   <h4 className="font-display text-lg text-warm-white">{libro.titulo}</h4>
                   <p className="mt-1 text-xs text-gold-soft">{libro.anio}</p>
                   <p className="mt-2 text-sm leading-relaxed text-warm-white/70">
                     {libro.descripcion}
                   </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        {/* Voces de Rapa Nui */}
-        <Reveal delayMs={150}>
-          <div className="motif-divider my-16 h-4 opacity-70" />
-          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Voces de Rapa Nui</p>
-          <div className="mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2">
-            {voces.map((voz, i) => (
-              <div key={i} className="flex gap-5">
-                <PlaceholderMedia tone="teal" label="Foto" className="h-16 w-16 shrink-0 rounded-full" />
-                <div>
-                  <p className="font-display text-base text-warm-white">{voz.nombre}</p>
-                  <p className="text-xs text-gold-soft">{voz.rol}</p>
-                  <p className="mt-3 text-sm italic text-warm-white/70">“{voz.pregunta}”</p>
-                  <p className="mt-2 text-sm leading-relaxed text-warm-white/85">{voz.respuesta}</p>
                 </div>
               </div>
             ))}

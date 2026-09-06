@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
@@ -33,11 +34,15 @@ export default function SofiaAbarcaPage() {
           <div className="mx-auto max-w-5xl px-6 sm:px-10">
             <Reveal className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-5">
-                <PlaceholderMedia
-                  tone="teal"
-                  label="Sofía Abarca — fotografía próximamente"
-                  className="aspect-[4/5] w-full"
-                />
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src={sofia.foto}
+                    alt="Sofía Abarca, fundadora de Kuhane"
+                    fill
+                    sizes="(min-width: 1024px) 35vw, 90vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
               <div className="lg:col-span-7">
                 <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{sofia.eyebrow}</p>
@@ -141,7 +146,19 @@ export default function SofiaAbarcaPage() {
             <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2">
               {sofiaLibros.map((libro, i) => (
                 <Reveal key={libro.titulo} delayMs={i * 60} className="flex gap-5">
-                  <PlaceholderMedia tone="sand" label="Portada" className="h-40 w-28 shrink-0" />
+                  {libro.portada ? (
+                    <div className="relative h-40 w-28 shrink-0 overflow-hidden">
+                      <Image
+                        src={libro.portada}
+                        alt={`Portada de ${libro.titulo}`}
+                        fill
+                        sizes="112px"
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <PlaceholderMedia tone="sand" label="Portada" className="h-40 w-28 shrink-0" />
+                  )}
                   <div>
                     <h3 className="font-display text-lg text-stone">{libro.titulo}</h3>
                     <p className="mt-1 text-xs text-teal">{libro.anio}</p>
