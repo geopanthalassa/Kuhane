@@ -73,6 +73,15 @@ export const kuhane = {
   // empresa", septiembre 2026). No se usa todavía en ningún componente.
   hosts:
     "Sofía Abarca, fundadora y anfitriona de Kuhane, es artista multidisciplinaria, escritora e investigadora de la historia y el arte del pueblo rapanui — siempre dispuesta a compartir la cultura y los misterios de Rapa Nui con quienes se hospedan.",
+  // Collage de fotos reales de Kuhane (comedor, bungalow, habitación,
+  // jardín) — reemplaza el placeholder que estaba vacío. Pedido de Andre
+  // (6/9/2026): "podemos hacer un collage de kuhane".
+  fotos: [
+    "/images/experiencias/bienvenida.jpg",
+    "/images/habitaciones/moana/moana_01.jpg",
+    "/images/habitaciones/ohana/ohana_01.jpg",
+    "/images/galeria/general_02.jpg",
+  ],
 };
 
 export const experiencias = {
@@ -82,22 +91,40 @@ export const experiencias = {
     {
       title: "Bienvenida en Kuhane",
       body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
-      // Foto real enviada por Andre (caballos al atardecer, Tahai) — sept. 2026.
-      foto: "/images/experiencias/bienvenida.jpg",
+      // Fotos reales enviadas por Andre — sept. 2026. Carrusel (como en
+      // Habitaciones), con autoplay cada 2s, para poder sumar más fotos
+      // sin alargar la sección (pedido de Andre: "3-4 fotos por sección,
+      // que se vayan cambiando").
+      fotos: [
+        "/images/experiencias/bienvenida.jpg",
+        "/images/experiencias/bienvenida-02.jpg",
+        "/images/experiencias/bienvenida-03.jpg",
+        "/images/experiencias/bienvenida-04.jpg",
+      ],
     },
     {
       title: "Cultura viva",
       // Fuente: descripción propia de Kuhane en Booking.com ("Información
       // del alojamiento", septiembre 2026).
       body: "Café al atardecer, degustaciones culinarias, música suave y conversación frente al mar — un ritual diario en la terraza de Kuhane.",
-      foto: "/images/experiencias/cultura-viva.jpg",
+      fotos: [
+        "/images/experiencias/cultura-viva.jpg",
+        "/images/experiencias/cultura-viva-02.jpg",
+        "/images/experiencias/cultura-viva-03.jpg",
+        "/images/experiencias/cultura-viva-04.jpg",
+      ],
     },
     {
       title: "El atardecer",
       // Distancia confirmada: listado de Kuhane en Booking.com (ver
       // site.tahaiDistance).
       body: "A solo 1,2 km caminando está Ahu Tahai, uno de los sitios más fotografiados de Rapa Nui — el lugar ideal para ver caer el sol sobre el Pacífico.",
-      foto: "/images/experiencias/atardecer.jpg",
+      fotos: [
+        "/images/experiencias/atardecer.jpg",
+        "/images/experiencias/atardecer-02.jpg",
+        "/images/experiencias/atardecer-03.jpg",
+        "/images/experiencias/atardecer-04.jpg",
+      ],
     },
   ],
   // Pedido de Andre (6/9/2026): dejar claro que además del tour que arma
@@ -523,7 +550,7 @@ export const galeria = {
   title: "La isla, en imágenes.",
   // 1–17: fotos del hostal. 18–21: paisajes reales de Rapa Nui enviados por
   // Andre (sept. 2026) — arcoíris, cielo estrellado y atardeceres de la isla.
-  fotos: Array.from({ length: 22 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+  fotos: Array.from({ length: 30 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
 };
 
 export type Resena = { texto: string; nombre: string; fuente: string };

@@ -10,7 +10,7 @@ export default function CTAReservaSection() {
         alt="Ahu Tongariki al atardecer, Rapa Nui"
         fill
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-bottom"
       />
       <div className="absolute inset-0 bg-teal-deep/60" />
 

@@ -1,9 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import PhotoCarousel from "@/components/ui/PhotoCarousel";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
 import { aeropuerto, experiencias, otrasExperiencias } from "@/lib/site-content";
 
 export default function ExperienciasSection() {
+  const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(
+    null
+  );
+
   return (
     <section id="experiencias" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -14,15 +22,13 @@ export default function ExperienciasSection() {
         <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3">
           {experiencias.items.map((item, i) => (
             <Reveal key={item.title} delayMs={i * 120}>
-              <div className="relative aspect-[4/5] w-full overflow-hidden">
-                <Image
-                  src={item.foto}
-                  alt={item.title}
-                  fill
-                  sizes="(min-width: 640px) 33vw, 90vw"
-                  className="object-cover"
-                />
-              </div>
+              <PhotoCarousel
+                photos={item.fotos}
+                alt={item.title}
+                className="aspect-[4/5] w-full"
+                autoPlayMs={2500}
+                onImageClick={(index) => setLightbox({ fotos: item.fotos, alt: item.title, index })}
+              />
               <h3 className="font-display mt-6 text-xl text-stone">{item.title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-stone-soft">{item.body}</p>
             </Reveal>
@@ -93,6 +99,33 @@ export default function ExperienciasSection() {
           </div>
         </Reveal>
       </div>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-stone/95 p-6"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            aria-label="Cerrar"
+            className="absolute right-6 top-6 text-3xl font-light text-warm-white/80 hover:text-warm-white"
+            onClick={() => setLightbox(null)}
+          >
+            ×
+          </button>
+          <div
+            className="relative aspect-[4/3] w-full max-w-3xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightbox.fotos[lightbox.index]}
+              alt={lightbox.alt}
+              fill
+              sizes="90vw"
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

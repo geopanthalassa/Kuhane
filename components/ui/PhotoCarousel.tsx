@@ -1,33 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 /**
  * Simple, dependency-free photo carousel for a set of local images.
- * Used on room cards (2-4 photos each) — arrows + dot indicators, no
- * autoplay. Falls back gracefully with a single static image when there's
- * only one photo.
+ * Used on room cards (2-4 photos each) — arrows + dot indicators. Optional
+ * autoplay (via `autoPlayMs`) advances automatically and pauses on
+ * hover/focus so a visitor can still linger on a photo; it also respects
+ * prefers-reduced-motion. Falls back gracefully with a single static image
+ * when there's only one photo.
  */
 export default function PhotoCarousel({
   photos,
   alt,
   className = "",
   onImageClick,
+  autoPlayMs,
 }: {
   photos: string[];
   alt: string;
   className?: string;
   onImageClick?: (index: number) => void;
+  autoPlayMs?: number;
 }) {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const go = (dir: -1 | 1) =>
+    setIndex((i) => (photos.length === 0 ? 0 : (i + dir + photos.length) % photos.length));
+
+  const reducedMotionRef = useRef(false);
+  useEffect(() => {
+    reducedMotionRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  useEffect(() => {
+    if (!autoPlayMs || photos.length <= 1 || paused || reducedMotionRef.current) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % photos.length);
+    }, autoPlayMs);
+    return () => clearInterval(id);
+  }, [autoPlayMs, photos.length, paused]);
 
   if (photos.length === 0) return null;
 
-  const go = (dir: -1 | 1) => setIndex((i) => (i + dir + photos.length) % photos.length);
-
   return (
-    <div className={`group relative overflow-hidden bg-stone/5 ${className}`}>
+    <div
+      className={`group relative overflow-hidden bg-stone/5 ${className}`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       <button
         type="button"
         onClick={() => onImageClick?.(index)}
