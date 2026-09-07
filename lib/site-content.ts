@@ -28,7 +28,16 @@ export const site = {
   ],
   whatsapp: TODO_PLACEHOLDER,
   email: TODO_PLACEHOLDER,
-  address: TODO_PLACEHOLDER,
+  // Dirección real de Kuhane, confirmada por Andre vía link de Google Maps
+  // (7/9/2026): coordenadas -27.1343082, -109.4244693.
+  address: "Kahu Mahau s/n, Hanga Roa, Isla de Pascua, Chile",
+};
+
+// Coordenadas reales de Kuhane (ver nota de site.address arriba) — las usa
+// UbicacionSection para el mapa incrustado y el link "Cómo llegar".
+export const ubicacionGeo = {
+  lat: -27.1343082,
+  lng: -109.4244693,
 };
 
 export const nav = [
@@ -39,6 +48,7 @@ export const nav = [
   { label: "Cultura", href: "#cultura" },
   { label: "Galería", href: "#galeria" },
   { label: "Reseñas", href: "#resenas" },
+  { label: "Ubicación", href: "#ubicacion" },
 ];
 
 export const hero = {
@@ -656,6 +666,10 @@ export const cta = {
 // por WhatsApp o email antes de cobrar.
 export const reserva = {
   nukuOsUrl: "https://nuku-os-app.vercel.app/reservar",
+  // Cuenta real de Kuhane Etno-Hostal en Supabase/Nuku OS — confirmada
+  // directo en la base de datos (9/9/2026), no inventada. La usa el campo
+  // de código promocional para validar en vivo contra /api/public/promo.
+  nukuOsAccountId: "057a625c-9036-4b1d-957b-8c436f71b4cd",
   eyebrow: "Disponibilidad",
   helper:
     "Elegí tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane — hoy en fase de pruebas, así que confirmamos con vos por WhatsApp o email antes de cobrar.",
@@ -670,6 +684,9 @@ export const reserva = {
   moreGuestsAria: "Más huéspedes",
   promoQuestion: "¿Tenés un código promocional?",
   promoPlaceholder: "Código promocional",
+  promoChecking: "Comprobando…",
+  promoValid: "Código válido — se aplica al confirmar tu reserva.",
+  promoInvalid: "Ese código no es válido o ya venció.",
   flightsCta: "Buscar vuelos a Isla de Pascua",
   flightsHelper:
     "Salida sugerida desde Santiago — cambiá el origen en el buscador si volás desde otra ciudad.",
@@ -691,4 +708,13 @@ export const aeropuerto = {
 
 export const footer = {
   tagline: "Kuhane Etno-Hostal — Hanga Roa, Rapa Nui",
+};
+
+// Dirección/mapa real, confirmado por Andre (7/9/2026) — ver ubicacionGeo
+// y site.address más arriba.
+export const ubicacion = {
+  eyebrow: "Cómo llegar",
+  title: "Encontranos en Hanga Roa.",
+  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y si llegás en avión, el traslado desde el aeropuerto ya está incluido en tu reserva.",
+  directionsCta: "Cómo llegar (Google Maps)",
 };

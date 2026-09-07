@@ -26,8 +26,41 @@ export default function ReservaPanel() {
   const [openPanel, setOpenPanel] = useState<"dates" | "guests" | null>(null);
   const [showPromo, setShowPromo] = useState(false);
   const [promo, setPromo] = useState("");
+  const [promoStatus, setPromoStatus] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
 
   const wrapRef = useRef<HTMLDivElement>(null);
+
+  // Valida el código contra Nuku OS a medida que la persona escribe (debounce
+  // de 500ms) — pedido de Andre (7/9/2026): "al momento de ponerlos en
+  // kuhane se ve si son validos o no". No aplica el descuento acá, solo
+  // confirma que existe y está activo; el descuento se aplica a mano al
+  // cobrar (ver STRIPE.md del lado de Nuku OS).
+  useEffect(() => {
+    const trimmed = promo.trim();
+    if (!trimmed) {
+      setPromoStatus("idle");
+      return;
+    }
+    setPromoStatus("checking");
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const origin = new URL(reserva.nukuOsUrl).origin;
+        const params = new URLSearchParams({ code: trimmed, account_id: reserva.nukuOsAccountId });
+        const res = await fetch(`${origin}/api/public/promo?${params.toString()}`, {
+          signal: controller.signal,
+        });
+        const data = await res.json();
+        setPromoStatus(data.valid ? "valid" : "invalid");
+      } catch {
+        if (!controller.signal.aborted) setPromoStatus("idle");
+      }
+    }, 500);
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
+  }, [promo]);
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -158,19 +191,25 @@ export default function ReservaPanel() {
         {reserva.helper}
       </p>
 
-      <div className="mt-3 flex flex-col items-center">
+      <div className="mt-6 flex flex-col items-center">
         <a
           href={flightSearchUrl}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="inline-flex items-center gap-1.5 text-[12px] font-medium text-warm-white underline decoration-warm-white/40 underline-offset-4 transition-colors hover:decoration-warm-white"
+          className="group inline-flex items-center gap-2.5 rounded-full bg-gold-soft px-6 py-3 text-[13px] font-semibold tracking-[0.03em] text-teal-deep shadow-[0_10px_30px_-8px_rgba(221,201,163,0.6)] transition-transform duration-200 hover:scale-[1.03] hover:shadow-[0_14px_36px_-8px_rgba(221,201,163,0.75)]"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-            <path d="M2 16l20-7-7 20-3-8-8-3z" strokeLinejoin="round" />
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            className="h-4 w-4 -rotate-45 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          >
+            <path d="M2 16l20-7-7 20-3-8-8-3z" strokeLinejoin="round" strokeLinecap="round" />
           </svg>
           {reserva.flightsCta}
         </a>
-        <p className="mt-1 max-w-xs text-center text-[11px] leading-relaxed text-warm-white/55">
+        <p className="mt-2 max-w-xs text-center text-[11px] leading-relaxed text-warm-white/55">
           {reserva.flightsHelper}
         </p>
       </div>
@@ -185,15 +224,57 @@ export default function ReservaPanel() {
             {reserva.promoQuestion}
           </button>
         ) : (
-          <div className="flex items-center gap-2">
-            <input
-              type="text"
-              value={promo}
-              onChange={(e) => setPromo(e.target.value)}
-              placeholder={reserva.promoPlaceholder}
-              autoFocus
-              className="w-40 rounded-full border border-warm-white/30 bg-transparent px-3 py-1 text-center text-[12px] uppercase tracking-[0.1em] text-warm-white placeholder:text-warm-white/50 outline-none focus:border-warm-white/70"
-            />
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="relative">
+              <input
+                type="text"
+                value={promo}
+                onChange={(e) => setPromo(e.target.value)}
+                placeholder={reserva.promoPlaceholder}
+                autoFocus
+                className={`w-44 rounded-full border bg-transparent px-3 py-1 pr-8 text-center text-[12px] uppercase tracking-[0.1em] text-warm-white placeholder:text-warm-white/50 outline-none transition-colors ${
+                  promoStatus === "valid"
+                    ? "border-emerald-300/70 focus:border-emerald-300"
+                    : promoStatus === "invalid"
+                    ? "border-rose-300/70 focus:border-rose-300"
+                    : "border-warm-white/30 focus:border-warm-white/70"
+                }`}
+              />
+              {promoStatus === "checking" && (
+                <span className="pointer-events-none absolute right-2.5 top-1/2 h-2.5 w-2.5 -translate-y-1/2 animate-pulse rounded-full bg-warm-white/50" />
+              )}
+              {promoStatus === "valid" && (
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  className="pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-emerald-300"
+                >
+                  <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+              {promoStatus === "invalid" && (
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  className="pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-rose-300"
+                >
+                  <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </div>
+            {(promoStatus === "valid" || promoStatus === "invalid") && (
+              <p
+                className={`text-[11px] leading-snug ${
+                  promoStatus === "valid" ? "text-emerald-300" : "text-rose-300"
+                }`}
+              >
+                {promoStatus === "valid" ? reserva.promoValid : reserva.promoInvalid}
+              </p>
+            )}
           </div>
         )}
       </div>

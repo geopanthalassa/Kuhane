@@ -66,18 +66,18 @@ export default function ExperienciasSection() {
                   onClick={() =>
                     setLightbox({ fotos: actividad.fotos, alt: actividad.title, index: 0 })
                   }
-                  className="group flex flex-col items-center gap-2"
+                  className="group flex flex-col items-center gap-3"
                 >
-                  <span className="relative block h-20 w-20 overflow-hidden rounded-full ring-1 ring-stone/15 transition-transform duration-200 group-hover:scale-105 sm:h-24 sm:w-24">
+                  <span className="relative block h-32 w-32 overflow-hidden rounded-full ring-2 ring-stone/15 transition-transform duration-200 group-hover:scale-105 sm:h-40 sm:w-40">
                     <Image
                       src={actividad.fotos[0]}
                       alt={actividad.title}
                       fill
-                      sizes="96px"
+                      sizes="160px"
                       className="object-cover"
                     />
                   </span>
-                  <span className="text-xs tracking-[0.1em] uppercase text-stone-soft">
+                  <span className="text-sm font-medium tracking-[0.1em] uppercase text-stone">
                     {actividad.title}
                   </span>
                 </button>
@@ -89,7 +89,7 @@ export default function ExperienciasSection() {
         {/* Aeropuerto: presencia visual destacada, tal como pide el brief */}
         <Reveal delayMs={200}>
           <div className="relative mt-14 overflow-hidden rounded-sm">
-            <div className="relative aspect-[21/9] w-full">
+            <div className="relative aspect-[16/9] w-full">
               <Image
                 src={aeropuerto.foto}
                 alt="Traslado desde el aeropuerto — Kuhane"
@@ -97,10 +97,10 @@ export default function ExperienciasSection() {
                 sizes="100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-teal-deep/45" />
+              <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/80 via-teal-deep/25 to-transparent" />
             </div>
-            <div className="absolute inset-0 flex items-center">
-              <div className="max-w-lg px-8 sm:px-14">
+            <div className="absolute inset-x-0 bottom-0 flex items-end">
+              <div className="max-w-lg px-8 pb-8 sm:px-14 sm:pb-10">
                 <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Llegada</p>
                 <h3 className="font-display mt-3 text-2xl text-warm-white sm:text-3xl">
                   {aeropuerto.title}
