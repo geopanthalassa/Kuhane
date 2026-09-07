@@ -42,6 +42,18 @@ const ui = {
   abrirMenu: "Abrir menú",
   reservarNav: "Reservar",
   elegirFechasError: "Elige fechas de llegada y salida para continuar.",
+  // Sumados al construir el switch ES/EN (7/9/2026): textos que antes
+  // estaban escritos directo en los componentes.
+  exploreLabel: "Explorar",
+  contactLabel: "Contacto",
+  sernaturCertLabel: "Certificado SERNATUR",
+  almaLabel: "Alma, en lengua rapanui",
+  librosLabel: "Libros",
+  llegadaLabel: "Llegada",
+  anterior: "Anterior",
+  siguiente: "Siguiente",
+  reviewsCountSuffix: "reseñas",
+  disponibleProximamente: "Disponible próximamente",
 };
 
 export const es = {

@@ -2,9 +2,48 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { nav } from "@/lib/site-content";
+import { useContent, useLocale } from "@/lib/content/LocaleProvider";
+
+// Switch ES/EN restaurado a pedido de Andre (7/9/2026): "le quitaste el
+// switch ingles-español" — existía en la versión anterior/en vivo del sitio.
+// Cambia el idioma en el acto (sin recargar la página) vía useLocale(); el
+// idioma elegido se recuerda en localStorage (ver LocaleProvider.tsx).
+function LocaleSwitch({ solid }: { solid: boolean }) {
+  const { locale, setLocale } = useLocale();
+
+  return (
+    <div
+      className={`flex items-center gap-1 rounded-full border px-1 py-1 text-[11px] tracking-[0.08em] ${
+        solid ? "border-stone/20" : "border-warm-white/40"
+      }`}
+      role="group"
+      aria-label="Idioma / Language"
+    >
+      {(["es", "en"] as const).map((code) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => setLocale(code)}
+          aria-pressed={locale === code}
+          className={`rounded-full px-2 py-1 uppercase transition-colors ${
+            locale === code
+              ? solid
+                ? "bg-teal text-warm-white"
+                : "bg-warm-white text-teal-deep"
+              : solid
+              ? "text-stone hover:text-teal"
+              : "text-warm-white/80 hover:text-warm-white"
+          }`}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export default function Nav() {
+  const { nav, ui } = useContent();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -54,6 +93,10 @@ export default function Nav() {
             menú hamburguesa — pedido de Andre (7/9/2026): "el CTA de reserva
             debe estar en todo momento". */}
         <div className="flex items-center gap-3">
+          <div className="hidden sm:block">
+            <LocaleSwitch solid={solid} />
+          </div>
+
           <a
             href="#reserva"
             className={`whitespace-nowrap rounded-full border px-4 py-2 text-[11px] tracking-[0.16em] uppercase transition-colors sm:px-5 sm:text-[12px] sm:tracking-[0.18em] ${
@@ -62,11 +105,11 @@ export default function Nav() {
                 : "border-warm-white/70 text-warm-white hover:bg-warm-white hover:text-teal-deep"
             }`}
           >
-            Reservar
+            {ui.reservarNav}
           </a>
 
           <button
-            aria-label="Abrir menú"
+            aria-label={ui.abrirMenu}
             onClick={() => setOpen((v) => !v)}
             className={`flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden`}
           >
@@ -94,8 +137,11 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               className="mt-2 w-fit rounded-full border border-teal px-5 py-2 text-[12px] tracking-[0.18em] uppercase text-teal"
             >
-              Reservar
+              {ui.reservarNav}
             </a>
+            <div className="mt-2">
+              <LocaleSwitch solid />
+            </div>
           </nav>
         </div>
       )}

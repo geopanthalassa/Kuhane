@@ -1,14 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ReservaPanel from "@/components/sections/ReservaPanel";
-import { cta } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function CTAReservaSection() {
+  const { cta } = useContent();
   return (
     <section id="reserva" className="relative overflow-hidden py-28 sm:py-36">
       <Image
         src={cta.foto}
-        alt="Ahu Tongariki al atardecer, Rapa Nui"
+        alt={cta.fotoAlt}
         fill
         sizes="100vw"
         className="object-cover object-bottom"

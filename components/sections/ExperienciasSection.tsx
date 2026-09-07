@@ -5,9 +5,10 @@ import Image from "next/image";
 import PhotoCarousel from "@/components/ui/PhotoCarousel";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { aeropuerto, experiencias, otrasExperiencias } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function ExperienciasSection() {
+  const { aeropuerto, experiencias, otrasExperiencias, ui } = useContent();
   const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(
     null
   );
@@ -71,7 +72,7 @@ export default function ExperienciasSection() {
               <div className="flex shrink-0 gap-2">
                 <button
                   type="button"
-                  aria-label="Anterior"
+                  aria-label={ui.anterior}
                   onClick={() => scrollOtras(-1)}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
                 >
@@ -79,7 +80,7 @@ export default function ExperienciasSection() {
                 </button>
                 <button
                   type="button"
-                  aria-label="Siguiente"
+                  aria-label={ui.siguiente}
                   onClick={() => scrollOtras(1)}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
                 >
@@ -123,30 +124,30 @@ export default function ExperienciasSection() {
               de Andre (7/9/2026): "debe ocupar toda la hoja como banner,
               no como una foto anexa encima". Se sale del contenedor
               max-w-7xl con el truco clásico de full-bleed.
-              7/9/2026 (2): la foto real que tenemos es de ~700px de ancho
-              (foto de los moai con el avión llegando, enviada por Andre) —
-              estirarla a un recorte panorámico 3:1 en 100vw se veía
-              borrosa y cortaba mal la composición. Se usa un recorte más
-              cercano a la proporción real de la foto (así casi no hay que
-              recortar) y se limita el ancho máximo de render para que en
-              monitores enormes no se vea pixelada — en laptop y celular
-              (la gran mayoría de las visitas) sigue yendo de borde a
-              borde igual que antes. */}
+              7/9/2026 (3): la foto (la de los moai + el avión que mandó
+              Andre) es de 1125px de ancho real. Se vio pixelada porque
+              Next.js estaba: (a) agrandándola hasta 1800px — más grande
+              que el archivo real, o sea estirando sin tener más detalle
+              que mostrar — y (b) comprimiéndola con la calidad por
+              defecto (75). Se bajó el ancho máximo a la resolución real
+              de la foto y se subió la calidad a 90 para que no se vea
+              pixelada/con bloques en el cielo. */}
           <div className="relative left-1/2 right-1/2 -mx-[50vw] mt-14 w-screen overflow-hidden">
-            <div className="relative mx-auto max-w-[1800px]">
+            <div className="relative mx-auto max-w-[1125px]">
               <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
                 <Image
                   src={aeropuerto.foto}
-                  alt="Traslado desde el aeropuerto — Kuhane"
+                  alt={aeropuerto.fotoAlt}
                   fill
-                  sizes="(min-width: 1800px) 1800px, 100vw"
+                  quality={90}
+                  sizes="(min-width: 1125px) 1125px, 100vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/80 via-teal-deep/25 to-transparent" />
               </div>
               <div className="absolute inset-x-0 bottom-0 flex items-end">
                 <div className="max-w-lg px-8 pb-8 sm:px-14 sm:pb-10">
-                  <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Llegada</p>
+                  <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.llegadaLabel}</p>
                   <h3 className="font-display mt-3 text-2xl text-warm-white sm:text-3xl">
                     {aeropuerto.title}
                   </h3>
@@ -166,7 +167,7 @@ export default function ExperienciasSection() {
           onClick={() => setLightbox(null)}
         >
           <button
-            aria-label="Cerrar"
+            aria-label={ui.cerrar}
             className="absolute right-6 top-6 text-3xl font-light text-warm-white/80 hover:text-warm-white"
             onClick={() => setLightbox(null)}
           >
@@ -187,7 +188,7 @@ export default function ExperienciasSection() {
               <>
                 <button
                   type="button"
-                  aria-label="Foto anterior"
+                  aria-label={ui.fotoAnterior}
                   onClick={(e) => {
                     e.stopPropagation();
                     setLightbox((lb) =>
@@ -202,7 +203,7 @@ export default function ExperienciasSection() {
                 </button>
                 <button
                   type="button"
-                  aria-label="Foto siguiente"
+                  aria-label={ui.fotoSiguiente}
                   onClick={(e) => {
                     e.stopPropagation();
                     setLightbox((lb) =>

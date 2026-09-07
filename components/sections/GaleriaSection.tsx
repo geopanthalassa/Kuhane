@@ -4,11 +4,12 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { galeria } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 // Carrusel horizontal (no grilla vertical completa) — mantiene la sección
 // corta y con ritmo, en vez de volcar las 17 fotos una debajo de la otra.
 export default function GaleriaSection() {
+  const { galeria, ui } = useContent();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +29,7 @@ export default function GaleriaSection() {
           <div className="flex gap-2">
             <button
               type="button"
-              aria-label="Anterior"
+              aria-label={ui.anterior}
               onClick={() => scrollByCard(-1)}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
             >
@@ -36,7 +37,7 @@ export default function GaleriaSection() {
             </button>
             <button
               type="button"
-              aria-label="Siguiente"
+              aria-label={ui.siguiente}
               onClick={() => scrollByCard(1)}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
             >
@@ -76,7 +77,7 @@ export default function GaleriaSection() {
           onClick={() => setOpenIndex(null)}
         >
           <button
-            aria-label="Cerrar"
+            aria-label={ui.cerrar}
             className="absolute right-6 top-6 text-3xl font-light text-warm-white/80 hover:text-warm-white"
             onClick={() => setOpenIndex(null)}
           >

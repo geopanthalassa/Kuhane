@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { reserva, site, TODO_PLACEHOLDER, whatsappWidget } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 // Botón flotante de WhatsApp, recuperado del desarrollo anterior del sitio
 // (existía ya en el repo en vivo, con lógica real: antes de abrir el chat
@@ -20,6 +20,7 @@ function whatsappDigits(raw: string) {
 }
 
 export default function WhatsAppButton() {
+  const { reserva, site, TODO_PLACEHOLDER, whatsappWidget } = useContent();
   const [open, setOpen] = useState(false);
   const [phone, setPhone] = useState("");
   const [sending, setSending] = useState(false);

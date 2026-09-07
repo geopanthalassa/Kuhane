@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { rapaNui } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function RapaNuiSection() {
+  const { rapaNui } = useContent();
+
   return (
     <section id="rapa-nui" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 sm:px-10 lg:grid-cols-12 lg:gap-8">
@@ -24,7 +28,7 @@ export default function RapaNuiSection() {
           <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/10]">
             <Image
               src={rapaNui.foto}
-              alt="Vista aérea del cráter Rano Kau, Rapa Nui"
+              alt={rapaNui.fotoAlt}
               fill
               sizes="(min-width: 1024px) 55vw, 90vw"
               className="object-cover"

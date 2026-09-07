@@ -1,8 +1,12 @@
+"use client";
+
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { resenas, site, TODO_PLACEHOLDER } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function ResenasSection() {
+  const { resenas, site, TODO_PLACEHOLDER, ui } = useContent();
+
   return (
     <section id="resenas" className="bg-warm-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -15,7 +19,9 @@ export default function ResenasSection() {
                 <span className="text-xs text-stone-soft/70">{r.scale}</span>
                 <span className="ml-1">{r.source}</span>
                 {r.count !== TODO_PLACEHOLDER && (
-                  <span className="text-stone-soft/70">· {r.count} reseñas</span>
+                  <span className="text-stone-soft/70">
+                    · {r.count} {ui.reviewsCountSuffix}
+                  </span>
                 )}
               </div>
             ))}

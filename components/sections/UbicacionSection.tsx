@@ -1,15 +1,18 @@
+"use client";
+
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { ubicacion, ubicacionGeo } from "@/lib/site-content";
-
-// Mapa incrustado sin API key: el formato público de Google Maps
-// (`/maps?q=lat,lng&output=embed`) alcanza para un mapa con un solo pin.
-// Coordenadas reales de Kuhane confirmadas por Andre (7/9/2026) — ver
-// ubicacionGeo en site-content.ts.
-const mapEmbedSrc = `https://www.google.com/maps?q=${ubicacionGeo.lat},${ubicacionGeo.lng}&z=15&output=embed`;
-const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${ubicacionGeo.lat},${ubicacionGeo.lng}`;
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function UbicacionSection() {
+  const { ubicacion, ubicacionGeo } = useContent();
+  // Mapa incrustado sin API key: el formato público de Google Maps
+  // (`/maps?q=lat,lng&output=embed`) alcanza para un mapa con un solo pin.
+  // Coordenadas reales de Kuhane confirmadas por Andre (7/9/2026) — ver
+  // ubicacionGeo en site-content.ts (mismas en ambos idiomas).
+  const mapEmbedSrc = `https://www.google.com/maps?q=${ubicacionGeo.lat},${ubicacionGeo.lng}&z=15&output=embed`;
+  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${ubicacionGeo.lat},${ubicacionGeo.lng}`;
+
   return (
     <section id="ubicacion" className="bg-warm-white pb-24 pt-8 sm:pb-32 sm:pt-12">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">

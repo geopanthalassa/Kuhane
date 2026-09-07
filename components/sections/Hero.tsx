@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { hero } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function Hero() {
+  const { hero } = useContent();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoAvailable, setVideoAvailable] = useState(false);
 
@@ -29,7 +30,7 @@ export default function Hero() {
       {/* Fondo real: cielo estrellado sobre un moai, mientras no haya video */}
       <Image
         src={hero.posterSrc}
-        alt="Vía láctea sobre un moai, Rapa Nui"
+        alt={hero.posterAlt}
         fill
         priority
         sizes="100vw"

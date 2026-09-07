@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { kuhane } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function KuhaneSection() {
+  const { kuhane } = useContent();
   return (
     <section id="kuhane" className="bg-sand py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 sm:px-10 lg:grid-cols-12 lg:gap-8">

@@ -1,10 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import PlaceholderMedia from "@/components/ui/PlaceholderMedia";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { cultura, libros, sofia } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function CulturaSection() {
+  const { cultura, libros, sofia, ui } = useContent();
   return (
     <section id="cultura" className="bg-teal-deep py-24 text-warm-white sm:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -20,7 +23,7 @@ export default function CulturaSection() {
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <Image
                   src={sofia.foto}
-                  alt="Sofía Abarca, fundadora de Kuhane"
+                  alt={sofia.fotoAlt}
                   fill
                   sizes="(min-width: 1024px) 35vw, 90vw"
                   quality={95}
@@ -56,7 +59,7 @@ export default function CulturaSection() {
         {/* Libros */}
         <Reveal delayMs={100}>
           <div className="motif-divider my-16 h-4 opacity-70" />
-          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Libros</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">{ui.librosLabel}</p>
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {libros.map((libro, i) => (
               <div key={i} className="flex gap-5">

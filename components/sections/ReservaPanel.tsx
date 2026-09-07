@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import DateRangeCalendar from "@/components/ui/DateRangeCalendar";
-import { reserva } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 import { buildFlightSearchLink } from "@/lib/travel-flights";
 
 // Panel de disponibilidad minimalista, estilo barra ("Check Availability")
@@ -12,6 +12,7 @@ import { buildFlightSearchLink } from "@/lib/travel-flights";
 // Recuperado y adaptado de kuhane-web-vuelos/kuhane-final (sin la capa de
 // i18n de esa versión, porque este sitio no es bilingüe).
 export default function ReservaPanel() {
+  const { reserva, ui } = useContent();
   const monthsShort = reserva.monthsShort;
 
   function formatShort(key: string) {
@@ -206,7 +207,7 @@ export default function ReservaPanel() {
 
       {datesError ? (
         <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-rose-300">
-          Elige fechas de llegada y salida para continuar.
+          {ui.elegirFechasError}
         </p>
       ) : (
         <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-warm-white/70">

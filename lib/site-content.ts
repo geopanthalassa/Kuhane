@@ -64,6 +64,7 @@ export const hero = {
   // moai, Rapa Nui. Sirve de fondo mientras no haya video, y de poster del
   // video cuando lo haya.
   posterSrc: "/images/hero/hero-fallback.jpg",
+  posterAlt: "Vía láctea sobre un moai, Rapa Nui",
 };
 
 export const rapaNui = {
@@ -74,6 +75,7 @@ export const rapaNui = {
   ],
   // Foto aérea del cráter Rano Kau, enviada por Andre — sept. 2026.
   foto: "/images/rapa-nui/territorio.jpg",
+  fotoAlt: "Vista aérea del cráter Rano Kau, Rapa Nui",
 };
 
 export const kuhane = {
@@ -196,6 +198,7 @@ export const cultura = {
 export const sofia = {
   eyebrow: "Fundadora de Kuhane",
   foto: "/images/sofia/sofia-abarca.jpg",
+  fotoAlt: "Sofía Abarca, fundadora de Kuhane",
   title: "Sofía Abarca",
   subtitle: "Polímata de la memoria y el patrimonio Rapa Nui",
   summary:
@@ -463,7 +466,13 @@ export const voces: Voz[] = [
 ];
 
 export type Habitacion = {
-  tipo: "Habitación" | "Bungalow";
+  // Texto libre, no se usa para filtrar (ver tipoCodigo abajo) — así puede
+  // traducirse en lib/content/en.ts sin romper nada.
+  tipo: string;
+  // Código estable (no se traduce) para poder agrupar/filtrar habitaciones
+  // vs. bungalows sin depender del texto de `tipo`, que sí se traduce en
+  // lib/content/en.ts. Agregado al construir el switch ES/EN (7/9/2026).
+  tipoCodigo: "habitacion" | "bungalow";
   nombre: string;
   capacidad: string;
   camas: string;
@@ -481,6 +490,7 @@ export type Habitacion = {
 export const habitaciones: Habitacion[] = [
   {
     tipo: "Habitación",
+    tipoCodigo: "habitacion",
     nombre: "Mahatu",
     capacidad: "2 personas",
     camas: "1 cama de 2 plazas",
@@ -492,6 +502,7 @@ export const habitaciones: Habitacion[] = [
   },
   {
     tipo: "Habitación",
+    tipoCodigo: "habitacion",
     nombre: "Vaiana",
     capacidad: "2 personas",
     camas: "1 cama de 2 plazas",
@@ -503,6 +514,7 @@ export const habitaciones: Habitacion[] = [
   },
   {
     tipo: "Habitación",
+    tipoCodigo: "habitacion",
     nombre: "Ohana",
     capacidad: "6 personas",
     camas: "1 cama de 2 plazas + 2 literas (4 colchones de 1.5 plazas)",
@@ -519,6 +531,7 @@ export const habitaciones: Habitacion[] = [
   },
   {
     tipo: "Habitación",
+    tipoCodigo: "habitacion",
     nombre: "Haré",
     capacidad: "3 personas",
     camas: "1 cama individual + 1 cama doble",
@@ -534,6 +547,7 @@ export const habitaciones: Habitacion[] = [
   },
   {
     tipo: "Bungalow",
+    tipoCodigo: "bungalow",
     nombre: "Calipso",
     capacidad: "3 personas",
     camas: "1 cama King + 1 cama de 1.5 plazas",
@@ -545,6 +559,7 @@ export const habitaciones: Habitacion[] = [
   },
   {
     tipo: "Bungalow",
+    tipoCodigo: "bungalow",
     nombre: "Uta",
     capacidad: "3 personas",
     camas: "1 cama King + 1 cama de 1.5 plazas",
@@ -556,6 +571,7 @@ export const habitaciones: Habitacion[] = [
   },
   {
     tipo: "Bungalow",
+    tipoCodigo: "bungalow",
     nombre: "Moana",
     capacidad: "4 personas",
     camas: "1 cama de 2 plazas + cama nido (2 colchones de 1.5 plazas)",
@@ -568,7 +584,13 @@ export const habitaciones: Habitacion[] = [
 ];
 
 export const habitacionesIntro = {
+  title: "Cada habitación, parte de la experiencia.",
+  // El componente arma la frase completa como
+  // `${bodyPrefix} ${capacidadTotal} ${bodySuffix}` para poder traducir el
+  // texto sin tocar el número real de personas.
+  bodyPrefix: "4 habitaciones y 3 bungalows frente al mar — capacidad total para",
   capacidadTotal: 23,
+  bodySuffix: "personas.",
 };
 
 export const huespedes = {
@@ -654,6 +676,7 @@ export const cta = {
   ctaPrimary: "RESERVAR",
   // Ahu Tongariki al atardecer, foto real enviada por Andre — sept. 2026.
   foto: "/images/cta/reserva.jpg",
+  fotoAlt: "Ahu Tongariki al atardecer, Rapa Nui",
 };
 
 // Panel de disponibilidad (fechas + huéspedes + código promocional).
@@ -682,7 +705,11 @@ export const reserva = {
   checkAvailabilityAria: "Ver disponibilidad",
   fewerGuestsAria: "Menos huéspedes",
   moreGuestsAria: "Más huéspedes",
-  promoQuestion: "¿Código promo?",
+  // Vuelto a la versión completa a pedido de Andre (7/9/2026): el recorte
+  // a "¿Código promo?" era para que no se cortara el botón, pero una vez
+  // que el switch ES/EN esté funcionando la versión en inglés es corta de
+  // por sí ("Promo code?"), así que no hace falta abreviar el español.
+  promoQuestion: "¿Código promocional?",
   promoPlaceholder: "Código promocional",
   promoChecking: "Comprobando…",
   promoValid: "Código válido — se aplica al confirmar tu reserva.",
@@ -704,6 +731,7 @@ export const aeropuerto = {
   body: "El traslado desde el aeropuerto hasta Kuhane, y de regreso al aeropuerto después del check-out, está incluido en tu reserva — sin costo adicional.",
   // Foto real de Kuhane enviada por Andre — sept. 2026.
   foto: "/images/experiencias/aeropuerto.jpg",
+  fotoAlt: "Traslado desde el aeropuerto — Kuhane",
 };
 
 export const footer = {

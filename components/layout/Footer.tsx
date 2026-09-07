@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import { footer, nav, site } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function Footer() {
+  const { footer, nav, site, ui } = useContent();
+
   return (
     <footer className="bg-teal-deep px-6 pb-10 pt-16 text-warm-white sm:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 border-b border-warm-white/10 pb-12 sm:flex-row sm:justify-between">
@@ -22,7 +26,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 sm:flex sm:gap-16">
           <div>
             <p className="mb-3 text-xs tracking-[0.2em] uppercase text-gold-soft">
-              Explorar
+              {ui.exploreLabel}
             </p>
             <ul className="space-y-2">
               {nav.map((item) => (
@@ -37,7 +41,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-3 text-xs tracking-[0.2em] uppercase text-gold-soft">
-              Contacto
+              {ui.contactLabel}
             </p>
             <ul className="space-y-2 text-sm text-warm-white/80">
               <li>{site.address}</li>
@@ -60,9 +64,9 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="underline underline-offset-2 hover:text-warm-white/80"
           >
-            Certificado SERNATUR
+            {ui.sernaturCertLabel}
           </a>
-          <p className="tracking-[0.15em] uppercase">Alma, en lengua rapanui</p>
+          <p className="tracking-[0.15em] uppercase">{ui.almaLabel}</p>
         </div>
       </div>
     </footer>

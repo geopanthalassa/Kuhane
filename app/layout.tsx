@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/lib/site-content";
+import { LocaleProvider } from "@/lib/content/LocaleProvider";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 // NOTA: este entorno de desarrollo no tiene salida a internet hacia
@@ -46,8 +47,16 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
-        {children}
-        <WhatsAppButton />
+        {/* LocaleProvider envuelve todo el árbol para que cualquier
+            componente pueda usar useContent() y cambiar entre ES/EN — ver
+            lib/content/LocaleProvider.tsx. El <html lang="es"> de arriba es
+            el idioma por defecto en el primer render server-side; una vez en
+            el cliente, LocaleProvider actualiza document.documentElement.lang
+            según el idioma elegido (o recordado en localStorage). */}
+        <LocaleProvider>
+          {children}
+          <WhatsAppButton />
+        </LocaleProvider>
       </body>
     </html>
   );
