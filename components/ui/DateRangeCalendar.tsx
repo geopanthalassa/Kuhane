@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useContent } from "@/lib/content/LocaleProvider";
 
 // Calendario de rango minimalista, sin dependencias externas: un mes a la
 // vez, clic para llegada, segundo clic (fecha posterior) para salida.
 // Fechas se manejan como strings "YYYY-MM-DD" en horario local, evitando
 // líos de zona horaria con Date/UTC.
+// Adaptado de la versión con i18n de kuhane-web-vuelos/kuhane-final —
+// acá se usan strings fijos en español porque este sitio no es bilingüe.
+
+const MESES = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+];
+const DIAS = ["L", "M", "M", "J", "V", "S", "D"];
 
 function toKey(y: number, m: number, d: number) {
   return `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
@@ -26,9 +33,6 @@ export default function DateRangeCalendar({
   checkout: string;
   onChange: (next: { checkin: string; checkout: string }) => void;
 }) {
-  const { ui } = useContent();
-  const MESES = ui.calendar.months;
-  const DIAS = ui.calendar.daysShort;
   const start = checkin ? new Date(checkin + "T00:00:00") : new Date();
   const [viewYear, setViewYear] = useState(start.getFullYear());
   const [viewMonth, setViewMonth] = useState(start.getMonth());
@@ -56,7 +60,7 @@ export default function DateRangeCalendar({
   function renderMonth(y: number, m: number) {
     const total = daysInMonth(y, m);
     const offset = firstWeekday(y, m);
-    const cells = [];
+    const cells: (number | null)[] = [];
     for (let i = 0; i < offset; i++) cells.push(null);
     for (let d = 1; d <= total; d++) cells.push(d);
 
@@ -77,7 +81,7 @@ export default function DateRangeCalendar({
             const disabled = key < today;
             const isCheckin = key === checkin;
             const isCheckout = key === checkout;
-            const inRange = checkin && checkout && key > checkin && key < checkout;
+            const inRange = Boolean(checkin && checkout && key > checkin && key < checkout);
             const edge = isCheckin || isCheckout;
 
             return (
@@ -127,7 +131,7 @@ export default function DateRangeCalendar({
       <div className="mb-1 flex items-center justify-between">
         <button
           type="button"
-          aria-label={ui.calendar.prevMonthAria}
+          aria-label="Mes anterior"
           onClick={prevMonth}
           className="flex h-7 w-7 items-center justify-center rounded-full text-stone-soft hover:bg-sand"
         >
@@ -135,7 +139,7 @@ export default function DateRangeCalendar({
         </button>
         <button
           type="button"
-          aria-label={ui.calendar.nextMonthAria}
+          aria-label="Mes siguiente"
           onClick={nextMonth}
           className="flex h-7 w-7 items-center justify-center rounded-full text-stone-soft hover:bg-sand"
         >
@@ -145,9 +149,9 @@ export default function DateRangeCalendar({
       {renderMonth(viewYear, viewMonth)}
       <p className="mt-3 text-center text-[11px] leading-relaxed text-stone-soft/70">
         {!checkin
-          ? ui.calendar.pickCheckin
+          ? "Elegí la fecha de llegada"
           : !checkout
-          ? ui.calendar.pickCheckout
+          ? "Elegí la fecha de salida"
           : `${checkin} → ${checkout}`}
       </p>
     </div>

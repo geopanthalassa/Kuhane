@@ -42,31 +42,45 @@ export default function ExperienciasSection() {
           </p>
         </Reveal>
 
-        {/* Experiencia extra: buceo — no es un tour de Kuhane, es un contacto
-            de confianza en la isla. Se muestra aparte, con crédito de las
-            fotos, para distinguirla de las experiencias propias de arriba. */}
+        {/* Experiencias extra: no son un tour de Kuhane, son contactos de
+            confianza en la isla. A pedido de Andre (7/9/2026) se muestran
+            de forma discreta — un ícono circular por actividad — para que
+            lo que ofrece Kuhane siga siendo lo protagonista; el click abre
+            las fotos de esa actividad. */}
         <Reveal delayMs={220}>
-          <div className="mx-auto mt-14 max-w-4xl border-t border-stone/10 pt-14">
+          <div className="mx-auto mt-14 max-w-2xl border-t border-stone/10 pt-12">
             <p className="text-center text-xs tracking-[0.25em] uppercase text-teal">
               {otrasExperiencias.eyebrow}
             </p>
-            <h3 className="font-display mt-2 text-center text-2xl text-stone">
+            <h3 className="font-display mt-2 text-center text-xl text-stone">
               {otrasExperiencias.title}
             </h3>
-            <p className="mx-auto mt-3 max-w-lg text-center text-[15px] leading-relaxed text-stone-soft">
+            <p className="mx-auto mt-3 max-w-md text-center text-[15px] leading-relaxed text-stone-soft">
               {otrasExperiencias.body}
             </p>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {otrasExperiencias.fotos.map((src) => (
-                <div key={src} className="relative aspect-square w-full overflow-hidden">
-                  <Image
-                    src={src}
-                    alt="Buceo en Rapa Nui"
-                    fill
-                    sizes="(min-width: 640px) 22vw, 45vw"
-                    className="object-cover"
-                  />
-                </div>
+            <div className="mt-7 flex justify-center gap-8">
+              {otrasExperiencias.actividades.map((actividad) => (
+                <button
+                  key={actividad.title}
+                  type="button"
+                  onClick={() =>
+                    setLightbox({ fotos: actividad.fotos, alt: actividad.title, index: 0 })
+                  }
+                  className="group flex flex-col items-center gap-2"
+                >
+                  <span className="relative block h-20 w-20 overflow-hidden rounded-full ring-1 ring-stone/15 transition-transform duration-200 group-hover:scale-105 sm:h-24 sm:w-24">
+                    <Image
+                      src={actividad.fotos[0]}
+                      alt={actividad.title}
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </span>
+                  <span className="text-xs tracking-[0.1em] uppercase text-stone-soft">
+                    {actividad.title}
+                  </span>
+                </button>
               ))}
             </div>
           </div>
@@ -123,6 +137,38 @@ export default function ExperienciasSection() {
               sizes="90vw"
               className="object-contain"
             />
+            {lightbox.fotos.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  aria-label="Foto anterior"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightbox((lb) =>
+                      lb
+                        ? { ...lb, index: (lb.index - 1 + lb.fotos.length) % lb.fotos.length }
+                        : lb
+                    );
+                  }}
+                  className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-stone/50 text-warm-white hover:bg-stone/70"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  aria-label="Foto siguiente"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightbox((lb) =>
+                      lb ? { ...lb, index: (lb.index + 1) % lb.fotos.length } : lb
+                    );
+                  }}
+                  className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-stone/50 text-warm-white hover:bg-stone/70"
+                >
+                  ›
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

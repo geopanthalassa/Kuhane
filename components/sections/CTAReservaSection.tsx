@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
+import ReservaPanel from "@/components/sections/ReservaPanel";
 import { cta } from "@/lib/site-content";
 
 export default function CTAReservaSection() {
@@ -19,12 +20,9 @@ export default function CTAReservaSection() {
           {cta.title}
         </h2>
         <p className="mt-4 text-[15px] leading-relaxed text-warm-white/80">{cta.body}</p>
-        <a
-          href="#"
-          className="mt-8 inline-block rounded-full bg-warm-white px-9 py-3.5 text-[12px] tracking-[0.2em] text-teal-deep transition-colors hover:bg-gold-soft"
-        >
-          {cta.ctaPrimary}
-        </a>
+        <div className="mt-8 flex justify-center">
+          <ReservaPanel />
+        </div>
       </Reveal>
     </section>
   );

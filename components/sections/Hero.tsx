@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useContent } from "@/lib/content/LocaleProvider";
+import Image from "next/image";
+import { hero } from "@/lib/site-content";
 
 export default function Hero() {
-  const { hero } = useContent();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoAvailable, setVideoAvailable] = useState(false);
 
@@ -26,8 +26,16 @@ export default function Hero() {
       id="top"
       className="relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-teal-deep"
     >
-      {/* Fallback backdrop: gradient standing in for hero-fallback.jpg until real media arrives */}
-      <div className="absolute inset-0 bg-gradient-to-b from-teal-deep via-teal-deep/95 to-[#08201f]" />
+      {/* Fondo real: cielo estrellado sobre un moai, mientras no haya video */}
+      <Image
+        src={hero.posterSrc}
+        alt="Vía láctea sobre un moai, Rapa Nui"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-teal-deep/50 via-teal-deep/30 to-[#08201f]/70" />
 
       {videoAvailable && (
         <video

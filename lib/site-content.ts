@@ -49,7 +49,10 @@ export const hero = {
   ctaPrimary: "RESERVAR",
   ctaSecondary: "DESCUBRIR KUHANE",
   videoSrc: "/media/hero-kuhane.mp4", // TODO: reemplazar cuando llegue el video real
-  posterSrc: "/images/hero-fallback.jpg", // TODO: imagen de respaldo real
+  // Foto real enviada por Andre — cielo estrellado (vía láctea) sobre un
+  // moai, Rapa Nui. Sirve de fondo mientras no haya video, y de poster del
+  // video cuando lo haya.
+  posterSrc: "/images/hero/hero-fallback.jpg",
 };
 
 export const rapaNui = {
@@ -78,15 +81,15 @@ export const kuhane = {
   // (6/9/2026): "podemos hacer un collage de kuhane".
   fotos: [
     "/images/experiencias/bienvenida.jpg",
-    "/images/habitaciones/moana/moana_01.jpg",
-    "/images/habitaciones/ohana/ohana_01.jpg",
-    "/images/galeria/general_02.jpg",
+    "/images/kuhane/kuhane_02.jpg",
+    "/images/kuhane/kuhane_03.jpg",
+    "/images/kuhane/kuhane_04.jpg",
   ],
 };
 
 export const experiencias = {
   eyebrow: "La experiencia",
-  title: "Más que una habitación: una forma de estar en la isla.",
+  title: "Más que un hostal, la mejor forma de explorar la isla.",
   items: [
     {
       title: "Bienvenida en Kuhane",
@@ -119,11 +122,12 @@ export const experiencias = {
       // Distancia confirmada: listado de Kuhane en Booking.com (ver
       // site.tahaiDistance).
       body: "A solo 1,2 km caminando está Ahu Tahai, uno de los sitios más fotografiados de Rapa Nui — el lugar ideal para ver caer el sol sobre el Pacífico.",
+      // Fotos reales en Ahu Tahai enviadas por Andre — sept. 2026.
       fotos: [
         "/images/experiencias/atardecer.jpg",
-        "/images/experiencias/atardecer-02.jpg",
-        "/images/experiencias/atardecer-03.jpg",
-        "/images/experiencias/atardecer-04.jpg",
+        "/images/experiencias/atardecer-05.jpg",
+        "/images/experiencias/atardecer-06.jpg",
+        "/images/experiencias/atardecer-07.jpg",
       ],
     },
   ],
@@ -134,18 +138,39 @@ export const experiencias = {
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
-// otros prestadores de la isla. Fotos de buceo enviadas por Andre; Sofía
-// tiene permiso para usarlas (confirmado 6/9/2026). A pedido de Andre
-// (6/9/2026) no se menciona el nombre del contacto de buceo en el sitio.
+// otros prestadores de la isla. Se muestran como algo secundario (íconos
+// circulares, no una grilla grande) — pedido de Andre (7/9/2026): "no es
+// necesario darle tanto pie al buceo, lo que debe predominar es lo que
+// ofrece Kuhane". El click abre las fotos de cada actividad en el lightbox.
+// Fotos de buceo enviadas por Andre; Sofía tiene permiso para usarlas
+// (confirmado 6/9/2026). A pedido de Andre no se menciona el nombre del
+// contacto de buceo en el sitio.
 export const otrasExperiencias = {
-  eyebrow: "Experiencias extra",
-  title: "Buceo en Rapa Nui",
-  body: "Contamos con el contacto de buceo en la isla para que explores sus fondos marinos.",
-  fotos: [
-    "/images/experiencias/buceo-01.jpg",
-    "/images/experiencias/buceo-02.jpg",
-    "/images/experiencias/buceo-03.jpg",
-    "/images/experiencias/buceo-04.jpg",
+  eyebrow: "Además",
+  title: "Otras experiencias en la isla",
+  body: "Kuhane arma tu tour por la isla y, además, te contacta con experiencias extra.",
+  actividades: [
+    {
+      title: "Buceo",
+      fotos: [
+        "/images/experiencias/buceo-01.jpg",
+        "/images/experiencias/buceo-02.jpg",
+        "/images/experiencias/buceo-03.jpg",
+        "/images/experiencias/buceo-04.jpg",
+        "/images/experiencias/buceo-05.jpg",
+        "/images/experiencias/buceo-06.jpg",
+        "/images/experiencias/buceo-07.jpg",
+        "/images/experiencias/buceo-08.jpg",
+      ],
+    },
+    {
+      title: "Cabalgatas",
+      fotos: [
+        "/images/cabalgatas/cabalgata_01.jpg",
+        "/images/cabalgatas/cabalgata_02.jpg",
+        "/images/cabalgatas/cabalgata_03.jpg",
+      ],
+    },
   ],
 };
 
@@ -476,8 +501,8 @@ export const habitaciones: Habitacion[] = [
     caracteristicas: "2 ambientes conectados · ventanal hacia terraza y jardín",
     precio: "A consultar",
     fotos: [
-      "/images/habitaciones/ohana/ohana_01.jpg",
       "/images/habitaciones/ohana/ohana_02.jpg",
+      "/images/habitaciones/ohana/ohana_01.jpg",
       "/images/habitaciones/ohana/ohana_03.jpg",
       "/images/habitaciones/ohana/ohana_04.jpg",
     ],
@@ -491,13 +516,11 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Vista a jardín y patio interior",
     precio: "A consultar",
-    fotos: [
-      "/images/habitaciones/hare/hare_01.jpg",
-      "/images/habitaciones/hare/hare_02.jpg",
-      "/images/habitaciones/hare/hare_03.jpg",
-      "/images/habitaciones/hare/hare_04.jpg",
-      "/images/habitaciones/hare/hare_05.jpg",
-    ],
+    // hare_01 (screenshot con flechas/puntos de un carrusel web) y
+    // hare_02/03 (muestran 2 camas individuales, no coincide con "1
+    // individual + 1 doble") se sacaron por dudosas — ver nota a Andre
+    // (7/9/2026). Quedan solo las 2 fotos confiables: la cama y el baño.
+    fotos: ["/images/habitaciones/hare/hare_04.jpg", "/images/habitaciones/hare/hare_05.jpg"],
   },
   {
     tipo: "Bungalow",
@@ -530,7 +553,7 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
     precio: "A consultar",
-    fotos: ["/images/habitaciones/moana/moana_01.jpg", "/images/habitaciones/moana/moana_02.jpg"],
+    fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
 
@@ -550,7 +573,7 @@ export const galeria = {
   title: "La isla, en imágenes.",
   // 1–17: fotos del hostal. 18–21: paisajes reales de Rapa Nui enviados por
   // Andre (sept. 2026) — arcoíris, cielo estrellado y atardeceres de la isla.
-  fotos: Array.from({ length: 30 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+  fotos: Array.from({ length: 34 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
 };
 
 export type Resena = { texto: string; nombre: string; fuente: string };
@@ -621,6 +644,39 @@ export const cta = {
   ctaPrimary: "RESERVAR",
   // Ahu Tongariki al atardecer, foto real enviada por Andre — sept. 2026.
   foto: "/images/cta/reserva.jpg",
+};
+
+// Panel de disponibilidad (fechas + huéspedes + código promocional).
+// Recuperado de un desarrollo anterior ("kuhane-web-vuelos", ago-sept
+// 2026) que Andre tenía guardado y que no había llegado a esta copia del
+// proyecto — confirmado con Andre (7/9/2026). Al confirmar, abre el
+// sistema de reservas de Kuhane (Nuku OS) en una pestaña nueva con esos
+// datos como parámetros. Nuku OS está en fase de pruebas (sin cobro
+// automático todavía), por eso el mensaje de ayuda aclara que se confirma
+// por WhatsApp o email antes de cobrar.
+export const reserva = {
+  nukuOsUrl: "https://nuku-os-app.vercel.app/reservar",
+  eyebrow: "Disponibilidad",
+  helper:
+    "Elegí tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane — hoy en fase de pruebas, así que confirmamos con vos por WhatsApp o email antes de cobrar.",
+  dates: "Fechas",
+  guests: "Huéspedes",
+  guestSingular: "persona",
+  guestPlural: "personas",
+  departure: "Salida",
+  arrivalDeparture: "Llegada — Salida",
+  checkAvailabilityAria: "Ver disponibilidad",
+  fewerGuestsAria: "Menos huéspedes",
+  moreGuestsAria: "Más huéspedes",
+  promoQuestion: "¿Tenés un código promocional?",
+  promoPlaceholder: "Código promocional",
+  flightsCta: "Buscar vuelos a Isla de Pascua",
+  flightsHelper:
+    "Salida sugerida desde Santiago — cambiá el origen en el buscador si volás desde otra ciudad.",
+  monthsShort: [
+    "ene", "feb", "mar", "abr", "may", "jun",
+    "jul", "ago", "sep", "oct", "nov", "dic",
+  ],
 };
 
 // Confirmado por Kuhane (septiembre 2026): la reserva incluye el traslado
