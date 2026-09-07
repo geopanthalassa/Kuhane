@@ -58,7 +58,8 @@ export const hero = {
   line2: "Siéntete parte de la isla.",
   ctaPrimary: "RESERVAR",
   ctaSecondary: "DESCUBRIR KUHANE",
-  videoSrc: "/media/hero-kuhane.mp4", // TODO: reemplazar cuando llegue el video real
+  // Video real enviado por Andre (7/9/2026), reemplaza el fallback estático.
+  videoSrc: "/media/hero-kuhane.mp4",
   // Foto real enviada por Andre — cielo estrellado (vía láctea) sobre un
   // moai, Rapa Nui. Sirve de fondo mientras no haya video, y de poster del
   // video cuando lo haya.

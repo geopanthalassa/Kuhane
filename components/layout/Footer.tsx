@@ -50,7 +50,20 @@ export default function Footer() {
 
       <div className="mx-auto mt-6 flex max-w-7xl flex-col-reverse gap-3 text-xs text-warm-white/50 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Kuhane Etno-Hostal. Rapa Nui, Chile.</p>
-        <p className="tracking-[0.15em] uppercase">Alma, en lengua rapanui</p>
+        <div className="flex items-center gap-5">
+          {/* Certificado SERNATUR (registro N.º 110415) — enviado por
+              Andre (7/9/2026), "por si alguien quiere leerlo". Discreto,
+              al pie de página, no es el foco de la sección. */}
+          <a
+            href="/documents/certificado-sernatur.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-warm-white/80"
+          >
+            Certificado SERNATUR
+          </a>
+          <p className="tracking-[0.15em] uppercase">Alma, en lengua rapanui</p>
+        </div>
       </div>
     </footer>
   );

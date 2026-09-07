@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import PhotoCarousel from "@/components/ui/PhotoCarousel";
 import SectionIntro from "@/components/ui/SectionIntro";
@@ -11,6 +11,15 @@ export default function ExperienciasSection() {
   const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(
     null
   );
+  const otrasTrackRef = useRef<HTMLDivElement>(null);
+
+  const scrollOtras = (dir: -1 | 1) => {
+    const el = otrasTrackRef.current;
+    if (!el) return;
+    const card = el.querySelector("[data-thumb]") as HTMLElement | null;
+    const amount = (card?.offsetWidth ?? 112) + 12;
+    el.scrollBy({ left: dir * amount * 3, behavior: "smooth" });
+  };
 
   return (
     <section id="experiencias" className="bg-warm-white py-24 sm:py-32">
@@ -44,32 +53,66 @@ export default function ExperienciasSection() {
 
         {/* Experiencias extra: no son un tour de Kuhane, son contactos de
             confianza en la isla (buceo y cabalgatas). 7/9/2026: a pedido
-            de Andre se sacaron los íconos circulares por actividad y se
-            reemplazaron por un solo carrusel de fotos rectangular, igual
-            que los de arriba — "que cambies los círculos por un carrusel
-            de cabalgatas y buceo". El click abre el lightbox con todas
-            las fotos. */}
+            de Andre se sacaron los íconos circulares por actividad, luego
+            se probó una tira que corría sola (marquee) y en la sección de
+            reserva confirmó que prefiere el mismo comportamiento que la
+            Galería: fotos chicas que el usuario cambia arrastrando o con
+            las flechas, no un auto-scroll. El click sobre cualquier foto
+            abre el lightbox con todas. */}
         <Reveal delayMs={220}>
-          <div className="mx-auto mt-14 max-w-md border-t border-stone/10 pt-12">
-            <p className="text-center text-xs tracking-[0.25em] uppercase text-teal">
-              {otrasExperiencias.eyebrow}
-            </p>
-            <h3 className="font-display mt-2 text-center text-xl text-stone">
-              {otrasExperiencias.title}
-            </h3>
-            <p className="mx-auto mt-3 max-w-md text-center text-[15px] leading-relaxed text-stone-soft">
+          <div className="mx-auto mt-14 max-w-3xl border-t border-stone/10 pt-12">
+            <div className="flex items-center justify-between gap-4">
+              <div className="min-w-0">
+                <p className="text-xs tracking-[0.25em] uppercase text-teal">
+                  {otrasExperiencias.eyebrow}
+                </p>
+                <h3 className="font-display mt-2 text-xl text-stone">{otrasExperiencias.title}</h3>
+              </div>
+              <div className="flex shrink-0 gap-2">
+                <button
+                  type="button"
+                  aria-label="Anterior"
+                  onClick={() => scrollOtras(-1)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  aria-label="Siguiente"
+                  onClick={() => scrollOtras(1)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+            <p className="mt-3 max-w-md text-[15px] leading-relaxed text-stone-soft">
               {otrasExperiencias.body}
             </p>
-            <div className="mt-7">
-              <PhotoCarousel
-                photos={otrasExperiencias.fotos}
-                alt={otrasExperiencias.title}
-                autoPlayMs={2500}
-                className="aspect-[4/5] w-full"
-                onImageClick={(index) =>
-                  setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index })
-                }
-              />
+            <div
+              ref={otrasTrackRef}
+              className="mt-7 flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] snap-x snap-mandatory [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {otrasExperiencias.fotos.map((foto, i) => (
+                <button
+                  key={foto}
+                  data-thumb
+                  type="button"
+                  onClick={() =>
+                    setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index: i })
+                  }
+                  className="relative h-28 w-28 shrink-0 snap-start overflow-hidden rounded-lg sm:h-32 sm:w-32"
+                >
+                  <Image
+                    src={foto}
+                    alt={otrasExperiencias.title}
+                    fill
+                    sizes="128px"
+                    className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </Reveal>
