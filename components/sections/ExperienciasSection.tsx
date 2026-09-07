@@ -63,7 +63,6 @@ export default function ExperienciasSection() {
                 </div>
               ))}
             </div>
-            <p className="mt-3 text-center text-xs text-stone-soft/60">{otrasExperiencias.credito}</p>
           </div>
         </Reveal>
 

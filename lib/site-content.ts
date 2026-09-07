@@ -19,9 +19,10 @@ export const site = {
   // (sección "Alrededores del alojamiento", septiembre 2026).
   tahaiDistance: "1,2 km",
   // Confirmado directamente por Kuhane (septiembre 2026, capturas de
-  // Google/Tripadvisor). El número de reseñas de Booking queda pendiente.
+  // Google/Tripadvisor/Booking). Cifra exacta de Booking confirmada por
+  // captura de pantalla de Andre el 6/9/2026: "9,4 Fantástico · 121 comentarios".
   ratings: [
-    { value: "9,4", scale: "/10", source: "Booking.com", count: TODO_PLACEHOLDER as number | string },
+    { value: "9,4", scale: "/10", source: "Booking.com", count: 121 as number | string },
     { value: "4,7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4,7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
@@ -53,8 +54,10 @@ export const hero = {
 
 export const rapaNui = {
   eyebrow: "El territorio",
-  title: "El lugar habitado más lejano del mundo.",
-  body: [] as string[],
+  title: "El lugar más remoto habitado del mundo.",
+  body: [
+    "Rapa Nui está a miles de kilómetros de cualquier otra costa — una isla volcánica en medio del Pacífico, donde el paisaje, la historia y la cultura Rapanui siguen vivos en cada rincón.",
+  ],
   // Foto aérea del cráter Rano Kau, enviada por Andre — sept. 2026.
   foto: "/images/rapa-nui/territorio.jpg",
 };
@@ -104,14 +107,13 @@ export const experiencias = {
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
-// otros prestadores de la isla. Fotos de buceo enviadas por Andre — son de
-// Cristian Rapu, el contacto de buceo de Kuhane; Sofía tiene su permiso
-// para usarlas (confirmado 6/9/2026).
+// otros prestadores de la isla. Fotos de buceo enviadas por Andre; Sofía
+// tiene permiso para usarlas (confirmado 6/9/2026). A pedido de Andre
+// (6/9/2026) no se menciona el nombre del contacto de buceo en el sitio.
 export const otrasExperiencias = {
   eyebrow: "Experiencias extra",
   title: "Buceo en Rapa Nui",
-  body: "Te contactamos con Cristian Rapu, nuestro contacto de buceo en la isla, para explorar sus fondos marinos.",
-  credito: "Fotos: Cristian Rapu",
+  body: "Contamos con el contacto de buceo en la isla para que explores sus fondos marinos.",
   fotos: [
     "/images/experiencias/buceo-01.jpg",
     "/images/experiencias/buceo-02.jpg",
@@ -462,7 +464,13 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Vista a jardín y patio interior",
     precio: "A consultar",
-    fotos: ["/images/habitaciones/hare/hare_01.jpg"],
+    fotos: [
+      "/images/habitaciones/hare/hare_01.jpg",
+      "/images/habitaciones/hare/hare_02.jpg",
+      "/images/habitaciones/hare/hare_03.jpg",
+      "/images/habitaciones/hare/hare_04.jpg",
+      "/images/habitaciones/hare/hare_05.jpg",
+    ],
   },
   {
     tipo: "Bungalow",
@@ -559,6 +567,24 @@ export const resenas = {
       nombre: "Alisson González",
       fuente: "Google",
     },
+    // Reseñas de Booking.com pegadas por Andre el 6/9/2026 (de un listado
+    // de más de 121). Se eligieron 3 que suman un ángulo que las anteriores
+    // no cubrían: el desayuno.
+    {
+      texto: "El desayuno fue muy rico, variado, acogedor. La recepción por parte de Sofía, la administradora, es muy cálida.",
+      nombre: "Ivan",
+      fuente: "Booking.com",
+    },
+    {
+      texto: "Desayuno muy abundante. Lugar muy hermoso, muy tranquilo.",
+      nombre: "Liliana",
+      fuente: "Booking.com",
+    },
+    {
+      texto: "La tranquilidad del sector, la comodidad de la habitación y sus instalaciones, el rico desayuno que servían día a día y la amabilidad y buena voluntad de los anfitriones.",
+      nombre: "Joselin",
+      fuente: "Booking.com",
+    },
   ] as Resena[],
 };
 
@@ -566,6 +592,8 @@ export const cta = {
   title: "Vení a vivir tu Rapa Nui.",
   body: "Escribinos y te ayudamos a planear tu estadía en Kuhane — con traslado al aeropuerto y de vuelta incluido en tu reserva.",
   ctaPrimary: "RESERVAR",
+  // Ahu Tongariki al atardecer, foto real enviada por Andre — sept. 2026.
+  foto: "/images/cta/reserva.jpg",
 };
 
 // Confirmado por Kuhane (septiembre 2026): la reserva incluye el traslado
