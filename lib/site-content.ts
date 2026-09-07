@@ -105,16 +105,13 @@ export const experiencias = {
       title: "Bienvenida en Kuhane",
       body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
       // Fotos reales enviadas por Andre — sept. 2026. Carrusel (como en
-      // Habitaciones), con autoplay cada 2s, para poder sumar más fotos
-      // sin alargar la sección (pedido de Andre: "3-4 fotos por sección,
-      // que se vayan cambiando").
+      // Habitaciones), con autoplay cada 2s (pedido de Andre: "3-4 fotos
+      // por sección, que se vayan cambiando").
+      // 7/9/2026: Andre mandó 4 fotos nuevas (jardín, terraza, desayuno
+      // con fruta y el letrero de entrada) para REEMPLAZAR las 4 fotos
+      // anteriores de esta sección, no para sumarlas — se quedaron las
+      // dos series mezcladas (8 fotos) por error; corregido acá.
       fotos: [
-        "/images/experiencias/bienvenida.jpg",
-        "/images/experiencias/bienvenida-02.jpg",
-        "/images/experiencias/bienvenida-03.jpg",
-        "/images/experiencias/bienvenida-04.jpg",
-        // Fotos nuevas enviadas por Andre (7/9/2026): jardín, terraza,
-        // desayuno con fruta y el letrero de entrada de Kuhane.
         "/images/experiencias/bienvenida-05.jpg",
         "/images/experiencias/bienvenida-06.jpg",
         "/images/experiencias/bienvenida-07.jpg",
@@ -147,17 +144,23 @@ export const experiencias = {
       ],
     },
   ],
-  // Pedido de Andre (6/9/2026): dejar claro que además del tour que arma
-  // Kuhane, conectan al huésped con otras experiencias de la isla.
+  // Pedido de Andre (6/9/2026, reiterado 7/9/2026): dejar claro que,
+  // además del tour que arma Kuhane, conectan al huésped con otras
+  // experiencias de la isla. Redacción ajustada a la frase exacta que
+  // pidió: "Kuhane, además de ofrecer tours, te conecta con otras
+  // aventuras...".
   extra:
-    "Kuhane te conecta con otras aventuras — realizamos un tour completo por la isla y te contactamos con otras experiencias, como buceo y cabalgatas, para que armes tu viaje a medida.",
+    "Kuhane, además de ofrecer tours, te conecta con otras aventuras en la isla — como buceo y cabalgatas — para que armes tu viaje a medida.",
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
-// otros prestadores de la isla. Se muestran como algo secundario (íconos
-// circulares, no una grilla grande) — pedido de Andre (7/9/2026): "no es
-// necesario darle tanto pie al buceo, lo que debe predominar es lo que
-// ofrece Kuhane". El click abre las fotos de cada actividad en el lightbox.
+// otros prestadores de la isla.
+// 7/9/2026: a pedido de Andre, se sacaron los íconos circulares por
+// actividad y se reemplazaron por UN solo carrusel de fotos (rectangular,
+// igual que los de Bienvenida/Cultura viva/El atardecer) que mezcla las
+// fotos de buceo y cabalgatas — "que cambies los círculos por un
+// carrusel de cabalgatas y buceo, las fotos que están dentro de esos
+// círculos". El click abre el lightbox con todas las fotos.
 // Fotos de buceo enviadas por Andre; Sofía tiene permiso para usarlas
 // (confirmado 6/9/2026). A pedido de Andre no se menciona el nombre del
 // contacto de buceo en el sitio.
@@ -165,28 +168,18 @@ export const otrasExperiencias = {
   eyebrow: "Además",
   title: "Otras experiencias en la isla",
   body: "Kuhane te conecta con otras aventuras.",
-  actividades: [
-    {
-      title: "Buceo",
-      fotos: [
-        "/images/experiencias/buceo-01.jpg",
-        "/images/experiencias/buceo-02.jpg",
-        "/images/experiencias/buceo-03.jpg",
-        "/images/experiencias/buceo-04.jpg",
-        "/images/experiencias/buceo-05.jpg",
-        "/images/experiencias/buceo-06.jpg",
-        "/images/experiencias/buceo-07.jpg",
-        "/images/experiencias/buceo-08.jpg",
-      ],
-    },
-    {
-      title: "Cabalgatas",
-      fotos: [
-        "/images/cabalgatas/cabalgata_01.jpg",
-        "/images/cabalgatas/cabalgata_02.jpg",
-        "/images/cabalgatas/cabalgata_03.jpg",
-      ],
-    },
+  fotos: [
+    "/images/experiencias/buceo-01.jpg",
+    "/images/experiencias/buceo-02.jpg",
+    "/images/experiencias/buceo-03.jpg",
+    "/images/experiencias/buceo-04.jpg",
+    "/images/experiencias/buceo-05.jpg",
+    "/images/experiencias/buceo-06.jpg",
+    "/images/experiencias/buceo-07.jpg",
+    "/images/experiencias/buceo-08.jpg",
+    "/images/cabalgatas/cabalgata_01.jpg",
+    "/images/cabalgatas/cabalgata_02.jpg",
+    "/images/cabalgatas/cabalgata_03.jpg",
   ],
 };
 

@@ -43,12 +43,14 @@ export default function ExperienciasSection() {
         </Reveal>
 
         {/* Experiencias extra: no son un tour de Kuhane, son contactos de
-            confianza en la isla. A pedido de Andre (7/9/2026) se muestran
-            de forma discreta — un ícono circular por actividad — para que
-            lo que ofrece Kuhane siga siendo lo protagonista; el click abre
-            las fotos de esa actividad. */}
+            confianza en la isla (buceo y cabalgatas). 7/9/2026: a pedido
+            de Andre se sacaron los íconos circulares por actividad y se
+            reemplazaron por un solo carrusel de fotos rectangular, igual
+            que los de arriba — "que cambies los círculos por un carrusel
+            de cabalgatas y buceo". El click abre el lightbox con todas
+            las fotos. */}
         <Reveal delayMs={220}>
-          <div className="mx-auto mt-14 max-w-2xl border-t border-stone/10 pt-12">
+          <div className="mx-auto mt-14 max-w-md border-t border-stone/10 pt-12">
             <p className="text-center text-xs tracking-[0.25em] uppercase text-teal">
               {otrasExperiencias.eyebrow}
             </p>
@@ -58,26 +60,16 @@ export default function ExperienciasSection() {
             <p className="mx-auto mt-3 max-w-md text-center text-[15px] leading-relaxed text-stone-soft">
               {otrasExperiencias.body}
             </p>
-            <div className="mt-7 flex items-center justify-between gap-6 px-6 sm:px-16">
-              {/* Carrusel de fotos (no solo la primera foto fija) — pedido
-                  de Andre (7/9/2026). El click sigue abriendo el lightbox
-                  con todas las fotos de la actividad. */}
-              {otrasExperiencias.actividades.map((actividad) => (
-                <div key={actividad.title} className="flex flex-col items-center gap-3">
-                  <PhotoCarousel
-                    photos={actividad.fotos}
-                    alt={actividad.title}
-                    autoPlayMs={2500}
-                    className="h-32 w-32 rounded-full ring-2 ring-stone/15 sm:h-40 sm:w-40"
-                    onImageClick={(index) =>
-                      setLightbox({ fotos: actividad.fotos, alt: actividad.title, index })
-                    }
-                  />
-                  <span className="text-sm font-medium tracking-[0.1em] uppercase text-stone">
-                    {actividad.title}
-                  </span>
-                </div>
-              ))}
+            <div className="mt-7">
+              <PhotoCarousel
+                photos={otrasExperiencias.fotos}
+                alt={otrasExperiencias.title}
+                autoPlayMs={2500}
+                className="aspect-[4/5] w-full"
+                onImageClick={(index) =>
+                  setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index })
+                }
+              />
             </div>
           </div>
         </Reveal>
@@ -87,27 +79,38 @@ export default function ExperienciasSection() {
           {/* Banner de aeropuerto a todo el ancho de la pantalla — pedido
               de Andre (7/9/2026): "debe ocupar toda la hoja como banner,
               no como una foto anexa encima". Se sale del contenedor
-              max-w-7xl con el truco clásico de full-bleed. */}
+              max-w-7xl con el truco clásico de full-bleed.
+              7/9/2026 (2): la foto real que tenemos es de ~700px de ancho
+              (foto de los moai con el avión llegando, enviada por Andre) —
+              estirarla a un recorte panorámico 3:1 en 100vw se veía
+              borrosa y cortaba mal la composición. Se usa un recorte más
+              cercano a la proporción real de la foto (así casi no hay que
+              recortar) y se limita el ancho máximo de render para que en
+              monitores enormes no se vea pixelada — en laptop y celular
+              (la gran mayoría de las visitas) sigue yendo de borde a
+              borde igual que antes. */}
           <div className="relative left-1/2 right-1/2 -mx-[50vw] mt-14 w-screen overflow-hidden">
-            <div className="relative aspect-[21/9] w-full sm:aspect-[3/1]">
-              <Image
-                src={aeropuerto.foto}
-                alt="Traslado desde el aeropuerto — Kuhane"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/80 via-teal-deep/25 to-transparent" />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 flex items-end">
-              <div className="max-w-lg px-8 pb-8 sm:px-14 sm:pb-10">
-                <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Llegada</p>
-                <h3 className="font-display mt-3 text-2xl text-warm-white sm:text-3xl">
-                  {aeropuerto.title}
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-warm-white/85">
-                  {aeropuerto.body}
-                </p>
+            <div className="relative mx-auto max-w-[1800px]">
+              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
+                <Image
+                  src={aeropuerto.foto}
+                  alt="Traslado desde el aeropuerto — Kuhane"
+                  fill
+                  sizes="(min-width: 1800px) 1800px, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/80 via-teal-deep/25 to-transparent" />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 flex items-end">
+                <div className="max-w-lg px-8 pb-8 sm:px-14 sm:pb-10">
+                  <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">Llegada</p>
+                  <h3 className="font-display mt-3 text-2xl text-warm-white sm:text-3xl">
+                    {aeropuerto.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-warm-white/85">
+                    {aeropuerto.body}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
