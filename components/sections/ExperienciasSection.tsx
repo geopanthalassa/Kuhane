@@ -59,28 +59,24 @@ export default function ExperienciasSection() {
               {otrasExperiencias.body}
             </p>
             <div className="mt-7 flex items-center justify-between gap-6 px-6 sm:px-16">
+              {/* Carrusel de fotos (no solo la primera foto fija) — pedido
+                  de Andre (7/9/2026). El click sigue abriendo el lightbox
+                  con todas las fotos de la actividad. */}
               {otrasExperiencias.actividades.map((actividad) => (
-                <button
-                  key={actividad.title}
-                  type="button"
-                  onClick={() =>
-                    setLightbox({ fotos: actividad.fotos, alt: actividad.title, index: 0 })
-                  }
-                  className="group flex flex-col items-center gap-3"
-                >
-                  <span className="relative block h-32 w-32 overflow-hidden rounded-full ring-2 ring-stone/15 transition-transform duration-200 group-hover:scale-105 sm:h-40 sm:w-40">
-                    <Image
-                      src={actividad.fotos[0]}
-                      alt={actividad.title}
-                      fill
-                      sizes="160px"
-                      className="object-cover"
-                    />
-                  </span>
+                <div key={actividad.title} className="flex flex-col items-center gap-3">
+                  <PhotoCarousel
+                    photos={actividad.fotos}
+                    alt={actividad.title}
+                    autoPlayMs={2500}
+                    className="h-32 w-32 rounded-full ring-2 ring-stone/15 sm:h-40 sm:w-40"
+                    onImageClick={(index) =>
+                      setLightbox({ fotos: actividad.fotos, alt: actividad.title, index })
+                    }
+                  />
                   <span className="text-sm font-medium tracking-[0.1em] uppercase text-stone">
                     {actividad.title}
                   </span>
-                </button>
+                </div>
               ))}
             </div>
           </div>
@@ -88,13 +84,17 @@ export default function ExperienciasSection() {
 
         {/* Aeropuerto: presencia visual destacada, tal como pide el brief */}
         <Reveal delayMs={200}>
-          <div className="relative mx-auto mt-14 max-w-3xl overflow-hidden rounded-sm">
-            <div className="relative aspect-[16/9] w-full">
+          {/* Banner de aeropuerto a todo el ancho de la pantalla — pedido
+              de Andre (7/9/2026): "debe ocupar toda la hoja como banner,
+              no como una foto anexa encima". Se sale del contenedor
+              max-w-7xl con el truco clásico de full-bleed. */}
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] mt-14 w-screen overflow-hidden">
+            <div className="relative aspect-[21/9] w-full sm:aspect-[3/1]">
               <Image
                 src={aeropuerto.foto}
                 alt="Traslado desde el aeropuerto — Kuhane"
                 fill
-                sizes="(min-width: 768px) 768px, 100vw"
+                sizes="100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/80 via-teal-deep/25 to-transparent" />

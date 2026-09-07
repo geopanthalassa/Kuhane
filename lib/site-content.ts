@@ -113,6 +113,12 @@ export const experiencias = {
         "/images/experiencias/bienvenida-02.jpg",
         "/images/experiencias/bienvenida-03.jpg",
         "/images/experiencias/bienvenida-04.jpg",
+        // Fotos nuevas enviadas por Andre (7/9/2026): jardín, terraza,
+        // desayuno con fruta y el letrero de entrada de Kuhane.
+        "/images/experiencias/bienvenida-05.jpg",
+        "/images/experiencias/bienvenida-06.jpg",
+        "/images/experiencias/bienvenida-07.jpg",
+        "/images/experiencias/bienvenida-08.jpg",
       ],
     },
     {
