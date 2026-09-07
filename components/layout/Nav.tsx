@@ -50,10 +50,13 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        {/* Reservar: visible siempre (también en mobile), no solo dentro del
+            menú hamburguesa — pedido de Andre (7/9/2026): "el CTA de reserva
+            debe estar en todo momento". */}
+        <div className="flex items-center gap-3">
           <a
             href="#reserva"
-            className={`rounded-full border px-5 py-2 text-[12px] tracking-[0.18em] uppercase transition-colors ${
+            className={`whitespace-nowrap rounded-full border px-4 py-2 text-[11px] tracking-[0.16em] uppercase transition-colors sm:px-5 sm:text-[12px] sm:tracking-[0.18em] ${
               solid
                 ? "border-teal text-teal hover:bg-teal hover:text-warm-white"
                 : "border-warm-white/70 text-warm-white hover:bg-warm-white hover:text-teal-deep"
@@ -61,16 +64,16 @@ export default function Nav() {
           >
             Reservar
           </a>
-        </div>
 
-        <button
-          aria-label="Abrir menú"
-          onClick={() => setOpen((v) => !v)}
-          className={`flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden`}
-        >
-          <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
-          <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
-        </button>
+          <button
+            aria-label="Abrir menú"
+            onClick={() => setOpen((v) => !v)}
+            className={`flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden`}
+          >
+            <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
+            <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
+          </button>
+        </div>
       </div>
 
       {open && (

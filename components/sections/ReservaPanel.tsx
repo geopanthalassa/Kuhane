@@ -27,6 +27,7 @@ export default function ReservaPanel() {
   const [showPromo, setShowPromo] = useState(false);
   const [promo, setPromo] = useState("");
   const [promoStatus, setPromoStatus] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
+  const [datesError, setDatesError] = useState(false);
 
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -72,10 +73,19 @@ export default function ReservaPanel() {
     return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
+  // No debe dejar avanzar sin fechas — pedido de Andre (7/9/2026): "no
+  // debería dejarme avanzar si no lleno los campos de fechas y cantidad de
+  // personas". Si faltan, abre el panel de fechas en vez de ir a Nuku OS.
   function handleSubmit() {
+    if (!checkin || !checkout) {
+      setDatesError(true);
+      setOpenPanel("dates");
+      return;
+    }
+    setDatesError(false);
     const params = new URLSearchParams();
-    if (checkin) params.set("checkin", checkin);
-    if (checkout) params.set("checkout", checkout);
+    params.set("checkin", checkin);
+    params.set("checkout", checkout);
     params.set("guests", String(guests));
     if (promo.trim()) params.set("promo", promo.trim().toUpperCase());
     window.open(`${reserva.nukuOsUrl}?${params.toString()}`, "_blank", "noopener,noreferrer");
@@ -108,7 +118,11 @@ export default function ReservaPanel() {
         {reserva.eyebrow}
       </p>
 
-      <div className="relative flex items-stretch overflow-visible rounded-full bg-warm-white/95 p-1.5 shadow-[0_15px_45px_-15px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+      <div
+        className={`relative flex items-stretch overflow-visible rounded-full bg-warm-white/95 p-1.5 shadow-[0_15px_45px_-15px_rgba(0,0,0,0.5)] backdrop-blur-sm ${
+          datesError ? "ring-2 ring-rose-400" : ""
+        }`}
+      >
         <button
           type="button"
           onClick={() => setOpenPanel((p) => (p === "dates" ? null : "dates"))}
@@ -153,7 +167,10 @@ export default function ReservaPanel() {
               onChange={(next) => {
                 setCheckin(next.checkin);
                 setCheckout(next.checkout);
-                if (next.checkin && next.checkout) setOpenPanel(null);
+                if (next.checkin && next.checkout) {
+                  setDatesError(false);
+                  setOpenPanel(null);
+                }
               }}
             />
           </div>
@@ -187,9 +204,15 @@ export default function ReservaPanel() {
         )}
       </div>
 
-      <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-warm-white/70">
-        {reserva.helper}
-      </p>
+      {datesError ? (
+        <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-rose-300">
+          Elige fechas de llegada y salida para continuar.
+        </p>
+      ) : (
+        <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-warm-white/70">
+          {reserva.helper}
+        </p>
+      )}
 
       <div className="mt-6 flex flex-col items-center">
         <a
