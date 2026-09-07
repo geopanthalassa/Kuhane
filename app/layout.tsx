@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/lib/site-content";
-import { LocaleProvider } from "@/lib/content/LocaleProvider";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 // NOTA: este entorno de desarrollo no tiene salida a internet hacia
 // fonts.googleapis.com, así que por ahora la tipografía se resuelve con
@@ -47,10 +45,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
-        <LocaleProvider>
-          {children}
-          <WhatsAppButton />
-        </LocaleProvider>
+        {children}
       </body>
     </html>
   );

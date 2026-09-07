@@ -2,13 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useContent, useLocale } from "@/lib/content/LocaleProvider";
+import { nav } from "@/lib/site-content";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { nav, ui } = useContent();
-  const { locale, setLocale } = useLocale();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -52,8 +50,7 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <LocaleToggle solid={solid} locale={locale} setLocale={setLocale} ariaLabel={ui.nav.toggleLanguageAria} />
+        <div className="hidden lg:block">
           <a
             href="#reserva"
             className={`rounded-full border px-5 py-2 text-[12px] tracking-[0.18em] uppercase transition-colors ${
@@ -62,21 +59,18 @@ export default function Nav() {
                 : "border-warm-white/70 text-warm-white hover:bg-warm-white hover:text-teal-deep"
             }`}
           >
-            {ui.nav.reserve}
+            Reservar
           </a>
         </div>
 
-        <div className="flex items-center gap-3 lg:hidden">
-          <LocaleToggle solid={solid} locale={locale} setLocale={setLocale} ariaLabel={ui.nav.toggleLanguageAria} />
-          <button
-            aria-label={ui.nav.openMenuAria}
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5"
-          >
-            <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
-            <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
-          </button>
-        </div>
+        <button
+          aria-label="Abrir menú"
+          onClick={() => setOpen((v) => !v)}
+          className={`flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden`}
+        >
+          <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
+          <span className={`h-px w-6 transition-colors ${solid ? "bg-stone" : "bg-warm-white"}`} />
+        </button>
       </div>
 
       {open && (
@@ -97,54 +91,11 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               className="mt-2 w-fit rounded-full border border-teal px-5 py-2 text-[12px] tracking-[0.18em] uppercase text-teal"
             >
-              {ui.nav.reserve}
+              Reservar
             </a>
           </nav>
         </div>
       )}
     </header>
-  );
-}
-
-// Pill-style ES | EN toggle, matching the visual language of the existing
-// "Reservar" pill link (rounded-full border, uppercase tracked-out label).
-function LocaleToggle({
-  solid,
-  locale,
-  setLocale,
-  ariaLabel,
-}: {
-  solid: boolean;
-  locale: "es" | "en";
-  setLocale: (l: "es" | "en") => void;
-  ariaLabel: string;
-}) {
-  const borderColor = solid ? "border-teal/40" : "border-warm-white/50";
-  const inactiveText = solid ? "text-stone/50 hover:text-teal" : "text-warm-white/60 hover:text-warm-white";
-  const activeBg = solid ? "bg-teal text-warm-white" : "bg-warm-white text-teal-deep";
-
-  return (
-    <div
-      role="group"
-      aria-label={ariaLabel}
-      className={`flex items-center overflow-hidden rounded-full border text-[11px] tracking-[0.14em] ${borderColor}`}
-    >
-      <button
-        type="button"
-        onClick={() => setLocale("es")}
-        aria-pressed={locale === "es"}
-        className={`px-2.5 py-1.5 uppercase transition-colors ${locale === "es" ? activeBg : inactiveText}`}
-      >
-        ES
-      </button>
-      <button
-        type="button"
-        onClick={() => setLocale("en")}
-        aria-pressed={locale === "en"}
-        className={`px-2.5 py-1.5 uppercase transition-colors ${locale === "en" ? activeBg : inactiveText}`}
-      >
-        EN
-      </button>
-    </div>
   );
 }

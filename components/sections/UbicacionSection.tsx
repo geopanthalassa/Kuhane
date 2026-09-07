@@ -11,7 +11,7 @@ const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${ubicaci
 
 export default function UbicacionSection() {
   return (
-    <section id="ubicacion" className="bg-warm-white py-24 sm:py-32">
+    <section id="ubicacion" className="bg-warm-white pb-24 pt-8 sm:pb-32 sm:pt-12">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <Reveal>
           <SectionIntro eyebrow={ubicacion.eyebrow} title={ubicacion.title} align="center" />

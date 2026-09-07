@@ -144,7 +144,7 @@ export const experiencias = {
   // Pedido de Andre (6/9/2026): dejar claro que además del tour que arma
   // Kuhane, conectan al huésped con otras experiencias de la isla.
   extra:
-    "Además, realizamos un tour completo por la isla y te contactamos con otras experiencias — buceo, cabalgatas y mucho más — para que armes tu viaje a medida.",
+    "Kuhane te conecta con otras aventuras — realizamos un tour completo por la isla y te contactamos con otras experiencias, como buceo y cabalgatas, para que armes tu viaje a medida.",
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
@@ -158,7 +158,7 @@ export const experiencias = {
 export const otrasExperiencias = {
   eyebrow: "Además",
   title: "Otras experiencias en la isla",
-  body: "Kuhane arma tu tour por la isla y, además, te contacta con experiencias extra.",
+  body: "Kuhane te conecta con otras aventuras.",
   actividades: [
     {
       title: "Buceo",
@@ -205,7 +205,7 @@ export const sofia = {
     { value: "450+", label: "registros patrimoniales resguardados" },
     { value: "64", label: "producciones discográficas" },
   ],
-  ctaLabel: "Conocé su historia",
+  ctaLabel: "Conoce su historia",
   ctaHref: "/sofia-abarca",
 };
 
@@ -649,8 +649,8 @@ export const resenas = {
 };
 
 export const cta = {
-  title: "Vení a vivir tu Rapa Nui.",
-  body: "Escribinos y te ayudamos a planear tu estadía en Kuhane — con traslado al aeropuerto y de vuelta incluido en tu reserva.",
+  title: "Ven a vivir tu Rapa Nui.",
+  body: "Escríbenos y te ayudamos a planear tu estadía en Kuhane — con traslado al aeropuerto y de vuelta incluido en tu reserva.",
   ctaPrimary: "RESERVAR",
   // Ahu Tongariki al atardecer, foto real enviada por Andre — sept. 2026.
   foto: "/images/cta/reserva.jpg",
@@ -672,7 +672,7 @@ export const reserva = {
   nukuOsAccountId: "057a625c-9036-4b1d-957b-8c436f71b4cd",
   eyebrow: "Disponibilidad",
   helper:
-    "Elegí tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane — hoy en fase de pruebas, así que confirmamos con vos por WhatsApp o email antes de cobrar.",
+    "Elige tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane — hoy en fase de pruebas, así que confirmamos contigo por WhatsApp o email antes de cobrar.",
   dates: "Fechas",
   guests: "Huéspedes",
   guestSingular: "persona",
@@ -682,14 +682,14 @@ export const reserva = {
   checkAvailabilityAria: "Ver disponibilidad",
   fewerGuestsAria: "Menos huéspedes",
   moreGuestsAria: "Más huéspedes",
-  promoQuestion: "¿Tenés un código promocional?",
+  promoQuestion: "¿Código promo?",
   promoPlaceholder: "Código promocional",
   promoChecking: "Comprobando…",
   promoValid: "Código válido — se aplica al confirmar tu reserva.",
   promoInvalid: "Ese código no es válido o ya venció.",
   flightsCta: "Buscar vuelos a Isla de Pascua",
   flightsHelper:
-    "Salida sugerida desde Santiago — cambiá el origen en el buscador si volás desde otra ciudad.",
+    "Salida sugerida desde Santiago — cambia el origen en el buscador si vuelas desde otra ciudad.",
   monthsShort: [
     "ene", "feb", "mar", "abr", "may", "jun",
     "jul", "ago", "sep", "oct", "nov", "dic",
@@ -714,7 +714,7 @@ export const footer = {
 // y site.address más arriba.
 export const ubicacion = {
   eyebrow: "Cómo llegar",
-  title: "Encontranos en Hanga Roa.",
-  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y si llegás en avión, el traslado desde el aeropuerto ya está incluido en tu reserva.",
+  title: "Encuéntranos en Hanga Roa.",
+  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y si llegas en avión, el traslado desde el aeropuerto ya está incluido en tu reserva.",
   directionsCta: "Cómo llegar (Google Maps)",
 };

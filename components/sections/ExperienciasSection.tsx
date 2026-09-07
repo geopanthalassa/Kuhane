@@ -58,7 +58,7 @@ export default function ExperienciasSection() {
             <p className="mx-auto mt-3 max-w-md text-center text-[15px] leading-relaxed text-stone-soft">
               {otrasExperiencias.body}
             </p>
-            <div className="mt-7 flex justify-center gap-8">
+            <div className="mt-7 flex items-center justify-between gap-6 px-6 sm:px-16">
               {otrasExperiencias.actividades.map((actividad) => (
                 <button
                   key={actividad.title}
@@ -88,13 +88,13 @@ export default function ExperienciasSection() {
 
         {/* Aeropuerto: presencia visual destacada, tal como pide el brief */}
         <Reveal delayMs={200}>
-          <div className="relative mt-14 overflow-hidden rounded-sm">
+          <div className="relative mx-auto mt-14 max-w-3xl overflow-hidden rounded-sm">
             <div className="relative aspect-[16/9] w-full">
               <Image
                 src={aeropuerto.foto}
                 alt="Traslado desde el aeropuerto — Kuhane"
                 fill
-                sizes="100vw"
+                sizes="(min-width: 768px) 768px, 100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/80 via-teal-deep/25 to-transparent" />

@@ -5,10 +5,57 @@ import Image from "next/image";
 import PhotoCarousel from "@/components/ui/PhotoCarousel";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
-import { habitaciones, habitacionesIntro } from "@/lib/site-content";
+import { habitaciones, habitacionesIntro, type Habitacion } from "@/lib/site-content";
+
+// Rediseño más compacto (pedido de Andre, 7/9/2026: "la sección de
+// habitaciones ocupa demasiado espacio"). Antes: grilla de 2 columnas con
+// una ficha grande y muy alta por unidad (7 fichas = mucho scroll). Ahora:
+// se agrupan las unidades por tipo real (Habitación / Bungalow — mismo
+// campo `tipo` que ya existía, no es un dato nuevo) en dos filas de tarjetas
+// más chicas y en 3 columnas, con los datos condensados en 2 líneas en vez
+// de una tabla de 4 filas por ficha.
+function RoomCard({ h, onOpen }: { h: Habitacion; onOpen: (fotos: string[], alt: string) => void }) {
+  return (
+    <Reveal>
+      <PhotoCarousel
+        photos={h.fotos}
+        alt={h.nombre}
+        className="aspect-[4/3] w-full"
+        onImageClick={() => onOpen(h.fotos, h.nombre)}
+      />
+      <div className="mt-4 flex items-start justify-between gap-3">
+        <h3 className="font-display text-lg text-stone">{h.nombre}</h3>
+        <span className="whitespace-nowrap text-[13px] text-stone-soft">{h.precio}</span>
+      </div>
+      <p className="mt-1 text-[13px] text-stone-soft">
+        {h.capacidad} · {h.bano}
+      </p>
+      <p className="mt-1 text-[13px] text-stone-soft">{h.camas}</p>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        {h.servicios.map((s) => (
+          <span
+            key={s}
+            className="rounded-full border border-stone/15 px-2.5 py-0.5 text-[11px] text-stone-soft"
+          >
+            {s}
+          </span>
+        ))}
+      </div>
+      <a
+        href="#reserva"
+        className="mt-4 inline-block text-[12px] tracking-[0.18em] uppercase text-teal underline underline-offset-4 hover:text-teal-deep"
+      >
+        Consultar disponibilidad
+      </a>
+    </Reveal>
+  );
+}
 
 export default function HabitacionesSection() {
   const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(null);
+
+  const soloHabitaciones = habitaciones.filter((h) => h.tipo === "Habitación");
+  const bungalows = habitaciones.filter((h) => h.tipo === "Bungalow");
 
   return (
     <section id="habitaciones" className="bg-sand py-24 sm:py-32">
@@ -24,50 +71,27 @@ export default function HabitacionesSection() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-14 md:grid-cols-2">
-          {habitaciones.map((h, i) => (
-            <Reveal key={h.nombre} delayMs={i * 100}>
-              <PhotoCarousel
-                photos={h.fotos}
-                alt={h.nombre}
-                className="aspect-[4/3] w-full"
-                onImageClick={(index) => setLightbox({ fotos: h.fotos, alt: h.nombre, index })}
-              />
-              <div className="mt-5 flex items-start justify-between gap-4">
-                <div>
-                  <span className="text-[11px] tracking-[0.18em] uppercase text-teal">{h.tipo}</span>
-                  <h3 className="font-display text-xl text-stone">{h.nombre}</h3>
-                </div>
-                <span className="whitespace-nowrap text-sm text-stone-soft">{h.precio}</span>
-              </div>
-              <dl className="mt-3 grid grid-cols-2 gap-x-6 gap-y-1 text-[13px] text-stone-soft">
-                <div className="flex justify-between border-b border-stone/10 py-1">
-                  <dt>Capacidad</dt>
-                  <dd>{h.capacidad}</dd>
-                </div>
-                <div className="flex justify-between border-b border-stone/10 py-1">
-                  <dt>Baño</dt>
-                  <dd className="text-right">{h.bano}</dd>
-                </div>
-                <div className="col-span-2 flex justify-between border-b border-stone/10 py-1">
-                  <dt>Camas</dt>
-                  <dd className="text-right">{h.camas}</dd>
-                </div>
-                <div className="col-span-2 flex justify-between border-b border-stone/10 py-1">
-                  <dt>Características</dt>
-                  <dd className="text-right">{h.caracteristicas}</dd>
-                </div>
-              </dl>
-              <p className="mt-3 text-[13px] text-stone-soft">
-                Servicios: {h.servicios.join(", ")}
-              </p>
-              <a
-                href="#reserva"
-                className="mt-5 inline-block text-[12px] tracking-[0.18em] uppercase text-teal underline underline-offset-4 hover:text-teal-deep"
-              >
-                Consultar disponibilidad
-              </a>
-            </Reveal>
+        <Reveal delayMs={60}>
+          <p className="mt-14 text-[11px] tracking-[0.2em] uppercase text-teal">Habitaciones</p>
+        </Reveal>
+        <div className="mt-5 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {soloHabitaciones.map((h, i) => (
+            <div key={h.nombre} style={{ transitionDelay: `${i * 60}ms` }}>
+              <RoomCard h={h} onOpen={(fotos, alt) => setLightbox({ fotos, alt, index: 0 })} />
+            </div>
+          ))}
+        </div>
+
+        <Reveal delayMs={60}>
+          <p className="mt-16 text-[11px] tracking-[0.2em] uppercase text-teal">
+            Bungalows frente al mar
+          </p>
+        </Reveal>
+        <div className="mt-5 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {bungalows.map((h, i) => (
+            <div key={h.nombre} style={{ transitionDelay: `${i * 60}ms` }}>
+              <RoomCard h={h} onOpen={(fotos, alt) => setLightbox({ fotos, alt, index: 0 })} />
+            </div>
           ))}
         </div>
       </div>
