@@ -26,7 +26,7 @@ export const site = {
     { value: "4,7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4,7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
-  whatsapp: TODO_PLACEHOLDER,
+  whatsapp: "+56 9 9504 5737",
   email: TODO_PLACEHOLDER,
   // Dirección real de Kuhane, confirmada por Andre vía link de Google Maps
   // (7/9/2026): coordenadas -27.1343082, -109.4244693.
@@ -55,7 +55,7 @@ export const hero = {
   eyebrow: "KUHANE",
   place: "Rapa Nui",
   line1: "Llega como viajero.",
-  line2: "Siéntete parte de la isla.",
+  line2: "Conéctate y siéntete parte de la isla.",
   ctaPrimary: "RESERVAR",
   ctaSecondary: "DESCUBRIR KUHANE",
   // Video real enviado por Andre (7/9/2026), reemplaza el fallback estático.
@@ -292,6 +292,7 @@ export const sofiaLibros: Libro[] = [
       "Libro-objeto audible y exploratorio para niños, con 6 radioteatros y 12 canciones en dos CDs. Narra la amistad entre una niña rapanui y un niño continental, como un llamado a la integración y no discriminación infantil.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/moana.jpg",
   },
   {
     titulo: "Apuntes de Rapa Nui",
@@ -300,6 +301,10 @@ export const sofiaLibros: Libro[] = [
       "Escrito en español y ruso como material promocional de Rapa Nui en la gira presidencial de Michelle Bachelet: una mirada general a la historia y las formas de arte de la isla. Editado por ProChile.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    // Aún sin foto de portada — se muestra el logo de Kuhane como reemplazo
+    // (ver render en app/sofia-abarca/page.tsx, que lo dibuja distinto a
+    // una portada real para que no se vea como una foto recortada).
+    portada: "/logo/kuhane-wordmark-web.png",
   },
   {
     titulo: "Manos del Alma: Arte Escultórico Rapanui",
@@ -317,6 +322,7 @@ export const sofiaLibros: Libro[] = [
       "Investigación sobre la historia de los alimentos rapanui, hilo conductor esencial de sus tradiciones culinarias, nutricionales y rituales.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    portada: "/images/libros/ka-kai-mo-haka-hangu.jpg",
   },
   {
     titulo: "Tarai, Iconografía Escultórica de la Tradición Oral de Rapa Nui",
@@ -325,6 +331,8 @@ export const sofiaLibros: Libro[] = [
       "Junto al arqueólogo Sergio Rapu Haoa, propone 30 ejercicios comparativos entre las oralidades ancestrales rapanui y sus piezas iconográficas escultóricas.",
     fragmento: TODO_PLACEHOLDER,
     enlace: TODO_PLACEHOLDER,
+    // Aún sin foto de portada — logo de Kuhane como reemplazo (ver nota arriba).
+    portada: "/logo/kuhane-wordmark-web.png",
   },
 ];
 
