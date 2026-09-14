@@ -148,13 +148,21 @@ export default function SofiaAbarcaPage() {
               {sofiaLibros.map((libro, i) => (
                 <Reveal key={libro.titulo} delayMs={i * 60} className="flex gap-5">
                   {libro.portada ? (
-                    <div className="relative h-40 w-28 shrink-0 overflow-hidden">
+                    <div
+                      className={`relative h-40 w-28 shrink-0 overflow-hidden ${
+                        libro.portada.includes("/logo/") ? "bg-sand" : ""
+                      }`}
+                    >
                       <Image
                         src={libro.portada}
-                        alt={`Portada de ${libro.titulo}`}
+                        alt={
+                          libro.portada.includes("/logo/")
+                            ? "Kuhane Etno-Hostal"
+                            : `Portada de ${libro.titulo}`
+                        }
                         fill
                         sizes="112px"
-                        className="object-cover"
+                        className={libro.portada.includes("/logo/") ? "object-contain p-4" : "object-cover"}
                       />
                     </div>
                   ) : (
