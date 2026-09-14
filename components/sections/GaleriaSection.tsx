@@ -65,6 +65,14 @@ export default function GaleriaSection() {
                   sizes="(min-width: 640px) 300px, 70vw"
                   className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                 />
+                <Image
+                  src="/logo/kuhane-wordmark-web.png"
+                  alt=""
+                  width={500}
+                  height={159}
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-3 right-3 h-auto w-16 opacity-80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:w-20"
+                />
               </button>
             ))}
           </div>
@@ -90,6 +98,14 @@ export default function GaleriaSection() {
               fill
               sizes="90vw"
               className="object-contain"
+            />
+            <Image
+              src="/logo/kuhane-wordmark-web.png"
+              alt=""
+              width={500}
+              height={159}
+              aria-hidden
+              className="pointer-events-none absolute bottom-4 right-4 h-auto w-24 opacity-80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:w-28"
             />
           </div>
         </div>
