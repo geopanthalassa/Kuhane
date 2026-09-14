@@ -54,6 +54,8 @@ const ui = {
   siguiente: "Siguiente",
   reviewsCountSuffix: "reseñas",
   disponibleProximamente: "Disponible próximamente",
+  activarSonido: "Activar sonido",
+  silenciar: "Silenciar",
 };
 
 export const es = {
