@@ -4,10 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useContent } from "@/lib/content/LocaleProvider";
 
+const HERO_AUDIO_SRC = "/audio/sofia-cancion.m4a";
+
 export default function Hero() {
-  const { hero } = useContent();
+  const { hero, ui } = useContent();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [videoAvailable, setVideoAvailable] = useState(false);
+  const [audioAvailable, setAudioAvailable] = useState(false);
+  const [audioOn, setAudioOn] = useState(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -20,7 +25,26 @@ export default function Hero() {
     fetch(hero.videoSrc, { method: "HEAD" })
       .then((res) => setVideoAvailable(res.ok))
       .catch(() => setVideoAvailable(false));
+
+    // Audio opcional de fondo (canción de Sofía) — apagada por defecto,
+    // la persona la activa a mano con el botón. Solo se ofrece si el
+    // archivo realmente existe.
+    fetch(HERO_AUDIO_SRC, { method: "HEAD" })
+      .then((res) => setAudioAvailable(res.ok))
+      .catch(() => setAudioAvailable(false));
   }, []);
+
+  const toggleAudio = () => {
+    const el = audioRef.current;
+    if (!el) return;
+    if (audioOn) {
+      el.pause();
+      setAudioOn(false);
+    } else {
+      el.play().catch(() => {});
+      setAudioOn(true);
+    }
+  };
 
   return (
     <section
@@ -83,6 +107,40 @@ export default function Hero() {
       <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 sm:block">
         <div className="h-9 w-[1px] animate-pulse bg-warm-white/50" />
       </div>
+
+      {audioAvailable && (
+        <>
+          <audio ref={audioRef} src={HERO_AUDIO_SRC} loop preload="none" />
+          <button
+            type="button"
+            onClick={toggleAudio}
+            aria-label={audioOn ? ui.silenciar : ui.activarSonido}
+            className="absolute bottom-6 right-6 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-warm-white/40 bg-stone/30 text-warm-white backdrop-blur-sm transition-colors hover:bg-stone/50"
+          >
+            {audioOn ? (
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
+                <path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor" />
+                <path
+                  d="M16 9c1 1 1 5 0 6M18.5 7c2 2 2 8 0 10"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
+                <path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor" />
+                <path
+                  d="M16.5 8.5 21 15M21 8.5l-4.5 6.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            )}
+          </button>
+        </>
+      )}
     </section>
   );
 }
