@@ -124,7 +124,19 @@ export default function SofiaAbarcaPage() {
             <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
               {sofiaMaestros.map((maestro, i) => (
                 <Reveal key={maestro.nombre} delayMs={i * 60} className="flex gap-5">
-                  <PlaceholderMedia tone="teal" label="" className="h-14 w-14 shrink-0 rounded-full" />
+                  <div
+                    className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-full ${
+                      maestro.foto ? "" : "bg-sand"
+                    }`}
+                  >
+                    <Image
+                      src={maestro.foto ?? "/logo/kuhane-motivo-rapanui.png"}
+                      alt={maestro.foto ? maestro.nombre : "Kuhane Etno-Hostal"}
+                      fill
+                      sizes="56px"
+                      className={maestro.foto ? "object-cover" : "object-contain p-2"}
+                    />
+                  </div>
                   <div>
                     <h3 className="font-display text-base text-warm-white">{maestro.nombre}</h3>
                     <p className="mt-2 text-[14px] leading-relaxed text-warm-white/75">
