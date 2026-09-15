@@ -11,6 +11,11 @@ import { useContent } from "@/lib/content/LocaleProvider";
 export default function GaleriaSection() {
   const { galeria, ui } = useContent();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  // Proporción real de la foto abierta en el lightbox — sin esto, el marco
+  // queda fijo en 4:3 y las fotos con otra forma (por ejemplo más anchas)
+  // dejan una franja vacía arriba/abajo dentro de la cual la marca de agua
+  // termina "flotando" fuera de la foto en vez de sobre ella.
+  const [lightboxRatio, setLightboxRatio] = useState(4 / 3);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollByCard = (dir: -1 | 1) => {
@@ -55,7 +60,10 @@ export default function GaleriaSection() {
               <button
                 key={src}
                 data-card
-                onClick={() => setOpenIndex(i)}
+                onClick={() => {
+                  setLightboxRatio(4 / 3);
+                  setOpenIndex(i);
+                }}
                 className="relative aspect-[4/5] w-[70vw] shrink-0 snap-start overflow-hidden sm:w-[300px]"
               >
                 <Image
@@ -91,13 +99,24 @@ export default function GaleriaSection() {
           >
             ×
           </button>
-          <div className="relative aspect-[4/3] w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="relative w-full max-w-3xl"
+            style={{ aspectRatio: lightboxRatio, maxHeight: "85vh" }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
+              key={openIndex}
               src={galeria.fotos[openIndex]}
               alt="Kuhane Etno-Hostal — Rapa Nui"
               fill
               sizes="90vw"
               className="object-contain"
+              onLoad={(e) => {
+                const img = e.currentTarget;
+                if (img.naturalWidth && img.naturalHeight) {
+                  setLightboxRatio(img.naturalWidth / img.naturalHeight);
+                }
+              }}
             />
             <Image
               src="/logo/kuhane-wordmark-web.png"
