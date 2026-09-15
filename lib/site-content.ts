@@ -388,38 +388,45 @@ export const sofiaAreas: SofiaArea[] = [
   },
 ];
 
-export type SofiaMaestro = { nombre: string; descripcion: string };
+export type SofiaMaestro = { nombre: string; descripcion: string; foto?: string };
 
 export const sofiaMaestros: SofiaMaestro[] = [
   {
     nombre: "Luis Avaka Paoa (Papá Kiko)",
     descripcion:
       "Patriarca cultural de Rapa Nui (†2008). Acogió a Sofía como discípula desde el 2000 hasta su partida, realizando juntos múltiples registros de oralidades y cantos ancestrales.",
+    foto: "/images/maestros/papa-kiko-avaka.jpg",
   },
   {
     nombre: "Isabel Pakarati Tepano",
     descripcion:
       "Maestra de Kai-kai, Tesoro Humano Vivo (2018) y Premio Nacional de Cultura Tradicional (2025). Revisó la recopilación de tejidos manuales realizada por Sofía en 2004.",
+    foto: "/images/maestros/isabel-pakarati-tepano.jpg",
   },
   {
     nombre: "Tomás Tuki Tepano",
     descripcion:
       "Maestro escultor, distinguido con el Sello de Excelencia UNESCO (2012). Transmisor del Tarai en el que se basó el libro Manos del Alma.",
+    foto: "/images/maestros/tomas-tuki-tepano.jpg",
   },
   {
     nombre: "María Elena Hotus",
     descripcion:
       "Gran maestra del canto antiguo. De su trabajo conjunto con Sofía nacen los dos libros Ríu, el Canto Primal de Rapa Nui (LOM 2015 y Rapa Nui Press 2026).",
+    foto: "/images/maestros/maria-elena-hotus.jpg",
   },
   {
     nombre: "Sergio Rapu Haoa",
     descripcion:
       "Arqueólogo PhD. Discípula suya desde 2005; juntos montaron las exposiciones \"Mata ki te Mata\" (2018) y \"Tarai\" (2025).",
+    foto: "/images/maestros/sergio-rapu-haoa.jpg",
   },
   {
     nombre: "Sonia Haoa Cardinali",
     descripcion:
       "Arqueóloga PhD (Universidad de Uppsala), ha marcado más de 23.000 puntos de valor arqueológico en la isla — base del entendimiento toponímico de las recopilaciones de Sofía.",
+    // TODO_PLACEHOLDER: aún no tenemos foto de Sonia Haoa Cardinali — mientras
+    // llega, se muestra uno de los motivos rapanui del logo como respaldo.
   },
 ];
 
