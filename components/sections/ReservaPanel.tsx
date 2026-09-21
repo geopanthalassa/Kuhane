@@ -119,8 +119,21 @@ export default function ReservaPanel() {
         {reserva.eyebrow}
       </p>
 
+      {/* Fondo semitransparente detrás del calendario/huéspedes cuando están
+          abiertos — sin esto, el panel flotante (position: absolute) quedaba
+          encima del texto de ayuda y del botón de vuelos que están debajo,
+          en vez de dejar claro que es un panel aparte. Cierra al tocar
+          afuera, igual que el listener de mousedown que ya existía. */}
+      {openPanel && (
+        <div
+          onClick={() => setOpenPanel(null)}
+          aria-hidden="true"
+          className="fixed inset-0 z-10 bg-teal-deep/30 backdrop-blur-[2px]"
+        />
+      )}
+
       <div
-        className={`relative flex items-stretch overflow-visible rounded-full bg-warm-white/95 p-1.5 shadow-[0_15px_45px_-15px_rgba(0,0,0,0.5)] backdrop-blur-sm ${
+        className={`relative z-20 flex items-stretch overflow-visible rounded-full bg-warm-white/95 p-1.5 shadow-[0_15px_45px_-15px_rgba(0,0,0,0.5)] backdrop-blur-sm ${
           datesError ? "ring-2 ring-rose-400" : ""
         }`}
       >
