@@ -685,6 +685,18 @@ export const resenas = {
   ] as Resena[],
 };
 
+// Video de Kuhane (jardines, bungalows, atardecer) enviado por Andre —
+// sept. 2026, versión editada final. Poster extraído del propio video
+// (fotograma del atardecer con moai sobre el mar) para que siempre haya
+// una imagen de respaldo real.
+export const kuhaneEspera = {
+  title: "Kuhane te espera.",
+  body: "En el corazón de Hanga Roa, con el jardín, el atardecer y la casa siempre listos para recibirte.",
+  videoSrc: "/media/kuhane-exterior.mp4",
+  posterSrc: "/images/kuhane/kuhane-exterior-poster.jpg",
+  posterAlt: "Moai y atardecer sobre el mar, Rapa Nui",
+};
+
 export const cta = {
   title: "Ven a vivir tu Rapa Nui.",
   body: "Escríbenos y te ayudamos a planear tu estadía en Kuhane — con traslado al aeropuerto y de vuelta incluido en tu reserva.",
