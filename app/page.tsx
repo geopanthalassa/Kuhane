@@ -13,8 +13,8 @@ import KuhaneEsperaSection from "@/components/sections/KuhaneEsperaSection";
 import CTAReservaSection from "@/components/sections/CTAReservaSection";
 
 // Home narrativa: Hero -> Rapa Nui -> Kuhane -> Experiencia -> Cultura ->
-// Habitaciones -> Galería -> Reseñas -> Ubicación -> Kuhane te espera (video)
-// -> Reserva.
+// Habitaciones -> Kuhane te espera (video) -> Galería -> Reseñas ->
+// Ubicación -> Reserva.
 // Nota: la sección "Comunidad" (HuespedesSection) queda fuera del home
 // hasta que haya fotos reales de huéspedes — no publicar espacios vacíos.
 export default function Home() {
@@ -28,10 +28,10 @@ export default function Home() {
         <ExperienciasSection />
         <CulturaSection />
         <HabitacionesSection />
+        <KuhaneEsperaSection />
         <GaleriaSection />
         <ResenasSection />
         <UbicacionSection />
-        <KuhaneEsperaSection />
         <CTAReservaSection />
       </main>
       <Footer />
