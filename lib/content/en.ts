@@ -320,6 +320,14 @@ const resenas: { eyebrow: string; title: string; testimonios: Resena[] } = {
   testimonios: es.resenas.testimonios,
 };
 
+const kuhaneEspera = {
+  title: "Kuhane awaits you.",
+  body: "In the heart of Hanga Roa, with the garden, the sunset and the house always ready to welcome you.",
+  videoSrc: es.kuhaneEspera.videoSrc,
+  posterSrc: es.kuhaneEspera.posterSrc,
+  posterAlt: "Moai and sunset over the ocean, Rapa Nui",
+};
+
 const cta = {
   title: "Come live your Rapa Nui.",
   body: "Write to us and we'll help you plan your stay at Kuhane — with airport transfer both ways included in your booking.",
@@ -427,6 +435,7 @@ export const en = {
   huespedes,
   galeria,
   resenas,
+  kuhaneEspera,
   cta,
   reserva,
   aeropuerto,
