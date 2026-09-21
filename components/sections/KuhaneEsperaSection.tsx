@@ -46,17 +46,22 @@ export default function KuhaneEsperaSection() {
 
   return (
     <section className="relative flex h-[85svh] min-h-[480px] w-full items-center justify-center overflow-hidden bg-teal-deep">
+      {/* object-contain (no object-cover) a propósito: el video es horizontal
+          (1280x720) y esta sección es más alta que ancha en pantallas
+          normales — con "cover" se recortaba arriba/abajo. Con "contain" se
+          ve el fotograma completo, con la marca de fondo (teal-deep) como
+          "letterbox" arriba y abajo en vez de cortar la imagen. */}
       <Image
         src={kuhaneEspera.posterSrc}
         alt={kuhaneEspera.posterAlt}
         fill
         sizes="100vw"
-        className="object-cover"
+        className="object-contain"
       />
 
       {videoAvailable && (
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain"
           autoPlay
           muted
           loop
