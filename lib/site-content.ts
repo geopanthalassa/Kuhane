@@ -26,8 +26,13 @@ export const site = {
     { value: "4,7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4,7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
-  whatsapp: "+56 9 9504 5737",
-  email: TODO_PLACEHOLDER,
+  // Número temporal mientras se define el definitivo — pedido de Andre
+  // (22/9/2026): "el numero mientras tanto sera este +56 9 7766 8288".
+  whatsapp: "+56 9 7766 8288",
+  // Correo del dominio propio, ya activo y recibiendo/enviando por Gmail
+  // (contacto@kuhanehostal.com) — pedido de Andre (22/9/2026): "el correo
+  // sera el de @kuhanehostal.com".
+  email: "contacto@kuhanehostal.com",
   // Dirección real de Kuhane, confirmada por Andre vía link de Google Maps
   // (7/9/2026): coordenadas -27.1343082, -109.4244693.
   address: "Kahu Mahau s/n, Hanga Roa, Isla de Pascua, Chile",
@@ -750,6 +755,10 @@ export const reserva = {
   flightsCta: "Buscar vuelos a Isla de Pascua",
   flightsHelper:
     "Salida sugerida desde Santiago — cambia el origen en el buscador si vuelas desde otra ciudad.",
+  // Confirmado por Andre (22/9/2026): "los pagos se hacen en el hostal
+  // puede ser efectivo, debito o credito local o extranjera".
+  paymentNote:
+    "El pago se hace en el hostal — aceptamos efectivo, y débito o crédito (nacional o extranjera).",
   monthsShort: [
     "ene", "feb", "mar", "abr", "may", "jun",
     "jul", "ago", "sep", "oct", "nov", "dic",
