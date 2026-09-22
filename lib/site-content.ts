@@ -40,15 +40,21 @@ export const ubicacionGeo = {
   lng: -109.4244693,
 };
 
+// Los href llevan "/" adelante (no solo "#seccion") a propósito — pedido de
+// Andre (22/9/2026): "los botones de arriba no funcionan cuando estas
+// dentro de la pagina de sofia". Un link tipo "#rapa-nui" solo funciona si
+// ya estás en la home (busca esa sección en la página actual); con "/#rapa-nui"
+// el navegador va primero a la home y ahí salta a la sección, así que
+// también funciona desde /sofia-abarca o cualquier otra página del sitio.
 export const nav = [
-  { label: "Rapa Nui", href: "#rapa-nui" },
-  { label: "Kuhane", href: "#kuhane" },
-  { label: "Experiencias", href: "#experiencias" },
-  { label: "Habitaciones", href: "#habitaciones" },
-  { label: "Cultura", href: "#cultura" },
-  { label: "Galería", href: "#galeria" },
-  { label: "Reseñas", href: "#resenas" },
-  { label: "Ubicación", href: "#ubicacion" },
+  { label: "Rapa Nui", href: "/#rapa-nui" },
+  { label: "Kuhane", href: "/#kuhane" },
+  { label: "Experiencias", href: "/#experiencias" },
+  { label: "Habitaciones", href: "/#habitaciones" },
+  { label: "Cultura", href: "/#cultura" },
+  { label: "Galería", href: "/#galeria" },
+  { label: "Reseñas", href: "/#resenas" },
+  { label: "Ubicación", href: "/#ubicacion" },
 ];
 
 export const hero = {
