@@ -8,7 +8,8 @@ import { buildFlightSearchLink } from "@/lib/travel-flights";
 // Panel de disponibilidad minimalista, estilo barra ("Check Availability")
 // en vez de una tarjeta grande. Al confirmar abre el sistema de reservas de
 // Kuhane (Nuku OS) en una pestaña nueva con esos datos como parámetros.
-// Nuku OS está en fase de pruebas (sin cobro automático todavía).
+// La reserva y el correo de confirmación son reales (no es una fase de
+// pruebas) — el pago no se procesa online, se hace directo en el hostal.
 // Recuperado y adaptado de kuhane-web-vuelos/kuhane-final (sin la capa de
 // i18n de esa versión, porque este sitio no es bilingüe).
 export default function ReservaPanel() {
@@ -250,6 +251,10 @@ export default function ReservaPanel() {
           {reserva.flightsHelper}
         </p>
       </div>
+
+      <p className="mx-auto mt-3 max-w-sm text-center text-[11px] leading-relaxed text-warm-white/55">
+        {reserva.paymentNote}
+      </p>
 
       <div className="mt-2 flex flex-col items-center">
         {!showPromo ? (
