@@ -63,7 +63,7 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10">
-        <a href="#top" className="relative block h-9 w-[150px] shrink-0">
+        <a href="/" className="relative block h-9 w-[150px] shrink-0">
           <Image
             src="/logo/kuhane-wordmark.png"
             alt="Kuhane Etno-Hostal"
@@ -98,7 +98,7 @@ export default function Nav() {
           </div>
 
           <a
-            href="#reserva"
+            href="/#reserva"
             className={`whitespace-nowrap rounded-full border px-4 py-2 text-[11px] tracking-[0.16em] uppercase transition-colors sm:px-5 sm:text-[12px] sm:tracking-[0.18em] ${
               solid
                 ? "border-teal text-teal hover:bg-teal hover:text-warm-white"
@@ -133,7 +133,7 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="#reserva"
+              href="/#reserva"
               onClick={() => setOpen(false)}
               className="mt-2 w-fit rounded-full border border-teal px-5 py-2 text-[12px] tracking-[0.18em] uppercase text-teal"
             >
