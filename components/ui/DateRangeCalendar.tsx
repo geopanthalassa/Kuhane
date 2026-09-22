@@ -24,6 +24,15 @@ function todayKey() {
   return toKey(t.getFullYear(), t.getMonth(), t.getDate());
 }
 
+function addDays(key: string, n: number) {
+  const d = new Date(key + "T00:00:00");
+  d.setDate(d.getDate() + n);
+  return toKey(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+// Estadía mínima de 2 noches — pedido de Andre (22/9/2026).
+const MIN_NIGHTS = 2;
+
 export default function DateRangeCalendar({
   checkin,
   checkout,
@@ -50,7 +59,10 @@ export default function DateRangeCalendar({
     if (key < today) return;
     if (!checkin || (checkin && checkout)) {
       onChange({ checkin: key, checkout: "" });
-    } else if (key <= checkin) {
+    } else if (key < addDays(checkin, MIN_NIGHTS)) {
+      // Fecha muy cerca de la llegada para cumplir la estadía mínima —
+      // la tratamos como una nueva fecha de llegada, igual que hacen la
+      // mayoría de los calendarios de reserva.
       onChange({ checkin: key, checkout: "" });
     } else {
       onChange({ checkin, checkout: key });
@@ -151,7 +163,7 @@ export default function DateRangeCalendar({
         {!checkin
           ? "Elegí la fecha de llegada"
           : !checkout
-          ? "Elegí la fecha de salida"
+          ? `Elegí la fecha de salida (mínimo ${MIN_NIGHTS} noches)`
           : `${checkin} → ${checkout}`}
       </p>
     </div>
