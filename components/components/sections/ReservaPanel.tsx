@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import DateRangeCalendar from "@/components/ui/DateRangeCalendar";
-import { reserva } from "@/lib/site-content";
+import { useContent } from "@/lib/content/LocaleProvider";
 import { buildFlightSearchLink } from "@/lib/travel-flights";
 
 // Panel de disponibilidad minimalista, estilo barra ("Check Availability")
@@ -12,6 +12,7 @@ import { buildFlightSearchLink } from "@/lib/travel-flights";
 // Recuperado y adaptado de kuhane-web-vuelos/kuhane-final (sin la capa de
 // i18n de esa versión, porque este sitio no es bilingüe).
 export default function ReservaPanel() {
+  const { reserva, ui } = useContent();
   const monthsShort = reserva.monthsShort;
 
   function formatShort(key: string) {
@@ -118,8 +119,21 @@ export default function ReservaPanel() {
         {reserva.eyebrow}
       </p>
 
+      {/* Fondo semitransparente detrás del calendario/huéspedes cuando están
+          abiertos — sin esto, el panel flotante (position: absolute) quedaba
+          encima del texto de ayuda y del botón de vuelos que están debajo,
+          en vez de dejar claro que es un panel aparte. Cierra al tocar
+          afuera, igual que el listener de mousedown que ya existía. */}
+      {openPanel && (
+        <div
+          onClick={() => setOpenPanel(null)}
+          aria-hidden="true"
+          className="fixed inset-0 z-10 bg-teal-deep/30 backdrop-blur-[2px]"
+        />
+      )}
+
       <div
-        className={`relative flex items-stretch overflow-visible rounded-full bg-warm-white/95 p-1.5 shadow-[0_15px_45px_-15px_rgba(0,0,0,0.5)] backdrop-blur-sm ${
+        className={`relative z-20 flex items-stretch overflow-visible rounded-full bg-warm-white/95 p-1.5 shadow-[0_15px_45px_-15px_rgba(0,0,0,0.5)] backdrop-blur-sm ${
           datesError ? "ring-2 ring-rose-400" : ""
         }`}
       >
@@ -206,7 +220,7 @@ export default function ReservaPanel() {
 
       {datesError ? (
         <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-rose-300">
-          Elige fechas de llegada y salida para continuar.
+          {ui.elegirFechasError}
         </p>
       ) : (
         <p className="mx-auto mt-4 max-w-sm text-center text-[12px] leading-relaxed text-warm-white/70">
@@ -236,6 +250,10 @@ export default function ReservaPanel() {
           {reserva.flightsHelper}
         </p>
       </div>
+
+      <p className="mx-auto mt-3 max-w-sm text-center text-[11px] leading-relaxed text-warm-white/55">
+        {reserva.paymentNote}
+      </p>
 
       <div className="mt-2 flex flex-col items-center">
         {!showPromo ? (
