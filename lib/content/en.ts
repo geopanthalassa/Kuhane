@@ -31,8 +31,8 @@ const site = {
     { value: "4.7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4.7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
-  whatsapp: "+56 9 9504 5737",
-  email: TODO_PLACEHOLDER,
+  whatsapp: "+56 9 7766 8288",
+  email: "contacto@kuhanehostal.com",
   address: "Kahu Mahau s/n, Hanga Roa, Easter Island, Chile",
 };
 
@@ -359,6 +359,8 @@ const reserva = {
   flightsCta: "Search flights to Easter Island",
   flightsHelper:
     "Suggested departure from Santiago — change the origin in the search if you're flying from another city.",
+  paymentNote:
+    "Payment is made at the hostel — we accept cash, and debit or credit cards (Chilean or international).",
   monthsShort: [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
