@@ -341,7 +341,7 @@ const reserva = {
   nukuOsAccountId: es.reserva.nukuOsAccountId,
   eyebrow: "Availability",
   helper:
-    "Choose your dates and number of guests. It takes you to Kuhane's booking system — currently in testing, so we'll confirm with you by WhatsApp or email before charging anything.",
+    "Choose your dates and number of guests. It takes you to Kuhane's booking system, where your reservation is recorded and you get your confirmation email right away — payment is made directly at the hostel.",
   dates: "Dates",
   guests: "Guests",
   guestSingular: "guest",
