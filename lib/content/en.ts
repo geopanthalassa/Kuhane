@@ -25,7 +25,9 @@ const site = {
   shortName: "Kuhane",
   location: "Hanga Roa, Rapa Nui",
   url: "https://kuhanehostal.com",
-  tahaiDistance: "1.2 km",
+  // Updated per Sofía's edit (9/23/2026, confirmed by Andre) — replaces the
+  // old Booking.com figure (1.2 km).
+  tahaiDistance: "200 m",
   ratings: [
     { value: "9.4", scale: "/10", source: "Booking.com", count: 121 as number | string },
     { value: "4.7", scale: "/5", source: "Google", count: 15 as number | string },
@@ -63,9 +65,10 @@ const hero = {
 
 const rapaNui = {
   eyebrow: "The territory",
+  // Translated from Sofía's updated Spanish copy (9/23/2026).
   title: "The most remote inhabited place on Earth.",
   body: [
-    "Rapa Nui sits thousands of kilometers from any other coastline — a volcanic island in the middle of the Pacific, where the landscape, history, and Rapanui culture are still alive in every corner.",
+    "Located in the middle of the South Pacific, Rapa Nui is almost 4,000 kilometers from mainland Chile and roughly equidistant from Tahiti. A subtropical island, with spectacular landscapes, a history of grandeur and resilience, and an unmatched living culture.",
   ],
   foto: "/images/rapa-nui/territorio.jpg",
   fotoAlt: "Aerial view of the Rano Kau crater, Rapa Nui",
@@ -74,9 +77,10 @@ const rapaNui = {
 const kuhane = {
   eyebrow: "Kuhane",
   title: "A place to feel at home.",
+  // Translated from Sofía's updated Spanish copy (9/23/2026).
   body: [
-    "Kuhane means soul, in the Rapanui language. It's also how we welcome every person who arrives: not as just another guest, but as someone who joins, for a few days, the life of the island.",
-    "From your arrival at the airport to your last night watching the sunset, we accompany the journey with the closeness and knowledge of those who live here.",
+    "Kuhane, in the Rapanui language, means soul. Designed to help you connect with the best of yourself, it will also be your home for a few days.",
+    "From the moment you step off your flight, in every sunrise and sunset, we're with you with practical information and cultural knowledge to help you build a memorable experience.",
   ],
   hosts:
     "Sofía Abarca, founder and host of Kuhane, is a multidisciplinary artist, writer, and researcher of Rapanui history and art — always ready to share the culture and mysteries of Rapa Nui with those who stay.",
@@ -90,11 +94,12 @@ const kuhane = {
 
 const experiencias = {
   eyebrow: "The experience",
-  title: "More than a hostel — the best way to explore the island.",
+  // Translated from Sofía's updated Spanish copy (9/23/2026).
+  title: "Not just a hostel: the best way to explore and understand Rapa Nui and its culture.",
   items: [
     {
       title: "Welcome to Kuhane",
-      body: "We pick you up at the airport and take you straight to Kuhane.",
+      body: "The moment you arrive, we welcome you with flower necklaces from the island and bring you home.",
       fotos: [
         "/images/experiencias/bienvenida-05.jpg",
         "/images/experiencias/bienvenida-06.jpg",
@@ -104,7 +109,7 @@ const experiencias = {
     },
     {
       title: "Living culture",
-      body: "Coffee at sunset, culinary tastings, soft music, and conversation by the sea — a daily ritual on Kuhane's terrace.",
+      body: "Island flavors, colors, and aromas, soft music, conversation by the sea, and plenty of culture: the daily ritual on Kuhane's terrace.",
       fotos: [
         "/images/experiencias/cultura-viva.jpg",
         "/images/experiencias/cultura-viva-02.jpg",
@@ -114,7 +119,9 @@ const experiencias = {
     },
     {
       title: "The sunset",
-      body: "Just a 1.2 km walk away is Ahu Tahai, one of the most photographed sites on Rapa Nui — the perfect spot to watch the sun set over the Pacific.",
+      // Distances updated per Sofía's edit (9/23/2026, confirmed by Andre),
+      // replacing the old Booking.com figure (1.2 km).
+      body: "Just 200 meters from the Tahai Ceremonial Complex and only 20 meters from the Akapu Sacred Platform, you'll have the privilege of being at the closest point to the most beautiful sunsets.",
       fotos: [
         "/images/experiencias/atardecer.jpg",
         "/images/experiencias/atardecer-05.jpg",
@@ -123,8 +130,10 @@ const experiencias = {
       ],
     },
   ],
+  // Translated from Sofía's updated Spanish copy (9/23/2026) — expands the
+  // list of services Kuhane connects guests with.
   extra:
-    "Beyond the tours it offers, Kuhane connects you with other adventures on the island — like diving and horseback riding — so you can build your trip your way.",
+    "Kuhane offers its own tours and also connects you with horseback riding, diving, sailing, stargazing, hiking, art galleries, cultural shows, restaurants and bars, canoeing, photo sessions, and massages — plus a free cultural induction to help you understand the place you're visiting.",
 };
 
 const otrasExperiencias = {
