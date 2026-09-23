@@ -15,9 +15,9 @@ export const site = {
   shortName: "Kuhane",
   location: "Hanga Roa, Rapa Nui",
   url: "https://kuhanehostal.com",
-  // Confirmado: 1,2 km según el propio listado de Kuhane en Booking.com
-  // (sección "Alrededores del alojamiento", septiembre 2026).
-  tahaiDistance: "1,2 km",
+  // Actualizado a pedido de Sofía (23/9/2026, confirmado por Andre)
+  // reemplaza el dato anterior de Booking.com (1,2 km).
+  tahaiDistance: "200 m",
   // Confirmado directamente por Kuhane (septiembre 2026, capturas de
   // Google/Tripadvisor/Booking). Cifra exacta de Booking confirmada por
   // captura de pantalla de Andre el 6/9/2026: "9,4 Fantástico · 121 comentarios".
@@ -80,9 +80,10 @@ export const hero = {
 
 export const rapaNui = {
   eyebrow: "El territorio",
-  title: "El lugar más remoto habitado del mundo.",
+  // Texto actualizado a pedido de Sofía (23/9/2026).
+  title: "El lugar habitado más remoto del mundo.",
   body: [
-    "Rapa Nui está a miles de kilómetros de cualquier otra costa — una isla volcánica en medio del Pacífico, donde el paisaje, la historia y la cultura Rapanui siguen vivos en cada rincón.",
+    "Ubicada al centro del Pacífico Sur, Rapa Nui está a casi 4.000 kilómetros de Chile continental y equidistante de Tahití. Isla de clima subtropical, con paisajes espectaculares, una historia de grandeza y resiliencia, y una inigualable cultura viva.",
   ],
   // Foto aérea del cráter Rano Kau, enviada por Andre — sept. 2026.
   foto: "/images/rapa-nui/territorio.jpg",
@@ -92,9 +93,10 @@ export const rapaNui = {
 export const kuhane = {
   eyebrow: "Kuhane",
   title: "Un lugar para sentirte en casa.",
+  // Texto actualizado a pedido de Sofía (23/9/2026).
   body: [
-    "Kuhane significa alma, en lengua rapanui. Es también la forma en que recibimos a cada persona que llega: no como un huésped más, sino como alguien que se suma, por unos días, a la vida de la isla.",
-    "Desde la llegada al aeropuerto hasta la última noche mirando el atardecer, acompañamos el viaje con la cercanía y el conocimiento de quienes viven aquí.",
+    "Kuhane, en lengua rapanui, significa alma. Pensada para ayudarte a conectar con lo mejor de ti, será también tu hogar por unos días.",
+    "Desde que bajas de tu vuelo, en cada amanecer y atardecer, te acompañamos con información práctica y conocimiento cultural para ayudarte a construir una experiencia memorable.",
   ],
   // Fuente: descripción propia de Kuhane en Booking.com ("Información de la
   // empresa", septiembre 2026). No se usa todavía en ningún componente.
@@ -113,11 +115,12 @@ export const kuhane = {
 
 export const experiencias = {
   eyebrow: "La experiencia",
-  title: "Más que un hostal, la mejor forma de explorar la isla.",
+  // Texto actualizado a pedido de Sofía (23/9/2026).
+  title: "No solo un hostal: la mejor forma de explorar y comprender Rapa Nui y su cultura.",
   items: [
     {
-      title: "Bienvenida en Kuhane",
-      body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
+      title: "Bienvenidos a Kuhane",
+      body: "A tu llegada, te recibimos con collares de flores de la isla y te traemos a casa.",
       // Fotos reales enviadas por Andre — sept. 2026. Carrusel (como en
       // Habitaciones), con autoplay cada 2s (pedido de Andre: "3-4 fotos
       // por sección, que se vayan cambiando").
@@ -134,9 +137,8 @@ export const experiencias = {
     },
     {
       title: "Cultura viva",
-      // Fuente: descripción propia de Kuhane en Booking.com ("Información
-      // del alojamiento", septiembre 2026).
-      body: "Café al atardecer, degustaciones culinarias, música suave y conversación frente al mar — un ritual diario en la terraza de Kuhane.",
+      // Texto actualizado a pedido de Sofía (23/9/2026).
+      body: "Sabores, colores y aromas insulares, música suave, conversaciones frente al mar y mucha cultura: son el ritual diario en la terraza de Kuhane.",
       fotos: [
         "/images/experiencias/cultura-viva.jpg",
         "/images/experiencias/cultura-viva-02.jpg",
@@ -146,9 +148,11 @@ export const experiencias = {
     },
     {
       title: "El atardecer",
-      // Distancia confirmada: listado de Kuhane en Booking.com (ver
-      // site.tahaiDistance).
-      body: "A solo 1,2 km caminando está Ahu Tahai, uno de los sitios más fotografiados de Rapa Nui — el lugar ideal para ver caer el sol sobre el Pacífico.",
+      // Distancias actualizadas a pedido de Sofía (23/9/2026, confirmado
+      // por Andre "es tal cual lo dice sofia") — reemplaza el dato anterior
+      // (1,2 km, sacado de Booking.com) por las distancias reales a Tahai
+      // y Akapu que dio Sofía.
+      body: "A 200 metros del Complejo Ceremonial Tahai y a solo 20 metros de la Plataforma Sagrada de Akapu, tendrás el privilegio de estar en el punto más cercano a los más bellos atardeceres.",
       // Fotos reales en Ahu Tahai enviadas por Andre — sept. 2026.
       fotos: [
         "/images/experiencias/atardecer.jpg",
@@ -163,8 +167,13 @@ export const experiencias = {
   // experiencias de la isla. Redacción ajustada a la frase exacta que
   // pidió: "Kuhane, además de ofrecer tours, te conecta con otras
   // aventuras...".
+  // Texto actualizado a pedido de Sofía (23/9/2026): amplía la lista de
+  // servicios con los que Kuhane conecta al huésped (antes solo mencionaba
+  // buceo y cabalgatas). Pendiente de confirmar con Andre que los rubros
+  // nuevos (navegación, observación astronómica, shows culturales,
+  // canotaje, masajes, etc.) son contactos reales y activos.
   extra:
-    "Kuhane, además de ofrecer tours, te conecta con otras aventuras en la isla — como buceo y cabalgatas — para que armes tu viaje a medida.",
+    "Kuhane pone a tu disposición sus tours y te conecta con servicios de cabalgatas, buceo, navegación, observación astronómica, caminatas, galerías de arte, shows culturales, restaurantes y bares, canotaje, sesiones fotográficas y masajes — y te regala una inducción cultural para comprender mejor el lugar que visitas.",
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
