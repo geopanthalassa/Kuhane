@@ -18,7 +18,7 @@ export default function ExperienciasSection() {
     const el = otrasTrackRef.current;
     if (!el) return;
     const card = el.querySelector("[data-thumb]") as HTMLElement | null;
-    const amount = (card?.offsetWidth ?? 112) + 12;
+    const amount = (card?.offsetWidth ?? 176) + 12;
     el.scrollBy({ left: dir * amount * 3, behavior: "smooth" });
   };
 
@@ -45,18 +45,6 @@ export default function ExperienciasSection() {
           ))}
         </div>
 
-        {/* Tours y otras experiencias de la isla (buceo, cabalgatas, etc.).
-            Antes iba centrado en una columna angosta (max-w-2xl mx-auto
-            text-center), lo que — sumado a la línea divisoria de abajo, que
-            sí ocupa todo el ancho — hacía que este párrafo se viera como un
-            bloque aislado, "como si fuesen cosas distintas" (pedido de
-            Andre, 23/9/2026). Ahora ocupa el ancho real de la sección. */}
-        <Reveal delayMs={160}>
-          <p className="mt-10 max-w-3xl text-[15px] leading-relaxed text-stone-soft">
-            {experiencias.extra}
-          </p>
-        </Reveal>
-
         {/* Una sola franja con dos mitades — pedido de Andre (23/9/2026):
             "poner en un lado eso de tours guiados kuhane y al lado una
             pequeña galeria y el 'ademas te conectamos con otras
@@ -72,40 +60,52 @@ export default function ExperienciasSection() {
             abajo, que sí es grande. Se mantiene 16:10 también en desktop
             (sin llegar a full-bleed, que ya se probó y no funcionó) para
             que la franja tenga más presencia y las proporciones no salten
-            tanto entre esta sección y la siguiente. */}
+            tanto entre esta sección y la siguiente.
+            23/9/2026 (3): el párrafo "Kuhane pone a tu disposición sus
+            tours..." que antes iba suelto arriba de esta franja se dividió
+            en dos y cada mitad quedó como pie de foto bajo la tarjeta que
+            le corresponde (footnote en experienciasKuhaneTours y en
+            otrasExperiencias, site-content.ts) — pedido explícito de
+            Andre: "debe resaltar, debe ser igual a las otras secciones...
+            ponlo debajo de la imagen de tours guiados y del otro". */}
         <Reveal delayMs={190}>
           <div className="mt-14 grid grid-cols-1 gap-10 border-t border-stone/10 pt-12 lg:grid-cols-2 lg:gap-14">
-            <a
-              href="/tours"
-              className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden sm:aspect-[16/10]"
-            >
-              <Image
-                src={experienciasKuhaneTours.foto}
-                alt={experienciasKuhaneTours.fotoAlt}
-                fill
-                quality={90}
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/90 via-teal-deep/35 to-transparent" />
-              <div className="relative px-6 pb-6 sm:px-8 sm:pb-8">
-                <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">
-                  {experienciasKuhaneTours.eyebrow}
-                </p>
-                <h3 className="font-display mt-2 text-2xl text-warm-white sm:text-3xl">
-                  {experienciasKuhaneTours.title}
-                </h3>
-                <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-warm-white/85">
-                  {experienciasKuhaneTours.body}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-soft px-6 py-2.5 text-[12px] font-semibold tracking-[0.05em] text-teal-deep shadow-[0_10px_30px_-8px_rgba(221,201,163,0.6)] transition-transform duration-200 group-hover:scale-[1.03]">
-                  {experienciasKuhaneTours.cta}
-                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
-                    →
+            <div>
+              <a
+                href="/tours"
+                className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden sm:aspect-[16/10]"
+              >
+                <Image
+                  src={experienciasKuhaneTours.foto}
+                  alt={experienciasKuhaneTours.fotoAlt}
+                  fill
+                  quality={90}
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/90 via-teal-deep/35 to-transparent" />
+                <div className="relative px-6 pb-6 sm:px-8 sm:pb-8">
+                  <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">
+                    {experienciasKuhaneTours.eyebrow}
+                  </p>
+                  <h3 className="font-display mt-2 text-2xl text-warm-white sm:text-3xl">
+                    {experienciasKuhaneTours.title}
+                  </h3>
+                  <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-warm-white/85">
+                    {experienciasKuhaneTours.body}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-soft px-6 py-2.5 text-[12px] font-semibold tracking-[0.05em] text-teal-deep shadow-[0_10px_30px_-8px_rgba(221,201,163,0.6)] transition-transform duration-200 group-hover:scale-[1.03]">
+                    {experienciasKuhaneTours.cta}
+                    <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
                   </span>
-                </span>
-              </div>
-            </a>
+                </div>
+              </a>
+              <p className="mt-3 text-[13px] leading-relaxed text-stone-soft">
+                {experienciasKuhaneTours.footnote}
+              </p>
+            </div>
 
             {/* Experiencias extra: no son un tour de Kuhane, son contactos
                 de confianza en la isla (buceo y cabalgatas). 7/9/2026: a
@@ -113,7 +113,11 @@ export default function ExperienciasSection() {
                 actividad y quedó un carrusel de fotos chicas que el
                 usuario cambia arrastrando o con las flechas, no un
                 auto-scroll. El click sobre cualquier foto abre el
-                lightbox con todas. */}
+                lightbox con todas.
+                23/9/2026 (4): pedido de Andre — las fotos de este carrusel
+                se veían chicas al lado de las demás fotos de la sección;
+                se agrandaron (112→144px en mobile, 128→176px en desktop)
+                para que la franja se vea más armónica con el resto. */}
             <div className="flex flex-col justify-center">
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
@@ -156,18 +160,21 @@ export default function ExperienciasSection() {
                     onClick={() =>
                       setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index: i })
                     }
-                    className="relative h-28 w-28 shrink-0 snap-start overflow-hidden sm:h-32 sm:w-32"
+                    className="relative h-36 w-36 shrink-0 snap-start overflow-hidden sm:h-44 sm:w-44"
                   >
                     <Image
                       src={foto}
                       alt={otrasExperiencias.title}
                       fill
-                      sizes="128px"
+                      sizes="176px"
                       className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                     />
                   </button>
                 ))}
               </div>
+              <p className="mt-3 text-[13px] leading-relaxed text-stone-soft">
+                {otrasExperiencias.footnote}
+              </p>
             </div>
           </div>
         </Reveal>
