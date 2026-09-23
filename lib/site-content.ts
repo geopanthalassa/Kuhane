@@ -197,6 +197,126 @@ export const otrasExperiencias = {
   ],
 };
 
+// Tours Kuhane — información enviada por Andre (22–23/9/2026).
+// Confirmado: 4 tours privados (máx. 4 personas) + 2 tours grupales (máx.
+// 14 personas en minibús, guía español-inglés). Decisión final de Andre
+// (23/9/2026): ningún tour muestra precio en la página — el valor se
+// calcula y se muestra recién en el total a pagar en el hostal, después
+// de la reserva, con exactamente dos niveles (Chile/Latinoamérica y el
+// resto). Acá NO se menciona esa diferenciación — solo "el valor se
+// confirma en tu reserva".
+// paradas: pendiente. Andre mandó la cantidad de paradas de cada
+// recorrido (8/6/6/5 en privados, 7/7 en grupales) y el nombre de una
+// parada de cada uno (la de la foto), pero el detalle completo del
+// itinerario se perdió al resumirse la conversación por límite de
+// contexto — hay que pedírselo de nuevo antes de publicar la lista
+// completa. Mientras tanto queda vacío (el componente no muestra nada
+// si está vacío, no un dato inventado).
+export type TourParada = string;
+
+export type Tour = {
+  slug: string;
+  nombre: string;
+  modalidad: "Tour privado" | "Tour grupal";
+  duracion?: "Full day" | "Half day";
+  maxPersonas: number;
+  paradas: TourParada[];
+  foto: string;
+  fotoAlt: string;
+};
+
+export const toursPrivados: Tour[] = [
+  {
+    slug: "full-day-rapa-nui",
+    nombre: "Full Day Rapa Nui",
+    modalidad: "Tour privado",
+    duracion: "Full day",
+    maxPersonas: 4,
+    paradas: [],
+    foto: "/images/tours/rano-raraku_full-day.png",
+    fotoAlt: "Rano Raraku, en el recorrido Full Day Rapa Nui",
+  },
+  {
+    slug: "half-day-punta-oeste",
+    nombre: "Half Day Punta Oeste",
+    modalidad: "Tour privado",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [],
+    foto: "/images/tours/orongo_punta-oeste.png",
+    fotoAlt: "Orongo, en el recorrido Half Day Punta Oeste",
+  },
+  {
+    slug: "half-day-costa-sur",
+    nombre: "Half Day Costa Sur",
+    modalidad: "Tour privado",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [],
+    foto: "/images/tours/ahu-tongariki_costa-sur.jpg",
+    fotoAlt: "Ahu Tongariki, en el recorrido Half Day Costa Sur",
+  },
+  {
+    slug: "half-day-isla-centro",
+    nombre: "Half Day Isla Centro",
+    modalidad: "Tour privado",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [],
+    foto: "/images/tours/ahu-akivi_isla-centro.png",
+    fotoAlt: "Ahu Akivi, en el recorrido Half Day Isla Centro",
+  },
+];
+
+export const toursGrupales: Tour[] = [
+  {
+    slug: "fullday-dream",
+    nombre: "Fullday Dream",
+    modalidad: "Tour grupal",
+    maxPersonas: 14,
+    paradas: [],
+    foto: "/images/tours/ahu-nau-nau_dream.png",
+    fotoAlt: "Ahu Nau Nau, en el tour grupal Fullday Dream",
+  },
+  {
+    slug: "fullday-explore",
+    nombre: "Fullday Explore",
+    modalidad: "Tour grupal",
+    maxPersonas: 14,
+    paradas: [],
+    foto: "/images/tours/tahai_explore.jpg",
+    fotoAlt: "Tahai, en el tour grupal Fullday Explore",
+  },
+];
+
+// Todos los tours juntos — para buscar por slug (ej. desde el parámetro
+// ?tour= que llega desde /tours hasta el panel de reserva).
+export const toursTodos: Tour[] = [...toursPrivados, ...toursGrupales];
+
+export const toursIntro = {
+  eyebrow: "Experiencias Kuhane",
+  title: "Tours privados y tours grupales por Rapa Nui.",
+  body: "Recorridos guiados armados por Kuhane para conocer la isla con tiempo. El desayuno continental y el traslado aeropuerto ya están incluidos en tu estadía — estos tours se agregan aparte, directo en tu reserva.",
+  privadosTitle: "Tours privados",
+  privadosBody: "Grupos reducidos, de hasta 4 personas.",
+  grupalesTitle: "Tours grupales",
+  grupalesBody: "Hasta 14 personas en minibús, con guía en español e inglés.",
+  agregarCta: "Agregar a la reserva",
+  consultarNota: "El valor de este tour se confirma en tu reserva y se incluye en el total a pagar en el hostal.",
+  paradasPendientes: "Detalle del recorrido — próximamente.",
+  volver: "← Volver a Kuhane",
+};
+
+// Tarjeta de enlace desde la sección Experiencias del inicio hacia /tours.
+export const experienciasKuhaneTours = {
+  eyebrow: "Tours guiados",
+  title: "Experiencias Kuhane",
+  body: "Tours privados y tours grupales armados por Kuhane para recorrer la isla con guía, sin apuro. El valor de cada tour queda en tu reserva, no en la página.",
+  cta: "Ver tours",
+  foto: "/images/tours/rano-raraku_full-day.png",
+  fotoAlt: "Rano Raraku, uno de los recorridos de Kuhane Tours",
+};
+
 export const cultura = {
   eyebrow: "Cultura",
   title: "Rapa Nui, contada desde dentro.",
@@ -617,6 +737,10 @@ export const habitacionesIntro = {
   bodyPrefix: "4 habitaciones y 3 bungalows frente al mar — capacidad total para",
   capacidadTotal: 23,
   bodySuffix: "personas.",
+  // Pedido de Andre (23/9/2026): que quede explícito en habitaciones y en
+  // reserva que el desayuno continental y el traslado aeropuerto-hostal-
+  // aeropuerto van incluidos, sin costo adicional.
+  incluye: "El desayuno continental y el traslado desde y hacia el aeropuerto están incluidos en tu estadía.",
 };
 
 export const huespedes = {
@@ -722,9 +846,11 @@ export const cta = {
 // 2026) que Andre tenía guardado y que no había llegado a esta copia del
 // proyecto — confirmado con Andre (7/9/2026). Al confirmar, abre el
 // sistema de reservas de Kuhane (Nuku OS) en una pestaña nueva con esos
-// datos como parámetros. Nuku OS está en fase de pruebas (sin cobro
-// automático todavía), por eso el mensaje de ayuda aclara que se confirma
-// por WhatsApp o email antes de cobrar.
+// datos como parámetros. La reserva y el correo de confirmación son
+// reales y efectivos desde que se completan (no es una fase de pruebas)
+// — confirmado por Andre (22/9/2026), que pidió sacar todo el lenguaje de
+// "fase de pruebas"/"periodo de prueba". El pago no se procesa online: se
+// hace directo en el hostal (ver paymentNote).
 export const reserva = {
   nukuOsUrl: "https://nuku-os-app.vercel.app/reservar",
   // Cuenta real de Kuhane Etno-Hostal en Supabase/Nuku OS — confirmada
@@ -733,7 +859,7 @@ export const reserva = {
   nukuOsAccountId: "057a625c-9036-4b1d-957b-8c436f71b4cd",
   eyebrow: "Disponibilidad",
   helper:
-    "Elige tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane — hoy en fase de pruebas, así que confirmamos contigo por WhatsApp o email antes de cobrar.",
+    "Elige tus fechas y cantidad de huéspedes. Te lleva al sistema de reservas de Kuhane, donde tu reserva queda registrada y recibes tu correo de confirmación al instante — el pago se hace directo en el hostal.",
   dates: "Fechas",
   guests: "Huéspedes",
   guestSingular: "persona",
@@ -759,6 +885,8 @@ export const reserva = {
   // puede ser efectivo, debito o credito local o extranjera".
   paymentNote:
     "El pago se hace en el hostal — aceptamos efectivo, y débito o crédito (nacional o extranjera).",
+  // Mismo pedido de Andre (23/9/2026) que en habitacionesIntro.incluye.
+  incluye: "Tu reserva incluye desayuno continental y traslado desde y hacia el aeropuerto.",
   monthsShort: [
     "ene", "feb", "mar", "abr", "may", "jun",
     "jul", "ago", "sep", "oct", "nov", "dic",
