@@ -214,12 +214,10 @@ export const otrasExperiencias = {
 // de la reserva, con exactamente dos niveles (Chile/Latinoamérica y el
 // resto). Acá NO se menciona esa diferenciación — solo "el valor se
 // confirma en tu reserva".
-// paradas: no existe un itinerario formal parada-por-parada — Andre lo
-// confirmó (23/9/2026): "no hay una lista de paradas". Lo que sí es real es
-// el sitio destacado de cada tour (el de la foto que mandó Andre). A pedido
-// de Andre, se investigó la historia de cada uno de esos 6 sitios (fuentes
-// reales, no inventadas — ver el comentario junto a cada `historia`) para
-// que la página tenga contenido real aunque no haya itinerario completo.
+// paradas: lista real de itinerario, mandada por Andre (23/9/2026). Además
+// de la lista, cada tour tiene un sitio destacado (el de la foto que mandó
+// Andre) con una historia investigada (fuentes reales, no inventadas — ver
+// el comentario junto a cada `historia`).
 export type TourParada = string;
 
 export type Tour = {
@@ -229,6 +227,10 @@ export type Tour = {
   duracion?: "Full day" | "Half day";
   maxPersonas: number;
   paradas: TourParada[];
+  // Bajada general del tour (solo los 2 tours grupales la tienen por ahora
+  // — texto mandado por Andre 23/9/2026 — los 4 tours privados no tienen
+  // una bajada propia, solo la lista de paradas).
+  descripcion?: string;
   parada: string;
   historia: string;
   foto: string;
@@ -242,7 +244,16 @@ export const toursPrivados: Tour[] = [
     modalidad: "Tour privado",
     duracion: "Full day",
     maxPersonas: 4,
-    paradas: [],
+    paradas: [
+      "Mirador hacia el pueblo de Hanga Roa",
+      "Mirador del cráter del volcán Rano Kau",
+      "Ciudadela ceremonial de Orongo",
+      "Muros de corte perfecto del altar de Vinapu",
+      "Centro ceremonial y caleta de Vaihu",
+      "Plataforma ceremonial Ahu Akahanga",
+      "Cantera de los moai en el volcán Rano Raraku",
+      "Plataforma de Tongariki, con 15 moai",
+    ],
     parada: "Rano Raraku",
     // Fuente: Wikipedia, "Rano Raraku" (en.wikipedia.org/wiki/Rano_Raraku),
     // consultado 23/9/2026.
@@ -257,7 +268,14 @@ export const toursPrivados: Tour[] = [
     modalidad: "Tour privado",
     duracion: "Half day",
     maxPersonas: 4,
-    paradas: [],
+    paradas: [
+      "Sector de la cueva Ana Kai Tangata y alrededores",
+      "Mirador hacia el pueblo de Hanga Roa",
+      "Mirador del cráter del volcán Rano Kau",
+      "Ciudadela ceremonial de Orongo",
+      "Muros de corte perfecto del altar de Vinapu",
+      "Centro ceremonial y caleta de Vaihu",
+    ],
     parada: "Orongo",
     // Fuente: Wikipedia, "Orongo" (en.wikipedia.org/wiki/Orongo), consultado
     // 23/9/2026.
@@ -272,7 +290,14 @@ export const toursPrivados: Tour[] = [
     modalidad: "Tour privado",
     duracion: "Half day",
     maxPersonas: 4,
-    paradas: [],
+    paradas: [
+      "Plataforma ceremonial Ahu Akahanga",
+      "Cantera de los moai en el volcán Rano Raraku",
+      "Plataforma de Tongariki, con 15 moai",
+      "Te Pito Kura, el ombligo del mundo",
+      "Sector de petroglifos de Papa Vaka",
+      "Plataforma Ahu Nau Nau, en la playa de Anakena",
+    ],
     parada: "Ahu Tongariki",
     // Fuente: Wikipedia, "Ahu Tongariki" (en.wikipedia.org/wiki/Ahu_Tongariki),
     // consultado 23/9/2026.
@@ -287,7 +312,14 @@ export const toursPrivados: Tour[] = [
     modalidad: "Tour privado",
     duracion: "Half day",
     maxPersonas: 4,
-    paradas: [],
+    paradas: [
+      "Muros de corte perfecto del altar de Vinapu",
+      "Centro ceremonial y caleta de Vaihu",
+      "Ahu Huri a Urenga, con el moai de cuatro manos",
+      "Puna Pau, la cantera de los sombreros (pukao) de los moai",
+      "Centro ceremonial Ahu Akivi, con 7 moai",
+      "Complejo ceremonial de Tahai",
+    ],
     parada: "Ahu Akivi",
     // Fuente: Wikipedia, "Ahu Akivi" (en.wikipedia.org/wiki/Ahu_Akivi),
     // consultado 23/9/2026.
@@ -304,7 +336,10 @@ export const toursGrupales: Tour[] = [
     nombre: "Fullday Dream",
     modalidad: "Tour grupal",
     maxPersonas: 14,
-    paradas: [],
+    // Bajada mandada por Andre (23/9/2026).
+    descripcion:
+      "Conocerás gran parte de la isla con la narrativa histórica del culto al moai y visitarás réplicas de aldeas. Disfrutarás de la playa de Anakena, hito de gran importancia al que llegaron los primeros polinesios.",
+    paradas: ["Vaihu", "Akahanga", "Rano Raraku", "Ahu Tongariki", "Te Pito Kura", "Ahu Nau Nau", "Anakena"],
     parada: "Ahu Nau Nau, Anakena",
     // Fuente: Wikipedia, "Anakena" (en.wikipedia.org/wiki/Anakena),
     // consultado 23/9/2026.
@@ -318,7 +353,10 @@ export const toursGrupales: Tour[] = [
     nombre: "Fullday Explore",
     modalidad: "Tour grupal",
     maxPersonas: 14,
-    paradas: [],
+    // Bajada mandada por Andre (23/9/2026).
+    descripcion:
+      "Conocerás una cara diferente de la isla, explorando sitios arqueológicos vinculados a la vida cotidiana, el desarrollo cultural y las antiguas tradiciones de Rapa Nui. La ciudadela ceremonial de Orongo, donde se realizaba la famosa competencia tangata manu (hombre-pájaro), el cráter de Rano Kau y otros lugares de gran importancia histórica y arqueológica.",
+    paradas: ["Rano Kau", "Orongo", "Vinapu", "Ahu Akivi", "Puna Pau", "Ahu Huri a Urenga", "Tahai"],
     parada: "Tahai",
     // Fuente: Wikipedia, "Tahai" (en.wikipedia.org/wiki/Tahai), y
     // site-content.ts (experiencias.items, "El atardecer" — distancia a
@@ -337,8 +375,9 @@ export const toursTodos: Tour[] = [...toursPrivados, ...toursGrupales];
 
 export const toursIntro = {
   eyebrow: "Experiencias Kuhane",
-  title: "Tours privados y tours grupales por Rapa Nui.",
-  body: "Recorridos guiados armados por Kuhane para conocer la isla con tiempo. El desayuno continental y el traslado aeropuerto ya están incluidos en tu estadía — estos tours se agregan aparte, directo en tu reserva.",
+  // Texto actualizado a pedido de Andre (23/9/2026).
+  title: "Tours privados o grupales por Rapa Nui.",
+  body: "Nuestros tours entretenidos y llenos de contenido son un servicio extra, que puedes agregar a tu reserva.",
   privadosTitle: "Tours privados",
   privadosBody: "Grupos reducidos, de hasta 4 personas.",
   grupalesTitle: "Tours grupales",
