@@ -52,105 +52,109 @@ export default function ExperienciasSection() {
           </p>
         </Reveal>
 
-        {/* Experiencias Kuhane: tours privados y grupales propios (nueva
-            página /tours). Pedido de Andre (22-23/9/2026): un link desde
-            acá que desglose los tours, sin precios — el valor va en el
-            total a pagar en el hostal, no en la página. */}
+        {/* Una sola franja con dos mitades — pedido de Andre (23/9/2026):
+            "poner en un lado eso de tours guiados kuhane y al lado una
+            pequeña galeria y el 'ademas te conectamos con otras
+            experiencias', en una sola franja". Izquierda: Kuhane Tours
+            (link a /tours, foto con texto encima — ya probamos la versión
+            full-bleed antes y era demasiado grande/desbalanceaba la
+            sección). Derecha: la galería de "otras experiencias" que ya
+            existía (buceo, cabalgatas), sin cambios de comportamiento. */}
         <Reveal delayMs={190}>
-          <a
-            href="/tours"
-            className="group mx-auto mt-10 flex max-w-3xl flex-col overflow-hidden rounded-2xl border border-stone/10 bg-warm-white shadow-[0_20px_50px_-30px_rgba(48,43,38,0.4)] sm:flex-row"
-          >
-            <div className="relative h-48 w-full shrink-0 sm:h-auto sm:w-64">
+          <div className="mt-14 grid grid-cols-1 gap-10 border-t border-stone/10 pt-12 lg:grid-cols-2 lg:gap-14">
+            <a
+              href="/tours"
+              className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden rounded-2xl sm:aspect-[16/10] lg:aspect-auto"
+            >
               <Image
                 src={experienciasKuhaneTours.foto}
                 alt={experienciasKuhaneTours.fotoAlt}
                 fill
-                sizes="(min-width: 640px) 256px, 100vw"
                 quality={90}
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               />
-            </div>
-            <div className="flex flex-1 flex-col justify-center px-7 py-6">
-              <p className="text-xs tracking-[0.25em] uppercase text-teal">
-                {experienciasKuhaneTours.eyebrow}
-              </p>
-              <h3 className="font-display mt-2 text-xl text-stone">{experienciasKuhaneTours.title}</h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-stone-soft">
-                {experienciasKuhaneTours.body}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.05em] text-teal-deep">
-                {experienciasKuhaneTours.cta}
-                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
-                  →
-                </span>
-              </span>
-            </div>
-          </a>
-        </Reveal>
-
-        {/* Experiencias extra: no son un tour de Kuhane, son contactos de
-            confianza en la isla (buceo y cabalgatas). 7/9/2026: a pedido
-            de Andre se sacaron los íconos circulares por actividad, luego
-            se probó una tira que corría sola (marquee) y en la sección de
-            reserva confirmó que prefiere el mismo comportamiento que la
-            Galería: fotos chicas que el usuario cambia arrastrando o con
-            las flechas, no un auto-scroll. El click sobre cualquier foto
-            abre el lightbox con todas. */}
-        <Reveal delayMs={220}>
-          <div className="mx-auto mt-14 max-w-3xl border-t border-stone/10 pt-12">
-            <div className="flex items-center justify-between gap-4">
-              <div className="min-w-0">
-                <p className="text-xs tracking-[0.25em] uppercase text-teal">
-                  {otrasExperiencias.eyebrow}
+              <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/90 via-teal-deep/35 to-transparent" />
+              <div className="relative px-6 pb-6 sm:px-8 sm:pb-8">
+                <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">
+                  {experienciasKuhaneTours.eyebrow}
                 </p>
-                <h3 className="font-display mt-2 text-xl text-stone">{otrasExperiencias.title}</h3>
+                <h3 className="font-display mt-2 text-2xl text-warm-white sm:text-3xl">
+                  {experienciasKuhaneTours.title}
+                </h3>
+                <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-warm-white/85">
+                  {experienciasKuhaneTours.body}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-soft px-6 py-2.5 text-[12px] font-semibold tracking-[0.05em] text-teal-deep shadow-[0_10px_30px_-8px_rgba(221,201,163,0.6)] transition-transform duration-200 group-hover:scale-[1.03]">
+                  {experienciasKuhaneTours.cta}
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </span>
               </div>
-              <div className="flex shrink-0 gap-2">
-                <button
-                  type="button"
-                  aria-label={ui.anterior}
-                  onClick={() => scrollOtras(-1)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
-                >
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  aria-label={ui.siguiente}
-                  onClick={() => scrollOtras(1)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
-                >
-                  ›
-                </button>
+            </a>
+
+            {/* Experiencias extra: no son un tour de Kuhane, son contactos
+                de confianza en la isla (buceo y cabalgatas). 7/9/2026: a
+                pedido de Andre se sacaron los íconos circulares por
+                actividad y quedó un carrusel de fotos chicas que el
+                usuario cambia arrastrando o con las flechas, no un
+                auto-scroll. El click sobre cualquier foto abre el
+                lightbox con todas. */}
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="text-xs tracking-[0.25em] uppercase text-teal">
+                    {otrasExperiencias.eyebrow}
+                  </p>
+                  <h3 className="font-display mt-2 text-xl text-stone">{otrasExperiencias.title}</h3>
+                </div>
+                <div className="flex shrink-0 gap-2">
+                  <button
+                    type="button"
+                    aria-label={ui.anterior}
+                    onClick={() => scrollOtras(-1)}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={ui.siguiente}
+                    onClick={() => scrollOtras(1)}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-stone/20 text-stone hover:bg-stone/5"
+                  >
+                    ›
+                  </button>
+                </div>
               </div>
-            </div>
-            <p className="mt-3 max-w-md text-[15px] leading-relaxed text-stone-soft">
-              {otrasExperiencias.body}
-            </p>
-            <div
-              ref={otrasTrackRef}
-              className="mt-7 flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] snap-x snap-mandatory [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {otrasExperiencias.fotos.map((foto, i) => (
-                <button
-                  key={foto}
-                  data-thumb
-                  type="button"
-                  onClick={() =>
-                    setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index: i })
-                  }
-                  className="relative h-28 w-28 shrink-0 snap-start overflow-hidden rounded-lg sm:h-32 sm:w-32"
-                >
-                  <Image
-                    src={foto}
-                    alt={otrasExperiencias.title}
-                    fill
-                    sizes="128px"
-                    className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-                  />
-                </button>
-              ))}
+              <p className="mt-3 max-w-md text-[15px] leading-relaxed text-stone-soft">
+                {otrasExperiencias.body}
+              </p>
+              <div
+                ref={otrasTrackRef}
+                className="mt-7 flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] snap-x snap-mandatory [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {otrasExperiencias.fotos.map((foto, i) => (
+                  <button
+                    key={foto}
+                    data-thumb
+                    type="button"
+                    onClick={() =>
+                      setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index: i })
+                    }
+                    className="relative h-28 w-28 shrink-0 snap-start overflow-hidden rounded-lg sm:h-32 sm:w-32"
+                  >
+                    <Image
+                      src={foto}
+                      alt={otrasExperiencias.title}
+                      fill
+                      sizes="128px"
+                      className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
