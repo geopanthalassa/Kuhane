@@ -29,6 +29,18 @@ function TourCard({ tour, consultarNota, agregarCta }: { tour: Tour; consultarNo
           className="object-cover"
         />
       </div>
+
+      {/* Pie de foto: qué muestra la imagen de arriba — pedido de Andre
+          (23/9/2026): "la descripcion de la foto debe ir despues de la
+          foto no despues de todo el desglose del tour". Va antes del resto
+          de la ficha (nombre, paradas, etc.), como pie de foto. */}
+      {tour.historia && (
+        <div className="border-b border-stone/10 px-6 pt-4 pb-4 sm:px-7">
+          <p className="text-[11px] tracking-[0.15em] uppercase text-teal">{tour.parada}</p>
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-stone-soft">{tour.historia}</p>
+        </div>
+      )}
+
       <div className="flex flex-1 flex-col p-6 sm:p-7">
         <p className="text-[11px] tracking-[0.2em] uppercase text-teal">
           {tour.modalidad}
@@ -50,13 +62,6 @@ function TourCard({ tour, consultarNota, agregarCta }: { tour: Tour; consultarNo
               </li>
             ))}
           </ul>
-        )}
-
-        {tour.historia && (
-          <div className="mt-4 border-t border-stone/10 pt-4">
-            <p className="text-[11px] tracking-[0.15em] uppercase text-teal">{tour.parada}</p>
-            <p className="mt-1.5 text-[13.5px] leading-relaxed text-stone-soft">{tour.historia}</p>
-          </div>
         )}
 
         <div className="mt-auto pt-6">
