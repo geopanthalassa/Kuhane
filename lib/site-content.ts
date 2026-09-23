@@ -205,13 +205,12 @@ export const otrasExperiencias = {
 // de la reserva, con exactamente dos niveles (Chile/Latinoamérica y el
 // resto). Acá NO se menciona esa diferenciación — solo "el valor se
 // confirma en tu reserva".
-// paradas: pendiente. Andre mandó la cantidad de paradas de cada
-// recorrido (8/6/6/5 en privados, 7/7 en grupales) y el nombre de una
-// parada de cada uno (la de la foto), pero el detalle completo del
-// itinerario se perdió al resumirse la conversación por límite de
-// contexto — hay que pedírselo de nuevo antes de publicar la lista
-// completa. Mientras tanto queda vacío (el componente no muestra nada
-// si está vacío, no un dato inventado).
+// paradas: no existe un itinerario formal parada-por-parada — Andre lo
+// confirmó (23/9/2026): "no hay una lista de paradas". Lo que sí es real es
+// el sitio destacado de cada tour (el de la foto que mandó Andre). A pedido
+// de Andre, se investigó la historia de cada uno de esos 6 sitios (fuentes
+// reales, no inventadas — ver el comentario junto a cada `historia`) para
+// que la página tenga contenido real aunque no haya itinerario completo.
 export type TourParada = string;
 
 export type Tour = {
@@ -221,6 +220,8 @@ export type Tour = {
   duracion?: "Full day" | "Half day";
   maxPersonas: number;
   paradas: TourParada[];
+  parada: string;
+  historia: string;
   foto: string;
   fotoAlt: string;
 };
@@ -233,6 +234,11 @@ export const toursPrivados: Tour[] = [
     duracion: "Full day",
     maxPersonas: 4,
     paradas: [],
+    parada: "Rano Raraku",
+    // Fuente: Wikipedia, "Rano Raraku" (en.wikipedia.org/wiki/Rano_Raraku),
+    // consultado 23/9/2026.
+    historia:
+      "El cráter que fue cantera de los moai: durante unos 500 años, hasta comienzos del 1700, de aquí se extrajo la piedra volcánica de cerca del 95% de las estatuas de la isla. Hoy quedan 887 moai en distintas etapas de talla, muchos semienterrados hasta los hombros — entre ellos el más grande jamás tallado, de 21,6 metros.",
     foto: "/images/tours/rano-raraku_full-day.png",
     fotoAlt: "Rano Raraku, en el recorrido Full Day Rapa Nui",
   },
@@ -243,6 +249,11 @@ export const toursPrivados: Tour[] = [
     duracion: "Half day",
     maxPersonas: 4,
     paradas: [],
+    parada: "Orongo",
+    // Fuente: Wikipedia, "Orongo" (en.wikipedia.org/wiki/Orongo), consultado
+    // 23/9/2026.
+    historia:
+      "Aldea ceremonial en el borde del volcán Rano Kau, centro del culto al hombre-pájaro (tangata manu) entre los siglos XVIII y XIX. Cada año, los competidores bajaban el acantilado y cruzaban el mar hasta el islote Motu Nui para traer el primer huevo de manutara — una carrera de alto riesgo que definía la autoridad del año siguiente en la isla.",
     foto: "/images/tours/orongo_punta-oeste.png",
     fotoAlt: "Orongo, en el recorrido Half Day Punta Oeste",
   },
@@ -253,6 +264,11 @@ export const toursPrivados: Tour[] = [
     duracion: "Half day",
     maxPersonas: 4,
     paradas: [],
+    parada: "Ahu Tongariki",
+    // Fuente: Wikipedia, "Ahu Tongariki" (en.wikipedia.org/wiki/Ahu_Tongariki),
+    // consultado 23/9/2026.
+    historia:
+      "La plataforma ceremonial más grande de Rapa Nui, con 15 moai en fila frente al mar. Fue derribada durante las guerras internas y arrasada por el tsunami de 1960; recién se restauró en los años 90, en un trabajo de cinco años liderado por los arqueólogos Claudio Cristino y Patricia Vargas, con apoyo del gobierno de Chile y de la empresa japonesa Tadano.",
     foto: "/images/tours/ahu-tongariki_costa-sur.jpg",
     fotoAlt: "Ahu Tongariki, en el recorrido Half Day Costa Sur",
   },
@@ -263,6 +279,11 @@ export const toursPrivados: Tour[] = [
     duracion: "Half day",
     maxPersonas: 4,
     paradas: [],
+    parada: "Ahu Akivi",
+    // Fuente: Wikipedia, "Ahu Akivi" (en.wikipedia.org/wiki/Ahu_Akivi),
+    // consultado 23/9/2026.
+    historia:
+      "Siete moai idénticos, únicos en mirar hacia el mar en vez de hacia un poblado. Su alineación es tan precisa que miran de frente la puesta de sol del equinoccio de primavera. Lo restauraron en 1960 el arqueólogo estadounidense William Mulloy y el chileno Gonzalo Figueroa.",
     foto: "/images/tours/ahu-akivi_isla-centro.png",
     fotoAlt: "Ahu Akivi, en el recorrido Half Day Isla Centro",
   },
@@ -275,6 +296,11 @@ export const toursGrupales: Tour[] = [
     modalidad: "Tour grupal",
     maxPersonas: 14,
     paradas: [],
+    parada: "Ahu Nau Nau, Anakena",
+    // Fuente: Wikipedia, "Anakena" (en.wikipedia.org/wiki/Anakena),
+    // consultado 23/9/2026.
+    historia:
+      "La playa de arena blanca donde, según la tradición rapanui, desembarcó Hotu Matu'a, el primer poblador de la isla. Ahí está el Ahu Nau Nau, con moai restaurados — una de las postales más fotografiadas de Rapa Nui.",
     foto: "/images/tours/ahu-nau-nau_dream.png",
     fotoAlt: "Ahu Nau Nau, en el tour grupal Fullday Dream",
   },
@@ -284,6 +310,13 @@ export const toursGrupales: Tour[] = [
     modalidad: "Tour grupal",
     maxPersonas: 14,
     paradas: [],
+    parada: "Tahai",
+    // Fuente: Wikipedia, "Tahai" (en.wikipedia.org/wiki/Tahai), y
+    // site-content.ts (experiencias.items, "El atardecer" — distancia a
+    // Hanga Roa ya confirmada en el listado de Booking.com de Kuhane).
+    // Consultado 23/9/2026.
+    historia:
+      "Conjunto ceremonial a solo 1,2 km caminando desde Hanga Roa, restaurado por el arqueólogo William Mulloy en 1974. Reúne tres plataformas alineadas de norte a sur y, por su cercanía al pueblo, es uno de los lugares favoritos de la isla para ver el atardecer.",
     foto: "/images/tours/tahai_explore.jpg",
     fotoAlt: "Tahai, en el tour grupal Fullday Explore",
   },
