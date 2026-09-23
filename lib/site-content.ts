@@ -162,18 +162,6 @@ export const experiencias = {
       ],
     },
   ],
-  // Pedido de Andre (6/9/2026, reiterado 7/9/2026): dejar claro que,
-  // además del tour que arma Kuhane, conectan al huésped con otras
-  // experiencias de la isla. Redacción ajustada a la frase exacta que
-  // pidió: "Kuhane, además de ofrecer tours, te conecta con otras
-  // aventuras...".
-  // Texto actualizado a pedido de Sofía (23/9/2026): amplía la lista de
-  // servicios con los que Kuhane conecta al huésped (antes solo mencionaba
-  // buceo y cabalgatas). Pendiente de confirmar con Andre que los rubros
-  // nuevos (navegación, observación astronómica, shows culturales,
-  // canotaje, masajes, etc.) son contactos reales y activos.
-  extra:
-    "Kuhane pone a tu disposición sus tours y te conecta con servicios de cabalgatas, buceo, navegación, observación astronómica, caminatas, galerías de arte, shows culturales, restaurantes y bares, canotaje, sesiones fotográficas y masajes — y te regala una inducción cultural para comprender mejor el lugar que visitas.",
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
@@ -191,6 +179,17 @@ export const otrasExperiencias = {
   eyebrow: "Además",
   title: "Otras experiencias en la isla",
   body: "Kuhane te conecta con otras aventuras.",
+  // 23/9/2026 (3): pedido de Andre — el párrafo que antes iba suelto,
+  // arriba de esta franja ("Kuhane pone a tu disposición sus tours y te
+  // conecta con servicios de..."), se veía como un bloque aislado sin
+  // relación con las tarjetas de abajo. Se dividió en dos y se puso cada
+  // mitad como pie de foto bajo la tarjeta a la que corresponde — esta es
+  // la segunda mitad (la lista de servicios externos), bajo el carrusel
+  // de "otras experiencias". Único cambio de redacción: "y te conecta"
+  // pasa a "Te conecta" (mayúscula, sin la "y") para que funcione como
+  // oración propia; el contenido es el mismo texto de Sofía.
+  footnote:
+    "Te conecta con servicios de cabalgatas, buceo, navegación, observación astronómica, caminatas, galerías de arte, shows culturales, restaurantes y bares, canotaje, sesiones fotográficas y masajes — y te regala una inducción cultural para comprender mejor el lugar que visitas.",
   fotos: [
     "/images/experiencias/buceo-01.jpg",
     "/images/experiencias/buceo-02.jpg",
@@ -395,6 +394,10 @@ export const experienciasKuhaneTours = {
   eyebrow: "Tours guiados",
   title: "Experiencias Kuhane",
   body: "Tours privados y tours grupales armados por Kuhane para recorrer la isla con guía, sin apuro. El valor de cada tour queda en tu reserva, no en la página.",
+  // 23/9/2026 (3): primera mitad del párrafo que antes iba suelto arriba de
+  // esta franja (ver el comentario en otrasExperiencias.footnote, donde
+  // está el resto del texto y la explicación completa del cambio).
+  footnote: "Kuhane pone a tu disposición sus tours.",
   cta: "Ver tours",
   foto: "/images/tours/rano-raraku_full-day.png",
   fotoAlt: "Rano Raraku, uno de los recorridos de Kuhane Tours",
