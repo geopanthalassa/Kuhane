@@ -146,6 +146,15 @@ const otrasExperiencias = {
   ],
 };
 
+const experienciasKuhaneTours = {
+  eyebrow: "Guided tours",
+  title: "Kuhane Experiences",
+  body: "Private and group tours run by Kuhane to explore the island with a guide, at your own pace. Each tour's price is confirmed with your reservation, not shown on the page.",
+  cta: "See tours",
+  foto: es.experienciasKuhaneTours.foto,
+  fotoAlt: "Rano Raraku, one of the Kuhane Tours routes",
+};
+
 const cultura = {
   eyebrow: "Culture",
   title: "Rapa Nui, told from within.",
@@ -298,6 +307,7 @@ const habitacionesIntro = {
   bodyPrefix: "4 rooms and 3 beachfront bungalows — total capacity for",
   capacidadTotal: 23,
   bodySuffix: "guests.",
+  incluye: "Continental breakfast and airport transfer both ways are included in your stay.",
 };
 
 const huespedes = {
@@ -361,6 +371,7 @@ const reserva = {
     "Suggested departure from Santiago — change the origin in the search if you're flying from another city.",
   paymentNote:
     "Payment is made at the hostel — we accept cash, and debit or credit cards (Chilean or international).",
+  incluye: "Your booking includes continental breakfast and airport transfer both ways.",
   monthsShort: [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
@@ -429,6 +440,7 @@ export const en = {
   kuhane,
   experiencias,
   otrasExperiencias,
+  experienciasKuhaneTours,
   cultura,
   sofia,
   libros,
