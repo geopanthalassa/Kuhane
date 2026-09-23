@@ -79,6 +79,7 @@ export default function HabitacionesSection() {
             {habitacionesIntro.bodyPrefix} {habitacionesIntro.capacidadTotal}{" "}
             {habitacionesIntro.bodySuffix}
           </p>
+          <p className="mt-2 max-w-xl text-[13px] text-teal-deep">{habitacionesIntro.incluye}</p>
         </Reveal>
 
         <Reveal delayMs={60}>

@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import DateRangeCalendar from "@/components/ui/DateRangeCalendar";
 import { useContent } from "@/lib/content/LocaleProvider";
 import { buildFlightSearchLink } from "@/lib/travel-flights";
+import { toursTodos } from "@/lib/site-content";
 
 // Panel de disponibilidad minimalista, estilo barra ("Check Availability")
 // en vez de una tarjeta grande. Al confirmar abre el sistema de reservas de
@@ -15,6 +17,23 @@ import { buildFlightSearchLink } from "@/lib/travel-flights";
 export default function ReservaPanel() {
   const { reserva, ui } = useContent();
   const monthsShort = reserva.monthsShort;
+
+  // Tour agregado desde /tours ("agregar a la reserva" -> /?tour=<slug>
+  // #reserva). Se guarda en un estado propio (no solo el parámetro de la
+  // URL) para poder mostrar el chip y dejar que la persona lo saque sin
+  // recargar la página. Pedido de Andre (22-23/9/2026): el precio no se
+  // muestra acá — solo el nombre del tour, para confirmar que quedó
+  // agregado a la reserva.
+  const searchParams = useSearchParams();
+  const [tourSlug, setTourSlug] = useState<string | null>(null);
+  useEffect(() => {
+    const fromUrl = searchParams.get("tour");
+    if (fromUrl && toursTodos.some((t) => t.slug === fromUrl)) {
+      setTourSlug(fromUrl);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const tourSeleccionado = tourSlug ? toursTodos.find((t) => t.slug === tourSlug) ?? null : null;
 
   function formatShort(key: string) {
     if (!key) return "";
@@ -90,6 +109,7 @@ export default function ReservaPanel() {
     params.set("checkout", checkout);
     params.set("guests", String(guests));
     if (promo.trim()) params.set("promo", promo.trim().toUpperCase());
+    if (tourSeleccionado) params.set("tour", tourSeleccionado.nombre);
     window.open(`${reserva.nukuOsUrl}?${params.toString()}`, "_blank", "noopener,noreferrer");
   }
 
@@ -119,6 +139,22 @@ export default function ReservaPanel() {
       <p className="mb-2 text-center text-[11px] tracking-[0.25em] uppercase text-warm-white/80">
         {reserva.eyebrow}
       </p>
+
+      {tourSeleccionado && (
+        <div className="mb-3 flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gold-soft/20 px-4 py-1.5 text-[12px] text-warm-white">
+            Tour agregado: {tourSeleccionado.nombre}
+            <button
+              type="button"
+              aria-label="Quitar tour de la reserva"
+              onClick={() => setTourSlug(null)}
+              className="text-warm-white/70 hover:text-warm-white"
+            >
+              ×
+            </button>
+          </span>
+        </div>
+      )}
 
       {/* Fondo semitransparente detrás del calendario/huéspedes cuando están
           abiertos — sin esto, el panel flotante (position: absolute) quedaba
@@ -254,6 +290,9 @@ export default function ReservaPanel() {
 
       <p className="mx-auto mt-3 max-w-sm text-center text-[11px] leading-relaxed text-warm-white/55">
         {reserva.paymentNote}
+      </p>
+      <p className="mx-auto mt-1.5 max-w-sm text-center text-[11px] leading-relaxed text-gold-soft/90">
+        {reserva.incluye}
       </p>
 
       <div className="mt-2 flex flex-col items-center">
