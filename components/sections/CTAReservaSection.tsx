@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ReservaPanel from "@/components/sections/ReservaPanel";
@@ -24,7 +25,13 @@ export default function CTAReservaSection() {
         </h2>
         <p className="mt-4 text-[15px] leading-relaxed text-warm-white/80">{cta.body}</p>
         <div className="mt-8 flex justify-center">
-          <ReservaPanel />
+          {/* Suspense: ReservaPanel lee el parámetro ?tour= de la URL (con
+              useSearchParams) para mostrar el tour agregado desde /tours —
+              Next exige este límite para no perder el prerender estático
+              de la portada. */}
+          <Suspense fallback={<div className="h-[52px] w-full max-w-xl rounded-full bg-warm-white/20" />}>
+            <ReservaPanel />
+          </Suspense>
         </div>
       </Reveal>
     </section>

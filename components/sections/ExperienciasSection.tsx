@@ -8,7 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import { useContent } from "@/lib/content/LocaleProvider";
 
 export default function ExperienciasSection() {
-  const { aeropuerto, experiencias, otrasExperiencias, ui } = useContent();
+  const { aeropuerto, experiencias, otrasExperiencias, experienciasKuhaneTours, ui } = useContent();
   const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(
     null
   );
@@ -50,6 +50,43 @@ export default function ExperienciasSection() {
           <p className="mx-auto mt-10 max-w-2xl text-center text-[15px] leading-relaxed text-stone-soft">
             {experiencias.extra}
           </p>
+        </Reveal>
+
+        {/* Experiencias Kuhane: tours privados y grupales propios (nueva
+            página /tours). Pedido de Andre (22-23/9/2026): un link desde
+            acá que desglose los tours, sin precios — el valor va en el
+            total a pagar en el hostal, no en la página. */}
+        <Reveal delayMs={190}>
+          <a
+            href="/tours"
+            className="group mx-auto mt-10 flex max-w-3xl flex-col overflow-hidden rounded-2xl border border-stone/10 bg-warm-white shadow-[0_20px_50px_-30px_rgba(48,43,38,0.4)] sm:flex-row"
+          >
+            <div className="relative h-48 w-full shrink-0 sm:h-auto sm:w-64">
+              <Image
+                src={experienciasKuhaneTours.foto}
+                alt={experienciasKuhaneTours.fotoAlt}
+                fill
+                sizes="(min-width: 640px) 256px, 100vw"
+                quality={90}
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="flex flex-1 flex-col justify-center px-7 py-6">
+              <p className="text-xs tracking-[0.25em] uppercase text-teal">
+                {experienciasKuhaneTours.eyebrow}
+              </p>
+              <h3 className="font-display mt-2 text-xl text-stone">{experienciasKuhaneTours.title}</h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-stone-soft">
+                {experienciasKuhaneTours.body}
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.05em] text-teal-deep">
+                {experienciasKuhaneTours.cta}
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
+            </div>
+          </a>
         </Reveal>
 
         {/* Experiencias extra: no son un tour de Kuhane, son contactos de
