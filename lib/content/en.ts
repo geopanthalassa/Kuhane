@@ -131,16 +131,19 @@ const experiencias = {
       ],
     },
   ],
-  // Translated from Sofía's updated Spanish copy (9/23/2026) — expands the
-  // list of services Kuhane connects guests with.
-  extra:
-    "Kuhane offers its own tours and also connects you with horseback riding, diving, sailing, stargazing, hiking, art galleries, cultural shows, restaurants and bars, canoeing, photo sessions, and massages — plus a free cultural induction to help you understand the place you're visiting.",
 };
 
 const otrasExperiencias = {
   eyebrow: "Also",
   title: "Other experiences on the island",
   body: "Kuhane connects you with other adventures.",
+  // 9/23/2026 (3): this paragraph used to sit on its own, above this row —
+  // split in two and moved as a caption under each matching card (see the
+  // Spanish source in site-content.ts for the full explanation). Second
+  // half — the list of outside services — goes under the "other
+  // experiences" carousel.
+  footnote:
+    "It also connects you with horseback riding, diving, sailing, stargazing, hiking, art galleries, cultural shows, restaurants and bars, canoeing, photo sessions, and massages — plus a free cultural induction to help you understand the place you're visiting.",
   fotos: [
     "/images/experiencias/buceo-01.jpg",
     "/images/experiencias/buceo-02.jpg",
@@ -160,6 +163,10 @@ const experienciasKuhaneTours = {
   eyebrow: "Guided tours",
   title: "Kuhane Experiences",
   body: "Private and group tours run by Kuhane to explore the island with a guide, at your own pace. Each tour's price is confirmed with your reservation, not shown on the page.",
+  // 9/23/2026 (3): first half of the paragraph that used to sit on its own
+  // above this row — see otrasExperiencias.footnote for the rest and the
+  // full explanation.
+  footnote: "Kuhane offers its own tours.",
   cta: "See tours",
   foto: es.experienciasKuhaneTours.foto,
   fotoAlt: "Rano Raraku, one of the Kuhane Tours routes",
