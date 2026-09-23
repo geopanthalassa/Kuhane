@@ -50,7 +50,7 @@ function TourCard({ tour }: { tour: Tour }) {
         <h3 className="mt-2 font-display text-xl text-stone">{tour.nombre}</h3>
         <p className="mt-2 text-[13px] text-stone-soft">Máximo {tour.maxPersonas} personas.</p>
 
-        {tour.paradas.length > 0 ? (
+        {tour.paradas.length > 0 && (
           <ul className="mt-4 space-y-1.5 text-[14px] leading-relaxed text-stone-soft">
             {tour.paradas.map((parada) => (
               <li key={parada} className="flex gap-2">
@@ -59,10 +59,13 @@ function TourCard({ tour }: { tour: Tour }) {
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="mt-4 text-[13px] italic leading-relaxed text-stone-soft/70">
-            {toursIntro.paradasPendientes}
-          </p>
+        )}
+
+        {tour.historia && (
+          <div className="mt-4 border-t border-stone/10 pt-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase text-teal">{tour.parada}</p>
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-stone-soft">{tour.historia}</p>
+          </div>
         )}
 
         <div className="mt-auto pt-6">
