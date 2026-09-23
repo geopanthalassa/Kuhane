@@ -223,7 +223,9 @@ export type TourParada = string;
 export type Tour = {
   slug: string;
   nombre: string;
-  modalidad: "Tour privado" | "Tour grupal";
+  // string (no unión literal) para que en.ts pueda traducir la etiqueta
+  // ("Private tour" / "Group tour") sin pelear con el tipo.
+  modalidad: string;
   duracion?: "Full day" | "Half day";
   maxPersonas: number;
   paradas: TourParada[];
@@ -358,12 +360,12 @@ export const toursGrupales: Tour[] = [
       "Conocerás una cara diferente de la isla, explorando sitios arqueológicos vinculados a la vida cotidiana, el desarrollo cultural y las antiguas tradiciones de Rapa Nui. La ciudadela ceremonial de Orongo, donde se realizaba la famosa competencia tangata manu (hombre-pájaro), el cráter de Rano Kau y otros lugares de gran importancia histórica y arqueológica.",
     paradas: ["Rano Kau", "Orongo", "Vinapu", "Ahu Akivi", "Puna Pau", "Ahu Huri a Urenga", "Tahai"],
     parada: "Tahai",
-    // Fuente: Wikipedia, "Tahai" (en.wikipedia.org/wiki/Tahai), y
-    // site-content.ts (experiencias.items, "El atardecer" — distancia a
-    // Hanga Roa ya confirmada en el listado de Booking.com de Kuhane).
-    // Consultado 23/9/2026.
+    // Fuente: Wikipedia, "Tahai" (en.wikipedia.org/wiki/Tahai). Distancia
+    // corregida (23/9/2026) para que coincida con la de experiencias.items
+    // ("El atardecer") — ver esa nota: Sofía confirmó 200 m, reemplazando el
+    // dato anterior de Booking.com (1,2 km).
     historia:
-      "Conjunto ceremonial a solo 1,2 km caminando desde Hanga Roa, restaurado por el arqueólogo William Mulloy en 1974. Reúne tres plataformas alineadas de norte a sur y, por su cercanía al pueblo, es uno de los lugares favoritos de la isla para ver el atardecer.",
+      "Conjunto ceremonial a solo 200 metros caminando desde Hanga Roa, restaurado por el arqueólogo William Mulloy en 1974. Reúne tres plataformas alineadas de norte a sur y, por su cercanía al pueblo, es uno de los lugares favoritos de la isla para ver el atardecer.",
     foto: "/images/tours/tahai_explore.jpg",
     fotoAlt: "Tahai, en el tour grupal Fullday Explore",
   },
