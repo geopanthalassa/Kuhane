@@ -45,9 +45,14 @@ export default function ExperienciasSection() {
           ))}
         </div>
 
-        {/* Tours y otras experiencias de la isla (buceo, cabalgatas, etc.) */}
+        {/* Tours y otras experiencias de la isla (buceo, cabalgatas, etc.).
+            Antes iba centrado en una columna angosta (max-w-2xl mx-auto
+            text-center), lo que — sumado a la línea divisoria de abajo, que
+            sí ocupa todo el ancho — hacía que este párrafo se viera como un
+            bloque aislado, "como si fuesen cosas distintas" (pedido de
+            Andre, 23/9/2026). Ahora ocupa el ancho real de la sección. */}
         <Reveal delayMs={160}>
-          <p className="mx-auto mt-10 max-w-2xl text-center text-[15px] leading-relaxed text-stone-soft">
+          <p className="mt-10 max-w-3xl text-[15px] leading-relaxed text-stone-soft">
             {experiencias.extra}
           </p>
         </Reveal>
@@ -59,12 +64,20 @@ export default function ExperienciasSection() {
             (link a /tours, foto con texto encima — ya probamos la versión
             full-bleed antes y era demasiado grande/desbalanceaba la
             sección). Derecha: la galería de "otras experiencias" que ya
-            existía (buceo, cabalgatas), sin cambios de comportamiento. */}
+            existía (buceo, cabalgatas), sin cambios de comportamiento.
+            23/9/2026 (2): antes la tarjeta de la izquierda perdía su
+            relación de aspecto en desktop (lg:aspect-auto) y terminaba con
+            la altura mínima que le marcaba el contenido de la derecha —
+            se veía chica/apretada al lado del banner de aeropuerto de
+            abajo, que sí es grande. Se mantiene 16:10 también en desktop
+            (sin llegar a full-bleed, que ya se probó y no funcionó) para
+            que la franja tenga más presencia y las proporciones no salten
+            tanto entre esta sección y la siguiente. */}
         <Reveal delayMs={190}>
           <div className="mt-14 grid grid-cols-1 gap-10 border-t border-stone/10 pt-12 lg:grid-cols-2 lg:gap-14">
             <a
               href="/tours"
-              className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden rounded-2xl sm:aspect-[16/10] lg:aspect-auto"
+              className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden sm:aspect-[16/10]"
             >
               <Image
                 src={experienciasKuhaneTours.foto}
@@ -143,7 +156,7 @@ export default function ExperienciasSection() {
                     onClick={() =>
                       setLightbox({ fotos: otrasExperiencias.fotos, alt: otrasExperiencias.title, index: i })
                     }
-                    className="relative h-28 w-28 shrink-0 snap-start overflow-hidden rounded-lg sm:h-32 sm:w-32"
+                    className="relative h-28 w-28 shrink-0 snap-start overflow-hidden sm:h-32 sm:w-32"
                   >
                     <Image
                       src={foto}
