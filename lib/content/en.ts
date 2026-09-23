@@ -15,6 +15,7 @@ import type {
   Habitacion,
   Libro,
   Resena,
+  Tour,
 } from "@/lib/site-content";
 import { es } from "./es";
 
@@ -163,6 +164,141 @@ const experienciasKuhaneTours = {
   foto: es.experienciasKuhaneTours.foto,
   fotoAlt: "Rano Raraku, one of the Kuhane Tours routes",
 };
+
+// Tours — translated from the Spanish source in lib/site-content.ts
+// (itinerary list sent by Andre, 9/23/2026; each highlighted stop's
+// `historia` researched from the same real sources cited there). Slugs are
+// kept identical to the Spanish version so the "Add to your reservation"
+// link (?tour=<slug>) still resolves correctly regardless of language.
+const toursIntro = {
+  eyebrow: "Kuhane Experiences",
+  title: "Private or group tours around Rapa Nui.",
+  body: "Our tours are fun and full of content — an extra service you can add to your reservation.",
+  privadosTitle: "Private tours",
+  privadosBody: "Small groups, up to 4 people.",
+  grupalesTitle: "Group tours",
+  grupalesBody: "Up to 14 people in a minibus, with a Spanish/English-speaking guide.",
+  agregarCta: "Add to your reservation",
+  consultarNota: "This tour's price is confirmed with your reservation and included in the total due at the hostel.",
+  paradasPendientes: "Itinerary details — coming soon.",
+  volver: "← Back to Kuhane",
+};
+
+const toursPrivados: Tour[] = [
+  {
+    slug: "full-day-rapa-nui",
+    nombre: "Full Day Rapa Nui",
+    modalidad: "Private tour",
+    duracion: "Full day",
+    maxPersonas: 4,
+    paradas: [
+      "Viewpoint over the town of Hanga Roa",
+      "Viewpoint of the Rano Kau volcano crater",
+      "Orongo ceremonial village",
+      "The perfectly cut walls of the Vinapu altar",
+      "Vaihu ceremonial center and cove",
+      "Ahu Akahanga ceremonial platform",
+      "The moai quarry at Rano Raraku volcano",
+      "Tongariki platform, with 15 moai",
+    ],
+    parada: "Rano Raraku",
+    historia:
+      "The crater that quarried the moai: for about 500 years, until the early 1700s, the volcanic stone for roughly 95% of the island's statues was cut here. Today 887 moai remain in various stages of carving, many buried up to the shoulders — including the largest ever carved, at 21.6 meters.",
+    foto: "/images/tours/rano-raraku_full-day.png",
+    fotoAlt: "Rano Raraku, on the Full Day Rapa Nui route",
+  },
+  {
+    slug: "half-day-punta-oeste",
+    nombre: "Half Day Punta Oeste",
+    modalidad: "Private tour",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [
+      "Ana Kai Tangata cave area and surroundings",
+      "Viewpoint over the town of Hanga Roa",
+      "Viewpoint of the Rano Kau volcano crater",
+      "Orongo ceremonial village",
+      "The perfectly cut walls of the Vinapu altar",
+      "Vaihu ceremonial center and cove",
+    ],
+    parada: "Orongo",
+    historia:
+      "Ceremonial village on the rim of the Rano Kau volcano, the center of the birdman cult (tangata manu) between the 18th and 19th centuries. Each year, competitors climbed down the cliff and swam across the sea to the islet of Motu Nui to bring back the first manutara egg — a high-risk race that decided who held authority on the island for the following year.",
+    foto: "/images/tours/orongo_punta-oeste.png",
+    fotoAlt: "Orongo, on the Half Day Punta Oeste route",
+  },
+  {
+    slug: "half-day-costa-sur",
+    nombre: "Half Day Costa Sur",
+    modalidad: "Private tour",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [
+      "Ahu Akahanga ceremonial platform",
+      "The moai quarry at Rano Raraku volcano",
+      "Tongariki platform, with 15 moai",
+      "Te Pito Kura, the navel of the world",
+      "Papa Vaka petroglyph site",
+      "Ahu Nau Nau platform, on Anakena beach",
+    ],
+    parada: "Ahu Tongariki",
+    historia:
+      "The largest ceremonial platform on Rapa Nui, with 15 moai lined up facing the sea. It was toppled during the island's internal wars and flattened by the 1960 tsunami; it wasn't restored until the 1990s, in a five-year project led by archaeologists Claudio Cristino and Patricia Vargas, with support from the Chilean government and the Japanese company Tadano.",
+    foto: "/images/tours/ahu-tongariki_costa-sur.jpg",
+    fotoAlt: "Ahu Tongariki, on the Half Day Costa Sur route",
+  },
+  {
+    slug: "half-day-isla-centro",
+    nombre: "Half Day Isla Centro",
+    modalidad: "Private tour",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [
+      "The perfectly cut walls of the Vinapu altar",
+      "Vaihu ceremonial center and cove",
+      "Ahu Huri a Urenga, with the four-fingered moai",
+      "Puna Pau, the quarry for the moai's stone topknots (pukao)",
+      "Ahu Akivi ceremonial center, with 7 moai",
+      "Tahai ceremonial complex",
+    ],
+    parada: "Ahu Akivi",
+    historia:
+      "Seven identical moai, unique for facing the sea instead of a village. Their alignment is so precise that they face the setting sun of the spring equinox head-on. They were restored in 1960 by American archaeologist William Mulloy and Chilean archaeologist Gonzalo Figueroa.",
+    foto: "/images/tours/ahu-akivi_isla-centro.png",
+    fotoAlt: "Ahu Akivi, on the Half Day Isla Centro route",
+  },
+];
+
+const toursGrupales: Tour[] = [
+  {
+    slug: "fullday-dream",
+    nombre: "Fullday Dream",
+    modalidad: "Group tour",
+    maxPersonas: 14,
+    descripcion:
+      "You'll get to know a large part of the island through the historical narrative of the moai cult and visit replica villages. You'll enjoy Anakena beach, a landmark of great importance where the first Polynesians came ashore.",
+    paradas: ["Vaihu", "Akahanga", "Rano Raraku", "Ahu Tongariki", "Te Pito Kura", "Ahu Nau Nau", "Anakena"],
+    parada: "Ahu Nau Nau, Anakena",
+    historia:
+      "The white-sand beach where, according to Rapanui tradition, Hotu Matu'a, the island's first settler, came ashore. It's home to Ahu Nau Nau, with restored moai — one of the most photographed postcard views of Rapa Nui.",
+    foto: "/images/tours/ahu-nau-nau_dream.png",
+    fotoAlt: "Ahu Nau Nau, on the Fullday Dream group tour",
+  },
+  {
+    slug: "fullday-explore",
+    nombre: "Fullday Explore",
+    modalidad: "Group tour",
+    maxPersonas: 14,
+    descripcion:
+      "You'll see a different side of the island, exploring archaeological sites tied to everyday life, cultural development, and the ancient traditions of Rapa Nui. The Orongo ceremonial village, where the famous tangata manu (birdman) competition took place, the Rano Kau crater, and other sites of great historical and archaeological importance.",
+    paradas: ["Rano Kau", "Orongo", "Vinapu", "Ahu Akivi", "Puna Pau", "Ahu Huri a Urenga", "Tahai"],
+    parada: "Tahai",
+    historia:
+      "Ceremonial complex just a 200-meter walk from Hanga Roa, restored by archaeologist William Mulloy in 1974. It brings together three platforms aligned north to south and, thanks to its closeness to town, is one of the island's favorite spots to watch the sunset.",
+    foto: "/images/tours/tahai_explore.jpg",
+    fotoAlt: "Tahai, on the Fullday Explore group tour",
+  },
+];
 
 const cultura = {
   eyebrow: "Culture",
@@ -450,6 +586,9 @@ export const en = {
   experiencias,
   otrasExperiencias,
   experienciasKuhaneTours,
+  toursIntro,
+  toursPrivados,
+  toursGrupales,
   cultura,
   sofia,
   libros,
