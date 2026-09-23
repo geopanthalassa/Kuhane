@@ -76,7 +76,12 @@ export default function ExperienciasSection() {
             veía más ancho/desbalanceado respecto a la tarjeta de la
             izquierda — se le puso el mismo ancho máximo (max-w-md) que
             usa el párrafo de arriba, para que no se extienda más que el
-            resto del contenido de esa columna. */}
+            resto del contenido de esa columna.
+            23/9/2026 (6): Andre pidió lo contrario para el pie de foto de
+            "otras experiencias" — que ocupe todo el ancho del carrusel de
+            fotos en vez de cortarse antes de la tercera foto. Se le saca
+            el max-w-md (ese límite se mantiene solo en el párrafo de
+            arriba, que es más corto). */}
         <Reveal delayMs={190}>
           <div className="mt-14 grid grid-cols-1 gap-10 border-t border-stone/10 pt-12 lg:grid-cols-2 lg:gap-14">
             <div>
@@ -175,7 +180,7 @@ export default function ExperienciasSection() {
                   </button>
                 ))}
               </div>
-              <p className="mt-3 max-w-md text-[13px] leading-relaxed text-stone-soft">
+              <p className="mt-3 text-[13px] leading-relaxed text-stone-soft">
                 {otrasExperiencias.footnote}
               </p>
             </div>
