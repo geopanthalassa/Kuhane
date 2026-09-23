@@ -67,7 +67,16 @@ export default function ExperienciasSection() {
             le corresponde (footnote en experienciasKuhaneTours y en
             otrasExperiencias, site-content.ts) — pedido explícito de
             Andre: "debe resaltar, debe ser igual a las otras secciones...
-            ponlo debajo de la imagen de tours guiados y del otro". */}
+            ponlo debajo de la imagen de tours guiados y del otro".
+            23/9/2026 (5): Andre pidió sacar el pie de foto de la tarjeta
+            de Tours Kuhane ("Kuhane pone a tu disposición sus tours.") —
+            quedaba redundante con el texto que ya está encima de la
+            imagen. También sacó el eyebrow "ADEMÁS" de la columna derecha
+            y pidió alinear la franja porque el texto de la derecha se
+            veía más ancho/desbalanceado respecto a la tarjeta de la
+            izquierda — se le puso el mismo ancho máximo (max-w-md) que
+            usa el párrafo de arriba, para que no se extienda más que el
+            resto del contenido de esa columna. */}
         <Reveal delayMs={190}>
           <div className="mt-14 grid grid-cols-1 gap-10 border-t border-stone/10 pt-12 lg:grid-cols-2 lg:gap-14">
             <div>
@@ -102,9 +111,6 @@ export default function ExperienciasSection() {
                   </span>
                 </div>
               </a>
-              <p className="mt-3 text-[13px] leading-relaxed text-stone-soft">
-                {experienciasKuhaneTours.footnote}
-              </p>
             </div>
 
             {/* Experiencias extra: no son un tour de Kuhane, son contactos
@@ -121,10 +127,7 @@ export default function ExperienciasSection() {
             <div className="flex flex-col justify-center">
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <p className="text-xs tracking-[0.25em] uppercase text-teal">
-                    {otrasExperiencias.eyebrow}
-                  </p>
-                  <h3 className="font-display mt-2 text-xl text-stone">{otrasExperiencias.title}</h3>
+                  <h3 className="font-display text-xl text-stone">{otrasExperiencias.title}</h3>
                 </div>
                 <div className="flex shrink-0 gap-2">
                   <button
@@ -172,7 +175,7 @@ export default function ExperienciasSection() {
                   </button>
                 ))}
               </div>
-              <p className="mt-3 text-[13px] leading-relaxed text-stone-soft">
+              <p className="mt-3 max-w-md text-[13px] leading-relaxed text-stone-soft">
                 {otrasExperiencias.footnote}
               </p>
             </div>
