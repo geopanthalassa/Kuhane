@@ -185,11 +185,14 @@ export const otrasExperiencias = {
   // relación con las tarjetas de abajo. Se dividió en dos y se puso cada
   // mitad como pie de foto bajo la tarjeta a la que corresponde — esta es
   // la segunda mitad (la lista de servicios externos), bajo el carrusel
-  // de "otras experiencias". Único cambio de redacción: "y te conecta"
-  // pasa a "Te conecta" (mayúscula, sin la "y") para que funcione como
-  // oración propia; el contenido es el mismo texto de Sofía.
+  // de "otras experiencias".
+  // 23/9/2026 (6): Andre pidió cambiar el arranque de la frase —
+  // "Te conecta con servicios de..." pasa a "Te facilitamos la
+  // experiencia completa conectándote con..." — y que el texto ocupe todo
+  // el ancho del carrusel (antes tenía max-w-md y se cortaba antes de la
+  // tercera foto).
   footnote:
-    "Te conecta con servicios de cabalgatas, buceo, navegación, observación astronómica, caminatas, galerías de arte, shows culturales, restaurantes y bares, canotaje, sesiones fotográficas y masajes — y te regala una inducción cultural para comprender mejor el lugar que visitas.",
+    "Te facilitamos la experiencia completa conectándote con servicios de cabalgatas, buceo, navegación, observación astronómica, caminatas, galerías de arte, shows culturales, restaurantes y bares, canotaje, sesiones fotográficas y masajes — y te regalamos una inducción cultural para comprender mejor el lugar que visitas.",
   fotos: [
     "/images/experiencias/buceo-01.jpg",
     "/images/experiencias/buceo-02.jpg",

@@ -142,8 +142,12 @@ const otrasExperiencias = {
   // Spanish source in site-content.ts for the full explanation). Second
   // half — the list of outside services — goes under the "other
   // experiences" carousel.
+  // 9/23/2026 (6): Andre asked to change the opening of the sentence —
+  // matches the Spanish edit in site-content.ts (see that file for the
+  // full note) — and to have the text span the full width of the
+  // carousel instead of being capped narrower.
   footnote:
-    "It also connects you with horseback riding, diving, sailing, stargazing, hiking, art galleries, cultural shows, restaurants and bars, canoeing, photo sessions, and massages — plus a free cultural induction to help you understand the place you're visiting.",
+    "We make the full experience easy by connecting you with horseback riding, diving, sailing, stargazing, hiking, art galleries, cultural shows, restaurants and bars, canoeing, photo sessions, and massages — plus a free cultural induction to help you understand the place you're visiting.",
   fotos: [
     "/images/experiencias/buceo-01.jpg",
     "/images/experiencias/buceo-02.jpg",
