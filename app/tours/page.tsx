@@ -21,11 +21,6 @@ export const metadata: Metadata = {
 // ahora (no pasa por useContent/LocaleProvider) — se puede traducir después
 // si Andre lo pide.
 //
-// Regla del proyecto: NO INVENTAR DATOS. El detalle de cada recorrido
-// (paradas) todavía no está completo — ver el comentario en
-// site-content.ts. Mientras Andre no reenvíe la lista, la tarjeta muestra
-// un aviso en vez de un itinerario inventado.
-//
 // Ningún tour muestra precio acá — decisión de Andre (23/9/2026): el valor
 // se confirma recién en el total a pagar en el hostal, después de la
 // reserva.
@@ -49,6 +44,10 @@ function TourCard({ tour }: { tour: Tour }) {
         </p>
         <h3 className="mt-2 font-display text-xl text-stone">{tour.nombre}</h3>
         <p className="mt-2 text-[13px] text-stone-soft">Máximo {tour.maxPersonas} personas.</p>
+
+        {tour.descripcion && (
+          <p className="mt-3 text-[14px] leading-relaxed text-stone-soft">{tour.descripcion}</p>
+        )}
 
         {tour.paradas.length > 0 && (
           <ul className="mt-4 space-y-1.5 text-[14px] leading-relaxed text-stone-soft">
