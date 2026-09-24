@@ -131,10 +131,14 @@ export const experiencias = {
       // con fruta y el letrero de entrada) para REEMPLAZAR las 4 fotos
       // anteriores de esta sección, no para sumarlas — se quedaron las
       // dos series mezcladas (8 fotos) por error; corregido acá.
+      // 24/9/2026: Andre pidió sacar la foto del jardín/pasto con la silla
+      // roja (bienvenida-07.jpg) — se veía muy genérica/vacía frente a las
+      // demás — y poner en su lugar la foto de las tres mujeres brindando
+      // en la terraza (nueva, bienvenida-09.jpg).
       fotos: [
         "/images/experiencias/bienvenida-05.jpg",
         "/images/experiencias/bienvenida-06.jpg",
-        "/images/experiencias/bienvenida-07.jpg",
+        "/images/experiencias/bienvenida-09.jpg",
         "/images/experiencias/bienvenida-08.jpg",
       ],
     },

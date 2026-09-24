@@ -101,10 +101,12 @@ const experiencias = {
     {
       title: "Welcome to Kuhane",
       body: "The moment you arrive, we welcome you with flower necklaces from the island and bring you home.",
+      // 24/9/2026: same swap as site-content.ts — garden/red-chair photo
+      // out, terrace toast photo in. See note there.
       fotos: [
         "/images/experiencias/bienvenida-05.jpg",
         "/images/experiencias/bienvenida-06.jpg",
-        "/images/experiencias/bienvenida-07.jpg",
+        "/images/experiencias/bienvenida-09.jpg",
         "/images/experiencias/bienvenida-08.jpg",
       ],
     },
