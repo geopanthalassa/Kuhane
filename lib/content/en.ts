@@ -411,7 +411,8 @@ const habitaciones: Habitacion[] = [
   {
     tipo: "Room",
     tipoCodigo: "habitacion",
-    nombre: "Haré",
+    // 24/9/2026: sin tilde, igual que en site-content.ts — ver nota ahí.
+    nombre: "Hare",
     capacidad: "3 guests",
     camas: "1 single bed + 1 double bed",
     bano: "Private, with bathtub",
@@ -463,7 +464,9 @@ const habitacionesIntro = {
   bodyPrefix: "4 rooms and 3 beachfront bungalows — total capacity for",
   capacidadTotal: 23,
   bodySuffix: "guests.",
-  incluye: "Continental breakfast and airport transfer both ways are included in your stay.",
+  // 24/9/2026: breakfast is "abundant and varied", not "continental" — see
+  // matching note in site-content.ts (habitacionesIntro.incluye).
+  incluye: "A hearty, varied breakfast and airport transfer both ways are included in your stay.",
 };
 
 const huespedes = {
@@ -527,7 +530,7 @@ const reserva = {
     "Suggested departure from Santiago — change the origin in the search if you're flying from another city.",
   paymentNote:
     "Payment is made at the hostel — we accept cash, and debit or credit cards (Chilean or international).",
-  incluye: "Your booking includes continental breakfast and airport transfer both ways.",
+  incluye: "Your booking includes a hearty, varied breakfast and airport transfer both ways.",
   monthsShort: [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",

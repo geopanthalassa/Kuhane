@@ -83,7 +83,10 @@ export const rapaNui = {
   // Texto actualizado a pedido de Sofía (23/9/2026).
   title: "El lugar habitado más remoto del mundo.",
   body: [
-    "Ubicada al centro del Pacífico Sur, Rapa Nui está a casi 4.000 kilómetros de Chile continental y equidistante de Tahití. Isla de clima subtropical, con paisajes espectaculares, una historia de grandeza y resiliencia, y una inigualable cultura viva.",
+    // 24/9/2026: Andre pidió sacar los acentos "a la española" en palabras
+    // pascuenses/polinésicas (ej. Tahití -> Tahiti, Haré -> Hare más abajo)
+    // porque no llevan tilde en su idioma de origen.
+    "Ubicada al centro del Pacífico Sur, Rapa Nui está a casi 4.000 kilómetros de Chile continental y equidistante de Tahiti. Isla de clima subtropical, con paisajes espectaculares, una historia de grandeza y resiliencia, y una inigualable cultura viva.",
   ],
   // Foto aérea del cráter Rano Kau, enviada por Andre — sept. 2026.
   foto: "/images/rapa-nui/territorio.jpg",
@@ -767,7 +770,11 @@ export const habitaciones: Habitacion[] = [
   {
     tipo: "Habitación",
     tipoCodigo: "habitacion",
-    nombre: "Haré",
+    // 24/9/2026: sin tilde ("Hare", no "Haré") — pedido de Andre, ver nota
+    // junto a rapaNui.body más arriba. También se corrigió el mismo nombre
+    // en la tabla `rooms` de Supabase (nuku-os) para que quede igual en la
+    // web y en las reservas reales.
+    nombre: "Hare",
     capacidad: "3 personas",
     camas: "1 cama individual + 1 cama doble",
     bano: "Privado, con bañera",
@@ -827,9 +834,12 @@ export const habitacionesIntro = {
   capacidadTotal: 23,
   bodySuffix: "personas.",
   // Pedido de Andre (23/9/2026): que quede explícito en habitaciones y en
-  // reserva que el desayuno continental y el traslado aeropuerto-hostal-
-  // aeropuerto van incluidos, sin costo adicional.
-  incluye: "El desayuno continental y el traslado desde y hacia el aeropuerto están incluidos en tu estadía.",
+  // reserva que el desayuno y el traslado aeropuerto-hostal-aeropuerto van
+  // incluidos, sin costo adicional.
+  // 24/9/2026: Andre corrigió el desayuno — no es "continental", es
+  // "abundante y variado" (mismo cambio en reserva.incluye más abajo y en
+  // el correo de confirmación, lib/email.ts en nuku-os).
+  incluye: "El desayuno abundante y variado, y el traslado desde y hacia el aeropuerto, están incluidos en tu estadía.",
 };
 
 export const huespedes = {
@@ -975,7 +985,9 @@ export const reserva = {
   paymentNote:
     "El pago se hace en el hostal — aceptamos efectivo, y débito o crédito (nacional o extranjera).",
   // Mismo pedido de Andre (23/9/2026) que en habitacionesIntro.incluye.
-  incluye: "Tu reserva incluye desayuno continental y traslado desde y hacia el aeropuerto.",
+  // 24/9/2026: desayuno "abundante y variado", no "continental" — ver nota
+  // en habitacionesIntro.incluye más arriba.
+  incluye: "Tu reserva incluye desayuno abundante y variado, y traslado desde y hacia el aeropuerto.",
   monthsShort: [
     "ene", "feb", "mar", "abr", "may", "jun",
     "jul", "ago", "sep", "oct", "nov", "dic",
