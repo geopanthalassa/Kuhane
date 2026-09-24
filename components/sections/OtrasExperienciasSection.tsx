@@ -77,9 +77,21 @@ export default function OtrasExperienciasSection() {
         <Reveal>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
+              {/* 24/9/2026: Andre pidió que la tarjeta de Tours Kuhane sea
+                  más grande "a lo largo" (más alta) que la columna de Otras
+                  experiencias, manteniendo el mismo ancho de columna (el
+                  ancho ya estaba bien). Antes usaba un ratio bien
+                  horizontal (16:10 en desktop) — ese límite venía de cuando
+                  esta franja iba pegada arriba del banner de aeropuerto
+                  (para no competir con esa foto grande), pero ahora que es
+                  su propia sección independiente eso ya no aplica. Se pasa
+                  a un ratio más vertical (3:4 en mobile, 4:3 en desktop)
+                  para que la tarjeta quede claramente más alta que el
+                  contenido de la derecha, que sigue centrado verticalmente
+                  (flex justify-center) dentro de la misma fila del grid. */}
               <a
                 href="/tours"
-                className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden sm:aspect-[16/10]"
+                className="group relative flex aspect-[3/4] w-full flex-col justify-end overflow-hidden sm:aspect-[4/3]"
               >
                 <Image
                   src={experienciasKuhaneTours.foto}
