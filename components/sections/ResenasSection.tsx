@@ -20,12 +20,17 @@ function TestimonioCard({ nombre, fuente, texto }: { nombre: string; fuente: str
 export default function ResenasSection() {
   const { resenas, site, TODO_PLACEHOLDER, ui } = useContent();
 
-  // Carrusel solo en mobile (< sm) — pedido de Andre (21/9/2026): "en
+  // Carrusel en todos los tamaños — pedido de Andre (21/9/2026): "en
   // version movil deberian estar en formato de carrusel asi no ocupa tanto
-  // espacio". De sm para arriba se mantiene la grilla de siempre; en mobile
-  // se reemplaza por scroll horizontal con snap + puntitos. Los puntitos se
-  // sincronizan con scroll real (sin librerías), redondeando la posición de
-  // scroll al ancho de una tarjeta.
+  // espacio" (implementado solo para mobile en ese momento). 24/9/2026:
+  // Andre pidió extenderlo — "necesito que las reseñas esten en carrusel
+  // tal como esta en la version movil" — ahora el mismo carrusel horizontal
+  // con snap + puntitos corre también en desktop/tablet, ya no hay grilla
+  // estática aparte. Las tarjetas usan un ancho fijo más grande a partir de
+  // sm/lg para que en pantallas anchas se vean 2-3 a la vez en vez de una
+  // sola tarjeta enorme con espacio vacío al lado (en mobile se mantiene el
+  // 85% de siempre). Los puntitos se sincronizan con scroll real (sin
+  // librerías), redondeando la posición de scroll al ancho de una tarjeta.
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -70,47 +75,42 @@ export default function ResenasSection() {
         </Reveal>
 
         {resenas.testimonios.length > 0 && (
-          <>
-            {/* Desktop/tablet: grilla de siempre */}
-            <div className="mt-14 hidden gap-8 sm:grid sm:grid-cols-3">
+          <div className="mt-14">
+            {/* Carrusel horizontal con snap, en todos los tamaños de
+                pantalla — ver comentario arriba (24/9/2026). El ancho de
+                la tarjeta crece en sm/lg para que en desktop se alcancen
+                a ver 2-3 a la vez en vez de una sola ocupando casi todo
+                el ancho. El -mx-6/px-6 (bleed hasta el borde) sigue el
+                mismo padding del contenedor en cada breakpoint
+                (px-6 en mobile, sm:px-10 de sm para arriba). */}
+            <div
+              ref={scrollerRef}
+              onScroll={handleScroll}
+              className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-1 sm:-mx-10 sm:scroll-px-10 sm:px-10 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
               {resenas.testimonios.map((r, i) => (
-                <Reveal key={r.nombre + i} delayMs={i * 100}>
+                <Reveal key={r.nombre + i} delayMs={i * 60} className="w-[85%] shrink-0 snap-center sm:w-[320px] lg:w-[360px]">
                   <TestimonioCard nombre={r.nombre} fuente={r.fuente} texto={r.texto} />
                 </Reveal>
               ))}
             </div>
 
-            {/* Mobile: carrusel horizontal con snap, para no ocupar tanto espacio */}
-            <div className="mt-14 sm:hidden">
-              <div
-                ref={scrollerRef}
-                onScroll={handleScroll}
-                className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              >
-                {resenas.testimonios.map((r, i) => (
-                  <div key={r.nombre + i} className="w-[85%] shrink-0 snap-center">
-                    <TestimonioCard nombre={r.nombre} fuente={r.fuente} texto={r.texto} />
-                  </div>
+            {resenas.testimonios.length > 1 && (
+              <div className="mt-5 flex items-center justify-center gap-2">
+                {resenas.testimonios.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`Reseña ${i + 1} de ${resenas.testimonios.length}`}
+                    onClick={() => scrollToIndex(i)}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === activeIndex ? "w-5 bg-teal-deep" : "w-1.5 bg-stone/25"
+                    }`}
+                  />
                 ))}
               </div>
-
-              {resenas.testimonios.length > 1 && (
-                <div className="mt-5 flex items-center justify-center gap-2">
-                  {resenas.testimonios.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      aria-label={`Reseña ${i + 1} de ${resenas.testimonios.length}`}
-                      onClick={() => scrollToIndex(i)}
-                      className={`h-1.5 rounded-full transition-all ${
-                        i === activeIndex ? "w-5 bg-teal-deep" : "w-1.5 bg-stone/25"
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          </>
+            )}
+          </div>
         )}
       </div>
     </section>
