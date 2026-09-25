@@ -739,7 +739,13 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    precio: "A consultar",
+    // 25/9/2026: precio pedido por Andre — sale de su tabla "Tarifa Antigua
+    // Booking" (bloque 2 noches, 1 pasajero) menos 10%, dividido en 2 para
+    // sacar el valor de 1 noche: $269.127 − 10% = $242.214 → ÷2 = $121.107.
+    // Es la tarifa a ocupación mínima (1 persona) — con más gente el precio
+    // por persona baja, pero la página solo tiene un campo de precio, así
+    // que por ahora se usa este número (decisión de Andre).
+    precio: "$121.107 por persona, por noche",
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -751,7 +757,8 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    precio: "A consultar",
+    // 25/9/2026: mismo cálculo que Mahatu — ver comentario ahí.
+    precio: "$121.107 por persona, por noche",
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -763,7 +770,11 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha nueva, cómoda y grande",
     servicios: ["Agua caliente", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "2 ambientes conectados · ventanal hacia terraza y jardín",
-    precio: "A consultar",
+    // 25/9/2026: la tabla de Andre no trae dato de 1 pasajero para Ohana —
+    // el mínimo real es 2 personas, así que se usa esa fila: $590.490 (2
+    // noches, 2 pasajeros) − 10% = $531.441 → ÷2 noches → ÷2 personas =
+    // $132.860 por persona, por noche.
+    precio: "$132.860 por persona, por noche",
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -784,6 +795,11 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Vista a jardín y patio interior",
+    // 25/9/2026: Hare se queda en "A consultar" a propósito — en la tabla
+    // de Andre los 3 casos (1, 2 y 3 pasajeros) dicen "Bloqueado" en
+    // Tarifa Antigua Booking, o sea no hay ningún número real del que
+    // partir. NO INVENTAR DATOS: falta que Andre pase un valor a mano para
+    // esta habitación.
     precio: "A consultar",
     // hare_01 (screenshot con flechas/puntos de un carrusel web) y
     // hare_02/03 (muestran 2 camas individuales, no coincide con "1
@@ -800,7 +816,9 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    precio: "A consultar",
+    // 25/9/2026: tabla de Andre, 1 pasajero: $355.808 (2 noches) − 10% =
+    // $320.227 → ÷2 noches = $160.114 por persona, por noche.
+    precio: "$160.114 por persona, por noche",
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -812,7 +830,8 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    precio: "A consultar",
+    // 25/9/2026: mismo cálculo que Calipso — ver comentario ahí.
+    precio: "$160.114 por persona, por noche",
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -824,7 +843,9 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    precio: "A consultar",
+    // 25/9/2026: tabla de Andre, 1 pasajero: $426.970 (2 noches) − 10% =
+    // $384.273 → ÷2 noches = $192.137 por persona, por noche.
+    precio: "$192.137 por persona, por noche",
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
