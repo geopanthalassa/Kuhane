@@ -32,14 +32,18 @@ function RoomCard({
         className="aspect-[4/3] w-full"
         onImageClick={() => onOpen(h.fotos, h.nombre)}
       />
-      <div className="mt-4 flex items-start justify-between gap-3">
+      <div className="mt-4">
         <h3 className="font-display text-lg text-stone">{h.nombre}</h3>
-        <span className="whitespace-nowrap text-[13px] text-stone-soft">{h.precio}</span>
       </div>
       <p className="mt-1 text-[13px] text-stone-soft">
         {h.capacidad} · {h.bano}
       </p>
       <p className="mt-1 text-[13px] text-stone-soft">{h.camas}</p>
+      {/* 25/9/2026: el precio pasó a su propia línea (antes iba pegado al
+          nombre, en una sola línea que no permitía cortar texto) porque
+          ahora puede traer 2 tarifas — 1 y 2 personas, pedido de Andre: el
+          precio por persona baja si reservan de a 2. */}
+      <p className="mt-2 text-[13px] font-medium text-teal-deep">{h.precio}</p>
       <div className="mt-3 flex flex-wrap gap-1.5">
         {h.servicios.map((s) => (
           <span
