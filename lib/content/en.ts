@@ -378,7 +378,9 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Fan", "Wifi", "Towels and linens included"],
     caracteristicas: "Large window facing the terrace and garden",
-    precio: "Price on request",
+    // 25/9/2026: matches lib/site-content.ts — see that file for the
+    // calculation (Andre's old Booking rate minus 10%, per person/night).
+    precio: "$121,107 CLP per person, per night",
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -390,7 +392,7 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with shower",
     servicios: ["Hot water", "Fan", "Wifi", "Towels and linens included"],
     caracteristicas: "Large window facing the terrace and garden",
-    precio: "Price on request",
+    precio: "$121,107 CLP per person, per night",
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -402,7 +404,9 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with a new, spacious, comfortable shower",
     servicios: ["Hot water", "Wifi", "Towels and linens included"],
     caracteristicas: "2 connected rooms · window facing the terrace and garden",
-    precio: "Price on request",
+    // 25/9/2026: Ohana's minimum occupancy is 2 guests, not 1 — see
+    // lib/site-content.ts for the calculation.
+    precio: "$132,860 CLP per person, per night",
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -420,6 +424,9 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Fan", "Wifi", "Towels and linens included"],
     caracteristicas: "View of the garden and interior patio",
+    // 25/9/2026: left as "Price on request" — Andre's rate table has no
+    // usable number for Hare (all three occupancy rows are "Bloqueado").
+    // NO INVENTING DATA: needs a real figure from Andre.
     precio: "Price on request",
     fotos: ["/images/habitaciones/hare/hare_04.jpg", "/images/habitaciones/hare/hare_05.jpg"],
   },
@@ -432,7 +439,7 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
     caracteristicas: "Beachfront bungalow, with terrace",
-    precio: "Price on request",
+    precio: "$160,114 CLP per person, per night",
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -444,7 +451,7 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
     caracteristicas: "Beachfront bungalow, with terrace",
-    precio: "Price on request",
+    precio: "$160,114 CLP per person, per night",
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -456,7 +463,7 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
     caracteristicas: "Beachfront bungalow, with terrace",
-    precio: "Price on request",
+    precio: "$192,137 CLP per person, per night",
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
@@ -582,6 +589,9 @@ const ui = {
   contactLabel: "Contact",
   sernaturCertLabel: "SERNATUR Certificate",
   almaLabel: "Alma, in the Rapanui language",
+  // 24/9/2026: footer credit, requested by Andre — links to
+  // https://www.nukumarketing.com/ (URL confirmed by Andre, not invented).
+  developedByLabel: "Developed by Nuku Marketing",
   librosLabel: "Books",
   llegadaLabel: "Arrival",
   anterior: "Previous",
