@@ -53,6 +53,9 @@ const ui = {
   contactLabel: "Contacto",
   sernaturCertLabel: "Certificado SERNATUR",
   almaLabel: "Alma, en lengua rapanui",
+  // 24/9/2026: crédito al pie de página, pedido de Andre — enlaza a
+  // https://www.nukumarketing.com/ (URL confirmada por Andre, no inventada).
+  developedByLabel: "Desarrollado por Nuku Marketing",
   librosLabel: "Libros",
   llegadaLabel: "Llegada",
   anterior: "Anterior",

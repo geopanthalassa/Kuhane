@@ -742,10 +742,10 @@ export const habitaciones: Habitacion[] = [
     // 25/9/2026: precio pedido por Andre — sale de su tabla "Tarifa Antigua
     // Booking" (bloque 2 noches, 1 pasajero) menos 10%, dividido en 2 para
     // sacar el valor de 1 noche: $269.127 − 10% = $242.214 → ÷2 = $121.107.
-    // Es la tarifa a ocupación mínima (1 persona) — con más gente el precio
-    // por persona baja, pero la página solo tiene un campo de precio, así
-    // que por ahora se usa este número (decisión de Andre).
-    precio: "$121.107 por persona, por noche",
+    // Andre pidió mostrar también la tarifa de 2 personas (más barata por
+    // persona): 2 pasajeros $299.030 (2 noches) × 0.9 = $269.127 → ÷2
+    // noches = $134.563,5 → ÷2 personas = $67.282.
+    precio: "$121.107 por persona (1) · $67.282 por persona (2), por noche",
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -758,7 +758,7 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
     // 25/9/2026: mismo cálculo que Mahatu — ver comentario ahí.
-    precio: "$121.107 por persona, por noche",
+    precio: "$121.107 por persona (1) · $67.282 por persona (2), por noche",
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -773,8 +773,10 @@ export const habitaciones: Habitacion[] = [
     // 25/9/2026: la tabla de Andre no trae dato de 1 pasajero para Ohana —
     // el mínimo real es 2 personas, así que se usa esa fila: $590.490 (2
     // noches, 2 pasajeros) − 10% = $531.441 → ÷2 noches → ÷2 personas =
-    // $132.860 por persona, por noche.
-    precio: "$132.860 por persona, por noche",
+    // $132.860 por persona, por noche. No hay segunda tarifa (4 personas)
+    // porque la tabla de Andre dice "No calculado" para esa fila —
+    // NO INVENTAR DATOS.
+    precio: "$132.860 por persona (mínimo 2), por noche",
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -817,8 +819,10 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
     // 25/9/2026: tabla de Andre, 1 pasajero: $355.808 (2 noches) − 10% =
-    // $320.227 → ÷2 noches = $160.114 por persona, por noche.
-    precio: "$160.114 por persona, por noche",
+    // $320.227 → ÷2 noches = $160.114 por persona, por noche. 2 pasajeros:
+    // $400.284 (2 noches) × 0.9 = $360.255,6 → ÷2 noches = $180.127,8 →
+    // ÷2 personas = $90.064.
+    precio: "$160.114 por persona (1) · $90.064 por persona (2), por noche",
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -831,7 +835,7 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
     // 25/9/2026: mismo cálculo que Calipso — ver comentario ahí.
-    precio: "$160.114 por persona, por noche",
+    precio: "$160.114 por persona (1) · $90.064 por persona (2), por noche",
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -844,8 +848,10 @@ export const habitaciones: Habitacion[] = [
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
     // 25/9/2026: tabla de Andre, 1 pasajero: $426.970 (2 noches) − 10% =
-    // $384.273 → ÷2 noches = $192.137 por persona, por noche.
-    precio: "$192.137 por persona, por noche",
+    // $384.273 → ÷2 noches = $192.137 por persona, por noche. 2 pasajeros:
+    // $453.655 (2 noches) × 0.9 = $408.289,5 → ÷2 noches = $204.144,75 →
+    // ÷2 personas = $102.072.
+    precio: "$192.137 por persona (1) · $102.072 por persona (2), por noche",
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
