@@ -52,21 +52,50 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-6 flex max-w-7xl flex-col-reverse gap-3 text-xs text-warm-white/50 sm:flex-row sm:items-center sm:justify-between">
+      {/* 24/9/2026: sm:pr-24 — el nuevo link "Desarrollado por Nuku
+          Marketing" quedaba parcialmente tapado por el botón flotante de
+          WhatsApp (fixed bottom-7 right-7, 56px) en pantallas de escritorio,
+          porque es el elemento más a la derecha de esta fila. Se le da
+          espacio de sobra al botón en vez de mover el botón. */}
+      <div className="mx-auto mt-6 flex max-w-7xl flex-col-reverse gap-3 text-xs text-warm-white/50 sm:flex-row sm:items-center sm:justify-between sm:pr-24">
         <p>© {new Date().getFullYear()} Kuhane Etno-Hostal. Rapa Nui, Chile.</p>
         <div className="flex items-center gap-5">
           {/* Certificado SERNATUR (registro N.º 110415) — enviado por
               Andre (7/9/2026), "por si alguien quiere leerlo". Discreto,
-              al pie de página, no es el foco de la sección. */}
+              al pie de página, no es el foco de la sección.
+              28/9/2026: Andre pidió que el sello oficial (el círculo
+              "Servicio Turístico Registrado") esté también como imagen,
+              no solo el link de texto al PDF. Se agrega chico al lado,
+              mismo destino (el PDF del certificado), mismo tono discreto. */}
           <a
             href="/documents/certificado-sernatur.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-warm-white/80"
+            className="flex items-center gap-2 hover:text-warm-white/80"
           >
-            {ui.sernaturCertLabel}
+            <Image
+              src="/logo/sernatur-sello.png"
+              alt="Servicio Turístico Registrado — SERNATUR"
+              width={32}
+              height={32}
+              className="h-8 w-8 shrink-0"
+            />
+            <span className="underline underline-offset-2">{ui.sernaturCertLabel}</span>
           </a>
           <p className="tracking-[0.15em] uppercase">{ui.almaLabel}</p>
+          {/* 24/9/2026: crédito "Desarrollado por Nuku Marketing" — pedido
+              explícito de Andre, con link a https://www.nukumarketing.com/
+              (URL que él mismo dio, no inventada). Mismo estilo discreto
+              (underline) que el link del certificado SERNATUR, así no
+              compite visualmente con el resto del footer. */}
+          <a
+            href="https://www.nukumarketing.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-warm-white/80"
+          >
+            {ui.developedByLabel}
+          </a>
         </div>
       </div>
     </footer>
