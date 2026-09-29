@@ -23,6 +23,23 @@ export default function Footer() {
           </p>
         </div>
 
+        <div className="flex items-start justify-center sm:mx-6">
+          <a
+            href="/documents/certificado-sernatur.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <Image
+              src="/logo/sernatur-sello.png"
+              alt="Servicio Turístico Registrado — SERNATUR"
+              width={112}
+              height={112}
+              className="h-28 w-28"
+            />
+          </a>
+        </div>
+
         <div className="grid grid-cols-2 gap-10 sm:flex sm:gap-16">
           <div>
             <p className="mb-3 text-xs tracking-[0.2em] uppercase text-gold-soft">
@@ -50,23 +67,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-      </div>
-
-      <div className="mx-auto mt-10 flex max-w-7xl justify-center">
-        <a
-          href="/documents/certificado-sernatur.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block"
-        >
-          <Image
-            src="/logo/sernatur-sello.png"
-            alt="Servicio Turístico Registrado — SERNATUR"
-            width={128}
-            height={128}
-            className="h-32 w-32"
-          />
-        </a>
       </div>
 
       <div className="mx-auto mt-6 flex max-w-7xl flex-col-reverse gap-3 text-xs text-warm-white/50 sm:flex-row sm:items-center sm:justify-between sm:pr-24">
