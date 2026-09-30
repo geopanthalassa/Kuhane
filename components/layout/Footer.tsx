@@ -33,9 +33,9 @@ export default function Footer() {
             <Image
               src="/logo/sernatur-sello.png"
               alt="Servicio Turístico Registrado — SERNATUR"
-              width={112}
-              height={112}
-              className="h-28 w-28"
+              width={176}
+              height={176}
+              className="h-44 w-44"
             />
           </a>
         </div>
