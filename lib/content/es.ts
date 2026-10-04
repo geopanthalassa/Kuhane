@@ -64,6 +64,12 @@ const ui = {
   disponibleProximamente: "Disponible próximamente",
   activarSonido: "Activar sonido",
   silenciar: "Silenciar",
+  // 4/10/2026: conversor de moneda a USD (pedido de Andre: "la gente de
+  // afuera pueda ver el precio directamente en dólares"). Va al lado del
+  // precio en CLP, nunca lo reemplaza — y solo se muestra si se pudo
+  // obtener un tipo de cambio real (ver lib/useUsdRate.ts).
+  aproxUsdPrefix: "≈ US$",
+  aproxUsdSuffix: "aprox. · tipo de cambio referencial del día",
 };
 
 export const es = {

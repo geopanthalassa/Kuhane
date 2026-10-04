@@ -378,11 +378,11 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Fan", "Wifi", "Towels and linens included"],
     caracteristicas: "Large window facing the terrace and garden",
-    // 25/9/2026: matches lib/site-content.ts — see that file for the
-    // calculation (Andre's old Booking rate minus 10%, per person/night).
-    // Second tier (2 guests) added per Andre's request — cheaper per
-    // person when 2 people book.
-    precio: "$121,107 CLP per person (1) · $67,282 CLP per person (2), per night",
+    // 4/10/2026: matches lib/site-content.ts — updated to Andre's new rate
+    // table ("Web directo" column), flat rate per person/night. Replaces
+    // the old two-tier price from the previous Booking-based calculation.
+    precio: "$90,000 CLP per person, per night",
+    precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -394,8 +394,9 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with shower",
     servicios: ["Hot water", "Fan", "Wifi", "Towels and linens included"],
     caracteristicas: "Large window facing the terrace and garden",
-    // 25/9/2026: same calculation as Mahatu — see that entry.
-    precio: "$121,107 CLP per person (1) · $67,282 CLP per person (2), per night",
+    // 4/10/2026: same rate as Mahatu — see that entry.
+    precio: "$90,000 CLP per person, per night",
+    precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -407,11 +408,12 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with a new, spacious, comfortable shower",
     servicios: ["Hot water", "Wifi", "Towels and linens included"],
     caracteristicas: "2 connected rooms · window facing the terrace and garden",
-    // 25/9/2026: Ohana's minimum occupancy is 2 guests, not 1 — see
-    // lib/site-content.ts for the calculation. No second tier (4 guests):
-    // Andre's table has no usable number for that row ("No calculado") —
-    // NOT INVENTING DATA.
-    precio: "$132,860 CLP per person (minimum 2), per night",
+    // 4/10/2026: Andre's new rate table confirms $90,000 per person for 2,
+    // 4, and 6 guests (same flat rate as the other rooms) — see
+    // lib/site-content.ts. No 1-guest row, consistent with the real
+    // minimum of 2.
+    precio: "$90,000 CLP per person, per night",
+    precioPersonaCLP: 90000,
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -429,10 +431,11 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Fan", "Wifi", "Towels and linens included"],
     caracteristicas: "View of the garden and interior patio",
-    // 25/9/2026: left as "Price on request" — Andre's rate table has no
-    // usable number for Hare (all three occupancy rows are "Bloqueado").
-    // NO INVENTING DATA: needs a real figure from Andre.
-    precio: "Price on request",
+    // 4/10/2026: no longer blocked — Andre's new rate table brings a real
+    // figure for Hare: $90,000 per person for 1, 2, and 3 guests (same
+    // flat rate as the other rooms). See lib/site-content.ts.
+    precio: "$90,000 CLP per person, per night",
+    precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/hare/hare_04.jpg", "/images/habitaciones/hare/hare_05.jpg"],
   },
   {
@@ -444,9 +447,10 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
     caracteristicas: "Beachfront bungalow, with terrace",
-    // 25/9/2026: matches lib/site-content.ts (Calipso) — see that file for
-    // the calculation of both tiers.
-    precio: "$160,114 CLP per person (1) · $90,064 CLP per person (2), per night",
+    // 4/10/2026: matches lib/site-content.ts (Calipso) — Andre's new rate
+    // table, flat rate for 1, 2, and 3 guests.
+    precio: "$115,000 CLP per person, per night",
+    precioPersonaCLP: 115000,
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -458,8 +462,9 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
     caracteristicas: "Beachfront bungalow, with terrace",
-    // 25/9/2026: same calculation as Calipso — see that entry.
-    precio: "$160,114 CLP per person (1) · $90,064 CLP per person (2), per night",
+    // 4/10/2026: same rate as Calipso — see that entry.
+    precio: "$115,000 CLP per person, per night",
+    precioPersonaCLP: 115000,
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -471,9 +476,10 @@ const habitaciones: Habitacion[] = [
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
     caracteristicas: "Beachfront bungalow, with terrace",
-    // 25/9/2026: matches lib/site-content.ts (Moana) — see that file for
-    // the calculation of both tiers.
-    precio: "$192,137 CLP per person (1) · $102,072 CLP per person (2), per night",
+    // 4/10/2026: matches lib/site-content.ts (Moana) — Andre's new rate
+    // table, flat rate for 1, 2, 3, and 4 guests.
+    precio: "$125,000 CLP per person, per night",
+    precioPersonaCLP: 125000,
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
@@ -610,6 +616,9 @@ const ui = {
   disponibleProximamente: "Coming soon",
   activarSonido: "Turn on sound",
   silenciar: "Mute",
+  // 4/10/2026: currency converter to USD — see matching note in es.ts.
+  aproxUsdPrefix: "≈ US$",
+  aproxUsdSuffix: "approx. · today's reference exchange rate",
 };
 
 export const en = {

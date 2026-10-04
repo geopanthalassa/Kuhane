@@ -722,13 +722,22 @@ export type Habitacion = {
   servicios: string[];
   caracteristicas: string;
   precio: string;
+  // Mismo valor que aparece en `precio`, pero como número (CLP, por
+  // persona, por noche) para poder calcular la conversión a USD en el
+  // conversor de moneda (pedido de Andre, 4/10/2026: "la gente de afuera
+  // pueda ver el precio directamente en dólares"). `precio` sigue siendo
+  // el texto que se muestra en español/inglés; este campo es solo para la
+  // cuenta matemática del conversor.
+  precioPersonaCLP: number;
   fotos: string[];
 };
 
-// Confirmado directamente con Kuhane (septiembre 2026). Precios todavía sin
-// confirmar en las 7 unidades -> "A consultar". Toallas y sábanas van
-// incluidas sin cargo en las 7. Son unidades frente al mar (Calipso, Uta,
-// Moana) — no se afirma "vista al mar" porque no está confirmada desde adentro.
+// Confirmado directamente con Kuhane (septiembre 2026). Precios actualizados
+// 2/10/2026 con la tabla de tarifas nueva de Andre (columna "Web directo"),
+// que ya cubre las 7 unidades — ya no queda ninguna en "A consultar".
+// Toallas y sábanas van incluidas sin cargo en las 7. Son unidades frente al
+// mar (Calipso, Uta, Moana) — no se afirma "vista al mar" porque no está
+// confirmada desde adentro.
 export const habitaciones: Habitacion[] = [
   {
     tipo: "Habitación",
@@ -739,13 +748,12 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    // 25/9/2026: precio pedido por Andre — sale de su tabla "Tarifa Antigua
-    // Booking" (bloque 2 noches, 1 pasajero) menos 10%, dividido en 2 para
-    // sacar el valor de 1 noche: $269.127 − 10% = $242.214 → ÷2 = $121.107.
-    // Andre pidió mostrar también la tarifa de 2 personas (más barata por
-    // persona): 2 pasajeros $299.030 (2 noches) × 0.9 = $269.127 → ÷2
-    // noches = $134.563,5 → ÷2 personas = $67.282.
-    precio: "$121.107 por persona (1) · $67.282 por persona (2), por noche",
+    // 2/10/2026: tabla de tarifas nueva de Andre (foto), columna "Web
+    // (directo)" — reemplaza el cálculo anterior basado en la tarifa vieja
+    // de Booking. Tarifa plana por persona, por noche (no baja al sumar
+    // pasajeros): 1 pax $90.000 · 2 pax $180.000 → $90.000/persona.
+    precio: "$90.000 por persona, por noche",
+    precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -757,8 +765,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    // 25/9/2026: mismo cálculo que Mahatu — ver comentario ahí.
-    precio: "$121.107 por persona (1) · $67.282 por persona (2), por noche",
+    // 2/10/2026: misma tarifa que Mahatu, tabla nueva de Andre — ver
+    // comentario ahí.
+    precio: "$90.000 por persona, por noche",
+    precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -770,13 +780,11 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha nueva, cómoda y grande",
     servicios: ["Agua caliente", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "2 ambientes conectados · ventanal hacia terraza y jardín",
-    // 25/9/2026: la tabla de Andre no trae dato de 1 pasajero para Ohana —
-    // el mínimo real es 2 personas, así que se usa esa fila: $590.490 (2
-    // noches, 2 pasajeros) − 10% = $531.441 → ÷2 noches → ÷2 personas =
-    // $132.860 por persona, por noche. No hay segunda tarifa (4 personas)
-    // porque la tabla de Andre dice "No calculado" para esa fila —
-    // NO INVENTAR DATOS.
-    precio: "$132.860 por persona (mínimo 2), por noche",
+    // 2/10/2026: tabla nueva de Andre — confirma $90.000 por persona para
+    // 2, 4 y 6 pasajeros (misma tarifa plana que las demás habitaciones).
+    // No trae fila de 1 pasajero, consistente con el mínimo real de 2.
+    precio: "$90.000 por persona, por noche",
+    precioPersonaCLP: 90000,
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -797,12 +805,11 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Vista a jardín y patio interior",
-    // 25/9/2026: Hare se queda en "A consultar" a propósito — en la tabla
-    // de Andre los 3 casos (1, 2 y 3 pasajeros) dicen "Bloqueado" en
-    // Tarifa Antigua Booking, o sea no hay ningún número real del que
-    // partir. NO INVENTAR DATOS: falta que Andre pase un valor a mano para
-    // esta habitación.
-    precio: "A consultar",
+    // 2/10/2026: ya no está bloqueado — tabla nueva de Andre trae
+    // $90.000 por persona para 1, 2 y 3 pasajeros (misma tarifa plana que
+    // las demás habitaciones).
+    precio: "$90.000 por persona, por noche",
+    precioPersonaCLP: 90000,
     // hare_01 (screenshot con flechas/puntos de un carrusel web) y
     // hare_02/03 (muestran 2 camas individuales, no coincide con "1
     // individual + 1 doble") se sacaron por dudosas — ver nota a Andre
@@ -818,11 +825,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    // 25/9/2026: tabla de Andre, 1 pasajero: $355.808 (2 noches) − 10% =
-    // $320.227 → ÷2 noches = $160.114 por persona, por noche. 2 pasajeros:
-    // $400.284 (2 noches) × 0.9 = $360.255,6 → ÷2 noches = $180.127,8 →
-    // ÷2 personas = $90.064.
-    precio: "$160.114 por persona (1) · $90.064 por persona (2), por noche",
+    // 2/10/2026: tabla nueva de Andre — tarifa plana $115.000 por persona
+    // para 1, 2 y 3 pasajeros, columna "Web (directo)".
+    precio: "$115.000 por persona, por noche",
+    precioPersonaCLP: 115000,
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -834,8 +840,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    // 25/9/2026: mismo cálculo que Calipso — ver comentario ahí.
-    precio: "$160.114 por persona (1) · $90.064 por persona (2), por noche",
+    // 2/10/2026: misma tarifa que Calipso, tabla nueva de Andre — ver
+    // comentario ahí.
+    precio: "$115.000 por persona, por noche",
+    precioPersonaCLP: 115000,
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -847,11 +855,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    // 25/9/2026: tabla de Andre, 1 pasajero: $426.970 (2 noches) − 10% =
-    // $384.273 → ÷2 noches = $192.137 por persona, por noche. 2 pasajeros:
-    // $453.655 (2 noches) × 0.9 = $408.289,5 → ÷2 noches = $204.144,75 →
-    // ÷2 personas = $102.072.
-    precio: "$192.137 por persona (1) · $102.072 por persona (2), por noche",
+    // 2/10/2026: tabla nueva de Andre — tarifa plana $125.000 por persona
+    // para 1, 2, 3 y 4 pasajeros, columna "Web (directo)".
+    precio: "$125.000 por persona, por noche",
+    precioPersonaCLP: 125000,
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
