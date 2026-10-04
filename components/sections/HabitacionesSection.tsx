@@ -6,6 +6,7 @@ import PhotoCarousel from "@/components/ui/PhotoCarousel";
 import SectionIntro from "@/components/ui/SectionIntro";
 import Reveal from "@/components/ui/Reveal";
 import { useContent } from "@/lib/content/LocaleProvider";
+import { useUsdRate } from "@/lib/useUsdRate";
 import type { Habitacion } from "@/lib/site-content";
 
 // Rediseño más compacto (pedido de Andre, 7/9/2026: "la sección de
@@ -18,10 +19,16 @@ import type { Habitacion } from "@/lib/site-content";
 function RoomCard({
   h,
   consultarLabel,
+  usdRate,
+  aproxUsdPrefix,
+  aproxUsdSuffix,
   onOpen,
 }: {
   h: Habitacion;
   consultarLabel: string;
+  usdRate: number | null;
+  aproxUsdPrefix: string;
+  aproxUsdSuffix: string;
   onOpen: (fotos: string[], alt: string) => void;
 }) {
   return (
@@ -44,6 +51,18 @@ function RoomCard({
           ahora puede traer 2 tarifas — 1 y 2 personas, pedido de Andre: el
           precio por persona baja si reservan de a 2. */}
       <p className="mt-2 text-[13px] font-medium text-teal-deep">{h.precio}</p>
+      {/* 4/10/2026: conversor de moneda a USD (pedido de Andre: que la
+          gente de afuera vea el precio directamente en dólares). Se
+          calcula en el navegador del visitante con un tipo de cambio en
+          vivo (ver lib/useUsdRate.ts) y solo se muestra si esa consulta
+          tuvo éxito — si falla, esta línea simplemente no aparece, nunca
+          se inventa un número. */}
+      {usdRate !== null && (
+        <p className="mt-0.5 text-[12px] text-stone-soft">
+          {aproxUsdPrefix} {Math.round(h.precioPersonaCLP * usdRate).toLocaleString("en-US")}{" "}
+          <span className="text-stone-soft/70">({aproxUsdSuffix})</span>
+        </p>
+      )}
       <div className="mt-3 flex flex-wrap gap-1.5">
         {h.servicios.map((s) => (
           <span
@@ -67,6 +86,8 @@ function RoomCard({
 export default function HabitacionesSection() {
   const { habitaciones, habitacionesIntro, ui } = useContent();
   const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(null);
+  // Un solo pedido de red para las 7 fichas (ver lib/useUsdRate.ts).
+  const usdRate = useUsdRate();
 
   const soloHabitaciones = habitaciones.filter((h) => h.tipoCodigo === "habitacion");
   const bungalows = habitaciones.filter((h) => h.tipoCodigo === "bungalow");
@@ -97,6 +118,9 @@ export default function HabitacionesSection() {
               <RoomCard
                 h={h}
                 consultarLabel={ui.consultarDisponibilidad}
+                usdRate={usdRate}
+                aproxUsdPrefix={ui.aproxUsdPrefix}
+                aproxUsdSuffix={ui.aproxUsdSuffix}
                 onOpen={(fotos, alt) => setLightbox({ fotos, alt, index: 0 })}
               />
             </div>
@@ -114,6 +138,9 @@ export default function HabitacionesSection() {
               <RoomCard
                 h={h}
                 consultarLabel={ui.consultarDisponibilidad}
+                usdRate={usdRate}
+                aproxUsdPrefix={ui.aproxUsdPrefix}
+                aproxUsdSuffix={ui.aproxUsdSuffix}
                 onOpen={(fotos, alt) => setLightbox({ fotos, alt, index: 0 })}
               />
             </div>
