@@ -1066,6 +1066,6 @@ export const whatsappWidget = {
 export const ubicacion = {
   eyebrow: "Cómo llegar",
   title: "Encuéntranos en Hanga Roa.",
-  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y si llegas en avión, el traslado desde el aeropuerto ya está incluido en tu reserva.",
+  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y el traslado desde el aeropuerto ya está incluido en tu reserva.",
   directionsCta: "Cómo llegar (Google Maps)",
 };
