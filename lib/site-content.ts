@@ -748,12 +748,12 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    // 2/10/2026: tabla de tarifas nueva de Andre (foto), columna "Web
-    // (directo)" — reemplaza el cálculo anterior basado en la tarifa vieja
-    // de Booking. Tarifa plana por persona, por noche (no baja al sumar
-    // pasajeros): 1 pax $90.000 · 2 pax $180.000 → $90.000/persona.
-    precio: "$90.000 por persona, por noche",
-    precioPersonaCLP: 90000,
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $90.000). Tarifa plana por persona, por noche. Temporada alta
+    // (dic-feb) sube a $92.000 — hay que volver a cambiar este valor
+    // cuando empiece diciembre, el sitio no cambia de temporada solo.
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -765,10 +765,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    // 2/10/2026: misma tarifa que Mahatu, tabla nueva de Andre — ver
-    // comentario ahí.
-    precio: "$90.000 por persona, por noche",
-    precioPersonaCLP: 90000,
+    // 9/10/2026: misma tarifa que Mahatu, precio de temporada baja
+    // actualizado por Andre (antes $90.000).
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -780,11 +780,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha nueva, cómoda y grande",
     servicios: ["Agua caliente", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "2 ambientes conectados · ventanal hacia terraza y jardín",
-    // 2/10/2026: tabla nueva de Andre — confirma $90.000 por persona para
-    // 2, 4 y 6 pasajeros (misma tarifa plana que las demás habitaciones).
-    // No trae fila de 1 pasajero, consistente con el mínimo real de 2.
-    precio: "$90.000 por persona, por noche",
-    precioPersonaCLP: 90000,
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $90.000), misma tarifa plana que las demás habitaciones.
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -805,11 +804,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Vista a jardín y patio interior",
-    // 2/10/2026: ya no está bloqueado — tabla nueva de Andre trae
-    // $90.000 por persona para 1, 2 y 3 pasajeros (misma tarifa plana que
-    // las demás habitaciones).
-    precio: "$90.000 por persona, por noche",
-    precioPersonaCLP: 90000,
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $90.000), misma tarifa plana que las demás habitaciones.
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     // hare_01 (screenshot con flechas/puntos de un carrusel web) y
     // hare_02/03 (muestran 2 camas individuales, no coincide con "1
     // individual + 1 doble") se sacaron por dudosas — ver nota a Andre
@@ -825,10 +823,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    // 2/10/2026: tabla nueva de Andre — tarifa plana $115.000 por persona
-    // para 1, 2 y 3 pasajeros, columna "Web (directo)".
-    precio: "$115.000 por persona, por noche",
-    precioPersonaCLP: 115000,
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $115.000). Temporada alta (dic-feb) sube a $116.000.
+    precio: "$96.000 por persona, por noche",
+    precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -840,10 +838,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    // 2/10/2026: misma tarifa que Calipso, tabla nueva de Andre — ver
-    // comentario ahí.
-    precio: "$115.000 por persona, por noche",
-    precioPersonaCLP: 115000,
+    // 9/10/2026: misma tarifa que Calipso, precio de temporada baja
+    // actualizado por Andre (antes $115.000).
+    precio: "$96.000 por persona, por noche",
+    precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -855,10 +853,11 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    // 2/10/2026: tabla nueva de Andre — tarifa plana $125.000 por persona
-    // para 1, 2, 3 y 4 pasajeros, columna "Web (directo)".
-    precio: "$125.000 por persona, por noche",
-    precioPersonaCLP: 125000,
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $125.000) — ahora igual al de Calipso/Uta. Temporada alta (dic-feb)
+    // sube a $116.000.
+    precio: "$96.000 por persona, por noche",
+    precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
