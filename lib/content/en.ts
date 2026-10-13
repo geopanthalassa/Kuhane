@@ -34,7 +34,10 @@ const site = {
     { value: "4.7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4.7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
-  whatsapp: "+56 9 7766 8288",
+  // Kuhane's definitive WhatsApp Business Platform number (registered with
+  // Meta, WABA "Kuhane EtnoHostal") — replaces the temporary +56 9 7766 8288
+  // used in the meantime. Confirmed by Andre (10/13/2026).
+  whatsapp: "+56 9 9504 5737",
   email: "contacto@kuhanehostal.com",
   address: "Kahu Mahau s/n, Hanga Roa, Easter Island, Chile",
 };

@@ -26,9 +26,10 @@ export const site = {
     { value: "4,7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4,7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
-  // Número temporal mientras se define el definitivo — pedido de Andre
-  // (22/9/2026): "el numero mientras tanto sera este +56 9 7766 8288".
-  whatsapp: "+56 9 7766 8288",
+  // Número definitivo de Kuhane en WhatsApp Business Platform (registrado en
+  // Meta, WABA "Kuhane EtnoHostal") — reemplaza al número temporal +56 9 7766
+  // 8288 que se usó mientras tanto. Confirmado por Andre (13/10/2026).
+  whatsapp: "+56 9 9504 5737",
   // Correo del dominio propio, ya activo y recibiendo/enviando por Gmail
   // (contacto@kuhanehostal.com) — pedido de Andre (22/9/2026): "el correo
   // sera el de @kuhanehostal.com".
