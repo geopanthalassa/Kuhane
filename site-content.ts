@@ -28,7 +28,7 @@ export const site = {
   ],
   // Número temporal mientras se define el definitivo — pedido de Andre
   // (22/9/2026): "el numero mientras tanto sera este +56 9 7766 8288".
-  whatsapp: "+56 9 7766 8288",
+  whatsapp: "+56 9 9504 5737",
   // Correo del dominio propio, ya activo y recibiendo/enviando por Gmail
   // (contacto@kuhanehostal.com) — pedido de Andre (22/9/2026): "el correo
   // sera el de @kuhanehostal.com".
