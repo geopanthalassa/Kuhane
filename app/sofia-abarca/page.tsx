@@ -72,21 +72,22 @@ export default function SofiaAbarcaPage() {
                 identidad oceánica de Chile.&rdquo;
               </p>
               <p className="mt-6 text-[17px] leading-relaxed text-stone">
-                Música, recopiladora e investigadora etnomusicológica, gestora cultural y escritora
-                de Isla de Pascua, especialista en las expresiones culturales del pueblo rapanui — su
-                música y cantos ancestrales, su artesanía y arte escultórico, y su patrimonio
-                alimentario.
+                Músico, recopiladora e investigadora etnomusicológica, gestora cultural y escritora
+                de Isla de Pascua, especialista en las expresiones culturales del pueblo rapanui:
+                sus recitaciones, su música y cantos ancestrales, su artesanía y arte escultórico, y
+                su patrimonio alimentario.
               </p>
               <p className="mt-5 text-[17px] leading-relaxed text-stone">
                 Es reconocida como la única recopiladora contemporánea del patrimonio musical de
-                Rapa Nui: más de 450 registros de oralidad y canto antiguo entregados a la Biblioteca
-                Nacional de Chile en 2015, y 64 producciones discográficas editadas por su sello Nuku
-                te Mango Rec., el primero de la isla.
+                Rapa Nui: más de 450 registros de oralidad y canto antiguo entregados a los Archivos
+                del Patrimonio Inmaterial de la Biblioteca Nacional de Chile el año 2015, y 72
+                producciones discográficas registradas en su Estudio de Grabación y editadas por su
+                Sello Discográfico Nuku te Mango Rec., el primero de la isla.
               </p>
               <p className="mt-5 text-[17px] leading-relaxed text-stone">
-                Su capacidad de gestión ha movilizado a instituciones como la UNESCO, la CEPAL y
-                distintos ministerios del Estado de Chile, llevando muestras culturales rapanui a
-                giras diplomáticas en América, Europa y Asia.
+                Su capacidad de gestión ha movilizado a instituciones como UNESCO, CEPAL y distintos
+                ministerios del Estado de Chile a valorar la cultura insular, llevando muestras
+                culturales rapanui a giras diplomáticas en América, Europa y Asia.
               </p>
             </Reveal>
           </div>
