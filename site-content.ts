@@ -15,9 +15,9 @@ export const site = {
   shortName: "Kuhane",
   location: "Hanga Roa, Rapa Nui",
   url: "https://kuhanehostal.com",
-  // Confirmado: 1,2 km según el propio listado de Kuhane en Booking.com
-  // (sección "Alrededores del alojamiento", septiembre 2026).
-  tahaiDistance: "1,2 km",
+  // Actualizado a pedido de Sofía (23/9/2026, confirmado por Andre)
+  // reemplaza el dato anterior de Booking.com (1,2 km).
+  tahaiDistance: "200 m",
   // Confirmado directamente por Kuhane (septiembre 2026, capturas de
   // Google/Tripadvisor/Booking). Cifra exacta de Booking confirmada por
   // captura de pantalla de Andre el 6/9/2026: "9,4 Fantástico · 121 comentarios".
@@ -26,8 +26,9 @@ export const site = {
     { value: "4,7", scale: "/5", source: "Google", count: 15 as number | string },
     { value: "4,7", scale: "/5", source: "Tripadvisor", count: 7 as number | string },
   ],
-  // Número temporal mientras se define el definitivo — pedido de Andre
-  // (22/9/2026): "el numero mientras tanto sera este +56 9 7766 8288".
+  // Número definitivo de Kuhane en WhatsApp Business Platform (registrado en
+  // Meta, WABA "Kuhane EtnoHostal") — reemplaza al número temporal +56 9 7766
+  // 8288 que se usó mientras tanto. Confirmado por Andre (13/10/2026).
   whatsapp: "+56 9 9504 5737",
   // Correo del dominio propio, ya activo y recibiendo/enviando por Gmail
   // (contacto@kuhanehostal.com) — pedido de Andre (22/9/2026): "el correo
@@ -80,9 +81,13 @@ export const hero = {
 
 export const rapaNui = {
   eyebrow: "El territorio",
-  title: "El lugar más remoto habitado del mundo.",
+  // Texto actualizado a pedido de Sofía (23/9/2026).
+  title: "El lugar habitado más remoto del mundo.",
   body: [
-    "Rapa Nui está a miles de kilómetros de cualquier otra costa — una isla volcánica en medio del Pacífico, donde el paisaje, la historia y la cultura Rapanui siguen vivos en cada rincón.",
+    // 24/9/2026: Andre pidió sacar los acentos "a la española" en palabras
+    // pascuenses/polinésicas (ej. Tahití -> Tahiti, Haré -> Hare más abajo)
+    // porque no llevan tilde en su idioma de origen.
+    "Ubicada al centro del Pacífico Sur, Rapa Nui está a casi 4.000 kilómetros de Chile continental y equidistante de Tahiti. Isla de clima subtropical, con paisajes espectaculares, una historia de grandeza y resiliencia, y una inigualable cultura viva.",
   ],
   // Foto aérea del cráter Rano Kau, enviada por Andre — sept. 2026.
   foto: "/images/rapa-nui/territorio.jpg",
@@ -92,9 +97,10 @@ export const rapaNui = {
 export const kuhane = {
   eyebrow: "Kuhane",
   title: "Un lugar para sentirte en casa.",
+  // Texto actualizado a pedido de Sofía (23/9/2026).
   body: [
-    "Kuhane significa alma, en lengua rapanui. Es también la forma en que recibimos a cada persona que llega: no como un huésped más, sino como alguien que se suma, por unos días, a la vida de la isla.",
-    "Desde la llegada al aeropuerto hasta la última noche mirando el atardecer, acompañamos el viaje con la cercanía y el conocimiento de quienes viven aquí.",
+    "Kuhane, en lengua rapanui, significa alma. Pensada para ayudarte a conectar con lo mejor de ti, será también tu hogar por unos días.",
+    "Desde que bajas de tu vuelo, en cada amanecer y atardecer, te acompañamos con información práctica y conocimiento cultural para ayudarte a construir una experiencia memorable.",
   ],
   // Fuente: descripción propia de Kuhane en Booking.com ("Información de la
   // empresa", septiembre 2026). No se usa todavía en ningún componente.
@@ -113,11 +119,12 @@ export const kuhane = {
 
 export const experiencias = {
   eyebrow: "La experiencia",
-  title: "Más que un hostal, la mejor forma de explorar la isla.",
+  // Texto actualizado a pedido de Sofía (23/9/2026).
+  title: "No solo un hostal: la mejor forma de explorar y comprender Rapa Nui y su cultura.",
   items: [
     {
-      title: "Bienvenida en Kuhane",
-      body: "Te recibimos en el aeropuerto y te acompañamos hasta Kuhane.",
+      title: "Bienvenidos a Kuhane",
+      body: "A tu llegada, te recibimos con collares de flores de la isla y te traemos a casa.",
       // Fotos reales enviadas por Andre — sept. 2026. Carrusel (como en
       // Habitaciones), con autoplay cada 2s (pedido de Andre: "3-4 fotos
       // por sección, que se vayan cambiando").
@@ -125,18 +132,21 @@ export const experiencias = {
       // con fruta y el letrero de entrada) para REEMPLAZAR las 4 fotos
       // anteriores de esta sección, no para sumarlas — se quedaron las
       // dos series mezcladas (8 fotos) por error; corregido acá.
+      // 24/9/2026: Andre pidió sacar la foto del jardín/pasto con la silla
+      // roja (bienvenida-07.jpg) — se veía muy genérica/vacía frente a las
+      // demás — y poner en su lugar la foto de las tres mujeres brindando
+      // en la terraza (nueva, bienvenida-09.jpg).
       fotos: [
         "/images/experiencias/bienvenida-05.jpg",
         "/images/experiencias/bienvenida-06.jpg",
-        "/images/experiencias/bienvenida-07.jpg",
+        "/images/experiencias/bienvenida-09.jpg",
         "/images/experiencias/bienvenida-08.jpg",
       ],
     },
     {
       title: "Cultura viva",
-      // Fuente: descripción propia de Kuhane en Booking.com ("Información
-      // del alojamiento", septiembre 2026).
-      body: "Café al atardecer, degustaciones culinarias, música suave y conversación frente al mar — un ritual diario en la terraza de Kuhane.",
+      // Texto actualizado a pedido de Sofía (23/9/2026).
+      body: "Sabores, colores y aromas insulares, música suave, conversaciones frente al mar y mucha cultura: son el ritual diario en la terraza de Kuhane.",
       fotos: [
         "/images/experiencias/cultura-viva.jpg",
         "/images/experiencias/cultura-viva-02.jpg",
@@ -146,9 +156,11 @@ export const experiencias = {
     },
     {
       title: "El atardecer",
-      // Distancia confirmada: listado de Kuhane en Booking.com (ver
-      // site.tahaiDistance).
-      body: "A solo 1,2 km caminando está Ahu Tahai, uno de los sitios más fotografiados de Rapa Nui — el lugar ideal para ver caer el sol sobre el Pacífico.",
+      // Distancias actualizadas a pedido de Sofía (23/9/2026, confirmado
+      // por Andre "es tal cual lo dice sofia") — reemplaza el dato anterior
+      // (1,2 km, sacado de Booking.com) por las distancias reales a Tahai
+      // y Akapu que dio Sofía.
+      body: "A 200 metros del Complejo Ceremonial Tahai y a solo 20 metros de la Plataforma Sagrada de Akapu, tendrás el privilegio de estar en el punto más cercano a los más bellos atardeceres.",
       // Fotos reales en Ahu Tahai enviadas por Andre — sept. 2026.
       fotos: [
         "/images/experiencias/atardecer.jpg",
@@ -158,13 +170,6 @@ export const experiencias = {
       ],
     },
   ],
-  // Pedido de Andre (6/9/2026, reiterado 7/9/2026): dejar claro que,
-  // además del tour que arma Kuhane, conectan al huésped con otras
-  // experiencias de la isla. Redacción ajustada a la frase exacta que
-  // pidió: "Kuhane, además de ofrecer tours, te conecta con otras
-  // aventuras...".
-  extra:
-    "Kuhane, además de ofrecer tours, te conecta con otras aventuras en la isla — como buceo y cabalgatas — para que armes tu viaje a medida.",
 };
 
 // Experiencias extra: no son parte del tour de Kuhane, sino contactos con
@@ -182,6 +187,20 @@ export const otrasExperiencias = {
   eyebrow: "Además",
   title: "Otras experiencias en la isla",
   body: "Kuhane te conecta con otras aventuras.",
+  // 23/9/2026 (3): pedido de Andre — el párrafo que antes iba suelto,
+  // arriba de esta franja ("Kuhane pone a tu disposición sus tours y te
+  // conecta con servicios de..."), se veía como un bloque aislado sin
+  // relación con las tarjetas de abajo. Se dividió en dos y se puso cada
+  // mitad como pie de foto bajo la tarjeta a la que corresponde — esta es
+  // la segunda mitad (la lista de servicios externos), bajo el carrusel
+  // de "otras experiencias".
+  // 23/9/2026 (6): Andre pidió cambiar el arranque de la frase —
+  // "Te conecta con servicios de..." pasa a "Te facilitamos la
+  // experiencia completa conectándote con..." — y que el texto ocupe todo
+  // el ancho del carrusel (antes tenía max-w-md y se cortaba antes de la
+  // tercera foto).
+  footnote:
+    "Te facilitamos la experiencia completa conectándote con servicios de cabalgatas, buceo, navegación, observación astronómica, caminatas, galerías de arte, shows culturales, restaurantes y bares, canotaje, sesiones fotográficas y masajes — y te regalamos una inducción cultural para comprender mejor el lugar que visitas.",
   fotos: [
     "/images/experiencias/buceo-01.jpg",
     "/images/experiencias/buceo-02.jpg",
@@ -195,6 +214,204 @@ export const otrasExperiencias = {
     "/images/cabalgatas/cabalgata_02.jpg",
     "/images/cabalgatas/cabalgata_03.jpg",
   ],
+};
+
+// Tours Kuhane — información enviada por Andre (22–23/9/2026).
+// Confirmado: 4 tours privados (máx. 4 personas) + 2 tours grupales (máx.
+// 14 personas en minibús, guía español-inglés). Decisión final de Andre
+// (23/9/2026): ningún tour muestra precio en la página — el valor se
+// calcula y se muestra recién en el total a pagar en el hostal, después
+// de la reserva, con exactamente dos niveles (Chile/Latinoamérica y el
+// resto). Acá NO se menciona esa diferenciación — solo "el valor se
+// confirma en tu reserva".
+// paradas: lista real de itinerario, mandada por Andre (23/9/2026). Además
+// de la lista, cada tour tiene un sitio destacado (el de la foto que mandó
+// Andre) con una historia investigada (fuentes reales, no inventadas — ver
+// el comentario junto a cada `historia`).
+export type TourParada = string;
+
+export type Tour = {
+  slug: string;
+  nombre: string;
+  // string (no unión literal) para que en.ts pueda traducir la etiqueta
+  // ("Private tour" / "Group tour") sin pelear con el tipo.
+  modalidad: string;
+  duracion?: "Full day" | "Half day";
+  maxPersonas: number;
+  paradas: TourParada[];
+  // Bajada general del tour (solo los 2 tours grupales la tienen por ahora
+  // — texto mandado por Andre 23/9/2026 — los 4 tours privados no tienen
+  // una bajada propia, solo la lista de paradas).
+  descripcion?: string;
+  parada: string;
+  historia: string;
+  foto: string;
+  fotoAlt: string;
+};
+
+export const toursPrivados: Tour[] = [
+  {
+    slug: "full-day-rapa-nui",
+    nombre: "Full Day Rapa Nui",
+    modalidad: "Tour privado",
+    duracion: "Full day",
+    maxPersonas: 4,
+    paradas: [
+      "Mirador hacia el pueblo de Hanga Roa",
+      "Mirador del cráter del volcán Rano Kau",
+      "Ciudadela ceremonial de Orongo",
+      "Muros de corte perfecto del altar de Vinapu",
+      "Centro ceremonial y caleta de Vaihu",
+      "Plataforma ceremonial Ahu Akahanga",
+      "Cantera de los moai en el volcán Rano Raraku",
+      "Plataforma de Tongariki, con 15 moai",
+    ],
+    parada: "Rano Raraku",
+    // Fuente: Wikipedia, "Rano Raraku" (en.wikipedia.org/wiki/Rano_Raraku),
+    // consultado 23/9/2026.
+    historia:
+      "El cráter que fue cantera de los moai: durante unos 500 años, hasta comienzos del 1700, de aquí se extrajo la piedra volcánica de cerca del 95% de las estatuas de la isla. Hoy quedan 887 moai en distintas etapas de talla, muchos semienterrados hasta los hombros — entre ellos el más grande jamás tallado, de 21,6 metros.",
+    foto: "/images/tours/rano-raraku_full-day.png",
+    fotoAlt: "Rano Raraku, en el recorrido Full Day Rapa Nui",
+  },
+  {
+    slug: "half-day-punta-oeste",
+    nombre: "Half Day Punta Oeste",
+    modalidad: "Tour privado",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [
+      "Sector de la cueva Ana Kai Tangata y alrededores",
+      "Mirador hacia el pueblo de Hanga Roa",
+      "Mirador del cráter del volcán Rano Kau",
+      "Ciudadela ceremonial de Orongo",
+      "Muros de corte perfecto del altar de Vinapu",
+      "Centro ceremonial y caleta de Vaihu",
+    ],
+    parada: "Orongo",
+    // Fuente: Wikipedia, "Orongo" (en.wikipedia.org/wiki/Orongo), consultado
+    // 23/9/2026.
+    historia:
+      "Aldea ceremonial en el borde del volcán Rano Kau, centro del culto al hombre-pájaro (tangata manu) entre los siglos XVIII y XIX. Cada año, los competidores bajaban el acantilado y cruzaban el mar hasta el islote Motu Nui para traer el primer huevo de manutara — una carrera de alto riesgo que definía la autoridad del año siguiente en la isla.",
+    foto: "/images/tours/orongo_punta-oeste.png",
+    fotoAlt: "Orongo, en el recorrido Half Day Punta Oeste",
+  },
+  {
+    slug: "half-day-costa-sur",
+    nombre: "Half Day Costa Sur",
+    modalidad: "Tour privado",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [
+      "Plataforma ceremonial Ahu Akahanga",
+      "Cantera de los moai en el volcán Rano Raraku",
+      "Plataforma de Tongariki, con 15 moai",
+      "Te Pito Kura, el ombligo del mundo",
+      "Sector de petroglifos de Papa Vaka",
+      "Plataforma Ahu Nau Nau, en la playa de Anakena",
+    ],
+    parada: "Ahu Tongariki",
+    // Fuente: Wikipedia, "Ahu Tongariki" (en.wikipedia.org/wiki/Ahu_Tongariki),
+    // consultado 23/9/2026.
+    historia:
+      "La plataforma ceremonial más grande de Rapa Nui, con 15 moai en fila frente al mar. Fue derribada durante las guerras internas y arrasada por el tsunami de 1960; recién se restauró en los años 90, en un trabajo de cinco años liderado por los arqueólogos Claudio Cristino y Patricia Vargas, con apoyo del gobierno de Chile y de la empresa japonesa Tadano.",
+    foto: "/images/tours/ahu-tongariki_costa-sur.jpg",
+    fotoAlt: "Ahu Tongariki, en el recorrido Half Day Costa Sur",
+  },
+  {
+    slug: "half-day-isla-centro",
+    nombre: "Half Day Isla Centro",
+    modalidad: "Tour privado",
+    duracion: "Half day",
+    maxPersonas: 4,
+    paradas: [
+      "Muros de corte perfecto del altar de Vinapu",
+      "Centro ceremonial y caleta de Vaihu",
+      "Ahu Huri a Urenga, con el moai de cuatro manos",
+      "Puna Pau, la cantera de los sombreros (pukao) de los moai",
+      "Centro ceremonial Ahu Akivi, con 7 moai",
+      "Complejo ceremonial de Tahai",
+    ],
+    parada: "Ahu Akivi",
+    // Fuente: Wikipedia, "Ahu Akivi" (en.wikipedia.org/wiki/Ahu_Akivi),
+    // consultado 23/9/2026.
+    historia:
+      "Siete moai idénticos, únicos en mirar hacia el mar en vez de hacia un poblado. Su alineación es tan precisa que miran de frente la puesta de sol del equinoccio de primavera. Lo restauraron en 1960 el arqueólogo estadounidense William Mulloy y el chileno Gonzalo Figueroa.",
+    foto: "/images/tours/ahu-akivi_isla-centro.png",
+    fotoAlt: "Ahu Akivi, en el recorrido Half Day Isla Centro",
+  },
+];
+
+export const toursGrupales: Tour[] = [
+  {
+    slug: "fullday-dream",
+    nombre: "Fullday Dream",
+    modalidad: "Tour grupal",
+    maxPersonas: 14,
+    // Bajada mandada por Andre (23/9/2026).
+    descripcion:
+      "Conocerás gran parte de la isla con la narrativa histórica del culto al moai y visitarás réplicas de aldeas. Disfrutarás de la playa de Anakena, hito de gran importancia al que llegaron los primeros polinesios.",
+    paradas: ["Vaihu", "Akahanga", "Rano Raraku", "Ahu Tongariki", "Te Pito Kura", "Ahu Nau Nau", "Anakena"],
+    parada: "Ahu Nau Nau, Anakena",
+    // Fuente: Wikipedia, "Anakena" (en.wikipedia.org/wiki/Anakena),
+    // consultado 23/9/2026.
+    historia:
+      "La playa de arena blanca donde, según la tradición rapanui, desembarcó Hotu Matu'a, el primer poblador de la isla. Ahí está el Ahu Nau Nau, con moai restaurados — una de las postales más fotografiadas de Rapa Nui.",
+    foto: "/images/tours/ahu-nau-nau_dream.png",
+    fotoAlt: "Ahu Nau Nau, en el tour grupal Fullday Dream",
+  },
+  {
+    slug: "fullday-explore",
+    nombre: "Fullday Explore",
+    modalidad: "Tour grupal",
+    maxPersonas: 14,
+    // Bajada mandada por Andre (23/9/2026).
+    descripcion:
+      "Conocerás una cara diferente de la isla, explorando sitios arqueológicos vinculados a la vida cotidiana, el desarrollo cultural y las antiguas tradiciones de Rapa Nui. La ciudadela ceremonial de Orongo, donde se realizaba la famosa competencia tangata manu (hombre-pájaro), el cráter de Rano Kau y otros lugares de gran importancia histórica y arqueológica.",
+    paradas: ["Rano Kau", "Orongo", "Vinapu", "Ahu Akivi", "Puna Pau", "Ahu Huri a Urenga", "Tahai"],
+    parada: "Tahai",
+    // Fuente: Wikipedia, "Tahai" (en.wikipedia.org/wiki/Tahai). Distancia
+    // corregida (23/9/2026) para que coincida con la de experiencias.items
+    // ("El atardecer") — ver esa nota: Sofía confirmó 200 m, reemplazando el
+    // dato anterior de Booking.com (1,2 km).
+    historia:
+      "Conjunto ceremonial a solo 200 metros caminando desde Hanga Roa, restaurado por el arqueólogo William Mulloy en 1974. Reúne tres plataformas alineadas de norte a sur y, por su cercanía al pueblo, es uno de los lugares favoritos de la isla para ver el atardecer.",
+    foto: "/images/tours/tahai_explore.jpg",
+    fotoAlt: "Tahai, en el tour grupal Fullday Explore",
+  },
+];
+
+// Todos los tours juntos — para buscar por slug (ej. desde el parámetro
+// ?tour= que llega desde /tours hasta el panel de reserva).
+export const toursTodos: Tour[] = [...toursPrivados, ...toursGrupales];
+
+export const toursIntro = {
+  eyebrow: "Experiencias Kuhane",
+  // Texto actualizado a pedido de Andre (23/9/2026).
+  title: "Tours privados o grupales por Rapa Nui.",
+  body: "Nuestros tours entretenidos y llenos de contenido son un servicio extra, que puedes agregar a tu reserva.",
+  privadosTitle: "Tours privados",
+  privadosBody: "Grupos reducidos, de hasta 4 personas.",
+  grupalesTitle: "Tours grupales",
+  grupalesBody: "Hasta 14 personas en minibús, con guía en español e inglés.",
+  agregarCta: "Agregar a la reserva",
+  consultarNota: "El valor de este tour se confirma en tu reserva y se incluye en el total a pagar en el hostal.",
+  paradasPendientes: "Detalle del recorrido — próximamente.",
+  volver: "← Volver a Kuhane",
+};
+
+// Tarjeta de enlace desde la sección Experiencias del inicio hacia /tours.
+export const experienciasKuhaneTours = {
+  eyebrow: "Tours guiados",
+  title: "Experiencias Kuhane",
+  body: "Tours privados y tours grupales armados por Kuhane para recorrer la isla con guía, sin apuro. El valor de cada tour queda en tu reserva, no en la página.",
+  // 23/9/2026 (3): primera mitad del párrafo que antes iba suelto arriba de
+  // esta franja (ver el comentario en otrasExperiencias.footnote, donde
+  // está el resto del texto y la explicación completa del cambio).
+  footnote: "Kuhane pone a tu disposición sus tours.",
+  cta: "Ver tours",
+  foto: "/images/tours/rano-raraku_full-day.png",
+  fotoAlt: "Rano Raraku, uno de los recorridos de Kuhane Tours",
 };
 
 export const cultura = {
@@ -506,13 +723,22 @@ export type Habitacion = {
   servicios: string[];
   caracteristicas: string;
   precio: string;
+  // Mismo valor que aparece en `precio`, pero como número (CLP, por
+  // persona, por noche) para poder calcular la conversión a USD en el
+  // conversor de moneda (pedido de Andre, 4/10/2026: "la gente de afuera
+  // pueda ver el precio directamente en dólares"). `precio` sigue siendo
+  // el texto que se muestra en español/inglés; este campo es solo para la
+  // cuenta matemática del conversor.
+  precioPersonaCLP: number;
   fotos: string[];
 };
 
-// Confirmado directamente con Kuhane (septiembre 2026). Precios todavía sin
-// confirmar en las 7 unidades -> "A consultar". Toallas y sábanas van
-// incluidas sin cargo en las 7. Son unidades frente al mar (Calipso, Uta,
-// Moana) — no se afirma "vista al mar" porque no está confirmada desde adentro.
+// Confirmado directamente con Kuhane (septiembre 2026). Precios actualizados
+// 2/10/2026 con la tabla de tarifas nueva de Andre (columna "Web directo"),
+// que ya cubre las 7 unidades — ya no queda ninguna en "A consultar".
+// Toallas y sábanas van incluidas sin cargo en las 7. Son unidades frente al
+// mar (Calipso, Uta, Moana) — no se afirma "vista al mar" porque no está
+// confirmada desde adentro.
 export const habitaciones: Habitacion[] = [
   {
     tipo: "Habitación",
@@ -523,7 +749,12 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    precio: "A consultar",
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $90.000). Tarifa plana por persona, por noche. Temporada alta
+    // (dic-feb) sube a $92.000 — hay que volver a cambiar este valor
+    // cuando empiece diciembre, el sitio no cambia de temporada solo.
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
   },
   {
@@ -535,7 +766,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha",
     servicios: ["Agua caliente", "Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Ventanal hacia terraza y jardín",
-    precio: "A consultar",
+    // 9/10/2026: misma tarifa que Mahatu, precio de temporada baja
+    // actualizado por Andre (antes $90.000).
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
   },
   {
@@ -547,7 +781,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con ducha nueva, cómoda y grande",
     servicios: ["Agua caliente", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "2 ambientes conectados · ventanal hacia terraza y jardín",
-    precio: "A consultar",
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $90.000), misma tarifa plana que las demás habitaciones.
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     fotos: [
       "/images/habitaciones/ohana/ohana_02.jpg",
       "/images/habitaciones/ohana/ohana_01.jpg",
@@ -558,13 +795,20 @@ export const habitaciones: Habitacion[] = [
   {
     tipo: "Habitación",
     tipoCodigo: "habitacion",
-    nombre: "Haré",
+    // 24/9/2026: sin tilde ("Hare", no "Haré") — pedido de Andre, ver nota
+    // junto a rapaNui.body más arriba. También se corrigió el mismo nombre
+    // en la tabla `rooms` de Supabase (nuku-os) para que quede igual en la
+    // web y en las reservas reales.
+    nombre: "Hare",
     capacidad: "3 personas",
     camas: "1 cama individual + 1 cama doble",
     bano: "Privado, con bañera",
     servicios: ["Ventilador", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Vista a jardín y patio interior",
-    precio: "A consultar",
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $90.000), misma tarifa plana que las demás habitaciones.
+    precio: "$80.000 por persona, por noche",
+    precioPersonaCLP: 80000,
     // hare_01 (screenshot con flechas/puntos de un carrusel web) y
     // hare_02/03 (muestran 2 camas individuales, no coincide con "1
     // individual + 1 doble") se sacaron por dudosas — ver nota a Andre
@@ -580,7 +824,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    precio: "A consultar",
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $115.000). Temporada alta (dic-feb) sube a $116.000.
+    precio: "$96.000 por persona, por noche",
+    precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
   },
   {
@@ -592,7 +839,10 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    precio: "A consultar",
+    // 9/10/2026: misma tarifa que Calipso, precio de temporada baja
+    // actualizado por Andre (antes $115.000).
+    precio: "$96.000 por persona, por noche",
+    precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
   },
   {
@@ -604,7 +854,11 @@ export const habitaciones: Habitacion[] = [
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
     caracteristicas: "Bungalow frente al mar, con terraza",
-    precio: "A consultar",
+    // 9/10/2026: precio de temporada baja actualizado por Andre (antes
+    // $125.000) — ahora igual al de Calipso/Uta. Temporada alta (dic-feb)
+    // sube a $116.000.
+    precio: "$96.000 por persona, por noche",
+    precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
   },
 ];
@@ -617,6 +871,13 @@ export const habitacionesIntro = {
   bodyPrefix: "4 habitaciones y 3 bungalows frente al mar — capacidad total para",
   capacidadTotal: 23,
   bodySuffix: "personas.",
+  // Pedido de Andre (23/9/2026): que quede explícito en habitaciones y en
+  // reserva que el desayuno y el traslado aeropuerto-hostal-aeropuerto van
+  // incluidos, sin costo adicional.
+  // 24/9/2026: Andre corrigió el desayuno — no es "continental", es
+  // "abundante y variado" (mismo cambio en reserva.incluye más abajo y en
+  // el correo de confirmación, lib/email.ts en nuku-os).
+  incluye: "El desayuno abundante y variado, y el traslado desde y hacia el aeropuerto, están incluidos en tu estadía.",
 };
 
 export const huespedes = {
@@ -632,6 +893,22 @@ export const galeria = {
   // 1–17: fotos del hostal. 18–21: paisajes reales de Rapa Nui enviados por
   // Andre (sept. 2026) — arcoíris, cielo estrellado y atardeceres de la isla.
   fotos: Array.from({ length: 34 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+  // Botón hacia /tour-virtual, agregado a pedido de Andre (15/10/2026).
+  tourVirtualCta: "Ver tour virtual 360°",
+};
+
+// Tour virtual 360° de Kuhane (plataforma Tourify) — link real compartido
+// por Andre (15/10/2026): "quiero que veas esto y me digas como hacemos
+// para incorporarlo" / "me gusta tour virtual por kuhane". El visor de
+// Tourify carga con JavaScript, así que no se pudo verificar desde este
+// lado qué muestra puertas adentro — el link en sí es el que Andre
+// confirmó como el tour listo de Kuhane.
+export const tourVirtual = {
+  eyebrow: "Tour virtual",
+  title: "Recorre Kuhane antes de llegar.",
+  body: "Da una vuelta en 360° por el hostal — las habitaciones, los espacios comunes y el entorno — desde tu celular o computador.",
+  embedUrl: "https://tours.tourify.cl/tours/fkUtY7eml?sceneId=qm4nM0jAXD",
+  volver: "← Volver a Kuhane",
 };
 
 export type Resena = { texto: string; nombre: string; fuente: string };
@@ -761,6 +1038,18 @@ export const reserva = {
   // puede ser efectivo, debito o credito local o extranjera".
   paymentNote:
     "El pago se hace en el hostal — aceptamos efectivo, y débito o crédito (nacional o extranjera).",
+  // Mismo pedido de Andre (23/9/2026) que en habitacionesIntro.incluye.
+  // 24/9/2026: desayuno "abundante y variado", no "continental" — ver nota
+  // en habitacionesIntro.incluye más arriba.
+  incluye: "Tu reserva incluye desayuno abundante y variado, y traslado desde y hacia el aeropuerto.",
+  // Política de cancelación — confirmada por Andre (14/10/2026): seña 50%
+  // del total; más de 30 días antes se devuelve completa; entre 30 y 8 días
+  // se devuelve la mitad de la seña (25% del total); 7 días o menos, o
+  // no-show, se pierde. No existía ninguna versión de esto antes en el
+  // sitio ni en Nuku OS — es la primera vez que se escribe.
+  cancelacionNote:
+    "La reserva se confirma con una seña del 50% del total. Si cancelas con más de 30 días de anticipación, se devuelve completa. Entre 30 y 8 días antes, se devuelve la mitad de la seña. Con 7 días o menos, o si no llegas, se pierde la seña.",
+  cancelacionLink: "Ver política de cancelación completa",
   monthsShort: [
     "ene", "feb", "mar", "abr", "may", "jun",
     "jul", "ago", "sep", "oct", "nov", "dic",
@@ -801,6 +1090,6 @@ export const whatsappWidget = {
 export const ubicacion = {
   eyebrow: "Cómo llegar",
   title: "Encuéntranos en Hanga Roa.",
-  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y si llegas en avión, el traslado desde el aeropuerto ya está incluido en tu reserva.",
+  body: "Kuhane queda a pasos del centro de Hanga Roa, cerca de Ahu Tahai — y el traslado desde el aeropuerto ya está incluido en tu reserva.",
   directionsCta: "Cómo llegar (Google Maps)",
 };
