@@ -893,6 +893,22 @@ export const galeria = {
   // 1–17: fotos del hostal. 18–21: paisajes reales de Rapa Nui enviados por
   // Andre (sept. 2026) — arcoíris, cielo estrellado y atardeceres de la isla.
   fotos: Array.from({ length: 34 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+  // Botón hacia /tour-virtual, agregado a pedido de Andre (15/10/2026).
+  tourVirtualCta: "Ver tour virtual 360°",
+};
+
+// Tour virtual 360° de Kuhane (plataforma Tourify) — link real compartido
+// por Andre (15/10/2026): "quiero que veas esto y me digas como hacemos
+// para incorporarlo" / "me gusta tour virtual por kuhane". El visor de
+// Tourify carga con JavaScript, así que no se pudo verificar desde este
+// lado qué muestra puertas adentro — el link en sí es el que Andre
+// confirmó como el tour listo de Kuhane.
+export const tourVirtual = {
+  eyebrow: "Tour virtual",
+  title: "Recorre Kuhane antes de llegar.",
+  body: "Da una vuelta en 360° por el hostal — las habitaciones, los espacios comunes y el entorno — desde tu celular o computador.",
+  embedUrl: "https://tours.tourify.cl/tours/fkUtY7eml?sceneId=qm4nM0jAXD",
+  volver: "← Volver a Kuhane",
 };
 
 export type Resena = { texto: string; nombre: string; fuente: string };
@@ -1026,6 +1042,14 @@ export const reserva = {
   // 24/9/2026: desayuno "abundante y variado", no "continental" — ver nota
   // en habitacionesIntro.incluye más arriba.
   incluye: "Tu reserva incluye desayuno abundante y variado, y traslado desde y hacia el aeropuerto.",
+  // Política de cancelación — confirmada por Andre (14/10/2026): seña 50%
+  // del total; más de 30 días antes se devuelve completa; entre 30 y 8 días
+  // se devuelve la mitad de la seña (25% del total); 7 días o menos, o
+  // no-show, se pierde. No existía ninguna versión de esto antes en el
+  // sitio ni en Nuku OS — es la primera vez que se escribe.
+  cancelacionNote:
+    "La reserva se confirma con una seña del 50% del total. Si cancelas con más de 30 días de anticipación, se devuelve completa. Entre 30 y 8 días antes, se devuelve la mitad de la seña. Con 7 días o menos, o si no llegas, se pierde la seña.",
+  cancelacionLink: "Ver política de cancelación completa",
   monthsShort: [
     "ene", "feb", "mar", "abr", "may", "jun",
     "jul", "ago", "sep", "oct", "nov", "dic",

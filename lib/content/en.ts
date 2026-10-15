@@ -508,6 +508,18 @@ const galeria = {
   eyebrow: "Gallery",
   title: "The island, in pictures.",
   fotos: es.galeria.fotos,
+  tourVirtualCta: "View 360° virtual tour",
+};
+
+// Kuhane's 360° virtual tour (Tourify platform) — see the matching note
+// in site-content.ts (es). The embed link is the same real one Andre
+// shared; only the surrounding text is translated here.
+const tourVirtual = {
+  eyebrow: "Virtual tour",
+  title: "Explore Kuhane before you arrive.",
+  body: "Take a 360° walk through the hostel — the rooms, the common areas, and the surroundings — from your phone or computer.",
+  embedUrl: es.tourVirtual.embedUrl,
+  volver: "← Back to Kuhane",
 };
 
 // Reviews stay in their original Spanish — see the file header note.
@@ -559,6 +571,11 @@ const reserva = {
   paymentNote:
     "Payment is made at the hostel — we accept cash, and debit or credit cards (Chilean or international).",
   incluye: "Your booking includes a hearty, varied breakfast and airport transfer both ways.",
+  // Cancellation policy — confirmed by Andre (10/14/2026): same terms as
+  // the Spanish version in site-content.ts.
+  cancelacionNote:
+    "Your booking is confirmed with a 50% deposit of the total. If you cancel more than 30 days in advance, it's fully refunded. Between 30 and 8 days before, half of the deposit is refunded. With 7 days or less, or if you don't show up, the deposit is forfeited.",
+  cancelacionLink: "See full cancellation policy",
   monthsShort: [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
@@ -644,6 +661,7 @@ export const en = {
   habitacionesIntro,
   huespedes,
   galeria,
+  tourVirtual,
   resenas,
   kuhaneEspera,
   cta,
