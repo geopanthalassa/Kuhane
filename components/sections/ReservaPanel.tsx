@@ -294,6 +294,15 @@ export default function ReservaPanel() {
       <p className="mx-auto mt-1.5 max-w-sm text-center text-[11px] leading-relaxed text-gold-soft/90">
         {reserva.incluye}
       </p>
+      <p className="mx-auto mt-2 max-w-sm text-center text-[11px] leading-relaxed text-warm-white/55">
+        {reserva.cancelacionNote}{" "}
+        <a
+          href="/politica-cancelacion"
+          className="underline underline-offset-2 hover:text-warm-white/80"
+        >
+          {reserva.cancelacionLink}
+        </a>
+      </p>
 
       <div className="mt-2 flex flex-col items-center">
         {!showPromo ? (
