@@ -85,6 +85,15 @@ export default function GaleriaSection() {
             ))}
           </div>
         </Reveal>
+
+        <Reveal delayMs={150} className="mt-10 flex justify-center">
+          <a
+            href="/tour-virtual"
+            className="inline-flex items-center gap-2 rounded-full border border-teal px-5 py-2.5 text-[12px] tracking-[0.15em] uppercase text-teal transition-colors hover:bg-teal hover:text-warm-white"
+          >
+            {galeria.tourVirtualCta}
+          </a>
+        </Reveal>
       </div>
 
       {openIndex !== null && (
