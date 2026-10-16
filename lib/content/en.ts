@@ -121,6 +121,16 @@ const experiencias = {
         "/images/experiencias/cultura-viva-02.jpg",
         "/images/experiencias/cultura-viva-03.jpg",
         "/images/experiencias/cultura-viva-04.jpg",
+        // 05–12: same Rapa Nui dance/carving/ceremony photos Andre sent
+        // (10/16/2026), mirrored from site-content.ts (es).
+        "/images/experiencias/cultura-viva-05.jpg",
+        "/images/experiencias/cultura-viva-06.jpg",
+        "/images/experiencias/cultura-viva-07.jpg",
+        "/images/experiencias/cultura-viva-08.jpg",
+        "/images/experiencias/cultura-viva-09.jpg",
+        "/images/experiencias/cultura-viva-10.jpg",
+        "/images/experiencias/cultura-viva-11.jpg",
+        "/images/experiencias/cultura-viva-12.jpg",
       ],
     },
     {

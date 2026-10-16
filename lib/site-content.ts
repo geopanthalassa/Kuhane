@@ -152,6 +152,16 @@ export const experiencias = {
         "/images/experiencias/cultura-viva-02.jpg",
         "/images/experiencias/cultura-viva-03.jpg",
         "/images/experiencias/cultura-viva-04.jpg",
+        // 05–12: fotos de danza, tallado y ceremonias rapanui enviadas por
+        // Andre (16/10/2026).
+        "/images/experiencias/cultura-viva-05.jpg",
+        "/images/experiencias/cultura-viva-06.jpg",
+        "/images/experiencias/cultura-viva-07.jpg",
+        "/images/experiencias/cultura-viva-08.jpg",
+        "/images/experiencias/cultura-viva-09.jpg",
+        "/images/experiencias/cultura-viva-10.jpg",
+        "/images/experiencias/cultura-viva-11.jpg",
+        "/images/experiencias/cultura-viva-12.jpg",
       ],
     },
     {
@@ -892,7 +902,10 @@ export const galeria = {
   title: "La isla, en imágenes.",
   // 1–17: fotos del hostal. 18–21: paisajes reales de Rapa Nui enviados por
   // Andre (sept. 2026) — arcoíris, cielo estrellado y atardeceres de la isla.
-  fotos: Array.from({ length: 34 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
+  // 35–42: mismas fotos de danza, tallado y ceremonias rapanui que se
+  // agregaron a "Cultura viva" (16/10/2026), sumadas también acá a pedido
+  // de Andre.
+  fotos: Array.from({ length: 42 }, (_, i) => `/images/galeria/general_${String(i + 1).padStart(2, "0")}.jpg`),
   // Botón hacia /tour-virtual, agregado a pedido de Andre (15/10/2026).
   tourVirtualCta: "Ver tour virtual 360°",
 };
