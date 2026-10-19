@@ -14,8 +14,8 @@ import KuhaneEsperaSection from "@/components/sections/KuhaneEsperaSection";
 import CTAReservaSection from "@/components/sections/CTAReservaSection";
 
 // Home narrativa: Hero -> Rapa Nui -> Kuhane -> Experiencia -> Cultura ->
-// Habitaciones -> Kuhane te espera (video) -> Otras experiencias (tours +
-// buceo/cabalgatas) -> Galería -> Reseñas -> Ubicación -> Reserva.
+// Galería -> Habitaciones -> Kuhane te espera (video) -> Otras experiencias
+// (tours + buceo/cabalgatas) -> Reseñas -> Ubicación -> Reserva.
 //
 // 24/9/2026: Andre había pedido primero mover TODA la sección Experiencias
 // debajo del video de Kuhane — se hizo, pero al verlo aclaró que solo
@@ -24,8 +24,13 @@ import CTAReservaSection from "@/components/sections/CTAReservaSection";
 // atardecer. Se revirtió ExperienciasSection a su posición original (entre
 // Kuhane y Cultura, como estaba antes de este pedido) y esa franja se
 // separó en su propio componente, OtrasExperienciasSection, que es el que
-// ahora va entre el video y la Galería. Ver ExperienciasSection.tsx y
+// ahora va entre el video y Reseñas. Ver ExperienciasSection.tsx y
 // OtrasExperienciasSection.tsx para el detalle de ese corte.
+//
+// 19/10/2026: Galería se movió de después de "Otras experiencias" a justo
+// antes de Habitaciones — pedido de Andre: quería que la gente vea el
+// hostal (fotos + vista previa del tour 360°) antes de llegar a las
+// fichas de habitaciones, no después de bajar por casi toda la página.
 //
 // Nota: la sección "Comunidad" (HuespedesSection) queda fuera del home
 // hasta que haya fotos reales de huéspedes — no publicar espacios vacíos.
@@ -39,10 +44,10 @@ export default function Home() {
         <KuhaneSection />
         <ExperienciasSection />
         <CulturaSection />
+        <GaleriaSection />
         <HabitacionesSection />
         <KuhaneEsperaSection />
         <OtrasExperienciasSection />
-        <GaleriaSection />
         <ResenasSection />
         <UbicacionSection />
         <CTAReservaSection />

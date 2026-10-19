@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
@@ -17,6 +18,15 @@ import { useContent } from "@/lib/content/LocaleProvider";
 // directamente en el panel de Tourify.
 export default function TourVirtualPageClient() {
   const { tourVirtual } = useContent();
+  // 19/10/2026: si se llega acá con ?scene=<id> (por ejemplo, desde el
+  // clic en la portada 360° de una habitación en /#habitaciones), el
+  // visor abre directo en esa escena en vez de la escena general por
+  // defecto. Sin el parámetro, se comporta exactamente igual que antes.
+  const searchParams = useSearchParams();
+  const sceneParam = searchParams.get("scene");
+  const embedUrl = sceneParam
+    ? `${tourVirtual.tourBaseUrl}?sceneId=${sceneParam}`
+    : tourVirtual.embedUrl;
 
   return (
     <>
@@ -42,7 +52,7 @@ export default function TourVirtualPageClient() {
               <div className="overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(48,43,38,0.35)]">
                 <div className="relative aspect-video w-full bg-stone">
                   <iframe
-                    src={tourVirtual.embedUrl}
+                    src={embedUrl}
                     title={tourVirtual.title}
                     className="absolute inset-0 h-full w-full border-0"
                     allow="fullscreen; vr; xr-spatial-tracking; gyroscope; accelerometer"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { tourVirtual } from "@/lib/site-content";
 import TourVirtualPageClient from "./TourVirtualPageClient";
 
@@ -11,5 +12,11 @@ export const metadata: Metadata = {
 };
 
 export default function TourVirtualPage() {
-  return <TourVirtualPageClient />;
+  // Suspense exigido por Next para poder leer ?scene=... con
+  // useSearchParams() dentro de TourVirtualPageClient (19/10/2026).
+  return (
+    <Suspense>
+      <TourVirtualPageClient />
+    </Suspense>
+  );
 }
