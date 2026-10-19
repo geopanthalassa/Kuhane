@@ -22,6 +22,7 @@ function RoomCard({
   usdRate,
   aproxUsdPrefix,
   aproxUsdSuffix,
+  tourBaseUrl,
   onOpen,
 }: {
   h: Habitacion;
@@ -29,16 +30,49 @@ function RoomCard({
   usdRate: number | null;
   aproxUsdPrefix: string;
   aproxUsdSuffix: string;
+  tourBaseUrl: string;
   onOpen: (fotos: string[], alt: string) => void;
 }) {
   return (
     <Reveal>
-      <PhotoCarousel
-        photos={h.fotos}
-        alt={h.nombre}
-        className="aspect-[4/3] w-full"
-        onImageClick={() => onOpen(h.fotos, h.nombre)}
-      />
+      {h.sceneId ? (
+        // 19/10/2026, pedido de Andre: "cada habitacion tenga su imagen 360
+        // de portada en la card". La portada pasa a ser el visor real de
+        // Tourify ya abierto en la escena de esta habitación (sceneId
+        // verificado a mano, ver la nota junto a `sceneId` en
+        // site-content.ts) en vez del carrusel de fotos fijas. El clic
+        // lleva a la página completa del tour, abierta en esa misma
+        // habitación.
+        <a
+          href={`/tour-virtual?scene=${h.sceneId}`}
+          className="group relative block aspect-[4/3] w-full overflow-hidden bg-stone"
+        >
+          <iframe
+            src={`${tourBaseUrl}?sceneId=${h.sceneId}`}
+            title={h.nombre}
+            loading="lazy"
+            tabIndex={-1}
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full border-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone/70 via-transparent to-transparent transition-opacity group-hover:from-stone/85" />
+          <span className="absolute left-3 top-3 rounded-full bg-warm-white/90 px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase text-teal-deep">
+            360°
+          </span>
+          <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-warm-white/90 text-teal-deep transition-transform group-hover:scale-110">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </a>
+      ) : (
+        <PhotoCarousel
+          photos={h.fotos}
+          alt={h.nombre}
+          className="aspect-[4/3] w-full"
+          onImageClick={() => onOpen(h.fotos, h.nombre)}
+        />
+      )}
       <div className="mt-4">
         <h3 className="font-display text-lg text-stone">{h.nombre}</h3>
       </div>
@@ -84,7 +118,7 @@ function RoomCard({
 }
 
 export default function HabitacionesSection() {
-  const { habitaciones, habitacionesIntro, ui } = useContent();
+  const { habitaciones, habitacionesIntro, ui, tourVirtual } = useContent();
   const [lightbox, setLightbox] = useState<{ fotos: string[]; alt: string; index: number } | null>(null);
   // Un solo pedido de red para las 7 fichas (ver lib/useUsdRate.ts).
   const usdRate = useUsdRate();
@@ -121,6 +155,7 @@ export default function HabitacionesSection() {
                 usdRate={usdRate}
                 aproxUsdPrefix={ui.aproxUsdPrefix}
                 aproxUsdSuffix={ui.aproxUsdSuffix}
+                tourBaseUrl={tourVirtual.tourBaseUrl}
                 onOpen={(fotos, alt) => setLightbox({ fotos, alt, index: 0 })}
               />
             </div>
@@ -141,6 +176,7 @@ export default function HabitacionesSection() {
                 usdRate={usdRate}
                 aproxUsdPrefix={ui.aproxUsdPrefix}
                 aproxUsdSuffix={ui.aproxUsdSuffix}
+                tourBaseUrl={tourVirtual.tourBaseUrl}
                 onOpen={(fotos, alt) => setLightbox({ fotos, alt, index: 0 })}
               />
             </div>
