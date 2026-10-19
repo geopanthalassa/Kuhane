@@ -411,6 +411,7 @@ const habitaciones: Habitacion[] = [
     precio: "$90,000 CLP per person, per night",
     precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
+    sceneId: "qm4nM0jAXD",
   },
   {
     tipo: "Room",
@@ -433,6 +434,7 @@ const habitaciones: Habitacion[] = [
       "/images/habitaciones/ohana/ohana_03.jpg",
       "/images/habitaciones/ohana/ohana_04.jpg",
     ],
+    sceneId: "U9tjKTiL_d",
   },
   {
     tipo: "Room",
@@ -450,6 +452,7 @@ const habitaciones: Habitacion[] = [
     precio: "$90,000 CLP per person, per night",
     precioPersonaCLP: 90000,
     fotos: ["/images/habitaciones/hare/hare_04.jpg", "/images/habitaciones/hare/hare_05.jpg"],
+    sceneId: "ybcsFeWhe",
   },
   {
     tipo: "Bungalow",
@@ -465,6 +468,7 @@ const habitaciones: Habitacion[] = [
     precio: "$115,000 CLP per person, per night",
     precioPersonaCLP: 115000,
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
+    sceneId: "b1G_5z-z2lx",
   },
   {
     tipo: "Bungalow",
@@ -479,6 +483,7 @@ const habitaciones: Habitacion[] = [
     precio: "$115,000 CLP per person, per night",
     precioPersonaCLP: 115000,
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
+    sceneId: "XYNd2mLPYCT",
   },
   {
     tipo: "Bungalow",
@@ -494,6 +499,7 @@ const habitaciones: Habitacion[] = [
     precio: "$125,000 CLP per person, per night",
     precioPersonaCLP: 125000,
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
+    sceneId: "yZnH7bktDU",
   },
 ];
 
@@ -529,6 +535,7 @@ const tourVirtual = {
   title: "Explore Kuhane before you arrive.",
   body: "Take a 360° walk through the hostel — the rooms, the common areas, and the surroundings — from your phone or computer.",
   embedUrl: es.tourVirtual.embedUrl,
+  tourBaseUrl: es.tourVirtual.tourBaseUrl,
   volver: "← Back to Kuhane",
 };
 

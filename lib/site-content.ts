@@ -741,6 +741,14 @@ export type Habitacion = {
   // cuenta matemática del conversor.
   precioPersonaCLP: number;
   fotos: string[];
+  // ID de la escena de esta habitación dentro del tour 360° de Tourify
+  // (mismo tour que `tourVirtual.embedUrl`, cambiando solo el parámetro
+  // sceneId). Verificado a mano el 19/10/2026 abriendo el tour real y
+  // anotando el sceneId que queda en la URL al seleccionar cada
+  // habitación en el selector propio del visor — no es un dato inventado.
+  // Mahatu no tiene esta propiedad porque esa habitación no tiene una
+  // escena propia dentro del tour (no existe ese dato todavía).
+  sceneId?: string;
 };
 
 // Confirmado directamente con Kuhane (septiembre 2026). Precios actualizados
@@ -766,6 +774,7 @@ export const habitaciones: Habitacion[] = [
     precio: "$80.000 por persona, por noche",
     precioPersonaCLP: 80000,
     fotos: ["/images/habitaciones/mahatu/mahatu_01.jpg", "/images/habitaciones/mahatu/mahatu_02.jpg"],
+    // Sin sceneId — Mahatu no tiene escena propia en el tour Tourify.
   },
   {
     tipo: "Habitación",
@@ -781,6 +790,9 @@ export const habitaciones: Habitacion[] = [
     precio: "$80.000 por persona, por noche",
     precioPersonaCLP: 80000,
     fotos: ["/images/habitaciones/vaiana/vaiana_01.jpg", "/images/habitaciones/vaiana/vaiana_02.jpg"],
+    // Esta es, además, la escena con la que abre el tour completo
+    // (mismo sceneId que tourVirtual.embedUrl más abajo).
+    sceneId: "qm4nM0jAXD",
   },
   {
     tipo: "Habitación",
@@ -801,6 +813,7 @@ export const habitaciones: Habitacion[] = [
       "/images/habitaciones/ohana/ohana_03.jpg",
       "/images/habitaciones/ohana/ohana_04.jpg",
     ],
+    sceneId: "U9tjKTiL_d",
   },
   {
     tipo: "Habitación",
@@ -824,6 +837,7 @@ export const habitaciones: Habitacion[] = [
     // individual + 1 doble") se sacaron por dudosas — ver nota a Andre
     // (7/9/2026). Quedan solo las 2 fotos confiables: la cama y el baño.
     fotos: ["/images/habitaciones/hare/hare_04.jpg", "/images/habitaciones/hare/hare_05.jpg"],
+    sceneId: "ybcsFeWhe",
   },
   {
     tipo: "Bungalow",
@@ -839,6 +853,7 @@ export const habitaciones: Habitacion[] = [
     precio: "$96.000 por persona, por noche",
     precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/calipso/calipso_01.jpg", "/images/habitaciones/calipso/calipso_02.jpg"],
+    sceneId: "b1G_5z-z2lx",
   },
   {
     tipo: "Bungalow",
@@ -854,6 +869,7 @@ export const habitaciones: Habitacion[] = [
     precio: "$96.000 por persona, por noche",
     precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/uta/uta_01.jpg", "/images/habitaciones/uta/uta_02.jpg"],
+    sceneId: "XYNd2mLPYCT",
   },
   {
     tipo: "Bungalow",
@@ -870,6 +886,7 @@ export const habitaciones: Habitacion[] = [
     precio: "$96.000 por persona, por noche",
     precioPersonaCLP: 96000,
     fotos: ["/images/habitaciones/moana/moana_02.jpg", "/images/habitaciones/moana/moana_01.jpg"],
+    sceneId: "yZnH7bktDU",
   },
 ];
 
@@ -921,6 +938,12 @@ export const tourVirtual = {
   title: "Recorre Kuhane antes de llegar.",
   body: "Da una vuelta en 360° por el hostal — las habitaciones, los espacios comunes y el entorno — desde tu celular o computador.",
   embedUrl: "https://tours.tourify.cl/tours/fkUtY7eml?sceneId=qm4nM0jAXD",
+  // Base del tour sin el sceneId — se usa para armar el link/iframe de cada
+  // habitación (ver `sceneId` en cada item de `habitaciones` arriba) y
+  // también en /tour-virtual cuando llega con ?scene=... desde una tarjeta
+  // de habitación. 19/10/2026, pedido de Andre: que cada habitación tenga
+  // su propia imagen 360 de portada en su tarjeta.
+  tourBaseUrl: "https://tours.tourify.cl/tours/fkUtY7eml",
   volver: "← Volver a Kuhane",
 };
 
