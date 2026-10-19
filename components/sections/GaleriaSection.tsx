@@ -9,7 +9,7 @@ import { useContent } from "@/lib/content/LocaleProvider";
 // Carrusel horizontal (no grilla vertical completa) — mantiene la sección
 // corta y con ritmo, en vez de volcar las 17 fotos una debajo de la otra.
 export default function GaleriaSection() {
-  const { galeria, ui } = useContent();
+  const { galeria, tourVirtual, ui } = useContent();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   // Proporción real de la foto abierta en el lightbox — sin esto, el marco
   // queda fijo en 4:3 y las fotos con otra forma (por ejemplo más anchas)
@@ -86,12 +86,42 @@ export default function GaleriaSection() {
           </div>
         </Reveal>
 
-        <Reveal delayMs={150} className="mt-10 flex justify-center">
+        {/* Vista previa en vivo del tour 360° — antes esto era solo un
+            botón de texto chico y a Andre le pareció "súper escondido"
+            (19/10/2026: "no solo el link"). Ahora se ve el visor real de
+            Tourify funcionando acá mismo, con una insignia "360°" y el
+            texto encima para que quede claro que es clickeable y lleva a
+            la página completa del tour. */}
+        <Reveal delayMs={150} className="mt-14">
           <a
             href="/tour-virtual"
-            className="inline-flex items-center gap-2 rounded-full border border-teal px-5 py-2.5 text-[12px] tracking-[0.15em] uppercase text-teal transition-colors hover:bg-teal hover:text-warm-white"
+            className="group relative block overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(48,43,38,0.35)]"
           >
-            {galeria.tourVirtualCta}
+            <div className="relative aspect-video w-full bg-stone">
+              <iframe
+                src={tourVirtual.embedUrl}
+                title={tourVirtual.title}
+                tabIndex={-1}
+                aria-hidden
+                className="pointer-events-none absolute inset-0 h-full w-full border-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone/80 via-stone/10 to-transparent transition-opacity group-hover:from-stone/85" />
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 px-6 py-5 sm:px-8">
+                <div>
+                  <p className="text-xs tracking-[0.25em] uppercase text-gold-soft">
+                    {tourVirtual.eyebrow} 360°
+                  </p>
+                  <p className="font-display mt-1 text-lg text-warm-white sm:text-xl">
+                    {galeria.tourVirtualCta}
+                  </p>
+                </div>
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-warm-white/90 text-teal-deep transition-transform group-hover:scale-110">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
           </a>
         </Reveal>
       </div>
