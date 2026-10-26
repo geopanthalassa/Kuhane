@@ -32,6 +32,14 @@ export default function ExperienciasSection() {
               />
               <h3 className="font-display mt-6 text-xl text-stone">{item.title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-stone-soft">{item.body}</p>
+              {/* 26/10/2026, pedido de Andre: destacar el desayuno incluido
+                  acá en "Bienvenidos a Kuhane" (ver nota en
+                  lib/site-content.ts) — en teal y seminegrita para que se
+                  note frente al texto gris de arriba, en vez de perderse
+                  como una línea más. */}
+              {"destacado" in item && item.destacado && (
+                <p className="mt-2 text-[14px] font-semibold text-teal-deep">{item.destacado}</p>
+              )}
             </Reveal>
           ))}
         </div>
