@@ -125,6 +125,13 @@ export const experiencias = {
     {
       title: "Bienvenidos a Kuhane",
       body: "A tu llegada, te recibimos con collares de flores de la isla y te traemos a casa.",
+      // 26/10/2026, pedido de Andre: que en "Bienvenidos a Kuhane" quede
+      // claro y destacado que el desayuno está incluido y es abundante —
+      // mismo mensaje que ya está en habitacionesIntro.incluye y en
+      // reserva.incluye más abajo en este archivo, para que no se vea como
+      // un dato nuevo/distinto sino el mismo aviso repetido acá donde se
+      // nota más.
+      destacado: "El desayuno abundante y variado está incluido en tu estadía.",
       // Fotos reales enviadas por Andre — sept. 2026. Carrusel (como en
       // Habitaciones), con autoplay cada 2s (pedido de Andre: "3-4 fotos
       // por sección, que se vayan cambiando").

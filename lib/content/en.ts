@@ -104,6 +104,10 @@ const experiencias = {
     {
       title: "Welcome to Kuhane",
       body: "The moment you arrive, we welcome you with flower necklaces from the island and bring you home.",
+      // 10/26/2026: same addition as site-content.ts (es) — a hearty,
+      // varied breakfast is included, same wording as
+      // habitacionesIntro.incluye / reserva.incluye translated above.
+      destacado: "A hearty, varied breakfast is included in your stay.",
       // 24/9/2026: same swap as site-content.ts — garden/red-chair photo
       // out, terrace toast photo in. See note there.
       fotos: [
