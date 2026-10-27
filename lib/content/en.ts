@@ -466,7 +466,9 @@ const habitaciones: Habitacion[] = [
     camas: "1 king bed + 1 single-and-a-half bed",
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
-    caracteristicas: "Beachfront bungalow, with terrace",
+    // 10/26/2026: same change as site-content.ts (es) — "beachfront" isn't
+    // accurate for the bungalows.
+    caracteristicas: "Bungalow a few meters from the coastal platform, with terrace",
     // 4/10/2026: matches lib/site-content.ts (Calipso) — Andre's new rate
     // table, flat rate for 1, 2, and 3 guests.
     precio: "$115,000 CLP per person, per night",
@@ -482,7 +484,9 @@ const habitaciones: Habitacion[] = [
     camas: "1 king bed + 1 single-and-a-half bed",
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
-    caracteristicas: "Beachfront bungalow, with terrace",
+    // 10/26/2026: same change as site-content.ts (es) — "beachfront" isn't
+    // accurate for the bungalows.
+    caracteristicas: "Bungalow a few meters from the coastal platform, with terrace",
     // 4/10/2026: same rate as Calipso — see that entry.
     precio: "$115,000 CLP per person, per night",
     precioPersonaCLP: 115000,
@@ -497,7 +501,9 @@ const habitaciones: Habitacion[] = [
     camas: "1 double bed + trundle bed (2 single-and-a-half mattresses)",
     bano: "Private, with bathtub",
     servicios: ["Hot water", "Air conditioning", "Wifi", "Towels and linens included"],
-    caracteristicas: "Beachfront bungalow, with terrace",
+    // 10/26/2026: same change as site-content.ts (es) — "beachfront" isn't
+    // accurate for the bungalows.
+    caracteristicas: "Bungalow a few meters from the coastal platform, with terrace",
     // 4/10/2026: matches lib/site-content.ts (Moana) — Andre's new rate
     // table, flat rate for 1, 2, 3, and 4 guests.
     precio: "$125,000 CLP per person, per night",
@@ -509,7 +515,8 @@ const habitaciones: Habitacion[] = [
 
 const habitacionesIntro = {
   title: "Every room, part of the experience.",
-  bodyPrefix: "4 rooms and 3 beachfront bungalows — total capacity for",
+  // 10/26/2026: same change as above — "beachfront" isn't accurate.
+  bodyPrefix: "4 rooms and 3 bungalows a few meters from the coastal platform — total capacity for",
   capacidadTotal: 23,
   bodySuffix: "guests.",
   // 24/9/2026: breakfast is "abundant and varied", not "continental" — see
@@ -635,7 +642,9 @@ const ubicacion = {
 const ui = {
   consultarDisponibilidad: "Check availability",
   habitacionesGroupTitle: "Rooms",
-  bungalowsGroupTitle: "Beachfront bungalows",
+  // 10/26/2026: same change as site-content.ts (es) — "beachfront" isn't
+  // accurate for the bungalows.
+  bungalowsGroupTitle: "Bungalows a few meters from the coastal platform",
   cerrar: "Close",
   fotoAnterior: "Previous photo",
   fotoSiguiente: "Next photo",

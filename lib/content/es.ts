@@ -41,7 +41,9 @@ import {
 const ui = {
   consultarDisponibilidad: "Consultar disponibilidad",
   habitacionesGroupTitle: "Habitaciones",
-  bungalowsGroupTitle: "Bungalows frente al mar",
+  // 26/10/2026, pedido de Andre: mismo cambio que en site-content.ts —
+  // "frente al mar" no es preciso para los bungalows.
+  bungalowsGroupTitle: "Bungalows a metros de la plataforma costera",
   cerrar: "Cerrar",
   fotoAnterior: "Foto anterior",
   fotoSiguiente: "Foto siguiente",

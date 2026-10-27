@@ -854,7 +854,9 @@ export const habitaciones: Habitacion[] = [
     camas: "1 cama King + 1 cama de 1.5 plazas",
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
-    caracteristicas: "Bungalow frente al mar, con terraza",
+    // 26/10/2026, pedido de Andre: "frente al mar" no es preciso — se
+    // cambia a "a metros de la plataforma costera".
+    caracteristicas: "Bungalow a metros de la plataforma costera, con terraza",
     // 9/10/2026: precio de temporada baja actualizado por Andre (antes
     // $115.000). Temporada alta (dic-feb) sube a $116.000.
     precio: "$96.000 por persona, por noche",
@@ -870,7 +872,9 @@ export const habitaciones: Habitacion[] = [
     camas: "1 cama King + 1 cama de 1.5 plazas",
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
-    caracteristicas: "Bungalow frente al mar, con terraza",
+    // 26/10/2026, pedido de Andre: "frente al mar" no es preciso — se
+    // cambia a "a metros de la plataforma costera".
+    caracteristicas: "Bungalow a metros de la plataforma costera, con terraza",
     // 9/10/2026: misma tarifa que Calipso, precio de temporada baja
     // actualizado por Andre (antes $115.000).
     precio: "$96.000 por persona, por noche",
@@ -886,7 +890,9 @@ export const habitaciones: Habitacion[] = [
     camas: "1 cama de 2 plazas + cama nido (2 colchones de 1.5 plazas)",
     bano: "Privado, con bañera",
     servicios: ["Agua caliente", "Aire acondicionado", "Wifi", "Toallas y sábanas incluidas"],
-    caracteristicas: "Bungalow frente al mar, con terraza",
+    // 26/10/2026, pedido de Andre: "frente al mar" no es preciso — se
+    // cambia a "a metros de la plataforma costera".
+    caracteristicas: "Bungalow a metros de la plataforma costera, con terraza",
     // 9/10/2026: precio de temporada baja actualizado por Andre (antes
     // $125.000) — ahora igual al de Calipso/Uta. Temporada alta (dic-feb)
     // sube a $116.000.
@@ -902,7 +908,9 @@ export const habitacionesIntro = {
   // El componente arma la frase completa como
   // `${bodyPrefix} ${capacidadTotal} ${bodySuffix}` para poder traducir el
   // texto sin tocar el número real de personas.
-  bodyPrefix: "4 habitaciones y 3 bungalows frente al mar — capacidad total para",
+  // 26/10/2026, pedido de Andre: mismo cambio que arriba — "frente al mar"
+  // no es preciso para los bungalows.
+  bodyPrefix: "4 habitaciones y 3 bungalows a metros de la plataforma costera — capacidad total para",
   capacidadTotal: 23,
   bodySuffix: "personas.",
   // Pedido de Andre (23/9/2026): que quede explícito en habitaciones y en
