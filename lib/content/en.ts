@@ -44,10 +44,13 @@ const site = {
 
 const ubicacionGeo = es.ubicacionGeo;
 
+// 10/31/2026: same fix as site-content.ts (es) — "Tours" was missing from
+// the nav, on both desktop and mobile.
 const nav = [
   { label: "Rapa Nui", href: "#rapa-nui" },
   { label: "Kuhane", href: "#kuhane" },
   { label: "Experiences", href: "#experiencias" },
+  { label: "Tours", href: "/tours" },
   { label: "Rooms", href: "#habitaciones" },
   { label: "Culture", href: "#cultura" },
   { label: "Gallery", href: "#galeria" },

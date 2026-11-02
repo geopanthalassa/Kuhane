@@ -52,10 +52,16 @@ export const ubicacionGeo = {
 // ya estás en la home (busca esa sección en la página actual); con "/#rapa-nui"
 // el navegador va primero a la home y ahí salta a la sección, así que
 // también funciona desde /sofia-abarca o cualquier otra página del sitio.
+// 31/10/2026, reporte de Andre: "Tours" no aparecía en el menú. Se verificó
+// en el sitio en vivo que esto pasaba en desktop Y en mobile por igual — no
+// era un problema solo de la versión móvil, "Tours" simplemente no estaba
+// en este arreglo (que alimenta a los dos menús). Se agrega acá, apuntando
+// a /tours (la página de tours ya existente, no una sección de la home).
 export const nav = [
   { label: "Rapa Nui", href: "/#rapa-nui" },
   { label: "Kuhane", href: "/#kuhane" },
   { label: "Experiencias", href: "/#experiencias" },
+  { label: "Tours", href: "/tours" },
   { label: "Habitaciones", href: "/#habitaciones" },
   { label: "Cultura", href: "/#cultura" },
   { label: "Galería", href: "/#galeria" },
@@ -1056,7 +1062,15 @@ export const cta = {
 // "fase de pruebas"/"periodo de prueba". El pago no se procesa online: se
 // hace directo en el hostal (ver paymentNote).
 export const reserva = {
-  nukuOsUrl: "https://nuku-os-app.vercel.app/reservar",
+  // 31/10/2026, reporte de Andre: el botón "RESERVAR" llevaba al dominio
+  // crudo de Vercel (nuku-os-app.vercel.app) y mostraba una pantalla en
+  // negro vacía en el celular. Verificado en vivo: ese dominio redirige
+  // (308) a panel.nukumarketing.com, pero el visitante normal (sin sesión
+  // de Vercel) se queda pegado en esa redirección. El dominio propio
+  // panel.nukumarketing.com/reservar sí carga la página real (200, Nuku OS
+  // — Panel) — es el mismo destino, solo que por su propio dominio en vez
+  // del de Vercel.
+  nukuOsUrl: "https://panel.nukumarketing.com/reservar",
   // Cuenta real de Kuhane Etno-Hostal en Supabase/Nuku OS — confirmada
   // directo en la base de datos (9/9/2026), no inventada. La usa el campo
   // de código promocional para validar en vivo contra /api/public/promo.
