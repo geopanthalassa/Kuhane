@@ -306,15 +306,19 @@ export default function ReservaPanel() {
 
       <div className="mt-2 flex flex-col items-center">
         {!showPromo ? (
+          // 10/11/2026, pedido de Andre: el enlace "¿Código promocional?" y el
+          // campo que se abre al tocarlo eran muy chicos y difíciles de tocar
+          // en el celular — se agrandó el texto y el área clickeable de
+          // ambos (antes text-[11px]/text-[12px] sin padding en el botón).
           <button
             type="button"
             onClick={() => setShowPromo(true)}
-            className="text-[11px] tracking-[0.05em] text-warm-white/60 underline underline-offset-4 hover:text-warm-white/90"
+            className="rounded-full px-3 py-1.5 text-[14px] tracking-[0.03em] text-warm-white/70 underline underline-offset-4 hover:text-warm-white"
           >
             {reserva.promoQuestion}
           </button>
         ) : (
-          <div className="flex flex-col items-center gap-1.5">
+          <div className="flex flex-col items-center gap-2">
             <div className="relative">
               <input
                 type="text"
@@ -322,7 +326,7 @@ export default function ReservaPanel() {
                 onChange={(e) => setPromo(e.target.value)}
                 placeholder={reserva.promoPlaceholder}
                 autoFocus
-                className={`w-44 rounded-full border bg-transparent px-3 py-1 pr-8 text-center text-[12px] uppercase tracking-[0.1em] text-warm-white placeholder:text-warm-white/50 outline-none transition-colors ${
+                className={`w-64 rounded-full border bg-transparent px-5 py-2.5 pr-10 text-center text-[15px] uppercase tracking-[0.1em] text-warm-white placeholder:text-warm-white/50 outline-none transition-colors ${
                   promoStatus === "valid"
                     ? "border-emerald-300/70 focus:border-emerald-300"
                     : promoStatus === "invalid"
@@ -331,7 +335,7 @@ export default function ReservaPanel() {
                 }`}
               />
               {promoStatus === "checking" && (
-                <span className="pointer-events-none absolute right-2.5 top-1/2 h-2.5 w-2.5 -translate-y-1/2 animate-pulse rounded-full bg-warm-white/50" />
+                <span className="pointer-events-none absolute right-3.5 top-1/2 h-3 w-3 -translate-y-1/2 animate-pulse rounded-full bg-warm-white/50" />
               )}
               {promoStatus === "valid" && (
                 <svg
@@ -339,7 +343,7 @@ export default function ReservaPanel() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
-                  className="pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-emerald-300"
+                  className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-300"
                 >
                   <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -350,7 +354,7 @@ export default function ReservaPanel() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
-                  className="pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-rose-300"
+                  className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-rose-300"
                 >
                   <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -358,7 +362,7 @@ export default function ReservaPanel() {
             </div>
             {(promoStatus === "valid" || promoStatus === "invalid") && (
               <p
-                className={`text-[11px] leading-snug ${
+                className={`text-[13px] leading-snug ${
                   promoStatus === "valid" ? "text-emerald-300" : "text-rose-300"
                 }`}
               >
