@@ -47,14 +47,21 @@ function RoomCard({
           href={`/tour-virtual?scene=${h.sceneId}`}
           className="group relative block aspect-[4/3] w-full overflow-hidden bg-stone"
         >
-          <iframe
-            src={`${tourBaseUrl}?sceneId=${h.sceneId}`}
-            title={h.nombre}
-            loading="lazy"
-            tabIndex={-1}
-            aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full border-0"
-          />
+          {/* 16/11/2026: antes la portada era el visor de Tourify en vivo
+              (un iframe 3D por habitación). En celulares, varios visores 3D
+              a la vez agotan la memoria y el navegador mostraba una carita
+              triste en lugar de la habitación (reportado por Andre). Ahora
+              la portada es la primera foto real de la habitación y el
+              visor 360° se abre recién al tocar, en /tour-virtual. */}
+          {h.fotos[0] ? (
+            <Image
+              src={h.fotos[0]}
+              alt={h.nombre}
+              fill
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 320px, 85vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : null}
           <div className="absolute inset-0 bg-gradient-to-t from-stone/70 via-transparent to-transparent transition-opacity group-hover:from-stone/85" />
           <span className="absolute left-3 top-3 rounded-full bg-warm-white/90 px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] uppercase text-teal-deep">
             360°
